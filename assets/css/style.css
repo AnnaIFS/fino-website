@@ -1136,26 +1136,49 @@ section {
   .circles-testimonials { grid-template-columns: 1fr; }
   .offsite-team-grid { grid-template-columns: 1fr 1fr; }
 
+  /* Buttons */
+  .btn { font-size: 1rem; padding: 1rem 2.2rem; }
+
+  /* Service cards */
   .services-grid {
     grid-template-columns: 1fr;
     max-width: 480px;
   }
-  .service-card-body p { font-size: 0.95rem; }
+  .service-card-body p { font-size: 1.05rem; }
   .card-number { font-size: 1.4rem; color: rgba(240, 160, 24, 0.6); }
 
+  /* Founders */
   .founders-grid {
     grid-template-columns: 1fr;
     max-width: 360px;
     margin: 0 auto;
   }
+  .founder-creds li { font-size: 1rem; }
+  .founder-role { font-size: 0.9rem; }
+  .who-link a { font-size: 1rem; }
 
+  /* About page */
   .about-placeholder-grid {
     grid-template-columns: 1fr;
     max-width: 360px;
     margin: 0 auto 3rem;
   }
+  .bio-expand p { font-size: 1rem !important; line-height: 1.85 !important; }
+  .bio-toggle { font-size: 1rem; }
 
   .about-founders { grid-template-columns: 1fr; }
+
+  /* Lists */
+  .feature-list li { font-size: 1.05rem; }
+
+  /* Testimonials */
+  .testimonial blockquote { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+  .testimonial cite { font-size: 0.9rem; }
+  .circles-testimonial-card blockquote { font-size: 1.05rem; }
+
+  /* Accordion */
+  .accordion-header { font-size: 1.05rem; }
+  .accordion-body p { font-size: 1rem; }
 
   /* Sequence image (offsites) */
   .content-section img[src*="sequence"] {
@@ -1169,14 +1192,17 @@ section {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-right { margin-top: 2rem; }
   .footer-left p,
-  .footer-info { font-size: 1rem; color: #c8bfb0; max-width: none; }
+  .footer-info { font-size: 1.05rem; color: #c8bfb0; max-width: none; }
   .footer-tagline { font-size: 1.1rem; }
   .footer-nav { gap: 1.2rem; }
-  .footer-nav a { font-size: 0.9rem; color: #c8bfb0; }
-  .footer-copy { font-size: 0.85rem; color: #8a7f72; }
+  .footer-nav a { font-size: 1rem; color: #c8bfb0; }
+  .footer-copy { font-size: 0.9rem; color: #8a7f72; }
   .footer-form-heading { font-size: 1.8rem; }
+  .footer-right input,
+  .footer-right textarea { font-size: 1rem !important; }
   .footer-right input::placeholder,
   .footer-right textarea::placeholder { color: rgba(200, 191, 176, 0.5); }
+  .footer-right button[type="submit"] { font-size: 0.9rem !important; }
 }
 
 @media (max-width: 480px) {
