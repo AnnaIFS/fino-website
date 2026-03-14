@@ -1112,8 +1112,8 @@ section {
   h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
   h3 { font-size: clamp(1.3rem, 4.5vw, 1.7rem); }
   h4 { font-size: clamp(1.1rem, 4vw, 1.3rem); }
-  p { font-size: 1.05rem; line-height: 1.85; }
-  .hero-sub { font-size: 1.05rem !important; line-height: 1.8; }
+  p { font-size: 1.1rem; line-height: 1.85; }
+  .hero-sub { font-size: 1.1rem !important; line-height: 1.8; }
   .label { font-size: 0.75rem; }
 
   /* Sections */
