@@ -233,10 +233,14 @@ section {
 }
 .mobile-menu a {
   font-family: 'Cormorant SC', serif;
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: var(--text);
   letter-spacing: 0.06em;
   transition: color 0.3s;
+}
+.mobile-menu .btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
 }
 .mobile-menu a:hover { color: var(--gold); }
 
