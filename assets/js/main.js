@@ -2,6 +2,11 @@
    FINO — Main JS
    ============================================ */
 
+/* --- Redirect /index.html to clean URL (fixes duplicate canonical) --- */
+if (window.location.pathname.endsWith('/index.html')) {
+  window.location.replace(window.location.pathname.replace(/index\.html$/, ''));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* --- Nav scroll behavior --- */

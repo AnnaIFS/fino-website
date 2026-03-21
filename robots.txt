@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fino.website/sitemap.xml
