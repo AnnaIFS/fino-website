@@ -196,16 +196,15 @@
       padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem);
       overflow: hidden;
     }
-    .lp-hero .hero-circle {
+    .lp-hero .hero-svg {
       position: absolute;
-      right: -5%;
+      right: -8%;
       top: 50%;
       transform: translateY(-50%);
-      width: clamp(400px, 50vw, 700px);
-      height: clamp(400px, 50vw, 700px);
-      border-radius: 50%;
-      border: 1.5px solid rgba(232, 66, 10, 0.06);
+      width: clamp(420px, 45vw, 640px);
+      height: clamp(420px, 45vw, 640px);
       pointer-events: none;
+      opacity: 0.35;
     }
     .lp-hero h1 {
       margin-bottom: 1.2rem;
@@ -516,7 +515,7 @@
       h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
       p { font-size: 1.05rem; }
 
-      .hero-circle { display: none; }
+      .hero-svg { display: none; }
       .geo-pattern { display: none; }
 
       .stats-grid {
@@ -615,7 +614,7 @@
       }
       .lp-footer p { color: #666; }
 
-      .hero-circle,
+      .hero-svg,
       .geo-pattern,
       .section-divider { display: none; }
     }
@@ -630,7 +629,13 @@
 
   <!-- 1. Hero -->
   <section class="lp-hero">
-    <div class="hero-circle" aria-hidden="true"></div>
+    <svg class="hero-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><linearGradient id="hg" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#e8420a"/><stop offset="1" stop-color="#f0a018"/></linearGradient></defs>
+      <circle cx="170" cy="180" r="130" stroke="url(#hg)" stroke-width="1.2"/>
+      <circle cx="230" cy="180" r="130" stroke="url(#hg)" stroke-width="1.2"/>
+      <circle cx="200" cy="240" r="130" stroke="url(#hg)" stroke-width="1.2"/>
+      <path d="M20,200 Q80,200 120,170 T200,200 T280,200 T380,200" stroke="url(#hg)" stroke-width="1.2" fill="none"/>
+    </svg>
     <div class="container">
       <p class="label">Self-leadership Circles for Healthcare Teams</p>
       <h1>Your Team Is Skilled. Something Breaks Down When the Pressure Is Relentless.</h1>
