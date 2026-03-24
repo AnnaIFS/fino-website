@@ -316,6 +316,54 @@
     }
 
     /* ============================================
+       FAQ / ACCORDION
+       ============================================ */
+    .lp-accordion {
+      max-width: 700px;
+      margin-top: 2rem;
+    }
+    .lp-accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .lp-accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      text-align: left;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+    .lp-accordion-header:hover { color: var(--gold); }
+    .lp-accordion-header .icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      color: var(--muted);
+    }
+    .lp-accordion-item.open .lp-accordion-header .icon {
+      transform: rotate(45deg);
+    }
+    .lp-accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .lp-accordion-item.open .lp-accordion-body {
+      max-height: 500px;
+      padding-bottom: 1.2rem;
+    }
+    .lp-accordion-body p {
+      font-size: 1rem;
+      color: var(--body);
+    }
+
+    /* ============================================
        FIT
        ============================================ */
     .fit-grid {
@@ -334,7 +382,7 @@
       color: #e8420a;
     }
     .fit-col h3 .icon-bad {
-      color: var(--accent);
+      color: var(--muted);
     }
     .fit-list li {
       padding: 0.65rem 0;
@@ -353,7 +401,7 @@
       color: var(--accent);
     }
     .fit-list .ph-x-circle {
-      color: var(--accent);
+      color: var(--muted);
     }
 
     /* ============================================
@@ -560,7 +608,7 @@
       <p class="label">Self-leadership Circles</p>
       <h1>Your Team Has the Talent. Something Else Is Breaking Down.</h1>
       <p>Self-leadership Circles is an 8-week program that gives teams a shared language for staying grounded, honest, and effective when pressure hits.</p>
-      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Start a Conversation</a>
     </div>
   </section>
 
@@ -581,7 +629,7 @@
     <div class="container">
       <p class="label">The Program</p>
       <h2>Eight Weeks. Real Work. Lasting Change.</h2>
-      <p>Small-group coaching for teams of 8 to 16 people, held over 8 weekly sessions of 60 to 90 minutes. Fully remote. Two facilitators in every session. Grounded in Internal Family Systems (IFS), a proven model with 40 years of application.</p>
+      <p>Once a week for 8 weeks, your team meets online with two facilitators. You learn to recognize what's happening inside when pressure hits. Then you practice using it on real work situations. No jargon. No theory for theory's sake. Just practical tools that work on Tuesday morning.</p>
       <div class="stats-grid">
         <div class="stat-box">
           <div class="stat-number">8</div>
@@ -631,6 +679,38 @@
       <div class="pull-quote">
         <blockquote>&ldquo;Two of our leaders had been in conflict for months. After going through this work, they can collaborate again. Their teams felt it immediately.&rdquo;</blockquote>
         <cite>People Operations Lead</cite>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 4b. Common Questions -->
+  <section>
+    <div class="container">
+      <p class="label">Common Questions</p>
+      <div class="lp-accordion">
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq1">&ldquo;8 weeks is a big commitment.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq1" role="region"><p>It's 60 to 90 minutes a week. Most teams spend more time than that managing the fallout from one difficult conversation. The ROI is in what stops happening.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq2">&ldquo;My team won't be open to this.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq2" role="region"><p>We like skeptics. The program is practical and grounded. Most skeptics become the strongest advocates because the tools work in real situations.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq3">&ldquo;Is this therapy?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq3" role="region"><p>No. This is professional development. We don't do clinical work. We teach a practical model people can use at work and beyond.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq4">&ldquo;I need approval to move forward.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq4" role="region"><p>We can help with that. After our first conversation we can provide a clear program overview you can share internally.</p></div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -697,8 +777,8 @@
       <h2>$500–$1,000 per person.</h2>
       <p>Pricing is customized based on team size and context. No hidden fees. Special pricing available for nonprofits and social impact organizations.</p>
       <p class="subline">8 weeks. Fully remote. No travel costs. No venue. Just 60 to 90 minutes a week.</p>
-      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Book a Discovery Call</a>
-      <p class="cta-note">20-minute conversation. No pitch. No pressure.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Start a Conversation</a>
+      <p class="cta-note">Tell us what's happening with your team. We'll take it from there.</p>
     </div>
   </section>
 
@@ -708,5 +788,21 @@
     <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
   </footer>
 
+  <script>
+    document.querySelectorAll('.lp-accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        item.parentElement.querySelectorAll('.lp-accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.lp-accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
