@@ -61,8 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const item = btn.parentElement;
       const isOpen = item.classList.contains('open');
       // Close all siblings
-      item.parentElement.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      item.parentElement.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 

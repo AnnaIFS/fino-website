@@ -269,9 +269,12 @@
         <div class="footer-right">
           <h3 class="footer-form-heading">Get in Touch</h3>
           <form action="https://formspree.io/f/mjgaolev" method="POST">
-            <input type="text" name="name" placeholder="Name" required style="display:block; width:100%; background:#1a1815; border:1px solid rgba(232,224,211,0.1); color:#e8e0d3; padding:0.7rem 1rem; margin-bottom:0.8rem; font-family:'Outfit',sans-serif; font-size:0.9rem; outline:none;">
-            <input type="email" name="email" placeholder="Email" required style="display:block; width:100%; background:#1a1815; border:1px solid rgba(232,224,211,0.1); color:#e8e0d3; padding:0.7rem 1rem; margin-bottom:0.8rem; font-family:'Outfit',sans-serif; font-size:0.9rem; outline:none;">
-            <textarea name="message" placeholder="Message" rows="4" required style="display:block; width:100%; background:#1a1815; border:1px solid rgba(232,224,211,0.1); color:#e8e0d3; padding:0.7rem 1rem; margin-bottom:0.8rem; font-family:'Outfit',sans-serif; font-size:0.9rem; outline:none; resize:vertical;"></textarea>
+            <label for="footer-name" class="sr-only">Name</label>
+            <input id="footer-name" type="text" name="name" placeholder="Name" required style="display:block; width:100%; background:#1a1815; border:1px solid rgba(232,224,211,0.1); color:#e8e0d3; padding:0.7rem 1rem; margin-bottom:0.8rem; font-family:'Outfit',sans-serif; font-size:0.9rem; outline:none;">
+            <label for="footer-email" class="sr-only">Email</label>
+            <input id="footer-email" type="email" name="email" placeholder="Email" required style="display:block; width:100%; background:#1a1815; border:1px solid rgba(232,224,211,0.1); color:#e8e0d3; padding:0.7rem 1rem; margin-bottom:0.8rem; font-family:'Outfit',sans-serif; font-size:0.9rem; outline:none;">
+            <label for="footer-message" class="sr-only">Message</label>
+            <textarea id="footer-message" name="message" placeholder="Message" rows="4" required style="display:block; width:100%; background:#1a1815; border:1px solid rgba(232,224,211,0.1); color:#e8e0d3; padding:0.7rem 1rem; margin-bottom:0.8rem; font-family:'Outfit',sans-serif; font-size:0.9rem; outline:none; resize:vertical;"></textarea>
             <button type="submit" style="background:transparent; border:1px solid #e8420a; color:#e8e0d3; padding:0.7rem 1.8rem; font-family:'Outfit',sans-serif; font-size:0.75rem; letter-spacing:0.1em; cursor:pointer; transition: all 0.3s;">Send</button>
           </form>
         </div>
