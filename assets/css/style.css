@@ -283,7 +283,7 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(11, 10, 8, 0.97) 0%, rgba(11, 10, 8, 0.6) 40%, transparent 70%);
+  background: linear-gradient(to top, rgba(11, 10, 8, 0.87) 0%, rgba(11, 10, 8, 0.5) 40%, transparent 70%);
 }
 
 .hero .container {
@@ -390,7 +390,7 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.55);
+  filter: brightness(0.65);
 }
 
 .idea-text p {
@@ -804,10 +804,10 @@ section {
    INNER PAGE HERO
    ============================================ */
 .page-hero .hero-bg img {
-  filter: brightness(0.45) saturate(0.8);
+  filter: brightness(0.55) saturate(0.8);
 }
 .page-hero .hero-bg::after {
-  background: linear-gradient(to top, rgba(11, 10, 8, 0.97) 0%, rgba(11, 10, 8, 0.7) 40%, rgba(11,10,8,0.4) 70%);
+  background: linear-gradient(to top, rgba(11, 10, 8, 0.87) 0%, rgba(11, 10, 8, 0.6) 40%, rgba(11,10,8,0.3) 70%);
 }
 .page-hero h1 {
   margin-bottom: 1rem;
@@ -944,7 +944,7 @@ section {
   object-fit: cover;
 }
 .page-image.dark-overlay img {
-  filter: brightness(0.5);
+  filter: brightness(0.6);
 }
 
 /* About page founders */
