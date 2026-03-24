@@ -416,7 +416,6 @@ section {
   text-align: center;
   margin-bottom: clamp(3rem, 5vw, 4.5rem);
 }
-.services-header h2 { margin-top: 0.5rem; }
 
 .services-grid {
   display: grid;
@@ -628,38 +627,15 @@ section {
 }
 .founder-creds li:last-child { border-bottom: none; }
 
-/* Founder placeholder avatar */
-.founder-avatar {
-  width: 120px;
-  height: 120px;
+/* Founder avatar */
+.founder-avatar-img {
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 1px solid rgba(232, 66, 10, 0.4);
-  background: #2a2520;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.2rem;
-  font-family: 'Cormorant SC', serif;
-  font-size: 1.6rem;
-  color: var(--text);
-  letter-spacing: 0.05em;
-}
-
-/* Larger avatar for about page */
-.founder-avatar-lg {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
   border: 1.5px solid rgba(232, 66, 10, 0.35);
-  background: #1e1c18;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto 1.2rem;
-  font-family: 'Cormorant SC', serif;
-  font-size: 2rem;
-  color: #e8420a;
-  letter-spacing: 0.05em;
 }
 
 /* Bio expand toggle */
@@ -792,6 +768,33 @@ section {
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
+}
+.footer-right input,
+.footer-right textarea {
+  display: block;
+  width: 100%;
+  background: #1a1815;
+  border: 1px solid rgba(232, 224, 211, 0.1);
+  color: #e8e0d3;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.8rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+.footer-right textarea {
+  resize: vertical;
+}
+.footer-right button[type="submit"] {
+  background: transparent;
+  border: 1px solid #e8420a;
+  color: #e8e0d3;
+  padding: 0.7rem 1.8rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 /* ============================================
@@ -926,6 +929,15 @@ section {
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   line-height: 1.5;
   margin-bottom: 1rem;
+}
+.testimonial-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1.5px solid rgba(232, 66, 10, 0.35);
+  margin-bottom: 0.8rem;
 }
 .testimonial cite {
   font-style: normal;
@@ -1218,10 +1230,10 @@ section {
   .footer-copy { font-size: 0.9rem; color: #8a7f72; }
   .footer-form-heading { font-size: 1.8rem; }
   .footer-right input,
-  .footer-right textarea { font-size: 1rem !important; }
+  .footer-right textarea { font-size: 1rem; }
   .footer-right input::placeholder,
   .footer-right textarea::placeholder { color: rgba(200, 191, 176, 0.5); }
-  .footer-right button[type="submit"] { font-size: 0.9rem !important; }
+  .footer-right button[type="submit"] { font-size: 0.9rem; }
 }
 
 @media (max-width: 480px) {
@@ -1245,9 +1257,5 @@ section {
   .bio-toggle {
     padding: 0.5rem 0;
     font-size: 0.9rem;
-  }
-  .founder-avatar-lg {
-    width: 140px;
-    height: 140px;
   }
 }
