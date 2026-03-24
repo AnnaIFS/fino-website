@@ -267,6 +267,9 @@ section {
   padding: var(--nav-height) 0 4rem;
   overflow: hidden;
 }
+.page-hero {
+  min-height: 75svh;
+}
 
 .hero-bg {
   position: absolute;
@@ -291,6 +294,10 @@ section {
   z-index: 2;
   width: 100%;
   margin-top: auto;
+  padding-top: 30svh;
+}
+.page-hero .container {
+  padding-top: 18svh;
 }
 
 .hero-content {
@@ -813,9 +820,6 @@ section {
 .page-hero .hero-bg::after {
   background: linear-gradient(to top, rgba(11, 10, 8, 0.85) 0%, rgba(11, 10, 8, 0.5) 40%, rgba(11,10,8,0.2) 70%);
 }
-.page-hero {
-  min-height: 75svh;
-}
 .page-hero .hero-sub {
   color: #c8bfb0;
 }
@@ -1109,7 +1113,8 @@ section {
     height: auto;
     padding: var(--nav-height) 0 2.5rem;
   }
-  .hero .container {
+  .hero .container,
+  .page-hero .container {
     margin-top: 0;
     padding-top: clamp(8rem, 30vw, 14rem);
   }
