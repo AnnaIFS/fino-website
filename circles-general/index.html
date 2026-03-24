@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-leadership Circles for Teams · 8-Week IFS Program · FINO</title>
+  <meta name="description" content="An 8-week small-group program using Internal Family Systems (IFS) for teams. Build a shared language for staying grounded, clear, and honest under pressure. $500-$1,000 per person, fully remote.">
+  <meta property="og:title" content="Self-leadership Circles for Teams · FINO">
+  <meta property="og:description" content="Your team has the talent. Something else is breaking down. An 8-week program that gives teams a shared language for staying grounded, honest, and effective when pressure hits.">
+  <meta property="og:image" content="https://fino.website/images/og-image.jpg">
+  <meta property="og:url" content="https://fino.website/circles-general/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FINO">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Self-leadership Circles for Teams · FINO">
+  <meta name="twitter:description" content="Your team has the talent. Something else is breaking down. An 8-week program that gives teams a shared language for staying grounded, honest, and effective when pressure hits.">
+  <meta name="twitter:image" content="https://fino.website/images/og-image.jpg">
+  <link rel="canonical" href="https://fino.website/circles-general/">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Self-leadership Circles",
+    "provider": {
+      "@type": "Organization",
+      "name": "FINO",
+      "url": "https://fino.website"
+    },
+    "url": "https://fino.website/circles-general/",
+    "description": "An 8-week small-group program using Internal Family Systems (IFS) for teams. Build a shared language for staying grounded, clear, and honest under pressure.",
+    "serviceType": "Team Development Program",
+    "offers": {
+      "@type": "Offer",
+      "priceRange": "$500-$1,000",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    /* ============================================
+       CIRCLES LANDING — Style System
+       ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :root {
+      --bg: #0b0a08;
+      --surface: #111009;
+      --text: #e8e0d4;
+      --body: #c8bfb0;
+      --muted: #9a9080;
+      --accent: #e8420a;
+      --gold: #f0a018;
+      --gradient: linear-gradient(135deg, #e8420a, #f0a018);
+      --border: rgba(232, 224, 211, 0.07);
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* --- Typography --- */
+    h1, h2, h3 {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+    h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--body);
+      max-width: 680px;
+    }
+
+    .label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.2rem;
+    }
+
+    /* --- Layout --- */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+
+    section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+    }
+    section.alt { background: var(--surface); }
+
+    /* --- Button --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .btn:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 24px rgba(232, 66, 10, 0.3);
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    .lp-header {
+      padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+    }
+    .lp-header img {
+      height: 28px;
+      width: auto;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .lp-hero {
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem);
+    }
+    .lp-hero h1 {
+      margin-bottom: 1.2rem;
+      max-width: 720px;
+    }
+    .lp-hero p {
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    /* ============================================
+       PROBLEM
+       ============================================ */
+    .problem p {
+      max-width: 640px;
+      font-size: 1.1rem;
+      line-height: 2;
+    }
+
+    /* ============================================
+       STATS
+       ============================================ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .stat-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Cormorant SC', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================
+       OUTCOMES
+       ============================================ */
+    .outcomes-list {
+      margin: 2rem 0 3rem;
+    }
+    .outcomes-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 1.05rem;
+      color: var(--body);
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+    }
+    .outcomes-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gradient);
+      flex-shrink: 0;
+      position: relative;
+      top: 2px;
+    }
+
+    .pull-quote {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      max-width: 560px;
+    }
+    .pull-quote blockquote {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    .pull-quote cite {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       FIT
+       ============================================ */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      margin-top: 2rem;
+    }
+    .fit-col h3 {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .fit-col h3 .icon-good {
+      color: #e8420a;
+    }
+    .fit-col h3 .icon-bad {
+      color: var(--muted);
+    }
+    .fit-list li {
+      padding: 0.65rem 0;
+      font-size: 1rem;
+      color: var(--body);
+      display: flex;
+      gap: 0.7rem;
+      align-items: baseline;
+    }
+    .fit-list .ph {
+      flex-shrink: 0;
+      position: relative;
+      top: 2px;
+    }
+    .fit-list .ph-check-circle {
+      color: var(--accent);
+    }
+    .fit-list .ph-x-circle {
+      color: var(--muted);
+    }
+
+    /* ============================================
+       FOUNDERS
+       ============================================ */
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      margin-top: 2.5rem;
+      max-width: 860px;
+    }
+    .founder-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .founder-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 1.5px solid rgba(232, 66, 10, 0.35);
+      margin: 0 auto 1.2rem;
+    }
+    .founder-card h3 {
+      margin-bottom: 0.3rem;
+    }
+    .founder-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .founder-bio {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--body);
+      max-width: none;
+      text-align: left;
+    }
+
+    /* ============================================
+       INVESTMENT
+       ============================================ */
+    .investment h2 {
+      margin-bottom: 1.2rem;
+    }
+    .investment p {
+      margin-bottom: 1rem;
+    }
+    .investment .subline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .investment .cta-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .lp-footer {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .lp-footer img {
+      height: 24px;
+      width: auto;
+      margin: 0 auto 1rem;
+    }
+    .lp-footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      p { font-size: 1.05rem; }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .fit-grid {
+        grid-template-columns: 1fr;
+      }
+      .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 1rem 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ============================================
+       PRINT
+       ============================================ */
+    @media print {
+      body {
+        background: #fff;
+        color: #1a1a1a;
+      }
+      body::after { display: none; }
+
+      :root {
+        --bg: #fff;
+        --surface: #f5f5f5;
+        --text: #1a1a1a;
+        --body: #333;
+        --muted: #666;
+        --border: #ddd;
+      }
+
+      .label {
+        -webkit-text-fill-color: #e8420a;
+        color: #e8420a;
+      }
+      .stat-number {
+        -webkit-text-fill-color: #e8420a;
+        color: #e8420a;
+      }
+
+      section { padding: 2rem 0; }
+      .container { max-width: 100%; padding: 0 1rem; }
+
+      .btn {
+        border: 1px solid #333;
+        color: #333;
+      }
+
+      .founder-card {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+      }
+      .founder-card img {
+        border-color: #ccc;
+      }
+
+      .stat-box {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+      }
+
+      .pull-quote {
+        border-left-color: #e8420a;
+      }
+      .pull-quote blockquote,
+      .outcomes-list li,
+      .fit-list li,
+      .founder-bio,
+      p {
+        color: #333;
+      }
+
+      .lp-footer {
+        border-top: 1px solid #ddd;
+      }
+      .lp-footer p { color: #666; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <a href="https://fino.website"><img src="../images/logo-white.png" alt="FINO"></a>
+  </header>
+
+  <!-- 1. Hero -->
+  <section class="lp-hero">
+    <div class="container">
+      <p class="label">Self-leadership Circles</p>
+      <h1>Your Team Has the Talent. Something Else Is Breaking Down.</h1>
+      <p>Self-leadership Circles is an 8-week program that gives teams a shared language for staying grounded, honest, and effective when pressure hits.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- 2. The Problem -->
+  <section class="problem alt">
+    <div class="container">
+      <p class="label">Sound Familiar</p>
+      <p>Smart people go quiet when stakes are high. Decisions stall because no one will name what's blocking progress. Someone gives feedback and the other person shuts down. You know it's not about missing skills. Something else is happening internally when pressure hits. The reactivity. The self-doubt. The protective patterns that take over.</p>
+    </div>
+  </section>
+
+  <!-- 3. What It Is -->
+  <section>
+    <div class="container">
+      <p class="label">The Program</p>
+      <h2>Eight Weeks. Real Work. Lasting Change.</h2>
+      <p>Small-group coaching for teams of 8 to 16 people, held over 8 weekly sessions of 60 to 90 minutes. Fully remote. Two facilitators in every session. Grounded in Internal Family Systems (IFS), a proven model with 40 years of application.</p>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Weeks</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">8–16</div>
+          <div class="stat-label">People per circle</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Facilitators</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Remote</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. What Changes -->
+  <section class="alt">
+    <div class="container">
+      <p class="label">What Shifts</p>
+      <h2>The Language Spreads.</h2>
+      <ul class="outcomes-list">
+        <li>People stop taking things personally and start getting curious</li>
+        <li>Difficult conversations happen faster and with less damage</li>
+        <li>Leaders catch their reactive patterns before they play out</li>
+        <li>Meetings get shorter. Decisions get clearer.</li>
+        <li>The tools show up in 1:1s, Slack messages, everywhere people interact</li>
+      </ul>
+      <div class="pull-quote">
+        <blockquote>&ldquo;It didn't feel like a workshop. It felt real.&rdquo;</blockquote>
+        <cite>Team participant</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Who It's For -->
+  <section>
+    <div class="container">
+      <p class="label">Right Fit</p>
+      <div class="fit-grid">
+        <div class="fit-col">
+          <h3><i class="ph ph-check-circle icon-good"></i> Good Fit</h3>
+          <ul class="fit-list">
+            <li><i class="ph ph-check-circle"></i> Leadership teams navigating tension and high-stakes decisions</li>
+            <li><i class="ph ph-check-circle"></i> Cross-functional teams that need to collaborate under pressure</li>
+            <li><i class="ph ph-check-circle"></i> Organizations going through change or restructuring</li>
+            <li><i class="ph ph-check-circle"></i> Teams where communication keeps breaking down despite the talent</li>
+            <li><i class="ph ph-check-circle"></i> HR, People Ops, and OD professionals supporting teams</li>
+          </ul>
+        </div>
+        <div class="fit-col">
+          <h3><i class="ph ph-x-circle icon-bad"></i> Not a Fit</h3>
+          <ul class="fit-list">
+            <li><i class="ph ph-x-circle"></i> Looking for a one-time presentation or quick fix</li>
+            <li><i class="ph ph-x-circle"></i> Team isn't ready to look at what's actually happening</li>
+            <li><i class="ph ph-x-circle"></i> Want traditional skills training</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Who We Are -->
+  <section class="alt">
+    <div class="container">
+      <p class="label">Who We Are</p>
+      <h2>The People Behind the Work</h2>
+      <div class="founders-grid">
+        <div class="founder-card">
+          <img src="../images/anna.png" alt="Anna Milaeva">
+          <h3>Anna Milaeva</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">IFS Level 3 Practitioner and certified transformational coach. Ten years inside fast-moving organizations. I came to this work because I kept watching good teams fall apart at the human layer. I know what broken systems cost. I also know what it takes to repair them.</p>
+        </div>
+        <div class="founder-card">
+          <img src="../images/dario.png" alt="Dario Giuffrida">
+          <h3>Dario Giuffrida</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Organizational psychologist and facilitator with 20 years working with groups and communities across Europe and the Americas. I have held transformational space in dozens of contexts. At FINO I bring that depth into organizational life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Investment -->
+  <section class="investment">
+    <div class="container">
+      <p class="label">Investment</p>
+      <h2>$500–$1,000 per person.</h2>
+      <p>Pricing is customized based on team size and context. No hidden fees. Special pricing available for nonprofits and social impact organizations.</p>
+      <p class="subline">8 weeks. Fully remote. No travel costs. No venue. Just 60 to 90 minutes a week.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <p class="cta-note">20-minute conversation. No pitch. No pressure.</p>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="lp-footer">
+    <a href="https://fino.website"><img src="../images/logo-white.png" alt="FINO"></a>
+    <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
+  </footer>
+
+</body>
+</html>
