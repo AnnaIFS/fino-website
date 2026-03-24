@@ -631,10 +631,12 @@
   <section class="lp-hero">
     <svg class="hero-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs><linearGradient id="hg" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#e8420a"/><stop offset="1" stop-color="#f0a018"/></linearGradient></defs>
-      <circle cx="170" cy="180" r="130" stroke="url(#hg)" stroke-width="1.8"/>
-      <circle cx="230" cy="180" r="130" stroke="url(#hg)" stroke-width="1.8"/>
-      <circle cx="200" cy="240" r="130" stroke="url(#hg)" stroke-width="1.8"/>
-      <path d="M20,200 Q80,200 120,170 T200,200 T280,200 T380,200" stroke="url(#hg)" stroke-width="1.8" fill="none"/>
+      <!-- Heart shape -->
+      <path d="M200,340 C200,340 60,260 60,160 C60,100 100,60 150,60 C180,60 200,80 200,80 C200,80 220,60 250,60 C300,60 340,100 340,160 C340,260 200,340 200,340Z" stroke="url(#hg)" stroke-width="1.8" fill="none"/>
+      <!-- ECG heartbeat line -->
+      <path d="M40,200 L140,200 L160,200 L175,140 L195,260 L215,120 L230,200 L260,200 L360,200" stroke="url(#hg)" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+      <!-- Outer circle -->
+      <circle cx="200" cy="200" r="185" stroke="url(#hg)" stroke-width="0.8"/>
     </svg>
     <div class="container">
       <p class="label">Self-leadership Circles for Healthcare Teams</p>
