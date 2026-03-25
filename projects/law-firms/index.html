@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operations for Law Firms · FINO</title>
+  <meta name="description" content="Your firm is losing hours every week to work that should not take that long. We come in, find what is costing your team the most time, and fix it.">
+  <meta property="og:title" content="Operations for Law Firms · FINO">
+  <meta property="og:description" content="We come in, find what is costing your team the most time, and fix it. No big rollout. No disruption.">
+  <meta property="og:image" content="https://fino.website/images/og-image.jpg">
+  <meta property="og:url" content="https://fino.website/projects/law-firms/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FINO">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Operations for Law Firms · FINO">
+  <meta name="twitter:description" content="We come in, find what is costing your team the most time, and fix it. No big rollout. No disruption.">
+  <meta name="twitter:image" content="https://fino.website/images/og-image.jpg">
+  <link rel="canonical" href="https://fino.website/projects/law-firms/">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Operations for Law Firms",
+    "provider": {
+      "@type": "Organization",
+      "name": "FINO",
+      "url": "https://fino.website"
+    },
+    "url": "https://fino.website/projects/law-firms/",
+    "description": "Fractional operations for law firms. We find what is costing your team the most time, and fix it.",
+    "serviceType": "Fractional Operations"
+  }
+  </script>
+  <style>
+    /* ============================================
+       LAW FIRMS LANDING — Style System
+       Copied from healthcare landing page
+       ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :root {
+      --bg: #0b0a08;
+      --surface: #111009;
+      --text: #e8e0d4;
+      --body: #c8bfb0;
+      --muted: #9a9080;
+      --accent: #e8420a;
+      --gold: #f0a018;
+      --gradient: linear-gradient(135deg, #e8420a, #f0a018);
+      --border: rgba(232, 224, 211, 0.07);
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* --- Typography --- */
+    h1, h2, h3 {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+    h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--body);
+      max-width: 680px;
+    }
+
+    .label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.2rem;
+    }
+
+    /* --- Layout --- */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+
+    section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+    }
+    section.alt { background: var(--surface); }
+
+    /* --- Button --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .btn:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 24px rgba(232, 66, 10, 0.3);
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    .lp-header {
+      padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+    }
+    .lp-header img {
+      height: 28px;
+      width: auto;
+    }
+
+    /* --- Section divider --- */
+    .section-divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      border: none;
+      background: linear-gradient(to right, #e8420a, transparent 60%);
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .lp-hero {
+      position: relative;
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem);
+      overflow: hidden;
+    }
+    .lp-hero .hero-svg {
+      position: absolute;
+      right: -18%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(380px, 42vw, 560px);
+      height: clamp(380px, 42vw, 560px);
+      pointer-events: none;
+      opacity: 0.45;
+    }
+    .lp-hero h1 {
+      margin-bottom: 1.2rem;
+      max-width: 720px;
+    }
+    .lp-hero p {
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    /* ============================================
+       STORY
+       ============================================ */
+    .story p {
+      max-width: 640px;
+      margin-bottom: 1.2rem;
+    }
+    .story h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    /* ============================================
+       PROBLEM CARDS
+       ============================================ */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      max-width: 740px;
+    }
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .problem-card h3 {
+      margin-bottom: 1rem;
+    }
+    .problem-card p {
+      max-width: none;
+      margin-bottom: 1.2rem;
+    }
+    .problem-card p:last-child {
+      margin-bottom: 0;
+    }
+    .problem-card .btn {
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================
+       FAQ / ACCORDION
+       ============================================ */
+    .lp-accordion {
+      max-width: 700px;
+      margin-top: 2rem;
+    }
+    .lp-accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .lp-accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      text-align: left;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+    .lp-accordion-header:hover { color: var(--gold); }
+    .lp-accordion-header .icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      color: var(--muted);
+    }
+    .lp-accordion-item.open .lp-accordion-header .icon {
+      transform: rotate(45deg);
+    }
+    .lp-accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .lp-accordion-item.open .lp-accordion-body {
+      max-height: 500px;
+      padding-bottom: 1.2rem;
+    }
+    .lp-accordion-body p {
+      font-size: 1rem;
+      color: var(--body);
+    }
+
+    /* ============================================
+       SCHEDULER CALLOUT
+       ============================================ */
+    .scheduler-callout {
+      background: rgba(232, 224, 211, 0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      max-width: 700px;
+      margin-top: 2rem;
+    }
+    .scheduler-callout h2 {
+      margin-bottom: 1rem;
+    }
+    .scheduler-callout p {
+      margin-bottom: 1.2rem;
+    }
+    .scheduler-callout .steps-list {
+      margin: 1.5rem 0 2rem;
+    }
+    .scheduler-callout .steps-list li {
+      padding: 0.5rem 0;
+      font-size: 1rem;
+      color: var(--body);
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+    }
+    .scheduler-callout .steps-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gradient);
+      flex-shrink: 0;
+      position: relative;
+      top: 2px;
+    }
+    .scheduler-callout .btn-gradient {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      background: var(--gradient);
+      color: #fff;
+      white-space: nowrap;
+    }
+    .scheduler-callout .btn-gradient:hover {
+      box-shadow: 0 0 32px rgba(232, 66, 10, 0.4);
+    }
+    .scheduler-callout .tool-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ============================================
+       STEPS GRID (How We Work)
+       ============================================ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .step-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .step-number {
+      font-family: 'Cormorant SC', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .step-box p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: none;
+    }
+    .engagement-note {
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .engagement-highlight {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       FOUNDERS
+       ============================================ */
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      margin-top: 2.5rem;
+      max-width: 860px;
+    }
+    .founder-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .founder-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 1.5px solid rgba(232, 66, 10, 0.35);
+      margin: 0 auto 1.2rem;
+    }
+    .founder-card h3 {
+      margin-bottom: 0.3rem;
+    }
+    .founder-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .founder-bio {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--body);
+      max-width: none;
+      text-align: left;
+    }
+
+    /* ============================================
+       CLOSING CTA
+       ============================================ */
+    .closing-cta {
+      text-align: center;
+    }
+    .closing-cta h2 {
+      margin-bottom: 1rem;
+    }
+    .closing-cta p {
+      margin: 0 auto 2rem;
+      max-width: 560px;
+    }
+    .closing-cta .cta-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .lp-footer {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .lp-footer img {
+      height: 24px;
+      width: auto;
+      margin: 0 auto 1rem;
+    }
+    .lp-footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      p { font-size: 1.05rem; }
+
+      .hero-svg { display: none; }
+
+      .steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .scheduler-callout {
+        padding: 1.5rem;
+      }
+      .lp-accordion-header { font-size: 1rem; }
+      .lp-accordion-body p { font-size: 1rem; }
+      .btn, .btn-gradient {
+        font-size: 1rem;
+        padding: 1rem 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ============================================
+       PRINT
+       ============================================ */
+    @media print {
+      body {
+        background: #fff;
+        color: #1a1a1a;
+      }
+      body::after { display: none; }
+
+      :root {
+        --bg: #fff;
+        --surface: #f5f5f5;
+        --text: #1a1a1a;
+        --body: #333;
+        --muted: #666;
+        --border: #ddd;
+      }
+
+      .label {
+        -webkit-text-fill-color: #e8420a;
+        color: #e8420a;
+      }
+
+      section { padding: 2rem 0; }
+      .container { max-width: 100%; padding: 0 1rem; }
+
+      .btn {
+        border: 1px solid #333;
+        color: #333;
+      }
+
+      .problem-card {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+      }
+
+      .hero-svg,
+      .section-divider { display: none; }
+    }
+
+    /* Announcement bar */
+    .announce-bar {
+      background: #161614;
+      text-align: center;
+      padding: 0.7rem clamp(1.5rem, 4vw, 3rem);
+      font-size: 0.82rem;
+      color: var(--body);
+      line-height: 1.5;
+    }
+    .announce-bar a {
+      color: #e8420a;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .announce-bar a:hover {
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    Free tool for law firms: stop scheduling mediations by email. <a href="https://scheduler.fino.website/" target="_blank" rel="noopener">Try the scheduler &rarr;</a>
+  </div>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <a href="https://fino.website"><img src="../../images/logo-white.png" alt="FINO"></a>
+  </header>
+
+  <!-- 1. Hero -->
+  <section class="lp-hero">
+    <svg class="hero-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="200" cy="200" r="160" fill="none" stroke="#e8420a" stroke-width="1" opacity="0.3"/>
+      <circle cx="200" cy="200" r="110" fill="none" stroke="#e8420a" stroke-width="1" opacity="0.2"/>
+      <rect x="100" y="240" width="200" height="36" rx="3" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
+      <rect x="120" y="182" width="160" height="36" rx="3" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.8"/>
+      <rect x="148" y="124" width="104" height="36" rx="3" fill="none" stroke="#f0a018" stroke-width="2" opacity="1"/>
+      <line x1="148" y1="160" x2="120" y2="182" stroke="#e8420a" stroke-width="1" opacity="0.4"/>
+      <line x1="252" y1="160" x2="280" y2="182" stroke="#e8420a" stroke-width="1" opacity="0.4"/>
+      <line x1="120" y1="218" x2="100" y2="240" stroke="#e8420a" stroke-width="1" opacity="0.3"/>
+      <line x1="280" y1="218" x2="300" y2="240" stroke="#e8420a" stroke-width="1" opacity="0.3"/>
+      <circle cx="200" cy="110" r="4" fill="#f0a018" opacity="0.9"/>
+      <line x1="200" y1="106" x2="200" y2="90" stroke="#f0a018" stroke-width="1" opacity="0.5"/>
+      <line x1="196" y1="108" x2="184" y2="96" stroke="#f0a018" stroke-width="1" opacity="0.3"/>
+      <line x1="204" y1="108" x2="216" y2="96" stroke="#f0a018" stroke-width="1" opacity="0.3"/>
+    </svg>
+    <div class="container">
+      <p class="label">For Law Firms</p>
+      <h1>Your firm is losing hours every week to work that should not take that long.</h1>
+      <p>We come in, find what is costing your team the most time, and fix it. No big rollout. No disruption. Your staff will not dread it.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Start a Conversation</a>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 2. The Story -->
+  <section class="story">
+    <div class="container">
+      <p class="label">Why We Do This</p>
+      <h2>This Started With Our Own Clients</h2>
+      <p><a href="/about/" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(232, 224, 211, 0.3); text-underline-offset: 3px; transition: text-decoration-color 0.3s;">Anna</a> spent over a decade running operations inside fast-moving organizations before co-founding FINO. She knows what it looks like when capable people are buried under work that should not require them.</p>
+      <p>When we started working with legal teams on Self-leadership, the same things kept coming up after sessions. The inner work was shifting things. But the operational chaos was still there every morning.</p>
+      <p>The same documents built from scratch for every new case. Weeks of emails to find one mediation date. Billing entries slipping through the cracks. They asked if we could help with that too.</p>
+      <p>So we did.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 3. Three Problems -->
+  <section>
+    <div class="container">
+      <p class="label">What We Fix</p>
+      <h2>The Hours You Should Not Be Losing</h2>
+      <div class="problems-grid">
+
+        <div class="problem-card">
+          <h3>We are still scheduling mediations by email.</h3>
+          <p>Someone proposes dates. People reply slowly. Dates expire before everyone agrees. You start over. We built a free tool that replaces this entire process with one link. Everyone picks their availability. You confirm the date. What used to take weeks takes one day.</p>
+          <a href="https://scheduler.fino.website/" class="btn" target="_blank" rel="noopener">Try the free scheduler</a>
+        </div>
+
+        <div class="problem-card">
+          <h3>Every new case, someone builds the same documents from scratch.</h3>
+          <p>Letters of representation, denial letters, affidavits. Your assistants know these by heart because they have written them hundreds of times. We set up tools that draft them automatically from the case information. Your team reviews, adjusts if needed, and sends.</p>
+        </div>
+
+        <div class="problem-card">
+          <h3>We know we are leaving billing on the table.</h3>
+          <p>Work happens fast and billing falls behind. Entries get forgotten. Revenue walks out quietly. We set up a system that drafts billing entries as the work happens. Your team approves them instead of reconstructing the day from memory.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 4. Free Scheduler Callout -->
+  <section>
+    <div class="container">
+      <p class="label">Free Tool</p>
+      <h2>Start here.</h2>
+      <div class="scheduler-callout">
+        <p>The most common problem we hear from every firm is mediation scheduling. Weeks of emails to find one date that works for everyone. We built a tool that fixes this completely.</p>
+        <ul class="steps-list">
+          <li>The organizer selects available dates and gets a link</li>
+          <li>Everyone opens the link and picks which times work</li>
+          <li>The organizer sees where everyone overlaps and confirms the date</li>
+          <li>Everyone gets a confirmation automatically</li>
+          <li>The link locks</li>
+        </ul>
+        <p>No account needed. No software to install. Works on any phone or computer. If you can send an email, you can use this.</p>
+        <a href="https://scheduler.fino.website/" class="btn-gradient" target="_blank" rel="noopener">Open the Scheduler</a>
+        <p class="tool-note">Free to use. Built because our clients asked for it.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 5. Fears Accordion -->
+  <section>
+    <div class="container">
+      <p class="label">What We Hear From Every Firm</p>
+      <h2>We have heard every concern.</h2>
+      <div class="lp-accordion">
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq1">&ldquo;We tried new software before. Our staff hated it.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq1" role="region"><p>We introduce simple AI tools that work like email. If you can type a sentence, you can use them. Most people get comfortable in the first session. No IT department needed. Just a browser.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq2">&ldquo;We do not have time to manage another project.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq2" role="region"><p>You do not manage it. We do. We come in, figure out what needs fixing, build it, and work with your team until it sticks. Your job is one 30-minute call to start.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq3">&ldquo;What about client confidentiality?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq3" role="region"><p>Nothing leaves your firm without your approval. Every tool we set up works inside your existing systems. We work with what you already have.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq3b">&ldquo;Will this replace our assistants?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq3b" role="region"><p>No. It removes the repetitive part of their job so they can focus on the work that actually requires them. The assistants we have worked with end up doing more meaningful work, not less. They become the people who know how to use the tools, which makes them more valuable, not less.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq4">&ldquo;Our people will resist anything new.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq4" role="region"><p>We start with two people who want it. When their colleagues see how much time they are getting back, the rest ask to join. We have never had to convince an entire firm. We let the results do that.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq5">&ldquo;How long does this actually take?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq5" role="region"><p>Most firms see real time savings in the first two weeks. The full engagement runs four weeks. We move at your pace, not ours.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 5b. What Week One Looks Like -->
+  <section class="alt">
+    <div class="container">
+      <p class="label">What This Looks Like in Practice</p>
+      <h2>A sample of how week one goes.</h2>
+      <p>Every firm is different. But the first week usually looks something like this.</p>
+      <div class="steps-grid" style="grid-template-columns: 1fr; max-width: 740px; margin-top: 2rem;">
+        <div class="step-box">
+          <div class="step-number">Day 1</div>
+          <p>We get on a call with you and one or two people from your team. We ask one question: what took the most time this week? We listen. We do not pitch anything.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">Day 2–3</div>
+          <p>We map the things that came up most and build the first version of each fix. We share it with you before moving forward.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">Day 4</div>
+          <p>We walk your team through each tool together. Not a formal session. Just: here is what it does, try it now. We adjust anything that does not feel right.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">Day 5</div>
+          <p>Your team uses the tools on real work. Any questions that come up, we are a message away.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">End of week one</div>
+          <p>We check in. What worked, what did not, what do you want next. The tools stay in place. We keep building.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 6. How We Work -->
+  <section class="alt">
+    <div class="container">
+      <p class="label">The Engagement</p>
+      <h2>How it works.</h2>
+      <p>We start small. Every engagement starts with a conversation.</p>
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-number">1</div>
+          <div class="step-title">Free call, 30 minutes.</div>
+          <p>Tell us what is eating your team's time. We tell you honestly if we can help.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">2</div>
+          <div class="step-title">We map your workflow.</div>
+          <p>We spend a week understanding how your firm actually works. We come back with a plain-English report of exactly what we would fix and what it saves you in hours per month. Fixed fee, applied in full if you move forward.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">3</div>
+          <div class="step-title">We build it and work with your team.</div>
+          <p>We set everything up and stay until everyone is comfortable. We adjust to however much time people need.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">4</div>
+          <div class="step-title">We stay on.</div>
+          <p>Monthly check-ins, updates, and new templates as your needs change. One small fixed monthly fee.</p>
+        </div>
+      </div>
+      <p class="engagement-note">Engagements are sized to your firm. A two-person pilot costs significantly less than a full rollout. We give you exact numbers after the first call.</p>
+      <p class="engagement-highlight">Most firms see it pay for itself within the first month.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 7. Who We Are -->
+  <section>
+    <div class="container">
+      <p class="label">Who We Are</p>
+      <h2>The People Behind the Work</h2>
+      <div class="founders-grid">
+        <div class="founder-card">
+          <img src="../../images/anna.png" alt="Anna Milaeva">
+          <h3>Anna Milaeva</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">IFS Level 3 Practitioner and certified transformational coach. Ten years inside fast-moving organizations. I came to this work because I kept watching good teams fall apart at the human layer. I know what broken systems cost. I also know what it takes to repair them.</p>
+        </div>
+        <div class="founder-card">
+          <img src="../../images/dario.png" alt="Dario Giuffrida">
+          <h3>Dario Giuffrida</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Organizational psychologist and facilitator with 20 years working with groups and communities across Europe and the Americas. I have held transformational space in dozens of contexts. At FINO I bring that depth into organizational life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 8. Closing CTA -->
+  <section class="closing-cta">
+    <div class="container">
+      <h2>Want to see what we can fix for your firm?</h2>
+      <p>First call is free. No commitment.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener">Start a Conversation</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <a href="https://fino.website"><img src="../../images/logo-white.png" alt="FINO"></a>
+    <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.lp-accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        item.parentElement.querySelectorAll('.lp-accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.lp-accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
