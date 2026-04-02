@@ -10,6 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://studio.fino.website">
   <link rel="canonical" href="https://studio.fino.website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -422,6 +423,19 @@
       opacity: 0.25;
     }
 
+    .thumb-coming-soon {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glow-pulse 2.5s ease-in-out infinite;
+    }
+
     .coming-soon-glow {
       background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
       -webkit-background-clip: text;
@@ -754,7 +768,9 @@
         </div>
 
         <div class="portfolio-card portfolio-card--cta">
-          <div class="portfolio-thumb"><i class="ph ph-sparkle"></i></div>
+          <div class="portfolio-thumb">
+            <span class="thumb-coming-soon">Coming Soon</span>
+          </div>
           <div class="portfolio-info">
             <div class="portfolio-name">Your Site</div>
             <p class="portfolio-desc coming-soon-glow">Coming Soon</p>
