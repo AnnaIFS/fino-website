@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FINO Studio — Website Design for Practitioners</title>
+  <title>FINO Studio · Website Design for Practitioners</title>
   <meta name="description" content="We design custom websites for practitioners and independent professionals. We start by interviewing you. Everything follows from that.">
-  <meta property="og:title" content="FINO Studio — Website Design for Practitioners">
+  <meta property="og:title" content="FINO Studio · Website Design for Practitioners">
   <meta property="og:description" content="Custom websites for coaches, therapists, consultants, and practitioners. We start by interviewing you.">
+  <meta property="og:image" content="https://fino.website/studio/og-image.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://studio.fino.website">
-  <link rel="canonical" href="https://studio.fino.website">
+  <meta property="og:url" content="https://fino.website/studio/">
+  <meta property="og:site_name" content="FINO Studio">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FINO Studio · Website Design for Practitioners">
+  <meta name="twitter:description" content="Custom websites for practitioners and independent professionals. We start by interviewing you.">
+  <meta name="twitter:image" content="https://fino.website/studio/og-image.png">
+  <link rel="canonical" href="https://fino.website/studio/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,6 +128,12 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .logo {
       font-family: var(--font-heading);
       font-size: 1.35rem;
@@ -131,6 +144,15 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    .header-home img {
+      height: 22px;
+      width: auto;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .header-home img:hover { opacity: 1; }
 
     /* ── Hero ── */
     .hero {
@@ -414,50 +436,72 @@
     }
 
     .portfolio-card--cta {
-      border-style: dashed;
-      border-color: var(--border-subtle);
-      opacity: 0.8;
+      border: 1px dashed rgba(232, 66, 10, 0.25);
+      position: relative;
+      overflow: hidden;
     }
 
-    .portfolio-card--cta .portfolio-thumb {
-      opacity: 0.25;
+    .portfolio-card--cta:hover {
+      border-color: rgba(232, 66, 10, 0.45);
+    }
+
+    .cta-thumb-shimmer {
+      position: relative;
+      background: linear-gradient(135deg, rgba(232, 66, 10, 0.08), rgba(240, 160, 24, 0.04), rgba(232, 66, 10, 0.08)) !important;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-thumb-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; right: 0; bottom: 0;
+      width: 200%;
+      background: linear-gradient(105deg, transparent 30%, rgba(240, 160, 24, 0.06) 45%, rgba(232, 66, 10, 0.12) 50%, rgba(240, 160, 24, 0.06) 55%, transparent 70%);
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-30%); }
+      100% { transform: translateX(30%); }
+    }
+
+    .cta-sparkle {
+      font-size: 1.6rem;
+      color: #f0a018;
+      opacity: 0.4;
+      animation: sparkle-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle-pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+      50% { opacity: 0.7; transform: scale(1.15) rotate(8deg); }
     }
 
     .thumb-coming-soon {
       font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: glow-pulse 2.5s ease-in-out infinite;
+      color: #f0a018;
+      text-shadow: 0 0 12px rgba(232, 66, 10, 0.7), 0 0 32px rgba(240, 160, 24, 0.5), 0 0 60px rgba(232, 66, 10, 0.3);
+      animation: glow-bright 2s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
     }
 
-    .coming-soon-glow {
+    @keyframes glow-bright {
+      0%, 100% { text-shadow: 0 0 12px rgba(232, 66, 10, 0.7), 0 0 32px rgba(240, 160, 24, 0.5), 0 0 60px rgba(232, 66, 10, 0.3); }
+      50% { text-shadow: 0 0 20px rgba(232, 66, 10, 0.9), 0 0 48px rgba(240, 160, 24, 0.7), 0 0 80px rgba(232, 66, 10, 0.5), 0 0 120px rgba(240, 160, 24, 0.2); }
+    }
+
+    .cta-link-glow {
       background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      animation: glow-pulse 2.5s ease-in-out infinite;
-    }
-
-    @keyframes glow-pulse {
-      0%, 100% { filter: drop-shadow(0 0 4px rgba(232, 66, 10, 0.3)); opacity: 0.7; }
-      50% { filter: drop-shadow(0 0 12px rgba(240, 160, 24, 0.6)); opacity: 1; }
-    }
-
-    .portfolio-card--cta .portfolio-link {
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     /* ── Who We Are ── */
@@ -624,7 +668,8 @@
   <!-- ── Header ── -->
   <header class="site-header">
     <div class="container">
-      <a href="https://fino.website" class="logo">FINO Studio</a>
+      <a href="#" class="logo">FINO Studio</a>
+      <a href="https://fino.website" class="header-home"><img src="../images/logo-white.png" alt="FINO"></a>
     </div>
   </header>
 
@@ -768,13 +813,14 @@
         </div>
 
         <div class="portfolio-card portfolio-card--cta">
-          <div class="portfolio-thumb">
+          <div class="portfolio-thumb cta-thumb-shimmer">
+            <i class="ph ph-sparkle cta-sparkle"></i>
             <span class="thumb-coming-soon">Coming Soon</span>
           </div>
           <div class="portfolio-info">
-            <div class="portfolio-name">Your Site</div>
-            <p class="portfolio-desc coming-soon-glow">Coming Soon</p>
-            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener" class="portfolio-link">Start a Conversation <i class="ph ph-arrow-up-right"></i></a>
+            <div class="portfolio-name">Yours</div>
+            <p class="portfolio-desc">You have been thinking about it. Let's make it real.</p>
+            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener" class="portfolio-link cta-link-glow">Tell Us About It <i class="ph ph-arrow-up-right"></i></a>
           </div>
         </div>
 
