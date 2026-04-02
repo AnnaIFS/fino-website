@@ -6,7 +6,7 @@
   <title>FINO Studio · Website Design for Practitioners</title>
   <meta name="description" content="We design custom websites for practitioners and independent professionals. We start by interviewing you. Everything follows from that.">
   <meta property="og:title" content="FINO Studio · Website Design for Practitioners">
-  <meta property="og:description" content="Custom websites for coaches, therapists, consultants, and practitioners. We start by interviewing you.">
+  <meta property="og:description" content="Custom websites for practitioners and independent professionals. We start by interviewing you.">
   <meta property="og:image" content="https://fino.website/studio/og-image.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fino.website/studio/">
@@ -20,8 +20,8 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -37,7 +37,7 @@
       --font-body: 'Outfit', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 17px; }
 
     body {
       font-family: var(--font-body);
@@ -45,6 +45,7 @@
       color: var(--text-body);
       font-weight: 300;
       line-height: 1.7;
+      font-size: 1rem;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -113,6 +114,14 @@
     .btn-primary:hover {
       opacity: 0.9;
       transform: translateY(-1px);
+    }
+
+    .btn-primary:focus-visible,
+    .portfolio-link:focus-visible,
+    .footer-sub a:focus-visible,
+    .site-header a:focus-visible {
+      outline: 2px solid var(--gradient-end);
+      outline-offset: 3px;
     }
 
     /* ── Header ── */
@@ -201,7 +210,6 @@
       to { stroke-dashoffset: -96; }
     }
 
-    /* ── Who This Is For ── */
     /* ── Process Steps ── */
     .steps-grid {
       display: grid;
@@ -272,11 +280,20 @@
       border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 36px 28px;
-      border-top: 3px solid transparent;
-      border-image: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) 1;
-      border-image-slice: 1;
+      position: relative;
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       -webkit-tap-highlight-color: transparent;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     }
 
     .pricing-card:hover {
@@ -601,8 +618,17 @@
     .footer-sub a:hover { color: var(--text-body); }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-art svg, .hero-art svg path { animation: none !important; }
+      .hero-art svg, .hero-art svg path,
+      .cta-sparkle, .thumb-coming-soon, .cta-thumb-shimmer::after { animation: none !important; }
       .step-card, .pricing-card, .portfolio-card, .bio-card { transition: none !important; }
+    }
+
+    .section-body--flush { margin-bottom: 0; }
+    .section-body--center { text-align: center; margin: 0 auto 36px; }
+
+    /* ── Tablet ── */
+    @media (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
     }
 
     /* ── Mobile ── */
@@ -613,7 +639,6 @@
       .hero-art { display: none; }
 
       .steps-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
       .bios-grid { grid-template-columns: 1fr; }
     }
@@ -657,10 +682,12 @@
 
   <!-- ── Header ── -->
   <header class="site-header">
-    <div class="container">
-      <a href="https://fino.website"><img src="../images/logo-white.png" alt="FINO"></a>
-    </div>
+    <nav class="container" aria-label="Site">
+      <a href="https://fino.website" aria-label="FINO home page"><img src="../images/logo-white.png" alt="FINO"></a>
+    </nav>
   </header>
+
+  <main>
 
   <!-- ── Hero ── -->
   <section class="hero bg-dark">
@@ -763,54 +790,54 @@
     <div class="container">
       <p class="section-label">Our Work</p>
       <h2 class="section-headline">Sites We Have Built.</h2>
-      <p class="section-body" style="margin-bottom: 0;">Every site starts with a conversation. Every site ends up sounding like the person it belongs to.</p>
+      <p class="section-body section-body--flush">Every site starts with a conversation. Every site ends up sounding like the person it belongs to.</p>
       <div class="portfolio-grid">
 
         <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-flower-lotus"></i></div>
+          <div class="portfolio-thumb"><i class="ph ph-flower-lotus" aria-hidden="true"></i></div>
           <div class="portfolio-info">
             <div class="portfolio-name">Anna Milaeva</div>
             <p class="portfolio-desc">Transformational Coach and IFS Practitioner. Personal coaching practice.</p>
-            <a href="https://annamilaeva.com" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://annamilaeva.com" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
 
         <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-compass"></i></div>
+          <div class="portfolio-thumb"><i class="ph ph-compass" aria-hidden="true"></i></div>
           <div class="portfolio-info">
             <div class="portfolio-name">FINO</div>
             <p class="portfolio-desc">Organizational Self-Leadership and team transformation. Co-founded with Dario Giuffrida.</p>
-            <a href="https://fino.website" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://fino.website" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
 
         <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-tree-evergreen"></i></div>
+          <div class="portfolio-thumb"><i class="ph ph-tree-evergreen" aria-hidden="true"></i></div>
           <div class="portfolio-info">
             <div class="portfolio-name">Dario Giuffrida</div>
             <p class="portfolio-desc">Psychologist, IFS practitioner, and community leader. Personal practice site.</p>
-            <a href="https://annaifs.github.io/dariog" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://annaifs.github.io/dariog" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
 
         <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-calendar-dots"></i></div>
+          <div class="portfolio-thumb"><i class="ph ph-calendar-dots" aria-hidden="true"></i></div>
           <div class="portfolio-info">
             <div class="portfolio-name">FINO Scheduler <span class="badge">Web App</span></div>
             <p class="portfolio-desc">Web app for law firms. Free scheduling tool for legal teams.</p>
-            <a href="https://scheduler.fino.website" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://scheduler.fino.website" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
 
         <div class="portfolio-card portfolio-card--cta">
           <div class="portfolio-thumb cta-thumb-shimmer">
-            <i class="ph ph-sparkle cta-sparkle"></i>
+            <i class="ph ph-sparkle cta-sparkle" aria-hidden="true"></i>
             <span class="thumb-coming-soon">Coming Soon</span>
           </div>
           <div class="portfolio-info">
             <div class="portfolio-name">Yours</div>
             <p class="portfolio-desc">You have been thinking about it. Let's make it real.</p>
-            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener" class="portfolio-link cta-link-glow">Tell Us About It <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener" class="portfolio-link cta-link-glow">Tell Us About It <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
 
@@ -847,11 +874,13 @@
   <section class="cta-section bg-dark">
     <div class="container">
       <h2 class="section-headline">Tell Us About Your Project.</h2>
-      <p class="section-body" style="text-align: center; margin: 0 auto 36px;">Start with a 30-minute conversation. We will ask the right questions and tell you honestly whether we are the right fit.</p>
+      <p class="section-body section-body--center">Start with a 30-minute conversation. We will ask the right questions and tell you honestly whether we are the right fit.</p>
       <a href="https://calendly.com/thefutureisnow/30min" class="btn-primary">Start With a Conversation</a>
       <p class="cta-small">Tell us what you are building. We will take it from there.</p>
     </div>
   </section>
+
+  </main>
 
   <!-- ── Footer ── -->
   <footer class="site-footer bg-alt">
