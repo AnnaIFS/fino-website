@@ -128,31 +128,14 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .site-header .container a {
+      display: inline-block;
     }
 
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      font-weight: 600;
-      text-decoration: none;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .header-home img {
-      height: 22px;
+    .site-header img {
+      height: 24px;
       width: auto;
-      opacity: 0.5;
-      transition: opacity 0.2s;
     }
-
-    .header-home img:hover { opacity: 1; }
 
     /* ── Hero ── */
     .hero {
@@ -169,6 +152,13 @@
     }
 
     .hero-content { flex: 1; min-width: 0; }
+
+    .hero-logo-text {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
     .hero-headline {
       font-family: var(--font-heading);
@@ -634,7 +624,7 @@
 
       .site-header { position: static; backdrop-filter: none; padding: 12px 0; }
 
-      .logo, .footer-logo, .gradient-text, .section-label,
+      .hero-logo-text, .footer-logo, .gradient-text, .section-label,
       .step-number, .pricing-price, .portfolio-card--cta .portfolio-link {
         -webkit-text-fill-color: #c43a08 !important;
         color: #c43a08 !important;
@@ -668,8 +658,7 @@
   <!-- ── Header ── -->
   <header class="site-header">
     <div class="container">
-      <a href="#" class="logo">FINO Studio</a>
-      <a href="https://fino.website" class="header-home"><img src="../images/logo-white.png" alt="FINO"></a>
+      <a href="https://fino.website"><img src="../images/logo-white.png" alt="FINO"></a>
     </div>
   </header>
 
@@ -678,6 +667,7 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-content">
+          <p class="hero-logo-text gradient-text">FINO Studio</p>
           <p class="section-label">Website Design for Practitioners</p>
           <h1 class="hero-headline">Your Work Deserves a Website That Sounds Like You.</h1>
           <p class="hero-subline">We design custom websites for practitioners and independent professionals. We start by interviewing you. Everything follows from that.</p>
