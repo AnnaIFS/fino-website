@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FINO Studio — Website Design for Practitioners</title>
+  <meta name="description" content="We design custom websites for practitioners and independent professionals. We start by interviewing you. Everything follows from that.">
+  <meta property="og:title" content="FINO Studio — Website Design for Practitioners">
+  <meta property="og:description" content="Custom websites for coaches, therapists, consultants, and practitioners. We start by interviewing you.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://studio.fino.website">
+  <link rel="canonical" href="https://studio.fino.website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-dark: #0b0a08;
+      --bg-alt: #111009;
+      --gradient-start: #e8420a;
+      --gradient-end: #f0a018;
+      --text-body: #e8e0d4;
+      --text-muted: #9a9080;
+      --border-subtle: #1e1a14;
+      --font-heading: 'Cormorant SC', serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--text-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .section-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--text-body);
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.8;
+    }
+
+    .bg-dark { background: var(--bg-dark); }
+    .bg-alt { background: var(--bg-alt); }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #0b0a08;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ── Header ── */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(11, 10, 8, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding-top: 160px;
+      padding-bottom: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-content { flex: 1; min-width: 0; }
+
+    .hero-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-body);
+      margin-bottom: 20px;
+    }
+
+    .hero-subline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .hero-art {
+      flex-shrink: 0;
+      width: 480px;
+      height: 480px;
+      margin-right: -80px;
+      margin-top: -40px;
+    }
+
+    .hero-art svg {
+      width: 100%;
+      height: 100%;
+      animation: spiral-rotate 60s linear infinite;
+    }
+
+    @keyframes spiral-rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spiral-dash {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: -96; }
+    }
+
+    /* ── Who This Is For ── */
+    /* ── Process Steps ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .step-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 36px 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 20px rgba(232, 66, 10, 0.15), 0 0 48px rgba(240, 160, 24, 0.08);
+      border-color: rgba(232, 66, 10, 0.35);
+      background: #13120f;
+    }
+
+    .step-card:active {
+      transform: scale(0.96);
+      box-shadow: 0 0 12px rgba(232, 66, 10, 0.25), 0 0 36px rgba(240, 160, 24, 0.12);
+      border-color: rgba(232, 66, 10, 0.5);
+      background: #15130f;
+    }
+
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .step-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-body);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Pricing ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .pricing-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 36px 28px;
+      border-top: 3px solid transparent;
+      border-image: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) 1;
+      border-image-slice: 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(232, 66, 10, 0.08);
+    }
+
+    .pricing-card:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(232, 66, 10, 0.12);
+    }
+
+    .pricing-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-body);
+      margin-bottom: 4px;
+    }
+
+    .pricing-price {
+      font-family: var(--font-body);
+      font-size: 2rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .pricing-features {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .pricing-best {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      font-weight: 400;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .pricing-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 680px;
+      margin: 48px auto 0;
+      line-height: 1.8;
+    }
+
+    /* ── Portfolio ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .portfolio-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(232, 66, 10, 0.1);
+      border-color: #2a2418;
+    }
+
+    .portfolio-card:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(232, 66, 10, 0.15);
+    }
+
+    .portfolio-thumb {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(232, 66, 10, 0.06), rgba(240, 160, 24, 0.06));
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .portfolio-thumb i {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.5;
+    }
+
+    .portfolio-info {
+      padding: 24px;
+    }
+
+    .portfolio-name {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-body);
+      margin-bottom: 6px;
+    }
+
+    .portfolio-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .portfolio-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-body);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .portfolio-link:hover { opacity: 0.7; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #0b0a08;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .portfolio-card--cta {
+      border-style: dashed;
+      border-color: var(--border-subtle);
+      opacity: 0.8;
+    }
+
+    .portfolio-card--cta .portfolio-thumb {
+      opacity: 0.25;
+    }
+
+    .coming-soon-glow {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      animation: glow-pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(232, 66, 10, 0.3)); opacity: 0.7; }
+      50% { filter: drop-shadow(0 0 12px rgba(240, 160, 24, 0.6)); opacity: 1; }
+    }
+
+    .portfolio-card--cta .portfolio-link {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Who We Are ── */
+    .bios-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .bio-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .bio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(232, 66, 10, 0.08);
+      border-color: #2a2418;
+    }
+
+    .bio-card:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(232, 66, 10, 0.12);
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .bio-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+
+    .bio-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .cta-section .section-headline {
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+
+    .cta-section .section-body {
+      max-width: 520px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .cta-small {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 48px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .footer-sub a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-sub a:hover { color: var(--text-body); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-art svg, .hero-art svg path { animation: none !important; }
+      .step-card, .pricing-card, .portfolio-card, .bio-card { transition: none !important; }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+
+      .hero { padding-top: 120px; padding-bottom: 72px; }
+      .hero-art { display: none; }
+
+      .steps-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .bios-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      * { color: #222 !important; background: #fff !important; box-shadow: none !important; }
+
+      .site-header { position: static; backdrop-filter: none; padding: 12px 0; }
+
+      .logo, .footer-logo, .gradient-text, .section-label,
+      .step-number, .pricing-price, .portfolio-card--cta .portfolio-link {
+        -webkit-text-fill-color: #c43a08 !important;
+        color: #c43a08 !important;
+      }
+
+      .hero-art { display: none; }
+
+      section { padding: 36px 0; break-inside: avoid; }
+
+      .btn-primary {
+        border: 2px solid #c43a08;
+        color: #c43a08 !important;
+        background: none !important;
+        padding: 8px 20px;
+      }
+
+      .portfolio-card, .pricing-card, .step-card {
+        border: 1px solid #ccc !important;
+        break-inside: avoid;
+      }
+
+      .portfolio-thumb { height: 60px; background: #eee !important; }
+      .badge { border: 1px solid #c43a08; background: none !important; color: #c43a08 !important; }
+
+      .site-footer { border-top: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="container">
+      <a href="https://fino.website" class="logo">FINO Studio</a>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero bg-dark">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="section-label">Website Design for Practitioners</p>
+          <h1 class="hero-headline">Your Work Deserves a Website That Sounds Like You.</h1>
+          <p class="hero-subline">We design custom websites for practitioners and independent professionals. We start by interviewing you. Everything follows from that.</p>
+          <a href="https://calendly.com/thefutureisnow/30min" class="btn-primary">Start With a Conversation</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e8420a"/>
+                <stop offset="35%" stop-color="#f0541a"/>
+                <stop offset="65%" stop-color="#f0a018"/>
+                <stop offset="100%" stop-color="#f7c948"/>
+              </linearGradient>
+            </defs>
+            <path stroke="url(#g1)" stroke-width="1.1" opacity="0.55" fill="none" stroke-linecap="round" style="stroke-dasharray: 40 8; animation: spiral-dash 20s linear infinite;" d="M160.0,160.0 L160.3,160.0 L160.6,160.1 L160.9,160.2 L161.1,160.4 L161.4,160.6 L161.6,160.8 L161.8,161.1 L161.9,161.5 L162.0,161.8 L162.1,162.2 L162.1,162.6 L162.0,163.0 L161.9,163.4 L161.7,163.8 L161.5,164.2 L161.3,164.6 L160.9,165.0 L160.5,165.4 L160.1,165.7 L159.6,166.0 L159.1,166.2 L158.5,166.4 L157.9,166.6 L157.3,166.7 L156.6,166.7 L155.9,166.6 L155.2,166.5 L154.5,166.3 L153.8,166.1 L153.1,165.7 L152.4,165.3 L151.7,164.8 L151.1,164.3 L150.5,163.6 L149.9,162.9 L149.4,162.2 L149.0,161.3 L148.6,160.4 L148.3,159.5 L148.1,158.5 L148.0,157.5 L147.9,156.4 L148.0,155.3 L148.1,154.2 L148.4,153.1 L148.7,152.0 L149.2,150.9 L149.8,149.9 L150.4,148.9 L151.2,147.9 L152.0,146.9 L153.0,146.1 L154.1,145.3 L155.2,144.5 L156.4,143.9 L157.7,143.4 L159.0,142.9 L160.4,142.6 L161.9,142.4 L163.4,142.3 L164.9,142.4 L166.4,142.5 L167.9,142.8 L169.5,143.3 L171.0,143.9 L172.4,144.6 L173.9,145.4 L175.2,146.4 L176.5,147.5 L177.7,148.7 L178.9,150.1 L179.9,151.5 L180.8,153.1 L181.6,154.7 L182.2,156.5 L182.7,158.3 L183.1,160.1 L183.3,162.1 L183.4,164.0 L183.2,166.0 L183.0,167.9 L182.5,169.9 L181.9,171.9 L181.1,173.8 L180.1,175.6 L179.0,177.4 L177.7,179.1 L176.3,180.8 L174.7,182.3 L173.0,183.7 L171.2,184.9 L169.2,186.0 L167.1,187.0 L164.9,187.8 L162.7,188.4 L160.4,188.8 L158.0,189.0 L155.6,189.1 L153.2,188.9 L150.7,188.5 L148.3,188.0 L145.9,187.2 L143.6,186.2 L141.3,185.0 L139.2,183.6 L137.1,182.1 L135.1,180.3 L133.3,178.4 L131.6,176.3 L130.1,174.1 L128.8,171.7 L127.7,169.2 L126.7,166.6 L126.0,163.9 L125.5,161.1 L125.2,158.3 L125.2,155.4 L125.4,152.5 L125.8,149.6 L126.5,146.7 L127.5,143.9 L128.6,141.2 L130.0,138.5 L131.6,135.9 L133.5,133.5 L135.5,131.2 L137.8,129.0 L140.2,127.1 L142.9,125.3 L145.6,123.7 L148.6,122.4 L151.6,121.3 L154.8,120.4 L158.0,119.9 L161.3,119.5 L164.6,119.5 L168.0,119.7 L171.3,120.2 L174.6,120.9 L177.9,122.0 L181.1,123.3 L184.2,124.9 L187.1,126.8 L190.0,128.9 L192.6,131.2 L195.1,133.8 L197.4,136.6 L199.4,139.6 L201.2,142.8 L202.8,146.1 L204.1,149.6 L205.1,153.1 L205.8,156.8 L206.2,160.6 L206.3,164.4 L206.1,168.2 L205.5,172.0 L204.7,175.8 L203.5,179.5 L202.1,183.1 L200.3,186.6 L198.2,190.0 L195.9,193.2 L193.2,196.3 L190.3,199.1 L187.2,201.7 L183.9,204.1 L180.3,206.1 L176.6,207.9 L172.7,209.4 L168.7,210.6 L164.5,211.4 L160.3,211.9 L156.1,212.1 L151.8,211.9 L147.5,211.3 L143.3,210.4 L139.1,209.1 L135.0,207.5 L131.1,205.6 L127.3,203.3 L123.6,200.7 L120.2,197.8 L117.0,194.6 L114.1,191.2 L111.4,187.5 L109.1,183.6 L107.1,179.4 L105.4,175.1 L104.0,170.7 L103.0,166.1 L102.4,161.4 L102.2,156.7 L102.4,152.0 L102.9,147.2 L103.9,142.5 L105.2,137.9 L106.9,133.4 L109.0,129.0 L111.5,124.7 L114.3,120.7 L117.4,116.9 L120.9,113.3 L124.7,110.0 L128.7,107.1 L133.0,104.4 L137.5,102.1 L142.2,100.2 L147.1,98.6 L152.1,97.5 L157.2,96.8 L162.4,96.4 L167.6,96.6 L172.8,97.1 L178.0,98.1 L183.1,99.5 L188.1,101.3 L192.9,103.5 L197.6,106.1 L202.1,109.1 L206.3,112.5 L210.2,116.3 L213.9,120.3 L217.2,124.7 L220.1,129.4 L222.7,134.3 L224.9,139.4 L226.7,144.7 L228.0,150.1 L228.9,155.7 L229.3,161.3 L229.2,167.0 L228.7,172.7 L227.8,178.3 L226.3,183.9 L224.4,189.3 L222.1,194.6 L219.3,199.8 L216.1,204.7 L212.5,209.3 L208.5,213.6 L204.1,217.6 L199.4,221.3 L194.5,224.6 L189.2,227.5 L183.7,229.9 L178.0,231.9 L172.1,233.4 L166.1,234.5 L160.0,235.0 L153.9,235.0 L147.7,234.6 L141.6,233.6 L135.5,232.2 L129.6,230.2 L123.8,227.8 L118.3,224.8 L112.9,221.5 L107.9,217.6 L103.1,213.4 L98.7,208.8 L94.7,203.8 L91.1,198.4 L87.9,192.8 L85.2,186.9 L83.0,180.8 L81.2,174.5 L80.0,168.1 L79.3,161.5 L79.2,154.9 L79.5,148.3 L80.5,141.7 L82.0,135.2 L84.0,128.8 L86.5,122.5 L89.5,116.5 L93.1,110.7 L97.1,105.2 L101.6,100.1 L106.5,95.3 L111.7,90.9 L117.4,86.9 L123.4,83.4 L129.6,80.4 L136.1,77.9 L142.9,75.9 L149.7,74.5 L156.7,73.7 L163.8,73.4 L170.9,73.7 L178.0,74.6 L185.0,76.0 L191.8,78.1 L198.6,80.7 L205.1,83.8 L211.3,87.5 L217.2,91.7 L222.8,96.4 L228.0,101.5 L232.8,107.1 L237.1,113.1 L241.0,119.4 L244.3,126.0 L247.1,132.9 L249.3,140.0 L250.9,147.4 L252.0,154.8 L252.4,162.3 L252.2,169.9 L251.4,177.4 L249.9,184.9 L247.9,192.3 L245.2,199.4 L242.0,206.4 L238.2,213.1 L233.8,219.5 L228.9,225.5 L223.5,231.2 L217.7,236.3 L211.4,241.1 L204.8,245.2 L197.8,248.9 L190.5,252.0 L183.0,254.4 L175.3,256.3 L167.4,257.5 L159.4,258.1 L151.4,258.0 L143.3,257.3 L135.4,255.9 L127.5,253.8 L119.9,251.2 L112.4,247.8 L105.3,243.9 L98.4,239.4 L91.9,234.3 L85.9,228.7 L80.3,222.7 L75.2,216.1 L70.6,209.1 L66.6,201.8 L63.2,194.1 L60.5,186.2 L58.4,178.1 L57.0,169.7 L56.2,161.3 L56.1,152.8 L56.8,144.3 L58.1,135.9 L60.1,127.6 L62.8,119.4 L66.2,111.5 L70.2,103.8 L74.9,96.5 L80.1,89.6 L85.9,83.1 L92.3,77.1 L99.1,71.6 L106.3,66.6 L114.0,62.3 L122.0,58.6 L130.4,55.5 L138.9,53.2 L147.7,51.5 L156.6,50.6 L165.5,50.3 L174.5,50.9 L183.4,52.1 L192.2,54.1 L200.9,56.8 L209.3,60.2 L217.4,64.3 L225.2,69.1 L232.6,74.5 L239.5,80.5 L246.0,87.0 L251.9,94.1 L257.2,101.7 L261.9,109.7 L266.0,118.0 L269.4,126.7 L272.0,135.7 L273.9,144.9 L275.1,154.2 L275.4,163.6 L275.1,173.1 L273.9,182.5 L272.0,191.8 L269.3,200.9 L265.9,209.8 L261.7,218.4 L256.8,226.7 L251.3,234.6 L245.1,242.0 L238.4,248.9 L231.0,255.2 L223.2,261.0 L214.9,266.0 L206.2,270.4 L197.1,274.1 L187.7,277.1 L178.1,279.2 L168.3,280.6 L158.5,281.2 L148.6,281.0 L138.7,279.9 L128.9,278.1 L119.3,275.4 L109.9,272.0 L100.7,267.8 L92.0,262.8 L83.6,257.2 L75.8,250.9 L68.4,243.9 L61.6,236.3 L55.5,228.2 L50.0,219.6 L45.2,210.5 L41.2,201.1 L38.0,191.3 L35.5,181.3 L33.9,171.1 L33.1,160.8 L33.2,150.4 L34.1,140.1 L35.8,129.8 L38.4,119.7 L41.8,109.7 L46.1,100.1 L51.1,90.9 L56.8,82.0 L63.3,73.7 L70.5,65.9 L78.3,58.6 L86.6,52.1 L95.6,46.2 L104.9,41.0 L114.7,36.7 L124.8,33.1 L135.3,30.3 L145.9,28.5 L156.7,27.4 L167.5,27.3 L178.4,28.1 L189.1,29.7 L199.7,32.2 L210.1,35.6 L220.3,39.9 L230.0,44.9 L239.4,50.8 L248.2,57.4 L256.5,64.7 L264.2,72.7 L271.2,81.3 L277.5,90.5 L283.0,100.2 L287.8,110.3 L291.7,120.8 L294.8,131.7 L296.9,142.7 L298.2,153.9 L298.5,165.2 L297.9,176.5 L296.4,187.8 L294.0,198.9 L290.6,209.8 L286.4,220.4 L281.3,230.7 L275.4,240.5 L268.6,249.9 L261.2,258.7 L253.0,266.8 L244.1,274.3 L234.7,281.0 L224.7,287.0 L214.2,292.1 L203.4,296.4 L192.2,299.7 L180.7,302.2 L169.0,303.7 L157.3,304.3 L145.5,303.9 L133.7,302.5 L122.1,300.2 L110.7,296.9 L99.6,292.7 L88.8,287.6 L78.5,281.6 L68.6,274.8 L59.4,267.2 L50.7,258.8 L42.8,249.7 L35.6,240.0 L29.2,229.8 L23.7,219.0 L19.1,207.8 L15.4,196.2 L12.6,184.3 L10.8,172.2 L10.0,160.0"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Who This Is For ── -->
+  <section class="bg-alt">
+    <div class="container">
+      <p class="section-label">Who We Work With</p>
+      <h2 class="section-headline">Built for People Who Are Excellent at What They Do.</h2>
+      <p class="section-body">Coaches. Therapists. Yoga teachers. Consultants. Healers. Practitioners of all kinds. People who are excellent at what they do and need a website that reflects that.</p>
+    </div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="bg-dark">
+    <div class="container">
+      <p class="section-label">The Process</p>
+      <h2 class="section-headline">We Interview You First. Everything Else Follows.</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Voice Interview</h3>
+          <p class="step-desc">45 minutes with Anna or Dario. We ask, you talk. We learn your voice, your people, your story. This becomes the brief for everything.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Structure Review</h3>
+          <p class="step-desc">We present the page structure and design direction before building anything. You approve it. Changes at this stage cost nothing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Content Deadline</h3>
+          <p class="step-desc">You send copy, photos, and links within 10 days of approval. We build. Five rounds of revisions included in every package.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3 class="step-title">Delivery</h3>
+          <p class="step-desc">A custom website that sounds like you, works on every device, and you can maintain yourself if you want to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ── -->
+  <section class="bg-alt">
+    <div class="container">
+      <p class="section-label">Investment</p>
+      <h2 class="section-headline">Straightforward Pricing. No Surprises.</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Seed</div>
+          <div class="pricing-price">$850</div>
+          <p class="pricing-features">Up to 5 pages. Custom design built around your voice interview. Contact form included. Mobile optimized. Five revision rounds. Delivered in 2 weeks. Gets you online professionally.</p>
+          <p class="pricing-best"><strong>Best for:</strong> practitioners just starting out who need to exist online professionally.</p>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name">Root</div>
+          <div class="pricing-price">$1,500</div>
+          <p class="pricing-features">Up to 8 pages. Everything in Seed plus deeper custom design, basic SEO setup, and one custom landing page for a specific offer or program. Delivered in 3 weeks.</p>
+          <p class="pricing-best"><strong>Best for:</strong> established practitioners ready for a complete online presence.</p>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name">Grove</div>
+          <div class="pricing-price">$2,500</div>
+          <p class="pricing-features">Up to 12 pages. Everything in Root plus full SEO across all pages, multiple landing pages for specific offers or programs, and a blog or writing section. Delivered in 5 weeks. Built to grow.</p>
+          <p class="pricing-best"><strong>Best for:</strong> practitioners ready to scale their offering.</p>
+        </div>
+      </div>
+      <p class="pricing-note">Arrive with your copy and images ready and get $200 off any package. Additional revisions after delivery are billed at $50/hour. No monthly contracts. They come back when they need something.</p>
+    </div>
+  </section>
+
+  <!-- ── Portfolio ── -->
+  <section class="bg-dark">
+    <div class="container">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-headline">Sites We Have Built.</h2>
+      <p class="section-body" style="margin-bottom: 0;">Every site starts with a conversation. Every site ends up sounding like the person it belongs to.</p>
+      <div class="portfolio-grid">
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb"><i class="ph ph-flower-lotus"></i></div>
+          <div class="portfolio-info">
+            <div class="portfolio-name">Anna Milaeva</div>
+            <p class="portfolio-desc">Transformational Coach and IFS Practitioner. Personal coaching practice.</p>
+            <a href="https://annamilaeva.com" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb"><i class="ph ph-compass"></i></div>
+          <div class="portfolio-info">
+            <div class="portfolio-name">FINO</div>
+            <p class="portfolio-desc">Organizational Self-Leadership and team transformation. Co-founded with Dario Giuffrida.</p>
+            <a href="https://fino.website" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb"><i class="ph ph-tree-evergreen"></i></div>
+          <div class="portfolio-info">
+            <div class="portfolio-name">Dario Giuffrida</div>
+            <p class="portfolio-desc">Psychologist, IFS practitioner, and community leader. Personal practice site.</p>
+            <a href="https://annaifs.github.io/dariog" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-thumb"><i class="ph ph-calendar-dots"></i></div>
+          <div class="portfolio-info">
+            <div class="portfolio-name">FINO Scheduler <span class="badge">Web App</span></div>
+            <p class="portfolio-desc">Web app for law firms. Free scheduling tool for legal teams.</p>
+            <a href="https://scheduler.fino.website" target="_blank" rel="noopener" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-card portfolio-card--cta">
+          <div class="portfolio-thumb"><i class="ph ph-sparkle"></i></div>
+          <div class="portfolio-info">
+            <div class="portfolio-name">Your Site</div>
+            <p class="portfolio-desc coming-soon-glow">Coming Soon</p>
+            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener" class="portfolio-link">Start a Conversation <i class="ph ph-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Who We Are ── -->
+  <section class="bg-alt">
+    <div class="container">
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-headline">We Build These Because We Have Needed Them.</h2>
+      <p class="section-body">Anna and Dario founded FINO to bring inner work into organizations. Along the way we built our own sites, then sites for others. Every site we design starts with understanding who you are and who you serve. The code comes last.</p>
+      <div class="bios-grid">
+        <div class="bio-card">
+          <img src="../images/anna.png" alt="Anna Milaeva" class="bio-photo" width="80" height="80">
+          <div>
+            <div class="bio-name">Anna Milaeva</div>
+            <p class="bio-text">Brand designer, IFS practitioner, and operations leader. I built my first site to solve my own problem. Now I build them for others.</p>
+          </div>
+        </div>
+        <div class="bio-card">
+          <img src="../images/dario.png" alt="Dario Giuffrida" class="bio-photo" width="80" height="80">
+          <div>
+            <div class="bio-name">Dario Giuffrida</div>
+            <p class="bio-text">Psychologist, facilitator, and community builder. I bring 20 years of understanding how people present themselves to the world.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section bg-dark">
+    <div class="container">
+      <h2 class="section-headline">Tell Us About Your Project.</h2>
+      <p class="section-body" style="text-align: center; margin: 0 auto 36px;">Start with a 30-minute conversation. We will ask the right questions and tell you honestly whether we are the right fit.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn-primary">Start With a Conversation</a>
+      <p class="cta-small">Tell us what you are building. We will take it from there.</p>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer bg-alt">
+    <div class="container">
+      <div class="footer-logo">FINO Studio</div>
+      <p class="footer-sub">A FINO Initiative &middot; <a href="https://fino.website">fino.website</a></p>
+      <p class="footer-sub">&copy; 2026 FINO Advising LLC</p>
+    </div>
+  </footer>
+
+</body>
+</html>
