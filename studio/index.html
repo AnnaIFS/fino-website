@@ -1041,7 +1041,7 @@
   <section class="contact-section bg-alt">
     <div class="container">
       <h2 class="section-headline">Get in Touch</h2>
-      <p class="section-body section-body--center">Tell us about your project. We will get back to you within one business day.</p>
+      <p class="section-body section-body--center">Tell us about your project. We will get back to you soon.</p>
       <form class="contact-form" id="studio-contact-form" action="https://formspree.io/f/mjgaolev" method="POST">
         <label for="studio-name" class="sr-only">Name</label>
         <input id="studio-name" type="text" name="name" placeholder="Name" required>
@@ -1081,7 +1081,7 @@
       headers: { 'Accept': 'application/json' }
     }).then(function(response) {
       if (response.ok) {
-        form.innerHTML = '<div class="form-success"><h3>Thank You</h3><p>Your message has been sent. We will get back to you within one business day.</p></div>';
+        form.innerHTML = '<div class="form-success"><h3>Thank You</h3><p>Your message has been sent. We will get back to you soon.</p></div>';
       } else {
         btn.disabled = false;
         btn.textContent = 'Send Message';

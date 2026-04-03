@@ -937,7 +937,7 @@
   <section class="contact-section">
     <div class="container">
       <h2>Send Us a Message</h2>
-      <p>Tell us about your firm and what you are looking to improve. We will get back to you within one business day.</p>
+      <p>Tell us about your firm and what you are looking to improve. We will get back to you soon.</p>
       <form class="contact-form" id="lawfirm-contact-form" action="https://formspree.io/f/mjgaolev" method="POST">
         <label for="lf-name" class="sr-only">Name</label>
         <input id="lf-name" type="text" name="name" placeholder="Name" required>
@@ -989,7 +989,7 @@
         headers: { 'Accept': 'application/json' }
       }).then(function(response) {
         if (response.ok) {
-          form.innerHTML = '<div class="form-success"><h3>Thank You</h3><p>Your message has been sent. We will get back to you within one business day.</p></div>';
+          form.innerHTML = '<div class="form-success"><h3>Thank You</h3><p>Your message has been sent. We will get back to you soon.</p></div>';
         } else {
           btn.disabled = false;
           btn.textContent = 'Send Message';
