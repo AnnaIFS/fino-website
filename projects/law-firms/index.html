@@ -667,47 +667,54 @@
 
     /* Trust badges (under hero CTA) */
     .hero-trust {
+      margin-top: 2rem;
+    }
+    .hero-trust-logos {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-top: 1.8rem;
-      opacity: 0.55;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
     }
-    .hero-trust img {
-      height: 22px;
+    .hero-trust-logos img {
+      height: 40px;
       width: auto;
       display: block;
-      border-radius: 2px;
+      border-radius: 3px;
     }
-    .hero-trust span {
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
+    .hero-trust p {
+      font-size: 0.78rem;
       color: var(--muted);
+      letter-spacing: 0.04em;
+      max-width: none;
+      line-height: 1.4;
     }
     @media (max-width: 480px) {
-      .hero-trust { gap: 0.5rem; }
-      .hero-trust img { height: 18px; }
-      .hero-trust span { font-size: 0.6rem; }
+      .hero-trust-logos img { height: 34px; }
+      .hero-trust p { font-size: 0.75rem; }
     }
 
     /* Footer credentials */
     .footer-credentials {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       margin-top: 1.2rem;
-      opacity: 0.5;
+    }
+    .footer-credentials-logos {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
     .footer-credentials img {
-      height: 18px;
+      height: 24px;
       width: auto;
       border-radius: 2px;
     }
     .footer-credentials span {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       color: var(--muted);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
     }
 
     /* Announcement bar */
@@ -766,9 +773,11 @@
       <p>We come in, find what is costing your team the most time, and fix it. No big rollout. No disruption. Your staff will not dread it.</p>
       <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener noreferrer">Start a Conversation</a>
       <div class="hero-trust">
-        <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
-        <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
-        <span>Certified Federal Contractor &middot; Florida Bar CLE Provider</span>
+        <div class="hero-trust-logos">
+          <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+          <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+        </div>
+        <p>Certified Federal Contractor &middot; Florida Bar CLE Provider</p>
       </div>
     </div>
   </section>
@@ -1013,8 +1022,10 @@
     <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
     <p>Created by <a href="/studio/" style="color: #f0a018; text-decoration: none; text-shadow: 0 0 8px rgba(232,66,10,0.5), 0 0 20px rgba(240,160,24,0.3);">FINO Studio</a></p>
     <div class="footer-credentials">
-      <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
-      <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+      <div class="footer-credentials-logos">
+        <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+        <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+      </div>
       <span>Certified Federal Contractor &middot; Florida Bar CLE Provider</span>
     </div>
   </footer>
