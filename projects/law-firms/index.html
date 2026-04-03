@@ -681,14 +681,17 @@
       justify-content: center;
       background: #fff;
       border-radius: 6px;
-      padding: 6px 12px;
+      width: 100px;
       height: 44px;
       flex-shrink: 0;
     }
     .credential-badge img {
-      height: 28px;
+      max-height: 28px;
+      max-width: 80px;
       width: auto;
+      height: auto;
       display: block;
+      object-fit: contain;
     }
     .credentials-bar span {
       font-size: 0.75rem;
@@ -701,8 +704,8 @@
       .credentials-bar {
         gap: 0.8rem;
       }
-      .credential-badge { height: 36px; padding: 4px 8px; }
-      .credential-badge img { height: 22px; }
+      .credential-badge { width: 80px; height: 36px; padding: 4px 8px; }
+      .credential-badge img { max-height: 22px; max-width: 64px; }
       .credentials-bar span { font-size: 0.65rem; text-align: center; }
     }
 
@@ -715,8 +718,9 @@
       margin-top: 1.2rem;
     }
     .footer-credentials .credential-badge {
+      width: 80px;
       height: 34px;
-      padding: 4px 10px;
+      padding: 4px 8px;
       opacity: 0.75;
       transition: opacity 0.3s;
     }
@@ -724,7 +728,8 @@
       opacity: 1;
     }
     .footer-credentials .credential-badge img {
-      height: 22px;
+      max-height: 22px;
+      max-width: 64px;
     }
 
     /* Announcement bar */
