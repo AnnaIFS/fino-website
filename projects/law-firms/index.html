@@ -665,48 +665,29 @@
       .section-divider { display: none; }
     }
 
-    /* Credentials bar */
-    .credentials-bar {
+    /* Trust badges (under hero CTA) */
+    .hero-trust {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem clamp(1.5rem, 4vw, 3rem);
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
+      gap: 0.75rem;
+      margin-top: 1.8rem;
+      opacity: 0.55;
     }
-    .credential-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      border-radius: 6px;
-      width: 100px;
-      height: 44px;
-      flex-shrink: 0;
-    }
-    .credential-badge img {
-      max-height: 28px;
-      max-width: 80px;
+    .hero-trust img {
+      height: 22px;
       width: auto;
-      height: auto;
       display: block;
-      object-fit: contain;
+      border-radius: 2px;
     }
-    .credentials-bar span {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .hero-trust span {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
       color: var(--muted);
     }
     @media (max-width: 480px) {
-      .credentials-bar {
-        gap: 0.8rem;
-      }
-      .credential-badge { width: 80px; height: 36px; padding: 4px 8px; }
-      .credential-badge img { max-height: 22px; max-width: 64px; }
-      .credentials-bar span { font-size: 0.65rem; text-align: center; }
+      .hero-trust { gap: 0.5rem; }
+      .hero-trust img { height: 18px; }
+      .hero-trust span { font-size: 0.6rem; }
     }
 
     /* Footer credentials */
@@ -714,22 +695,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.75rem;
       margin-top: 1.2rem;
+      opacity: 0.5;
     }
-    .footer-credentials .credential-badge {
-      width: 80px;
-      height: 34px;
-      padding: 4px 8px;
-      opacity: 0.75;
-      transition: opacity 0.3s;
+    .footer-credentials img {
+      height: 18px;
+      width: auto;
+      border-radius: 2px;
     }
-    .footer-credentials .credential-badge:hover {
-      opacity: 1;
-    }
-    .footer-credentials .credential-badge img {
-      max-height: 22px;
-      max-width: 64px;
+    .footer-credentials span {
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
     }
 
     /* Announcement bar */
@@ -763,17 +741,6 @@
     <a href="https://fino.website"><img src="../../images/logo-white.png" alt="FINO" width="564" height="195"></a>
   </header>
 
-  <!-- Credentials Bar -->
-  <div class="credentials-bar">
-    <div class="credential-badge">
-      <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
-    </div>
-    <span>Certified Federal Contractor &amp; Florida Bar CLE Provider</span>
-    <div class="credential-badge">
-      <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
-    </div>
-  </div>
-
   <main>
 
   <!-- 1. Hero -->
@@ -798,6 +765,11 @@
       <h1>Your firm is losing hours every week to work that should not take that long.</h1>
       <p>We come in, find what is costing your team the most time, and fix it. No big rollout. No disruption. Your staff will not dread it.</p>
       <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener noreferrer">Start a Conversation</a>
+      <div class="hero-trust">
+        <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+        <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+        <span>Certified Federal Contractor &middot; Florida Bar CLE Provider</span>
+      </div>
     </div>
   </section>
 
@@ -1041,12 +1013,9 @@
     <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
     <p>Created by <a href="/studio/" style="color: #f0a018; text-decoration: none; text-shadow: 0 0 8px rgba(232,66,10,0.5), 0 0 20px rgba(240,160,24,0.3);">FINO Studio</a></p>
     <div class="footer-credentials">
-      <div class="credential-badge">
-        <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
-      </div>
-      <div class="credential-badge">
-        <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
-      </div>
+      <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+      <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+      <span>Certified Federal Contractor &middot; Florida Bar CLE Provider</span>
     </div>
   </footer>
 
