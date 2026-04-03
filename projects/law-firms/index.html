@@ -199,7 +199,7 @@
       width: clamp(380px, 42vw, 560px);
       height: clamp(380px, 42vw, 560px);
       pointer-events: none;
-      opacity: 0.45;
+      opacity: 0.7;
     }
     .lp-hero h1 {
       margin-bottom: 1.2rem;
@@ -568,7 +568,7 @@
       text-align: center;
       border-top: 1px solid var(--border);
     }
-    .lp-footer img {
+    .lp-footer > a > img {
       height: 24px;
       width: auto;
       margin: 0 auto 1rem;
@@ -665,6 +665,57 @@
       .section-divider { display: none; }
     }
 
+    /* Credentials bar */
+    .credentials-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem clamp(1.5rem, 4vw, 3rem);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .credentials-bar img {
+      height: 36px;
+      width: auto;
+      flex-shrink: 0;
+    }
+    .credentials-bar .cle-logo {
+      border-radius: 3px;
+    }
+    .credentials-bar span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    @media (max-width: 480px) {
+      .credentials-bar {
+        gap: 1rem;
+      }
+      .credentials-bar img { height: 28px; }
+      .credentials-bar span { font-size: 0.65rem; text-align: center; }
+    }
+
+    /* Footer credentials */
+    .footer-credentials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    .footer-credentials img {
+      height: 28px;
+      width: auto;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .footer-credentials img:hover {
+      opacity: 1;
+    }
+
     /* Announcement bar */
     .announce-bar {
       background: #161614;
@@ -696,24 +747,31 @@
     <a href="https://fino.website"><img src="../../images/logo-white.png" alt="FINO" width="564" height="195"></a>
   </header>
 
+  <!-- Credentials Bar -->
+  <div class="credentials-bar">
+    <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" class="sam-logo" width="349" height="269">
+    <span>Certified Federal Contractor &amp; Florida Bar CLE Provider</span>
+    <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" class="cle-logo" width="635" height="264">
+  </div>
+
   <main>
 
   <!-- 1. Hero -->
   <section class="lp-hero">
     <svg class="hero-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="200" cy="200" r="160" fill="none" stroke="#e8420a" stroke-width="1" opacity="0.3"/>
-      <circle cx="200" cy="200" r="110" fill="none" stroke="#e8420a" stroke-width="1" opacity="0.2"/>
-      <rect x="100" y="240" width="200" height="36" rx="3" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
-      <rect x="120" y="182" width="160" height="36" rx="3" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.8"/>
-      <rect x="148" y="124" width="104" height="36" rx="3" fill="none" stroke="#f0a018" stroke-width="2" opacity="1"/>
-      <line x1="148" y1="160" x2="120" y2="182" stroke="#e8420a" stroke-width="1" opacity="0.4"/>
-      <line x1="252" y1="160" x2="280" y2="182" stroke="#e8420a" stroke-width="1" opacity="0.4"/>
-      <line x1="120" y1="218" x2="100" y2="240" stroke="#e8420a" stroke-width="1" opacity="0.3"/>
-      <line x1="280" y1="218" x2="300" y2="240" stroke="#e8420a" stroke-width="1" opacity="0.3"/>
-      <circle cx="200" cy="110" r="4" fill="#f0a018" opacity="0.9"/>
-      <line x1="200" y1="106" x2="200" y2="90" stroke="#f0a018" stroke-width="1" opacity="0.5"/>
-      <line x1="196" y1="108" x2="184" y2="96" stroke="#f0a018" stroke-width="1" opacity="0.3"/>
-      <line x1="204" y1="108" x2="216" y2="96" stroke="#f0a018" stroke-width="1" opacity="0.3"/>
+      <circle cx="200" cy="200" r="160" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="200" cy="200" r="110" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.35"/>
+      <rect x="100" y="240" width="200" height="36" rx="3" fill="none" stroke="#e8420a" stroke-width="2" opacity="0.85"/>
+      <rect x="120" y="182" width="160" height="36" rx="3" fill="none" stroke="#e8420a" stroke-width="2" opacity="0.9"/>
+      <rect x="148" y="124" width="104" height="36" rx="3" fill="none" stroke="#f0a018" stroke-width="2.5" opacity="1"/>
+      <line x1="148" y1="160" x2="120" y2="182" stroke="#e8420a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="252" y1="160" x2="280" y2="182" stroke="#e8420a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="120" y1="218" x2="100" y2="240" stroke="#e8420a" stroke-width="1.5" opacity="0.5"/>
+      <line x1="280" y1="218" x2="300" y2="240" stroke="#e8420a" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="200" cy="110" r="5" fill="#f0a018" opacity="1"/>
+      <line x1="200" y1="105" x2="200" y2="88" stroke="#f0a018" stroke-width="1.5" opacity="0.7"/>
+      <line x1="195" y1="107" x2="183" y2="95" stroke="#f0a018" stroke-width="1.5" opacity="0.5"/>
+      <line x1="205" y1="107" x2="217" y2="95" stroke="#f0a018" stroke-width="1.5" opacity="0.5"/>
     </svg>
     <div class="container">
       <p class="label">For Law Firms</p>
@@ -962,6 +1020,10 @@
     <a href="https://fino.website"><img src="../../images/logo-white.png" alt="FINO" width="564" height="195"></a>
     <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
     <p>Created by <a href="/studio/" style="color: #f0a018; text-decoration: none; text-shadow: 0 0 8px rgba(232,66,10,0.5), 0 0 20px rgba(240,160,24,0.3);">FINO Studio</a></p>
+    <div class="footer-credentials">
+      <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+      <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" style="border-radius: 3px;" width="635" height="264">
+    </div>
   </footer>
 
   <script>
