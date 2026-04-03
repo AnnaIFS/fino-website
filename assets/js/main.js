@@ -72,6 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* --- AJAX form submission (no redirect) --- */
+  document.querySelectorAll('form[action*="formspree.io"]').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          form.innerHTML = '<p style="color: var(--gold, #f0a018); font-size: 1.1rem; margin-top: 1rem;">Thank you \u2014 your message has been sent.<br>We will get back to you very soon.</p>';
+        } else {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert('Something went wrong. Please try again or email us directly.');
+        }
+      }).catch(function() {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert('Something went wrong. Please try again or email us directly.');
+      });
+    });
+  });
+
   /* --- Smooth scroll for anchor links --- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
