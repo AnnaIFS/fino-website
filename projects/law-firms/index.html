@@ -675,13 +675,20 @@
       background: var(--surface);
       border-bottom: 1px solid var(--border);
     }
-    .credentials-bar img {
-      height: 36px;
-      width: auto;
+    .credential-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      height: 44px;
       flex-shrink: 0;
     }
-    .credentials-bar .cle-logo {
-      border-radius: 3px;
+    .credential-badge img {
+      height: 28px;
+      width: auto;
+      display: block;
     }
     .credentials-bar span {
       font-size: 0.75rem;
@@ -692,9 +699,10 @@
     }
     @media (max-width: 480px) {
       .credentials-bar {
-        gap: 1rem;
+        gap: 0.8rem;
       }
-      .credentials-bar img { height: 28px; }
+      .credential-badge { height: 36px; padding: 4px 8px; }
+      .credential-badge img { height: 22px; }
       .credentials-bar span { font-size: 0.65rem; text-align: center; }
     }
 
@@ -703,17 +711,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1rem;
       margin-top: 1.2rem;
     }
-    .footer-credentials img {
-      height: 28px;
-      width: auto;
-      opacity: 0.7;
+    .footer-credentials .credential-badge {
+      height: 34px;
+      padding: 4px 10px;
+      opacity: 0.75;
       transition: opacity 0.3s;
     }
-    .footer-credentials img:hover {
+    .footer-credentials .credential-badge:hover {
       opacity: 1;
+    }
+    .footer-credentials .credential-badge img {
+      height: 22px;
     }
 
     /* Announcement bar */
@@ -749,9 +760,13 @@
 
   <!-- Credentials Bar -->
   <div class="credentials-bar">
-    <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" class="sam-logo" width="349" height="269">
+    <div class="credential-badge">
+      <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+    </div>
     <span>Certified Federal Contractor &amp; Florida Bar CLE Provider</span>
-    <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" class="cle-logo" width="635" height="264">
+    <div class="credential-badge">
+      <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+    </div>
   </div>
 
   <main>
@@ -1021,8 +1036,12 @@
     <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
     <p>Created by <a href="/studio/" style="color: #f0a018; text-decoration: none; text-shadow: 0 0 8px rgba(232,66,10,0.5), 0 0 20px rgba(240,160,24,0.3);">FINO Studio</a></p>
     <div class="footer-credentials">
-      <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
-      <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" style="border-radius: 3px;" width="635" height="264">
+      <div class="credential-badge">
+        <img src="../../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+      </div>
+      <div class="credential-badge">
+        <img src="../../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+      </div>
     </div>
   </footer>
 
