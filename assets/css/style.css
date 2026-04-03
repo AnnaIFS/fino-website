@@ -86,7 +86,7 @@ p {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #f06020;
   margin-bottom: 1.2rem;
 }
 
@@ -448,7 +448,7 @@ section {
   font-family: 'Outfit', sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: rgba(240, 160, 24, 0.65);
+  color: rgba(240, 160, 24, 0.85);
   margin-bottom: 0.5rem;
 }
 
@@ -757,7 +757,7 @@ section {
 }
 .footer-copy {
   font-size: 0.75rem;
-  color: #847b70;
+  color: #9a918a;
 }
 .footer-studio a {
   color: #f0a018;
@@ -1271,6 +1271,16 @@ section {
     padding: 0.5rem 0;
     font-size: 1rem;
   }
+}
+
+/* --- Focus styles (accessibility) --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 /* --- Section divider --- */
