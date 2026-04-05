@@ -1158,7 +1158,7 @@ section {
   h4 { font-size: clamp(1.1rem, 4vw, 1.3rem); }
   p { font-size: 1.15rem; line-height: 1.85; }
   .hero-sub { font-size: 1.15rem !important; line-height: 1.8; }
-  .label { font-size: 0.85rem; }
+  .label { font-size: 0.95rem; }
 
   /* Sections */
   section {
@@ -1181,14 +1181,14 @@ section {
   .offsite-team-grid { grid-template-columns: 1fr 1fr; }
 
   /* Buttons */
-  .btn { font-size: 1rem; padding: 1rem 2.2rem; }
+  .btn { font-size: 1.05rem; padding: 1rem 2.2rem; }
 
   /* Service cards */
   .services-grid {
     grid-template-columns: 1fr;
     max-width: 480px;
   }
-  .service-card-body p { font-size: 1.1rem; }
+  .service-card-body p { font-size: 1.15rem; }
   .card-number { font-size: 1.4rem; color: rgba(240, 160, 24, 0.6); }
 
   /* Founders */
@@ -1197,9 +1197,9 @@ section {
     max-width: 360px;
     margin: 0 auto;
   }
-  .founder-creds li { font-size: 1.05rem; }
-  .founder-role { font-size: 1rem; }
-  .who-link a { font-size: 1.05rem; }
+  .founder-creds li { font-size: 1.1rem; }
+  .founder-role { font-size: 1.05rem; }
+  .who-link a { font-size: 1.1rem; }
 
   /* About page */
   .about-placeholder-grid {
@@ -1207,22 +1207,22 @@ section {
     max-width: 360px;
     margin: 0 auto 3rem;
   }
-  .bio-expand p { font-size: 1.1rem !important; line-height: 1.85 !important; }
-  .bio-toggle { font-size: 1.05rem; }
+  .bio-expand p { font-size: 1.15rem !important; line-height: 1.85 !important; }
+  .bio-toggle { font-size: 1.1rem; }
 
   .about-founders { grid-template-columns: 1fr; }
 
   /* Lists */
-  .feature-list li { font-size: 1.1rem; }
+  .feature-list li { font-size: 1.15rem; }
 
   /* Testimonials */
   .testimonial blockquote { font-size: clamp(1.15rem, 4vw, 1.4rem); }
-  .testimonial cite { font-size: 1rem; }
-  .circles-testimonial-card blockquote { font-size: 1.1rem; }
+  .testimonial cite { font-size: 1.05rem; }
+  .circles-testimonial-card blockquote { font-size: 1.15rem; }
 
   /* Accordion */
   .accordion-header { font-size: 1.15rem; }
-  .accordion-body p { font-size: 1.1rem; }
+  .accordion-body p { font-size: 1.15rem; }
 
   /* Sequence image (offsites) */
   .content-section img[src*="sequence"] {
@@ -1236,17 +1236,17 @@ section {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-right { margin-top: 2rem; }
   .footer-left p,
-  .footer-info { font-size: 1.05rem; color: #d2cab9; max-width: none; }
-  .footer-tagline { font-size: 1.1rem; }
+  .footer-info { font-size: 1.1rem; color: #d2cab9; max-width: none; }
+  .footer-tagline { font-size: 1.15rem; }
   .footer-nav { gap: 1.2rem; }
-  .footer-nav a { font-size: 1rem; color: #d2cab9; }
-  .footer-copy { font-size: 1rem; color: #a09688; }
+  .footer-nav a { font-size: 1.05rem; color: #d2cab9; }
+  .footer-copy { font-size: 1.05rem; color: #a09688; }
   .footer-form-heading { font-size: 1.8rem; }
   .footer-right input,
-  .footer-right textarea { font-size: 1rem; }
+  .footer-right textarea { font-size: 1.05rem; }
   .footer-right input::placeholder,
   .footer-right textarea::placeholder { color: rgba(200, 191, 176, 0.5); }
-  .footer-right button[type="submit"] { font-size: 1rem; }
+  .footer-right button[type="submit"] { font-size: 1.05rem; }
 }
 
 @media (max-width: 480px) {
@@ -1269,7 +1269,7 @@ section {
   }
   .bio-toggle {
     padding: 0.5rem 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 }
 
