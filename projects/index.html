@@ -44,31 +44,28 @@
     }
     .projects-hero .hero-svg {
       position: absolute;
-      right: -12%;
+      right: -14%;
       top: 50%;
       transform: translateY(-50%);
       width: clamp(380px, 42vw, 560px);
       height: clamp(380px, 42vw, 560px);
       pointer-events: none;
-      opacity: 0.8;
+      opacity: 0.55;
     }
     @media (max-width: 768px) {
       .projects-hero .hero-svg { display: none; }
     }
 
-    @keyframes block-rise-1 { 0% { transform: translateY(40px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-    @keyframes block-rise-2 { 0% { transform: translateY(60px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-    @keyframes block-rise-3 { 0% { transform: translateY(80px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-    @keyframes block-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes cube-rise { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    @keyframes cube-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    .block-row-1 { animation: block-rise-1 0.8s ease-out both, block-float 5s ease-in-out 1s infinite; }
-    .block-row-2 { animation: block-rise-2 0.8s 0.2s ease-out both, block-float 5s ease-in-out 1.4s infinite; }
-    .block-row-3 { animation: block-rise-3 0.8s 0.4s ease-out both, block-float 5s ease-in-out 1.8s infinite; }
-    .block-row-4 { animation: block-rise-3 0.8s 0.6s ease-out both, block-float 5s ease-in-out 2.2s infinite; }
-    .block-accent { animation: block-rise-1 0.6s 0.8s ease-out both; }
+    .cube-a { animation: cube-rise 0.9s ease-out both; }
+    .cube-b { animation: cube-rise 0.9s 0.15s ease-out both; }
+    .cube-c { animation: cube-rise 0.9s 0.35s ease-out both; }
+    .cube-d { transform-origin: center; animation: cube-rise 1s 0.6s ease-out both, cube-bob 4s ease-in-out 1.6s infinite; }
 
     @media (prefers-reduced-motion: reduce) {
-      .block-row-1, .block-row-2, .block-row-3, .block-row-4, .block-accent { animation: none; opacity: 1; }
+      .cube-a, .cube-b, .cube-c, .cube-d { animation: none; opacity: 1; transform: none; }
     }
 
     /* Section divider — copied from healthcare landing */
@@ -127,58 +124,35 @@
 
   <!-- Hero -->
   <section class="projects-hero">
-    <svg class="hero-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#e8420a"/>
-          <stop offset="100%" stop-color="#f0a018"/>
-        </linearGradient>
-        <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#e8420a"/>
-          <stop offset="100%" stop-color="#f0a018"/>
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="4" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
+    <svg class="hero-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Isometric building blocks — line art, stack of three with one floating into place -->
 
-      <!-- Bottom row — wide foundation blocks -->
-      <g class="block-row-1" filter="url(#glow)">
-        <rect x="50" y="310" width="160" height="50" rx="4" fill="url(#bg1)" opacity="0.3" stroke="url(#bg1)" stroke-width="2"/>
-        <rect x="220" y="310" width="100" height="50" rx="4" fill="url(#bg1)" opacity="0.22" stroke="url(#bg1)" stroke-width="1.5"/>
-        <rect x="330" y="310" width="120" height="50" rx="4" fill="url(#bg1)" opacity="0.26" stroke="url(#bg1)" stroke-width="1.8"/>
+      <!-- Cube A (bottom-left) -->
+      <g class="cube-a">
+        <polygon points="140,202.5 187.6,230 140,257.5 92.4,230" stroke="#e8420a" stroke-width="1.8"/>
+        <polyline points="92.4,230 92.4,285 140,312.5 187.6,285 187.6,230" stroke="#e8420a" stroke-width="1.8"/>
+        <line x1="140" y1="257.5" x2="140" y2="312.5" stroke="#e8420a" stroke-width="1.8"/>
       </g>
 
-      <!-- Second row -->
-      <g class="block-row-2" filter="url(#glow)">
-        <rect x="80" y="248" width="120" height="50" rx="4" fill="url(#bg2)" opacity="0.35" stroke="url(#bg2)" stroke-width="2"/>
-        <rect x="210" y="248" width="140" height="50" rx="4" fill="url(#bg1)" opacity="0.28" stroke="url(#bg1)" stroke-width="1.8"/>
-        <rect x="360" y="248" width="80" height="50" rx="4" fill="url(#bg2)" opacity="0.22" stroke="url(#bg2)" stroke-width="1.5"/>
+      <!-- Cube B (bottom-right) -->
+      <g class="cube-b">
+        <polygon points="260,202.5 307.6,230 260,257.5 212.4,230" stroke="#e8420a" stroke-width="1.8"/>
+        <polyline points="212.4,230 212.4,285 260,312.5 307.6,285 307.6,230" stroke="#e8420a" stroke-width="1.8"/>
+        <line x1="260" y1="257.5" x2="260" y2="312.5" stroke="#e8420a" stroke-width="1.8"/>
       </g>
 
-      <!-- Third row -->
-      <g class="block-row-3" filter="url(#glow)">
-        <rect x="120" y="186" width="100" height="50" rx="4" fill="url(#bg1)" opacity="0.4" stroke="url(#bg1)" stroke-width="2"/>
-        <rect x="230" y="186" width="160" height="50" rx="4" fill="url(#bg2)" opacity="0.32" stroke="url(#bg2)" stroke-width="2"/>
+      <!-- Cube C (middle, sitting on top of A and B) -->
+      <g class="cube-c">
+        <polygon points="200,137.5 247.6,165 200,192.5 152.4,165" stroke="#e8420a" stroke-width="2"/>
+        <polyline points="152.4,165 152.4,220 200,247.5 247.6,220 247.6,165" stroke="#e8420a" stroke-width="2"/>
+        <line x1="200" y1="192.5" x2="200" y2="247.5" stroke="#e8420a" stroke-width="2"/>
       </g>
 
-      <!-- Top row — the piece being placed -->
-      <g class="block-row-4" filter="url(#glow)">
-        <rect x="170" y="124" width="140" height="50" rx="4" fill="url(#bg1)" opacity="0.5" stroke="url(#bg1)" stroke-width="2.5"/>
-      </g>
-
-      <!-- Accent dots and sparks -->
-      <g class="block-accent" filter="url(#glow)">
-        <circle cx="160" cy="118" r="4" fill="#f0a018" opacity="0.9"/>
-        <circle cx="320" cy="118" r="4" fill="#e8420a" opacity="0.9"/>
-        <circle cx="240" cy="100" r="3" fill="#f0a018" opacity="0.7"/>
-        <line x1="240" y1="104" x2="240" y2="124" stroke="url(#bg1)" stroke-width="1.5" opacity="0.7" stroke-dasharray="3 3"/>
-        <line x1="40" y1="280" x2="40" y2="360" stroke="url(#bg1)" stroke-width="1.2" opacity="0.4" stroke-dasharray="2 4"/>
-        <line x1="460" y1="240" x2="460" y2="360" stroke="url(#bg1)" stroke-width="1.2" opacity="0.4" stroke-dasharray="2 4"/>
+      <!-- Cube D (smaller, floating in place above the stack) -->
+      <g class="cube-d">
+        <polygon points="200,37.5 239,60 200,82.5 161,60" stroke="#f0a018" stroke-width="2.2"/>
+        <polyline points="161,60 161,105 200,127.5 239,105 239,60" stroke="#f0a018" stroke-width="2.2"/>
+        <line x1="200" y1="82.5" x2="200" y2="127.5" stroke="#f0a018" stroke-width="2.2"/>
       </g>
     </svg>
     <div class="container">
