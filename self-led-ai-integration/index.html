@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Led AI Integration · FINO</title>
+  <meta name="description" content="Self-Led AI Integration for teams. We bring AI into the actual work, with the Self-leadership practice that makes it stick. Inner and outer operations, together.">
+  <meta property="og:title" content="Self-Led AI Integration · FINO">
+  <meta property="og:description" content="Self-Led AI Integration for teams. We bring AI into the actual work, with the Self-leadership practice that makes it stick. Inner and outer operations, together.">
+  <meta property="og:image" content="https://fino.website/images/og-image.jpg">
+  <meta property="og:url" content="https://fino.website/self-led-ai-integration/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FINO">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Self-Led AI Integration · FINO">
+  <meta name="twitter:description" content="Self-Led AI Integration for teams. We bring AI into the actual work, with the Self-leadership practice that makes it stick. Inner and outer operations, together.">
+  <meta name="twitter:image" content="https://fino.website/images/og-image.jpg">
+  <link rel="canonical" href="https://fino.website/self-led-ai-integration/">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Self-Led AI Integration",
+    "provider": {
+      "@type": "Organization",
+      "name": "FINO",
+      "url": "https://fino.website"
+    },
+    "url": "https://fino.website/self-led-ai-integration/",
+    "description": "Self-Led AI Integration for teams. We bring AI into the actual work, with the Self-leadership practice that makes it stick.",
+    "serviceType": "AI Integration"
+  }
+  </script>
+  <style>
+    /* ============================================
+       SELF-LED AI INTEGRATION - Style System
+       Copied from law firms landing page
+       ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :root {
+      --bg: #0b0a08;
+      --surface: #111009;
+      --text: #e8e0d4;
+      --body: #d2cab9;
+      --muted: #a09688;
+      --accent: #e8420a;
+      --gold: #f0a018;
+      --gradient: linear-gradient(135deg, #e8420a, #f0a018);
+      --border: rgba(232, 224, 211, 0.07);
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* --- Typography --- */
+    h1, h2, h3 {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+    h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--body);
+      max-width: 680px;
+    }
+
+    .label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.2rem;
+    }
+
+    /* --- Layout --- */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+
+    section {
+      padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+    }
+    section.alt { background: var(--surface); }
+
+    /* --- Button --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .btn:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 24px rgba(232, 66, 10, 0.3);
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    .lp-header {
+      padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+    }
+    .lp-header img {
+      height: 28px;
+      width: auto;
+    }
+
+    /* --- Section divider --- */
+    .section-divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      border: none;
+      background: linear-gradient(90deg, transparent, #e8420a 30%, #f0a018 50%, #e8420a 70%, transparent);
+      background-size: 200% 100%;
+      animation: divider-sweep 3s ease-in-out infinite;
+    }
+    @keyframes divider-sweep {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .lp-hero {
+      position: relative;
+      padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+      overflow: hidden;
+    }
+    .lp-hero .hero-svg {
+      position: absolute;
+      right: -18%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(380px, 42vw, 560px);
+      height: clamp(380px, 42vw, 560px);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    .lp-hero h1 {
+      margin-bottom: 1.2rem;
+      max-width: 720px;
+    }
+    .lp-hero p {
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    /* ============================================
+       STORY
+       ============================================ */
+    .story p {
+      max-width: 640px;
+      margin-bottom: 1.2rem;
+    }
+    .story h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    /* ============================================
+       PROBLEM CARDS
+       ============================================ */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      max-width: 740px;
+    }
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .problem-card h3 {
+      margin-bottom: 1rem;
+    }
+    .problem-card p {
+      max-width: none;
+      margin-bottom: 1.2rem;
+    }
+    .problem-card p:last-child {
+      margin-bottom: 0;
+    }
+    .problem-card .btn {
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================
+       FAQ / ACCORDION
+       ============================================ */
+    .lp-accordion {
+      max-width: 700px;
+      margin-top: 2rem;
+    }
+    .lp-accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .lp-accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      text-align: left;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+    .lp-accordion-header:hover { color: var(--gold); }
+    .lp-accordion-header .icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      color: var(--muted);
+    }
+    .lp-accordion-item.open .lp-accordion-header .icon {
+      transform: rotate(45deg);
+    }
+    .lp-accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .lp-accordion-item.open .lp-accordion-body {
+      max-height: 500px;
+      padding-bottom: 1.2rem;
+    }
+    .lp-accordion-body p {
+      font-size: 1rem;
+      color: var(--body);
+    }
+
+    /* ============================================
+       SCHEDULER CALLOUT (reused for framework callout)
+       ============================================ */
+    .scheduler-callout {
+      background: rgba(232, 224, 211, 0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      max-width: 700px;
+      margin-top: 2rem;
+    }
+    .scheduler-callout h2 {
+      margin-bottom: 1rem;
+    }
+    .scheduler-callout p {
+      margin-bottom: 1.2rem;
+    }
+    .scheduler-callout .steps-list {
+      margin: 1.5rem 0 2rem;
+    }
+    .scheduler-callout .steps-list li {
+      padding: 0.5rem 0;
+      font-size: 1rem;
+      color: var(--body);
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+    }
+    .scheduler-callout .steps-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gradient);
+      flex-shrink: 0;
+      position: relative;
+      top: 2px;
+    }
+    .scheduler-callout .btn-gradient {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      background: var(--gradient);
+      color: #fff;
+      white-space: nowrap;
+    }
+    .scheduler-callout .btn-gradient:hover {
+      box-shadow: 0 0 32px rgba(232, 66, 10, 0.4);
+    }
+    .scheduler-callout .tool-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ============================================
+       STEPS GRID (How We Work)
+       ============================================ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .step-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .step-number {
+      font-family: 'Cormorant SC', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .step-box p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: none;
+    }
+    .engagement-note {
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .engagement-highlight {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       FOUNDERS
+       ============================================ */
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      margin-top: 2.5rem;
+      max-width: 860px;
+    }
+    .founder-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .founder-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 1.5px solid rgba(232, 66, 10, 0.35);
+      margin: 0 auto 1.2rem;
+    }
+    .founder-card h3 {
+      margin-bottom: 0.3rem;
+    }
+    .founder-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .founder-bio {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--body);
+      max-width: none;
+      text-align: left;
+    }
+
+    /* ============================================
+       CLOSING CTA
+       ============================================ */
+    .closing-cta {
+      text-align: center;
+    }
+    .closing-cta h2 {
+      margin-bottom: 1rem;
+    }
+    .closing-cta p {
+      margin: 0 auto 2rem;
+      max-width: 560px;
+    }
+    .closing-cta .cta-note {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       CONTACT FORM
+       ============================================ */
+    .contact-section {
+      text-align: center;
+    }
+    .contact-section h2 {
+      margin-bottom: 0.6rem;
+    }
+    .contact-section > .container > p {
+      margin: 0 auto 2.5rem;
+      max-width: 520px;
+    }
+    .contact-form {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      display: block;
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--accent);
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button[type="submit"] {
+      display: inline-block;
+      width: 100%;
+      padding: 0.9rem 2rem;
+      background: var(--gradient);
+      color: #0b0a08;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .contact-form button[type="submit"]:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+    .contact-form button[type="submit"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-success {
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .form-success h3 {
+      font-family: 'Cormorant SC', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: var(--gold);
+    }
+    .form-success p {
+      margin: 0 auto;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .lp-footer {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .lp-footer > a > img {
+      height: 24px;
+      width: auto;
+      margin: 0 auto 1rem;
+    }
+    .lp-footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+      h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      p { font-size: 1.15rem; }
+
+      .hero-svg { display: none; }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .scheduler-callout {
+        padding: 1.5rem;
+      }
+      .label { font-size: 0.95rem; }
+      .founder-role { font-size: 0.95rem; }
+      .founder-bio { font-size: 1.1rem; }
+      .lp-accordion-header { font-size: 1.15rem; }
+      .lp-accordion-body p { font-size: 1.15rem; }
+      .lp-footer p { font-size: 0.95rem; }
+      .contact-form input,
+      .contact-form textarea { font-size: 1.05rem; }
+      .contact-form button[type="submit"] { font-size: 1.05rem; }
+      .btn, .btn-gradient {
+        font-size: 1.05rem;
+        padding: 1rem 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ============================================
+       PRINT
+       ============================================ */
+    @media print {
+      body {
+        background: #fff;
+        color: #1a1a1a;
+      }
+      body::after { display: none; }
+
+      :root {
+        --bg: #fff;
+        --surface: #f5f5f5;
+        --text: #1a1a1a;
+        --body: #333;
+        --muted: #666;
+        --border: #ddd;
+      }
+
+      .label {
+        -webkit-text-fill-color: #e8420a;
+        color: #e8420a;
+      }
+
+      section { padding: 2rem 0; }
+      .container { max-width: 100%; padding: 0 1rem; }
+
+      .btn {
+        border: 1px solid #333;
+        color: #333;
+      }
+
+      .problem-card {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+      }
+
+      .hero-svg,
+      .section-divider { display: none; }
+    }
+
+    /* Trust badges (under hero CTA) */
+    .hero-trust {
+      margin-top: 2rem;
+    }
+    .hero-trust-logos {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .hero-trust-logos img {
+      height: 40px;
+      width: auto;
+      display: block;
+      border-radius: 3px;
+    }
+    .hero-trust p {
+      font-size: 0.85rem;
+      color: var(--body);
+      letter-spacing: 0.04em;
+      max-width: none;
+      line-height: 1.4;
+    }
+    @media (max-width: 480px) {
+      .hero-trust-logos img { height: 34px; }
+      .hero-trust p { font-size: 0.85rem; }
+    }
+
+    /* Footer credentials */
+    .footer-credentials {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .footer-credentials-logos {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .footer-credentials img {
+      height: 24px;
+      width: auto;
+      border-radius: 2px;
+    }
+    .footer-credentials span {
+      font-size: 0.78rem;
+      color: var(--body);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================
+       8Cs CARD GRID
+       ============================================ */
+    .eightcs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.8rem 0 1.5rem;
+    }
+    .eightcs-card {
+      background: rgba(232, 224, 211, 0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.5rem 1.4rem;
+      position: relative;
+    }
+    .eightcs-card::before {
+      content: '';
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      width: 24px;
+      height: 2px;
+      background: var(--gradient);
+      border-radius: 1px;
+    }
+    .eightcs-card h3 {
+      font-family: 'Cormorant SC', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 1.3rem 0 0.55rem;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .eightcs-card p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--body);
+      max-width: none;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .eightcs-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+      .eightcs-card { padding: 1.4rem 1.4rem 1.2rem; }
+      .eightcs-card h3 { font-size: 1.35rem; }
+      .eightcs-card p { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <a href="https://fino.website"><img src="../images/logo-white.png" alt="FINO" width="564" height="195"></a>
+  </header>
+
+  <main>
+
+  <!-- 1. Hero -->
+  <section class="lp-hero">
+    <svg class="hero-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="200" cy="200" r="160" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="200" cy="200" r="110" fill="none" stroke="#e8420a" stroke-width="1.5" opacity="0.35"/>
+      <line x1="200" y1="200" x2="100" y2="120" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
+      <line x1="200" y1="200" x2="300" y2="120" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
+      <line x1="200" y1="200" x2="100" y2="280" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
+      <line x1="200" y1="200" x2="300" y2="280" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
+      <line x1="200" y1="200" x2="200" y2="80" stroke="#f0a018" stroke-width="1.5" opacity="0.8"/>
+      <line x1="200" y1="200" x2="200" y2="320" stroke="#e8420a" stroke-width="1.5" opacity="0.7"/>
+      <circle cx="200" cy="200" r="14" fill="#f0a018" opacity="1"/>
+      <circle cx="100" cy="120" r="7" fill="#e8420a" opacity="0.9"/>
+      <circle cx="300" cy="120" r="7" fill="#e8420a" opacity="0.9"/>
+      <circle cx="100" cy="280" r="7" fill="#e8420a" opacity="0.9"/>
+      <circle cx="300" cy="280" r="7" fill="#e8420a" opacity="0.9"/>
+      <circle cx="200" cy="80" r="7" fill="#f0a018" opacity="1"/>
+      <circle cx="200" cy="320" r="7" fill="#e8420a" opacity="0.9"/>
+    </svg>
+    <div class="container">
+      <p class="label">For Professional Firms &amp; Mission-Driven Teams</p>
+      <h1>We bring AI into your team's work, and we work with the people meeting it.</h1>
+      <p>We come in, work with your people on the parts meeting AI for the first time, and build the integration into your actual workflows. No deck. No theory. We teach, we facilitate, we build it with you.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener noreferrer">Start a Conversation</a>
+      <div class="hero-trust">
+        <div class="hero-trust-logos">
+          <img src="../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+          <img src="../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+        </div>
+        <p>Certified Federal Contractor &middot; Florida Bar CLE Provider</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 2. The Story -->
+  <section class="story">
+    <div class="container">
+      <p class="label">Why We Do This</p>
+      <h2>This Started Inside Our Own Engagements</h2>
+      <p><a href="/about/" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(232, 224, 211, 0.3); text-underline-offset: 3px; transition: text-decoration-color 0.3s;">Anna</a> spent over a decade running operations inside fast-moving organizations before co-founding FINO. She knows what it looks like when capable people are buried under tools they did not choose.</p>
+      <p>When we started working with teams on Self-leadership, the same thing kept coming up after sessions. The inner work was shifting things. But on Monday morning, people were still drowning in AI tools nobody had time to learn, fears nobody had named, and the constant background hum of &ldquo;we are falling behind.&rdquo;</p>
+      <p>Some people were already deep in AI. Some were quietly resisting. Most were in the middle, too busy to try, unsure where to start.</p>
+      <p>So we built the offering. The Self-leadership practice we already do with teams, joined to operational and AI integration work built on years inside fast-moving organizations. One engagement, both sides at once.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 3. Three Blocks - What We Build -->
+  <section>
+    <div class="container">
+      <p class="label">What We Build</p>
+      <h2>The Integration Most AI Rollouts Are Missing</h2>
+      <div class="problems-grid">
+
+        <div class="problem-card">
+          <h3>A team that knows how to meet AI together.</h3>
+          <p>Most AI training tries to override what people are feeling. Push the skeptic. Slow the enthusiast. Tell the middle group to try it. We do the opposite. We bring IFS-based practice into the room, name what every part of the team is bringing to this technology, and build a shared language for it. The resistance softens. The overwhelm gets workable. People stop performing okayness around AI and start using it for real.</p>
+        </div>
+
+        <div class="problem-card">
+          <h3>AI in the actual work, not in a workshop.</h3>
+          <p>We sit with your team in your real workflows. We see what is costing hours every week. We build the automations, write the prompts, set up a shared AI workspace for the team, and stay beside the people who will use it as they try it on real tasks. Not theory. Real implementation. By week three, your team is using tools they understand.</p>
+        </div>
+
+        <div class="problem-card">
+          <h3>Team AI norms your people wrote together.</h3>
+          <p>Most organizations adopt AI by accident. Someone uses one AI for one thing, someone else uses another for something else, and nobody ever names what the team agrees on. We facilitate the conversation. By the end of the engagement your team has written its own AI norms: what is okay, what is not, what stays human, what gets augmented. Not a policy handed down. A practice the team owns.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 4. The 8Cs Framework -->
+  <section>
+    <div class="container">
+      <p class="label">The Framework</p>
+      <h2>Self-Leadership Applied to AI</h2>
+      <div class="scheduler-callout">
+        <p>In IFS, the qualities of Self-leadership are called the 8Cs. We map them onto how teams meet AI. Every engagement walks through these.</p>
+        <div class="eightcs-grid">
+          <div class="eightcs-card">
+            <h3>Curiosity and Calm</h3>
+            <p>Meeting new tools with grounded openness.</p>
+          </div>
+          <div class="eightcs-card">
+            <h3>Clarity and Compassion</h3>
+            <p>Knowing what your team wants from AI.</p>
+          </div>
+          <div class="eightcs-card">
+            <h3>Confidence and Courage</h3>
+            <p>Trusting your own judgment when AI suggests something.</p>
+          </div>
+          <div class="eightcs-card">
+            <h3>Creativity and Connectedness</h3>
+            <p>AI in service of what is most human about your work.</p>
+          </div>
+        </div>
+        <p>The workshops and the implementation both move through these.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 5. FAQ Accordion -->
+  <section>
+    <div class="container">
+      <p class="label">Common Questions</p>
+      <h2>What teams ask about this work.</h2>
+      <div class="lp-accordion">
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq1">&ldquo;We are too busy to take on another initiative.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq1" role="region"><p>You are. That is the point. The partnership runs alongside your team's actual work. We sit in your real meetings, work with what is already on your plate, and remove the things eating hours every week. By month two, your team has more time, not less.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq2">&ldquo;Our team is already drowning in AI tools and courses.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq2" role="region"><p>That is the overwhelm we work with. We do not add more tools. We help your team choose what actually fits your work, build a small team setup that holds everything in one place, and quiet the noise. You do not need another course. You need a practice.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq3">&ldquo;Some of our people are scared of AI.&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq3" role="region"><p>Good. That fear is doing a job. We bring it into the work instead of arguing with it. When the fear is heard, it stops driving the decisions. That is when people start using the tools.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq4">&ldquo;Will this replace our team?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq4" role="region"><p>No. The tools remove the repetitive parts of the work. The people we work with end up doing more meaningful work, not less. The ones who learn the tools become more valuable to the organization, not less. We say this clearly to every team we work with.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq5">&ldquo;Is this consulting?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq5" role="region"><p>No. Consultants recommend. We teach, facilitate, and build it with you. We are at the keyboard alongside your team. We are in the room when the hard conversations happen. We are still there in week eight.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq6">&ldquo;Are you selling us AI tools?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq6" role="region"><p>No. We do not sell software or take vendor commissions. We work with what your team already has, or help you choose based on actual work, not what is trending.</p></div>
+        </div>
+
+        <div class="lp-accordion-item">
+          <button class="lp-accordion-header" aria-expanded="false" aria-controls="lp-faq7">&ldquo;How long does this actually take?&rdquo; <span class="icon">+</span></button>
+          <div class="lp-accordion-body" id="lp-faq7" role="region"><p>Engagements run 60 to 90 days, depending on the team. Real shifts tend to show up in the first three weeks. Some teams continue with ongoing partnership after the pilot. Some take the work and run it themselves. Both are good outcomes.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 5b. What This Looks Like in Practice -->
+  <section class="alt">
+    <div class="container">
+      <p class="label">What This Looks Like in Practice</p>
+      <h2>How an engagement unfolds.</h2>
+      <p>Every team is different. Engagements run 60 to 90 days, custom-shaped to the team. The shape holds the arc. The details get built around your team.</p>
+      <div class="steps-grid" style="grid-template-columns: 1fr; max-width: 740px; margin-top: 2rem;">
+        <div class="step-box">
+          <div class="step-number">Phase 1</div>
+          <div class="step-title">We meet the team where it is.</div>
+          <p>A kickoff with the cohort. Everyone meets us. People ask the questions they have been carrying. We map who is where with AI without judgment. No technical work yet.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">Phase 2</div>
+          <div class="step-title">Inner work first.</div>
+          <p>Before we touch tools, we slow the pace down and bring IFS-based practice into the room. People name what they are bringing to AI: the fears, the curiosity, the hopes, the resistance. The cohort starts building shared language for the work ahead.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">Phase 3</div>
+          <div class="step-title">AI in the actual work.</div>
+          <p>We are in your workflows alongside the team. The most tedious tasks come off your plate first. People see real time savings. Practice continues alongside implementation, deepening as the work gets more visible.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">Phase 4</div>
+          <div class="step-title">The team owns the practice.</div>
+          <p>Your tools are built. Your team has its own shared language and its own AI norms, written together. We close the engagement with everything documented. Some teams continue with monthly partnership. Some take the practice and run it. Both are good outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 6. How We Work -->
+  <section class="alt">
+    <div class="container">
+      <p class="label">The Engagement</p>
+      <h2>How it works.</h2>
+      <p>We start small. Every engagement starts with a conversation.</p>
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-number">1</div>
+          <div class="step-title">Free call, 30 minutes.</div>
+          <p>Tell us what is happening with your team and AI. We tell you if we can help.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">2</div>
+          <div class="step-title">We map your team's relationship with AI.</div>
+          <p>We spend the first week understanding the cohort, the current tools, and the work. We come back with a custom shape for the engagement.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">3</div>
+          <div class="step-title">We run the workshops and the partnership.</div>
+          <p>A custom mix of workshops and operational support, shaped to your team's size, schedule, and depth. Inner work and implementation run together. That is the integration.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-number">4</div>
+          <div class="step-title">We hand it back to you.</div>
+          <p>At the end of the engagement you have a team that knows how to work with AI together, real tools built into your workflows, and your own AI norms. Some teams continue with ongoing monthly partnership. Some take the practice and run it. We support whichever path fits.</p>
+        </div>
+      </div>
+      <p class="engagement-note">We design every engagement with you. A small cohort costs less than a full team rollout. The numbers come from the shape we build together.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 7. Who We Are -->
+  <section>
+    <div class="container">
+      <p class="label">Who We Are</p>
+      <h2>The People Behind the Work</h2>
+      <div class="founders-grid">
+        <div class="founder-card">
+          <img src="../images/anna.png?v=2" alt="Anna Milaeva" width="400" height="400">
+          <h3>Anna Milaeva</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">IFS Level 3 Practitioner, certified transformational coach, and ten years inside fast-moving organizations. I came to this work because I kept watching good teams meet new tools without the practice to make them stick. AI is the version of that pattern we are inside right now. I work at both layers because both layers matter.</p>
+        </div>
+        <div class="founder-card">
+          <img src="../images/dario.png" alt="Dario Giuffrida" width="400" height="400">
+          <h3>Dario Giuffrida</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Organizational psychologist and facilitator with 20 years working with groups and communities across Europe and the Americas. I bring the depth of inner work practice into the workshops. The parts meeting AI are the same parts meeting any other change. The work is the same.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- 8. Closing CTA -->
+  <section class="closing-cta">
+    <div class="container">
+      <h2>Ready to bring Self-Led AI Integration to your team?</h2>
+      <p>First call is free. No commitment.</p>
+      <a href="https://calendly.com/thefutureisnow/30min" class="btn" target="_blank" rel="noopener noreferrer">Start a Conversation</a>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Send Us a Message</h2>
+      <p>Tell us about your team and what you are navigating with AI. We will get back to you soon.</p>
+      <form class="contact-form" id="ai-contact-form" action="https://formspree.io/f/mjgaolev" method="POST">
+        <label for="ai-name" class="sr-only">Name</label>
+        <input id="ai-name" type="text" name="name" placeholder="Name" required>
+        <label for="ai-email" class="sr-only">Email</label>
+        <input id="ai-email" type="email" name="email" placeholder="Email" required>
+        <label for="ai-message" class="sr-only">Message</label>
+        <textarea id="ai-message" name="message" placeholder="Tell us about your team" rows="5" required></textarea>
+        <input type="hidden" name="_subject" value="Self-Led AI Integration Page - New inquiry">
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  </main>
+
+  <hr class="section-divider" aria-hidden="true">
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <a href="https://fino.website"><img src="../images/logo-white.png" alt="FINO" width="564" height="195"></a>
+    <p>&copy; 2026 FINO Advising LLC &middot; fino.website</p>
+    <p>Created by <a href="/studio/" style="color: #f0a018; text-decoration: none; text-shadow: 0 0 8px rgba(232,66,10,0.5), 0 0 20px rgba(240,160,24,0.3);">FINO Studio</a></p>
+    <div class="footer-credentials">
+      <div class="footer-credentials-logos">
+        <img src="../images/sam-vendor.png" alt="SAM.gov Verified Vendor" width="349" height="269">
+        <img src="../images/cle-provider.jpg" alt="The Florida Bar CLE Provider" width="635" height="264">
+      </div>
+      <span>Certified Federal Contractor &middot; Florida Bar CLE Provider</span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.lp-accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        item.parentElement.querySelectorAll('.lp-accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.lp-accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+  <script>
+    document.getElementById('ai-contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          form.innerHTML = '<div class="form-success"><h3>Thank You</h3><p>Your message has been sent. We will get back to you soon.</p></div>';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          alert('Something went wrong. Please try again or email us directly.');
+        }
+      }).catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please try again or email us directly.');
+      });
+    });
+  </script>
+</body>
+</html>
