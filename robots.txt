@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
 
+# Explicit allow for AI crawlers — FINO's stance is open discoverability via AI assistants
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://fino.website/sitemap.xml
