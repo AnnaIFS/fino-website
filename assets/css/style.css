@@ -178,6 +178,7 @@ section {
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: #e8e0d3;
   transition: color 0.3s ease;
   text-shadow: 0 1px 3px rgba(0,0,0,1), 0 2px 16px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9);
