@@ -152,6 +152,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.25rem;
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -170,11 +171,11 @@ section {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2.2rem;
+  gap: clamp(0.7rem, 1.4vw, 2rem);
 }
 
 .nav-links a {
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 1.1vw, 0.85rem);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -198,8 +199,8 @@ section {
 }
 
 .nav-cta {
-  padding: 0.55rem 1.4rem !important;
-  font-size: 0.8rem !important;
+  padding: 0.5rem 1.15rem !important;
+  font-size: 0.75rem !important;
 }
 
 /* Hamburger */
