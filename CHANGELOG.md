@@ -18,6 +18,43 @@ To see the list of available tags: `git tag -l`
 
 ---
 
+## 2026-08-08 · Full copy pass and a two-family menu
+
+Tag before this change: **`before-copy-pass-2026-08-08`**
+
+A full editorial pass across every page, plus a restructured navigation.
+
+What changed:
+
+- **Voice cleanup site-wide**: the word "real" went from 45 uses to 2, "actually" from 11
+  to 4, and every "not X, but Y" construction is gone. The "No this. No that. Just the
+  other" formula now appears only on the landing pages, where it answers objections.
+- **No more positioning against anyone else.** The offsites page opened by criticising
+  other retreats and now opens by saying what ours is. The same went for the workshop
+  and consultant comparisons on the homepage, Circles, and the AI page.
+- **One thesis, said once.** The About page stated the same idea three times. Now the
+  hero, the origin story, and the name section each make a different point.
+- **Homepage**: "The Only Thing AI Cannot Automate Is You" was arguing against the AI
+  offering two cards above it. Replaced with "We Work on Both Systems at Once," which is
+  the actual business.
+- **Navigation**: eight menu items became five, grouped into Programs (Circles, Coaching,
+  Offsites) and AI & Operations (AI Integration, Fractional Operations, Law Firms,
+  Studio), with dropdowns on desktop and grouped sections on mobile.
+- **Dario's profile**: rewritten. "Medicine man" and "vision quester" are out, and two
+  facts were corrected against his own site (he co-founded Fuoco Sacro, and the Florida
+  organization is the Sumak Kawsay Foundation).
+- **Overclaims softened**: "We have heard every concern," "we have never had to convince
+  an entire firm," and the guaranteed-timeline promises are gone or hedged honestly.
+- **Law firms**: engagements now state a starting price of $3,500.
+- **SEO**: nine meta descriptions trimmed to the 150 to 160 character range so they stop
+  getting cut off in search results. The Circles FAQ structured data was also re-synced
+  to the answers now on the page, which Google requires.
+- **The book now links straight to Amazon** from every place a visitor can click:
+  Anna's author credential on four pages, the homepage novel button, and the Circles
+  entry offer. No stop at annamilaeva.com along the way.
+- **Footer** rebuilt as a proper sitemap in the same two families as the menu, and it
+  now includes the Law Firms and FINO Studio pages, which it had been missing.
+
 ## 2026-08-08 · The novel enters the site
 
 Tag before this change: **`before-book-2026-08-08`**
