@@ -1123,18 +1123,21 @@ section {
 .book-cover-wrap::before {
   content: '';
   position: absolute;
-  inset: 8% 4%;
+  inset: 6% 2%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(232, 66, 10, 0.16), transparent 75%);
-  filter: blur(28px);
+  background: radial-gradient(closest-side, rgba(232, 66, 10, 0.18), transparent 72%);
+  filter: blur(36px);
   z-index: 0;
 }
 .book-cover-wrap img {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 360px;
+  max-width: 340px;
   height: auto;
+  border-radius: var(--radius);
+  border: 1px solid rgba(232, 224, 211, 0.12);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
 }
 
 .book-text h2 { margin-bottom: 1.5rem; }
