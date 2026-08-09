@@ -1,0 +1,268 @@
+/* ============================================
+   FINO — Shared site navigation
+   ============================================
+   Standalone component for pages that carry their own inline style
+   system (self-led-ai-integration, projects/law-firms, studio) and do
+   not load style.css. Every value is explicit rather than inherited,
+   so a host page's :root cannot shift it. Deliberately avoids .btn and
+   .container, which those pages already define.
+   ============================================ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+.nav.scrolled {
+  background: rgba(11, 10, 8, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(232, 224, 211, 0.07);
+}
+
+.nav a { text-decoration: none; }
+
+.nav-logo {
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,1)) drop-shadow(0 2px 16px rgba(0,0,0,0.95)) drop-shadow(0 0 30px rgba(0,0,0,0.9));
+}
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.7rem, 1.4vw, 2rem);
+}
+.nav-links a {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.85rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #e8e0d3;
+  transition: color 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0,0,0,1), 0 2px 16px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9);
+}
+.nav-links a:hover { color: #ffffff; }
+.nav-links a.active {
+  color: #ffffff;
+  border-bottom: 1px solid #e8420a;
+  padding-bottom: 2px;
+}
+
+/* CTA. Named apart from .btn, which the host pages already own. */
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.15rem;
+  border-radius: 4px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  background: transparent;
+  color: #e8e0d3;
+  border: 1.5px solid #e8420a;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-cta-btn:hover {
+  border-color: #f0a018;
+  box-shadow: 0 0 24px rgba(232, 66, 10, 0.3);
+}
+
+/* --- Dropdowns --- */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.85rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #e8e0d3;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0,0,0,1), 0 2px 16px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.9);
+}
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle[aria-expanded="true"] { color: #ffffff; }
+.nav-dropdown-toggle.active {
+  color: #ffffff;
+  border-bottom: 1px solid #e8420a;
+  padding-bottom: 2px;
+}
+.nav-dropdown-toggle .caret {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.3s ease;
+}
+.nav-dropdown-toggle[aria-expanded="true"] .caret {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 265px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.7rem;
+  background: rgba(17, 16, 9, 0.98);
+  border: 1px solid rgba(232, 224, 211, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+/* invisible bridge so the menu survives the gap under the trigger */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.9rem;
+  height: 0.9rem;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  text-shadow: none;
+  color: #d2cab9;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible {
+  background: rgba(232, 66, 10, 0.12);
+  color: #ffffff;
+}
+.nav-dropdown-menu a .item-note {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: #a09688;
+  margin-top: 0.15rem;
+  text-transform: none;
+}
+
+/* --- Hamburger --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #e8e0d3;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* --- Mobile overlay --- */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 10, 8, 0.97);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.9rem;
+  padding: 5rem 1.5rem 3rem;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu a {
+  font-family: 'Cormorant SC', serif;
+  font-size: 1.4rem;
+  color: #e8e0d3;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: #f0a018; }
+.mobile-menu .nav-cta-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  padding: 0.8rem 1.8rem;
+}
+.mobile-menu-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+.mobile-menu-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #e8420a, #f0a018);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.mobile-menu-group a { font-size: 1.25rem; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+}

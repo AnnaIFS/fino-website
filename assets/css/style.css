@@ -1017,6 +1017,11 @@ section[id] {
   align-items: start;
 }
 
+/* Heading above a two-column body so both columns start on the same line */
+.section-lead {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
 .two-col-sticky {
   align-items: start;
 }
