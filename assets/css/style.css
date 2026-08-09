@@ -1347,10 +1347,16 @@ section[id] {
 /* Inline links inside the credentials list read as links at rest */
 .founder-creds .founder-name-link {
   color: var(--gold);
-  border-bottom-color: rgba(240, 160, 24, 0.45);
+  border-bottom-color: transparent;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(240, 160, 24, 0.65);
+  text-underline-offset: 4px;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 .founder-creds .founder-name-link:hover {
-  border-bottom-color: var(--gold);
+  border-bottom-color: transparent;
+  text-decoration-color: var(--gold);
 }
 
 /* ============================================
