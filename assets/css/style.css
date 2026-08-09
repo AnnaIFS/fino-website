@@ -103,6 +103,11 @@ section {
   position: relative;
 }
 
+/* Anchor targets clear the fixed nav */
+section[id] {
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+}
+
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
@@ -660,6 +665,7 @@ section {
 .why-now {
   position: relative;
   overflow: hidden;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 .why-now-bg {
   position: absolute;
@@ -700,6 +706,7 @@ section {
 .who {
   position: relative;
   overflow: hidden;
+  padding-top: clamp(2.5rem, 5vw, 4rem);
 }
 .who-bg {
   position: absolute;
@@ -1296,10 +1303,6 @@ section {
 }
 
 /* Compact variant: the entry offer on the Circles page */
-.book-entry-section {
-  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
-}
-
 .book-entry {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -1340,6 +1343,14 @@ section {
 .founder-name-link:hover {
   color: var(--gold);
   border-color: rgba(240, 160, 24, 0.5);
+}
+/* Inline links inside the credentials list read as links at rest */
+.founder-creds .founder-name-link {
+  color: var(--gold);
+  border-bottom-color: rgba(240, 160, 24, 0.45);
+}
+.founder-creds .founder-name-link:hover {
+  border-bottom-color: var(--gold);
 }
 
 /* ============================================
