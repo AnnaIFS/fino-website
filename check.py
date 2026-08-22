@@ -181,6 +181,18 @@ for f in HTML:
     if not m: continue
     for href, label, desc in re.findall(r'href="([^"]+)">([^<]+)<em>([^<]*)</em>', m.group(0)):
         _menu[href.replace("../", "")].add(desc)
+_nav = _c.defaultdict(set)
+for f in HTML:
+    m = re.search(r'<div class="nav-links">.*?</nav>', open(f, encoding="utf-8").read(), re.S)
+    if not m: continue
+    for href, label, note in re.findall(r'href="([^"]+)">([^<]+)<span class="item-note">([^<]*)</span>', m.group(0)):
+        _nav[href.replace("../", "")].add(note)
+for href, vals in _nav.items():
+    if len(vals) > 1:
+        flag("nav-drift", "%s described %d ways in the nav: %s" % (href, len(vals), " | ".join(sorted(vals))[:70]))
+    if href in _menu and _menu[href] != vals:
+        flag("nav-drift", "%s: nav says %r, mobile menu says %r" % (href, list(vals)[0][:40], list(_menu[href])[0][:40]))
+
 for href, vals in _menu.items():
     if len(vals) > 1:
         flag("menu-drift", "%s described %d different ways: %s" % (href, len(vals), " | ".join(sorted(vals))[:80]))
