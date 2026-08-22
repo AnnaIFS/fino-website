@@ -562,7 +562,10 @@ body::after{
 .novel-grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,52px);align-items:start;}
 .novel-cover{perspective:1000px;}
 .novel-cover img{
-  width:100%;height:auto;display:block;border:1px solid var(--rule-strong);
+  /* the cover carries a blank band above the title, about 15 percent of its
+     height. cropped here rather than in the file, so the artwork is untouched. */
+  width:100%;height:auto;aspect-ratio:760/1094;object-fit:cover;object-position:center bottom;
+  display:block;border:1px solid var(--rule-strong);
   box-shadow:0 26px 60px -26px rgba(0,0,0,.9),0 0 40px -18px rgba(255,86,56,.45);
   transform:rotateY(-7deg);transform-origin:left center;
 }
