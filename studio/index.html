@@ -1,1193 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Design for Practitioners &amp; Coaches · FINO Studio</title>
-  <meta name="description" content="Custom websites for therapists, coaches, and independent practitioners. We start with a voice interview, then build a site that sounds like you.">
-  <meta property="og:title" content="Website Design for Practitioners &amp; Coaches · FINO Studio">
-  <meta property="og:description" content="Bespoke websites for therapists, coaches, and independent practitioners. We interview you first, then build a site that sounds like you.">
-  <meta property="og:image" content="https://fino.website/studio/og-image.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fino.website/studio/">
-  <meta property="og:site_name" content="FINO Studio">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FINO Studio · Website Design for Practitioners">
-  <meta name="twitter:description" content="Custom websites for practitioners and independent professionals. We start by interviewing you.">
-  <meta name="twitter:image" content="https://fino.website/studio/og-image.png">
-  <link rel="canonical" href="https://fino.website/studio/">
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=4">
-  <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon.png?v=4">
-  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png?v=4">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/nav.css">
-  <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg-dark: #0b0a08;
-      --bg-alt: #111009;
-      --gradient-start: #e8420a;
-      --gradient-end: #f0a018;
-      --text-body: #e8e0d4;
-      --text-muted: #a09688;
-      --border-subtle: #1e1a14;
-      --font-heading: 'Cormorant SC', serif;
-      --font-body: 'Outfit', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; font-size: 17px; }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--bg-dark);
-      color: var(--text-body);
-      font-weight: 300;
-      line-height: 1.7;
-      font-size: 1rem;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    /* ── Section Divider ── */
-    .studio-divider {
-      display: block;
-      width: 100%;
-      height: 1px;
-      border: none;
-      background: linear-gradient(to right, var(--gradient-start), var(--gradient-end) 40%, transparent 80%);
-      position: relative;
-      overflow: visible;
-    }
-    .studio-divider::after {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 0;
-      width: 120px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-      border-radius: 2px;
-      animation: divider-glow 3s ease-in-out infinite;
-    }
-    @keyframes divider-glow {
-      0%, 100% { opacity: 0.5; width: 120px; }
-      50% { opacity: 1; width: 200px; }
-    }
-
-    .section-label {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
-    }
-
-    .section-headline {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 600;
-      line-height: 1.25;
-      color: var(--text-body);
-      margin-bottom: 24px;
-    }
-
-    .section-body {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 640px;
-      line-height: 1.8;
-    }
-
-    .bg-dark { background: var(--bg-dark); }
-    .bg-alt { background: var(--bg-alt); }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: #0b0a08;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .btn-primary:focus-visible,
-    .portfolio-link:focus-visible,
-    .footer-sub a:focus-visible,
-    .site-header a:focus-visible {
-      outline: 2px solid var(--gradient-end);
-      outline-offset: 3px;
-    }
-
-    /* ── Header ── */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 20px 0;
-      background: rgba(11, 10, 8, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .site-header .container a {
-      display: inline-block;
-    }
-
-    .site-header img {
-      height: 24px;
-      width: auto;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      padding-top: 160px;
-      padding-bottom: 100px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-inner {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero-content { flex: 1; min-width: 0; }
-
-    .hero-logo-text {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .hero-headline {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--text-body);
-      margin-bottom: 20px;
-    }
-
-    .hero-subline {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.8;
-      margin-bottom: 36px;
-    }
-
-    .hero-art {
-      flex-shrink: 0;
-      width: 480px;
-      height: 480px;
-      margin-right: -80px;
-      margin-top: -40px;
-    }
-
-    .hero-art svg {
-      width: 100%;
-      height: 100%;
-      animation: spiral-rotate 60s linear infinite;
-    }
-
-    @keyframes spiral-rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes spiral-dash {
-      from { stroke-dashoffset: 0; }
-      to { stroke-dashoffset: -96; }
-    }
-
-    .hero-art svg path {
-      stroke-dasharray: 40 8;
-      animation: spiral-dash 20s linear infinite;
-    }
-
-    /* ── Process Steps ── */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-    }
-
-    .step-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 36px 32px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .step-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 20px rgba(232, 66, 10, 0.15), 0 0 48px rgba(240, 160, 24, 0.08);
-      border-color: rgba(232, 66, 10, 0.35);
-      background: #13120f;
-    }
-
-    .step-card:active {
-      transform: scale(0.96);
-      box-shadow: 0 0 12px rgba(232, 66, 10, 0.25), 0 0 36px rgba(240, 160, 24, 0.12);
-      border-color: rgba(232, 66, 10, 0.5);
-      background: #15130f;
-    }
-
-    .step-number {
-      font-family: var(--font-heading);
-      font-size: 2.4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .step-title {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text-body);
-      margin-bottom: 12px;
-    }
-
-    .step-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* ── Pricing ── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 48px;
-    }
-
-    .pricing-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 36px 28px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 28px rgba(232, 66, 10, 0.08);
-    }
-
-    .pricing-card:active {
-      transform: scale(0.97);
-      box-shadow: 0 2px 8px rgba(232, 66, 10, 0.12);
-    }
-
-    .pricing-name {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text-body);
-      margin-bottom: 4px;
-    }
-
-    .pricing-price {
-      font-family: var(--font-body);
-      font-size: 2rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-    }
-
-    .pricing-features {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .pricing-best {
-      font-size: 0.85rem;
-      color: var(--text-body);
-      font-weight: 400;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .pricing-note {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      max-width: 680px;
-      margin: 48px auto 0;
-      line-height: 1.8;
-    }
-
-    /* ── Portfolio ── */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 48px;
-    }
-
-    .portfolio-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 32px rgba(232, 66, 10, 0.1);
-      border-color: #2a2418;
-    }
-
-    .portfolio-card:active {
-      transform: scale(0.97);
-      box-shadow: 0 2px 8px rgba(232, 66, 10, 0.15);
-    }
-
-    .portfolio-thumb {
-      width: 100%;
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(232, 66, 10, 0.06), rgba(240, 160, 24, 0.06));
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .portfolio-thumb i {
-      font-size: 3rem;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0.5;
-    }
-
-    .portfolio-info {
-      padding: 24px;
-    }
-
-    .portfolio-name {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-body);
-      margin-bottom: 6px;
-    }
-
-    .portfolio-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    .portfolio-link {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-body);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.2s;
-    }
-
-    .portfolio-link:hover { opacity: 0.7; }
-
-    .badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 3px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: #0b0a08;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    .portfolio-card--cta {
-      border: 1px dashed rgba(232, 66, 10, 0.25);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .portfolio-card--cta:hover {
-      border-color: rgba(232, 66, 10, 0.45);
-    }
-
-    .cta-thumb-shimmer {
-      position: relative;
-      background: linear-gradient(135deg, rgba(232, 66, 10, 0.08), rgba(240, 160, 24, 0.04), rgba(232, 66, 10, 0.08)) !important;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cta-thumb-shimmer::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; right: 0; bottom: 0;
-      width: 200%;
-      background: linear-gradient(105deg, transparent 30%, rgba(240, 160, 24, 0.06) 45%, rgba(232, 66, 10, 0.12) 50%, rgba(240, 160, 24, 0.06) 55%, transparent 70%);
-      animation: shimmer 4s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-30%); }
-      100% { transform: translateX(30%); }
-    }
-
-    .cta-sparkle {
-      font-size: 1.6rem;
-      color: #f0a018;
-      opacity: 0.4;
-      animation: sparkle-pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes sparkle-pulse {
-      0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-      50% { opacity: 0.7; transform: scale(1.15) rotate(8deg); }
-    }
-
-    .thumb-coming-soon {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #f0a018;
-      text-shadow: 0 0 12px rgba(232, 66, 10, 0.7), 0 0 32px rgba(240, 160, 24, 0.5), 0 0 60px rgba(232, 66, 10, 0.3);
-      animation: glow-bright 2s ease-in-out infinite;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes glow-bright {
-      0%, 100% { text-shadow: 0 0 12px rgba(232, 66, 10, 0.7), 0 0 32px rgba(240, 160, 24, 0.5), 0 0 60px rgba(232, 66, 10, 0.3); }
-      50% { text-shadow: 0 0 20px rgba(232, 66, 10, 0.9), 0 0 48px rgba(240, 160, 24, 0.7), 0 0 80px rgba(232, 66, 10, 0.5), 0 0 120px rgba(240, 160, 24, 0.2); }
-    }
-
-    .cta-link-glow {
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 500;
-    }
-
-    /* ── Who We Are ── */
-    .bios-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-    }
-
-    .bio-card {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 24px;
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .bio-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 28px rgba(232, 66, 10, 0.08);
-      border-color: #2a2418;
-    }
-
-    .bio-card:active {
-      transform: scale(0.97);
-      box-shadow: 0 2px 8px rgba(232, 66, 10, 0.12);
-    }
-
-    .bio-photo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .bio-name {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--text-body);
-      margin-bottom: 8px;
-    }
-
-    .bio-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* ── CTA ── */
-    .cta-section {
-      text-align: center;
-      padding: 72px 0;
-    }
-
-    .cta-section .section-headline {
-      max-width: 560px;
-      margin: 0 auto 20px;
-    }
-
-    .cta-section .section-body {
-      max-width: 520px;
-      margin: 0 auto 36px;
-      text-align: center;
-    }
-
-    .cta-small {
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* ── Contact Form ── */
-    .contact-section {
-      text-align: center;
-      padding: 72px 0;
-    }
-    .contact-section .section-headline {
-      max-width: 560px;
-      margin: 0 auto 12px;
-    }
-    .contact-section .section-body {
-      max-width: 520px;
-      margin: 0 auto 40px;
-      text-align: center;
-    }
-    .contact-form {
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      display: block;
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-body);
-      padding: 0.8rem 1rem;
-      margin-bottom: 0.8rem;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      border-radius: 4px;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--gradient-start);
-    }
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    .contact-form button[type="submit"] {
-      display: inline-block;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: #0b0a08;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.2s;
-      width: 100%;
-    }
-    .contact-form button[type="submit"]:hover {
-      opacity: 0.85;
-      transform: translateY(-1px);
-    }
-    .contact-form button[type="submit"]:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .form-success {
-      text-align: center;
-      padding: 3rem 0;
-    }
-    .form-success h3 {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      margin-bottom: 0.8rem;
-      color: var(--gradient-end);
-    }
-    .form-success p {
-      margin: 0 auto;
-      max-width: 400px;
-      text-align: center;
-    }
-
-    /* ── Footer ── */
-    .site-footer {
-      text-align: center;
-      padding: 48px 0;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .footer-logo {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
-    }
-
-    .footer-sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .footer-sub a {
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-
-    .footer-sub a:hover { color: var(--text-body); }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-art svg, .hero-art svg path,
-      .cta-sparkle, .thumb-coming-soon, .cta-thumb-shimmer::after,
-      .studio-divider::after { animation: none !important; }
-      .step-card, .pricing-card, .portfolio-card, .bio-card { transition: none !important; }
-    }
-
-    .section-body--flush { margin-bottom: 0; }
-    .section-body--center { text-align: center; margin: 0 auto 36px; }
-
-    /* ── Tablet ── */
-    @media (max-width: 1024px) {
-      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
-    }
-
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-      section { padding: 56px 0; }
-
-      .hero { padding-top: 100px; padding-bottom: 56px; }
-      .hero-art { display: none; }
-
-      .steps-grid { grid-template-columns: 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr; }
-      .bios-grid { grid-template-columns: 1fr; }
-
-      /* Mobile readability bump */
-      .section-label { font-size: 0.95rem; }
-      .section-body { font-size: 1.15rem; }
-      .btn-primary { font-size: 1.05rem; }
-      .step-desc { font-size: 1.1rem; }
-      .pricing-features { font-size: 1.1rem; }
-      .pricing-best { font-size: 1.05rem; }
-      .pricing-note { font-size: 1.05rem; }
-      .portfolio-desc { font-size: 1.05rem; }
-      .portfolio-link { font-size: 1.05rem; }
-      .badge { font-size: 0.85rem; }
-      .bio-text { font-size: 1.05rem; }
-      .cta-small { font-size: 1.05rem; }
-      .footer-sub { font-size: 0.95rem; }
-      .contact-form input,
-      .contact-form textarea { font-size: 1.05rem; }
-      .contact-form button[type="submit"] { font-size: 1.05rem; }
-    }
-
-    /* ── Print ── */
-    @media print {
-      * { color: #222 !important; background: #fff !important; box-shadow: none !important; }
-
-      .site-header { position: static; backdrop-filter: none; padding: 12px 0; }
-
-      .hero-logo-text, .footer-logo, .gradient-text, .section-label,
-      .step-number, .pricing-price, .portfolio-card--cta .portfolio-link {
-        -webkit-text-fill-color: #c43a08 !important;
-        color: #c43a08 !important;
-      }
-
-      .hero-art { display: none; }
-
-      section { padding: 36px 0; break-inside: avoid; }
-
-      .btn-primary {
-        border: 2px solid #c43a08;
-        color: #c43a08 !important;
-        background: none !important;
-        padding: 8px 20px;
-      }
-
-      .portfolio-card, .pricing-card, .step-card {
-        border: 1px solid #ccc !important;
-        break-inside: avoid;
-      }
-
-      .portfolio-thumb { height: 60px; background: #eee !important; }
-      .badge { border: 1px solid #c43a08; background: none !important; color: #c43a08 !important; }
-
-      .site-footer { border-top: 1px solid #ccc; }
-    }
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "FINO Studio · Website Design for Practitioners",
-    "description": "Bespoke websites for therapists, coaches, and independent practitioners. We start with a deep interview, then build a site that sounds like you and brings the right clients.",
-    "provider": {
-      "@type": "Organization",
-      "name": "FINO Studio",
-      "url": "https://fino.website/studio/",
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "FINO",
-        "url": "https://fino.website"
-      }
-    },
-    "serviceType": "Web Design",
-    "areaServed": "Worldwide",
-    "url": "https://fino.website/studio/",
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Therapists, coaches, independent practitioners"
-    }
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINO Studio &middot; Websites for Practitioners</title>
+<meta name="description" content="Custom websites for coaches, therapists and independent practitioners. We interview you first, then build a site that sounds like you. From $850.">
+<meta property="og:title" content="FINO Studio · Websites for Practitioners">
+<meta property="og:description" content="Custom websites for coaches, therapists and independent practitioners. We interview you first, then build a site that sounds like you. From $850.">
+<meta property="og:image" content="https://fino.website/images/og-image.jpg">
+<meta property="og:url" content="https://fino.website/studio/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FINO">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FINO Studio · Websites for Practitioners">
+<meta name="twitter:description" content="Custom websites for coaches, therapists and independent practitioners. We interview you first, then build a site that sounds like you. From $850.">
+<meta name="twitter:image" content="https://fino.website/images/og-image.jpg">
+<link rel="canonical" href="https://fino.website/studio/">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/v2.css?v=fe17b0b8">
 </head>
 <body>
 
-  <!-- ── Header ── -->
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <img src="/images/logo-white.png" alt="FINO" width="564" height="195">
-    </a>
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../"><img src="../assets/img/logo@2x.png" alt="FINO" width="420" height="138"></a>
     <div class="nav-links">
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Programs <span class="caret" aria-hidden="true"></span></button>
-        <div class="nav-dropdown-menu">
-          <a href="/circles/">Self-leadership Circles<span class="item-note">8-week program for teams</span></a>
-          <a href="/coaching/">IFS Coaching<span class="item-note">One-on-one and small groups</span></a>
-          <a href="/offsites/">Non-ordinary Offsites<span class="item-note">Immersive work in nature</span></a>
+      <div class="nav-drop">
+        <button class="nav-drop-btn" aria-expanded="false" aria-haspopup="true"><span class="dot dot-i"></span>Inner Operations <span class="caret" aria-hidden="true"></span></button>
+        <div class="nav-drop-menu">
+          <a href="../circles/">Self-leadership Circles<span class="item-note">8 weeks, online, for a team</span></a>
+          <a href="../coaching/">Leadership Coaching<span class="item-note">One to one and groups, online</span></a>
+          <a href="../offsites/">Non-ordinary Offsites<span class="item-note">In person, in nature</span></a>
         </div>
       </div>
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle active" aria-expanded="false" aria-haspopup="true">AI &amp; Operations <span class="caret" aria-hidden="true"></span></button>
-        <div class="nav-dropdown-menu">
-          <a href="/self-led-ai-integration/">Self-led AI Integration<span class="item-note">AI built into the work, with the team</span></a>
-          <a href="/projects/">Fractional Operations<span class="item-note">We fix what costs you hours</span></a>
-          <a href="/projects/law-firms/">Operations for Law Firms<span class="item-note">Includes a free scheduling tool</span></a>
-          <a href="/studio/" class="active">FINO Studio<span class="item-note">Websites for practitioners</span></a>
+      <div class="nav-drop">
+        <button class="nav-drop-btn" aria-expanded="false" aria-haspopup="true"><span class="dot dot-o"></span>Outer Operations <span class="caret" aria-hidden="true"></span></button>
+        <div class="nav-drop-menu">
+          <a href="../fractional-operations/">Fractional Operations<span class="item-note">90 days, month to month</span></a>
+          <a href="../self-led-ai-integration/">Self-led AI Integration<span class="item-note">AI built into how the team works</span></a>
+          <a href="../law-firms/">Operations for Law Firms<span class="item-note">Includes a free scheduling tool</span></a>
+          <a href="../studio/">FINO Studio<span class="item-note">Websites for practitioners</span></a>
         </div>
       </div>
-      <a href="/about/">About</a>
-      <a href="https://finoleadership.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
-      <a href="https://calendly.com/thefutureisnow/30min" class="nav-cta-btn" target="_blank" rel="noopener noreferrer">Book a Call</a>
+      <a href="../about/">About</a>
+      <a href="https://finoleadership.substack.com" target="_blank" rel="noopener noreferrer">Field Notes</a>
+      <a href="https://calendly.com/thefutureisnow/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
     </div>
-    <button class="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <div class="mobile-menu-group">
-      <p class="mobile-menu-label">Programs</p>
-      <a href="/circles/">Self-leadership Circles</a>
-      <a href="/coaching/">IFS Coaching</a>
-      <a href="/offsites/">Non-ordinary Offsites</a>
-    </div>
-    <div class="mobile-menu-group">
-      <p class="mobile-menu-label">AI &amp; Operations</p>
-      <a href="/self-led-ai-integration/">Self-led AI Integration</a>
-      <a href="/projects/">Fractional Operations</a>
-      <a href="/projects/law-firms/">Operations for Law Firms</a>
-      <a href="/studio/">FINO Studio</a>
-    </div>
-    <div class="mobile-menu-group">
-      <a href="/about/">About</a>
-      <a href="https://finoleadership.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
-    </div>
-    <a href="https://calendly.com/thefutureisnow/30min" class="nav-cta-btn" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
+</nav>
 
-  <main>
+<div class="mob" id="mob">
+  <div class="mob-group">
+    <p class="mob-label">Inner Operations</p>
+    <a href="../circles/">Self-leadership Circles<em>8 weeks, online, for a team</em></a>
+    <a href="../coaching/">Leadership Coaching<em>Online</em></a>
+    <a href="../offsites/">Non-ordinary Offsites<em>In person, in nature</em></a>
+  </div>
+  <div class="mob-group">
+    <p class="mob-label">Outer Operations</p>
+    <a href="../fractional-operations/">Fractional Operations<em>90 days, month to month</em></a>
+    <a href="../self-led-ai-integration/">Self-led AI Integration<em>The people, the work, then the tools</em></a>
+    <a href="../law-firms/">Operations for Law Firms<em>Includes a free scheduling tool</em></a>
+    <a href="../studio/">FINO Studio<em>Websites for practitioners</em></a>
+  </div>
+  <div class="mob-group">
+    <p class="mob-label">FINO</p>
+    <a href="../about/">About</a>
+    <a href="https://finoleadership.substack.com" target="_blank" rel="noopener noreferrer">Field Notes</a>
+  </div>
+  <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
+</div>
 
-  <!-- ── Hero ── -->
-  <section class="hero bg-dark">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <p class="hero-logo-text gradient-text">FINO Studio</p>
-          <p class="section-label">Website Design for Practitioners</p>
-          <h1 class="hero-headline">Your Work Deserves a Website That Sounds Like You.</h1>
-          <p class="hero-subline">We design custom websites for practitioners and independent professionals. We start by interviewing you. Everything follows from that.</p>
-          <a href="https://calendly.com/thefutureisnow/30min" class="btn-primary">Start With a Conversation</a>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#e8420a"/>
-                <stop offset="35%" stop-color="#f0541a"/>
-                <stop offset="65%" stop-color="#f0a018"/>
-                <stop offset="100%" stop-color="#f7c948"/>
-              </linearGradient>
-            </defs>
-            <path stroke="url(#g1)" stroke-width="1.1" opacity="0.55" fill="none" stroke-linecap="round" d="M160.0,160.0 L160.3,160.0 L160.6,160.1 L160.9,160.2 L161.1,160.4 L161.4,160.6 L161.6,160.8 L161.8,161.1 L161.9,161.5 L162.0,161.8 L162.1,162.2 L162.1,162.6 L162.0,163.0 L161.9,163.4 L161.7,163.8 L161.5,164.2 L161.3,164.6 L160.9,165.0 L160.5,165.4 L160.1,165.7 L159.6,166.0 L159.1,166.2 L158.5,166.4 L157.9,166.6 L157.3,166.7 L156.6,166.7 L155.9,166.6 L155.2,166.5 L154.5,166.3 L153.8,166.1 L153.1,165.7 L152.4,165.3 L151.7,164.8 L151.1,164.3 L150.5,163.6 L149.9,162.9 L149.4,162.2 L149.0,161.3 L148.6,160.4 L148.3,159.5 L148.1,158.5 L148.0,157.5 L147.9,156.4 L148.0,155.3 L148.1,154.2 L148.4,153.1 L148.7,152.0 L149.2,150.9 L149.8,149.9 L150.4,148.9 L151.2,147.9 L152.0,146.9 L153.0,146.1 L154.1,145.3 L155.2,144.5 L156.4,143.9 L157.7,143.4 L159.0,142.9 L160.4,142.6 L161.9,142.4 L163.4,142.3 L164.9,142.4 L166.4,142.5 L167.9,142.8 L169.5,143.3 L171.0,143.9 L172.4,144.6 L173.9,145.4 L175.2,146.4 L176.5,147.5 L177.7,148.7 L178.9,150.1 L179.9,151.5 L180.8,153.1 L181.6,154.7 L182.2,156.5 L182.7,158.3 L183.1,160.1 L183.3,162.1 L183.4,164.0 L183.2,166.0 L183.0,167.9 L182.5,169.9 L181.9,171.9 L181.1,173.8 L180.1,175.6 L179.0,177.4 L177.7,179.1 L176.3,180.8 L174.7,182.3 L173.0,183.7 L171.2,184.9 L169.2,186.0 L167.1,187.0 L164.9,187.8 L162.7,188.4 L160.4,188.8 L158.0,189.0 L155.6,189.1 L153.2,188.9 L150.7,188.5 L148.3,188.0 L145.9,187.2 L143.6,186.2 L141.3,185.0 L139.2,183.6 L137.1,182.1 L135.1,180.3 L133.3,178.4 L131.6,176.3 L130.1,174.1 L128.8,171.7 L127.7,169.2 L126.7,166.6 L126.0,163.9 L125.5,161.1 L125.2,158.3 L125.2,155.4 L125.4,152.5 L125.8,149.6 L126.5,146.7 L127.5,143.9 L128.6,141.2 L130.0,138.5 L131.6,135.9 L133.5,133.5 L135.5,131.2 L137.8,129.0 L140.2,127.1 L142.9,125.3 L145.6,123.7 L148.6,122.4 L151.6,121.3 L154.8,120.4 L158.0,119.9 L161.3,119.5 L164.6,119.5 L168.0,119.7 L171.3,120.2 L174.6,120.9 L177.9,122.0 L181.1,123.3 L184.2,124.9 L187.1,126.8 L190.0,128.9 L192.6,131.2 L195.1,133.8 L197.4,136.6 L199.4,139.6 L201.2,142.8 L202.8,146.1 L204.1,149.6 L205.1,153.1 L205.8,156.8 L206.2,160.6 L206.3,164.4 L206.1,168.2 L205.5,172.0 L204.7,175.8 L203.5,179.5 L202.1,183.1 L200.3,186.6 L198.2,190.0 L195.9,193.2 L193.2,196.3 L190.3,199.1 L187.2,201.7 L183.9,204.1 L180.3,206.1 L176.6,207.9 L172.7,209.4 L168.7,210.6 L164.5,211.4 L160.3,211.9 L156.1,212.1 L151.8,211.9 L147.5,211.3 L143.3,210.4 L139.1,209.1 L135.0,207.5 L131.1,205.6 L127.3,203.3 L123.6,200.7 L120.2,197.8 L117.0,194.6 L114.1,191.2 L111.4,187.5 L109.1,183.6 L107.1,179.4 L105.4,175.1 L104.0,170.7 L103.0,166.1 L102.4,161.4 L102.2,156.7 L102.4,152.0 L102.9,147.2 L103.9,142.5 L105.2,137.9 L106.9,133.4 L109.0,129.0 L111.5,124.7 L114.3,120.7 L117.4,116.9 L120.9,113.3 L124.7,110.0 L128.7,107.1 L133.0,104.4 L137.5,102.1 L142.2,100.2 L147.1,98.6 L152.1,97.5 L157.2,96.8 L162.4,96.4 L167.6,96.6 L172.8,97.1 L178.0,98.1 L183.1,99.5 L188.1,101.3 L192.9,103.5 L197.6,106.1 L202.1,109.1 L206.3,112.5 L210.2,116.3 L213.9,120.3 L217.2,124.7 L220.1,129.4 L222.7,134.3 L224.9,139.4 L226.7,144.7 L228.0,150.1 L228.9,155.7 L229.3,161.3 L229.2,167.0 L228.7,172.7 L227.8,178.3 L226.3,183.9 L224.4,189.3 L222.1,194.6 L219.3,199.8 L216.1,204.7 L212.5,209.3 L208.5,213.6 L204.1,217.6 L199.4,221.3 L194.5,224.6 L189.2,227.5 L183.7,229.9 L178.0,231.9 L172.1,233.4 L166.1,234.5 L160.0,235.0 L153.9,235.0 L147.7,234.6 L141.6,233.6 L135.5,232.2 L129.6,230.2 L123.8,227.8 L118.3,224.8 L112.9,221.5 L107.9,217.6 L103.1,213.4 L98.7,208.8 L94.7,203.8 L91.1,198.4 L87.9,192.8 L85.2,186.9 L83.0,180.8 L81.2,174.5 L80.0,168.1 L79.3,161.5 L79.2,154.9 L79.5,148.3 L80.5,141.7 L82.0,135.2 L84.0,128.8 L86.5,122.5 L89.5,116.5 L93.1,110.7 L97.1,105.2 L101.6,100.1 L106.5,95.3 L111.7,90.9 L117.4,86.9 L123.4,83.4 L129.6,80.4 L136.1,77.9 L142.9,75.9 L149.7,74.5 L156.7,73.7 L163.8,73.4 L170.9,73.7 L178.0,74.6 L185.0,76.0 L191.8,78.1 L198.6,80.7 L205.1,83.8 L211.3,87.5 L217.2,91.7 L222.8,96.4 L228.0,101.5 L232.8,107.1 L237.1,113.1 L241.0,119.4 L244.3,126.0 L247.1,132.9 L249.3,140.0 L250.9,147.4 L252.0,154.8 L252.4,162.3 L252.2,169.9 L251.4,177.4 L249.9,184.9 L247.9,192.3 L245.2,199.4 L242.0,206.4 L238.2,213.1 L233.8,219.5 L228.9,225.5 L223.5,231.2 L217.7,236.3 L211.4,241.1 L204.8,245.2 L197.8,248.9 L190.5,252.0 L183.0,254.4 L175.3,256.3 L167.4,257.5 L159.4,258.1 L151.4,258.0 L143.3,257.3 L135.4,255.9 L127.5,253.8 L119.9,251.2 L112.4,247.8 L105.3,243.9 L98.4,239.4 L91.9,234.3 L85.9,228.7 L80.3,222.7 L75.2,216.1 L70.6,209.1 L66.6,201.8 L63.2,194.1 L60.5,186.2 L58.4,178.1 L57.0,169.7 L56.2,161.3 L56.1,152.8 L56.8,144.3 L58.1,135.9 L60.1,127.6 L62.8,119.4 L66.2,111.5 L70.2,103.8 L74.9,96.5 L80.1,89.6 L85.9,83.1 L92.3,77.1 L99.1,71.6 L106.3,66.6 L114.0,62.3 L122.0,58.6 L130.4,55.5 L138.9,53.2 L147.7,51.5 L156.6,50.6 L165.5,50.3 L174.5,50.9 L183.4,52.1 L192.2,54.1 L200.9,56.8 L209.3,60.2 L217.4,64.3 L225.2,69.1 L232.6,74.5 L239.5,80.5 L246.0,87.0 L251.9,94.1 L257.2,101.7 L261.9,109.7 L266.0,118.0 L269.4,126.7 L272.0,135.7 L273.9,144.9 L275.1,154.2 L275.4,163.6 L275.1,173.1 L273.9,182.5 L272.0,191.8 L269.3,200.9 L265.9,209.8 L261.7,218.4 L256.8,226.7 L251.3,234.6 L245.1,242.0 L238.4,248.9 L231.0,255.2 L223.2,261.0 L214.9,266.0 L206.2,270.4 L197.1,274.1 L187.7,277.1 L178.1,279.2 L168.3,280.6 L158.5,281.2 L148.6,281.0 L138.7,279.9 L128.9,278.1 L119.3,275.4 L109.9,272.0 L100.7,267.8 L92.0,262.8 L83.6,257.2 L75.8,250.9 L68.4,243.9 L61.6,236.3 L55.5,228.2 L50.0,219.6 L45.2,210.5 L41.2,201.1 L38.0,191.3 L35.5,181.3 L33.9,171.1 L33.1,160.8 L33.2,150.4 L34.1,140.1 L35.8,129.8 L38.4,119.7 L41.8,109.7 L46.1,100.1 L51.1,90.9 L56.8,82.0 L63.3,73.7 L70.5,65.9 L78.3,58.6 L86.6,52.1 L95.6,46.2 L104.9,41.0 L114.7,36.7 L124.8,33.1 L135.3,30.3 L145.9,28.5 L156.7,27.4 L167.5,27.3 L178.4,28.1 L189.1,29.7 L199.7,32.2 L210.1,35.6 L220.3,39.9 L230.0,44.9 L239.4,50.8 L248.2,57.4 L256.5,64.7 L264.2,72.7 L271.2,81.3 L277.5,90.5 L283.0,100.2 L287.8,110.3 L291.7,120.8 L294.8,131.7 L296.9,142.7 L298.2,153.9 L298.5,165.2 L297.9,176.5 L296.4,187.8 L294.0,198.9 L290.6,209.8 L286.4,220.4 L281.3,230.7 L275.4,240.5 L268.6,249.9 L261.2,258.7 L253.0,266.8 L244.1,274.3 L234.7,281.0 L224.7,287.0 L214.2,292.1 L203.4,296.4 L192.2,299.7 L180.7,302.2 L169.0,303.7 L157.3,304.3 L145.5,303.9 L133.7,302.5 L122.1,300.2 L110.7,296.9 L99.6,292.7 L88.8,287.6 L78.5,281.6 L68.6,274.8 L59.4,267.2 L50.7,258.8 L42.8,249.7 L35.6,240.0 L29.2,229.8 L23.7,219.0 L19.1,207.8 L15.4,196.2 L12.6,184.3 L10.8,172.2 L10.0,160.0"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
+<main>
 
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── Who This Is For ── -->
-  <section class="bg-alt">
-    <div class="container">
-      <p class="section-label">Who We Work With</p>
-      <h2 class="section-headline">Built for People Who Are Excellent at What They Do.</h2>
-      <p class="section-body">Coaches. Therapists. Yoga teachers. Consultants. Healers. Practitioners of all kinds. People who are excellent at what they do and need a website that reflects that.</p>
-    </div>
-  </section>
-
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── How It Works ── -->
-  <section class="bg-dark">
-    <div class="container">
-      <p class="section-label">The Process</p>
-      <h2 class="section-headline">We Interview You First. Everything Else Follows.</h2>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <h3 class="step-title">Voice Interview</h3>
-          <p class="step-desc">45 minutes with Anna or Dario. We ask, you talk. We learn your voice, your people, your story. This becomes the brief for everything.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <h3 class="step-title">Structure Review</h3>
-          <p class="step-desc">We present the page structure and design direction before building anything. You approve it. Changes at this stage cost nothing.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <h3 class="step-title">Content Deadline</h3>
-          <p class="step-desc">You send copy, photos, and links within 10 days of approval. We build. Five rounds of revisions included in every package.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">04</div>
-          <h3 class="step-title">Delivery</h3>
-          <p class="step-desc">A custom website that sounds like you, works on every device, and you can maintain yourself if you want to.</p>
+<section class="phero">
+  <div class="page">
+    <div class="phero-grid">
+      <div>
+        <p class="eyebrow"><span class="dot dot-o"></span>Outer operations</p>
+        <h1>A website that sounds like you</h1>
+        <p class="phero-sub">For coaches, therapists, consultants and independent practitioners. We interview you first, and everything follows from that.</p>
+        <div class="hero-btns">
+          <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── Pricing ── -->
-  <section class="bg-alt">
-    <div class="container">
-      <p class="section-label">Investment</p>
-      <h2 class="section-headline">Straightforward Pricing. No Surprises.</h2>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-name">Seed</div>
-          <div class="pricing-price">$850</div>
-          <p class="pricing-features">Up to 5 pages. Custom design built around your voice interview. Contact form included. Mobile optimized. Five revision rounds. Delivered in 2 weeks. Gets you online professionally.</p>
-          <p class="pricing-best"><strong>Best for:</strong> practitioners just starting out who need to exist online professionally.</p>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-name">Root</div>
-          <div class="pricing-price">$1,500</div>
-          <p class="pricing-features">Up to 8 pages. Everything in Seed plus deeper custom design, basic SEO setup, and one custom landing page for a specific offer or program. Delivered in 3 weeks.</p>
-          <p class="pricing-best"><strong>Best for:</strong> established practitioners ready for a complete online presence.</p>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-name">Grove</div>
-          <div class="pricing-price">$2,500</div>
-          <p class="pricing-features">Up to 12 pages. Everything in Root plus full SEO across all pages, multiple landing pages for specific offers or programs, and a blog or writing section. Delivered in 5 weeks. Built to grow.</p>
-          <p class="pricing-best"><strong>Best for:</strong> practitioners ready to scale their offering.</p>
-        </div>
-      </div>
-      <p class="pricing-note">Additional revisions after delivery are billed at $50/hour.</p>
-    </div>
-  </section>
-
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── Portfolio ── -->
-  <section class="bg-dark">
-    <div class="container">
-      <p class="section-label">Our Work</p>
-      <h2 class="section-headline">Sites We Have Built.</h2>
-      <p class="section-body section-body--flush">Every site starts with a conversation. Every site ends up sounding like the person it belongs to.</p>
-      <div class="portfolio-grid">
-
-        <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-flower-lotus" aria-hidden="true"></i></div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">Anna Milaeva</div>
-            <p class="portfolio-desc">Transformational Coach and IFS Practitioner. Personal coaching practice.</p>
-            <a href="https://annamilaeva.com" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-compass" aria-hidden="true"></i></div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">FINO</div>
-            <p class="portfolio-desc">Organizational Self-leadership and team transformation. Co-founded with Dario Giuffrida.</p>
-            <a href="https://fino.website" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-tree-evergreen" aria-hidden="true"></i></div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">Dario Giuffrida</div>
-            <p class="portfolio-desc">Psychologist, IFS practitioner, and community leader. Personal practice site.</p>
-            <a href="https://annaifs.github.io/dariog" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-calendar-dots" aria-hidden="true"></i></div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">FINO Scheduler <span class="badge">Web App</span></div>
-            <p class="portfolio-desc">Web app for law firms. Free scheduling tool for legal teams.</p>
-            <a href="https://scheduler.fino.website" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-mountains" aria-hidden="true"></i></div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">Sumak Kawsay</div>
-            <p class="portfolio-desc">Andean tradition of good living. Non-profit foundation and ceremonial community.</p>
-            <a href="https://sumakawsay.org" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-thumb"><i class="ph ph-gavel" aria-hidden="true"></i></div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">Trial Calendar <span class="badge">Custom</span></div>
-            <p class="portfolio-desc">Custom platform for law firms managing trial schedules, court deadlines, and case milestones.</p>
-            <span class="portfolio-link" style="color: var(--text-muted); cursor: default;">Private Build <i class="ph ph-lock" aria-hidden="true"></i></span>
-          </div>
-        </div>
-
-        <div class="portfolio-card portfolio-card--cta">
-          <div class="portfolio-thumb cta-thumb-shimmer">
-            <i class="ph ph-sparkle cta-sparkle" aria-hidden="true"></i>
-            <span class="thumb-coming-soon">Coming Soon</span>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-name">Yours</div>
-            <p class="portfolio-desc">The site you have been meaning to build. Let's start with the interview.</p>
-            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener noreferrer" class="portfolio-link cta-link-glow">Tell Us About It <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-
+      <div class="phero-art">
+        <svg data-art="voice" viewBox="0 0 600 430" role="img" aria-label="A coral point on the left opening into a structure of amber lines of different lengths, like a page written out from one person."></svg>
       </div>
     </div>
-  </section>
+    <div class="phero-facts">
+      <span><b>From $850</b></span>
+      <span><b>2 to 5</b> weeks</span>
+      <span><b>Five</b> revision rounds</span>
+      <span><b>Yours</b> to keep</span>
+    </div>
+  </div>
+</section>
 
-  <hr class="studio-divider" aria-hidden="true">
+<section>
+  <div class="page">
+    <div class="s-head col rv"><p class="eyebrow">Why we build these</p><h2>We needed one first</h2></div>
+    <div class="col prose rv">
+      <p class="lead">Practitioners are excellent at the work and rarely enjoy writing about it.</p>
+      <p>So we start with an interview. The words you use when you are talking are better than the words you write when you are trying to sound professional.</p>
+      <p>We built our own sites this way, then sites for other people. The code comes last.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ── Who We Are ── -->
-  <section class="bg-alt">
-    <div class="container">
-      <p class="section-label">Who We Are</p>
-      <h2 class="section-headline">We Build These Because We Have Needed Them.</h2>
-      <p class="section-body">Anna and Dario founded FINO to bring inner work into organizations. Along the way we built our own sites, then sites for others. Every site we design starts with understanding who you are and who you serve. The code comes last.</p>
-      <div class="bios-grid">
-        <div class="bio-card">
-          <img src="../images/anna.png?v=2" alt="Anna Milaeva" class="bio-photo" width="80" height="80">
+<section class="tinted">
+  <div class="page">
+    <div class="s-head col rv"><p class="eyebrow">How it goes</p><h2>Four steps, then it is live</h2></div>
+    <div class="steps rv">
+      <div class="step"><p class="step-n">01</p><div><h3>Voice interview</h3><p>Forty five minutes. We ask, you talk. That recording becomes the brief for everything else.</p></div></div>
+      <div class="step"><p class="step-n">02</p><div><h3>Structure</h3><p>We show you the page structure and the design direction before anything gets built. Changes at this stage cost nothing.</p></div></div>
+      <div class="step"><p class="step-n">03</p><div><h3>Build</h3><p>You send copy, photos and links within ten days. We build. Five rounds of revisions are included.</p></div></div>
+      <div class="step"><p class="step-n">04</p><div><h3>Handover</h3><p>It is yours. You own the domain, the hosting and the files, and you can maintain it yourself.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page">
+    <div class="s-head col rv"><p class="eyebrow">What it costs</p><h2>Three sizes, fixed price</h2>
+      <p>No hourly billing and no surprises. Revisions after delivery are $50 an hour.</p></div>
+    <div class="cards rv">
+      <div class="card card-o"><h3>Seed</h3>
+        <p>Up to five pages. Custom design from your voice interview, contact form, built for mobile. Five revision rounds.</p>
+        <span class="card-foot"><em>2 weeks &middot; getting online properly</em><b>$850</b></span></div>
+      <div class="card card-o"><h3>Root</h3>
+        <p>Up to eight pages. Everything in Seed, plus deeper design, search setup, and a landing page for one offer or program.</p>
+        <span class="card-foot"><em>3 weeks &middot; a full presence</em><b>$1,500</b></span></div>
+      <div class="card card-o"><h3>Grove</h3>
+        <p>Up to twelve pages. Everything in Root, plus search across the whole site, several landing pages, and a writing section.</p>
+        <span class="card-foot"><em>5 weeks &middot; built to grow</em><b>$2,500</b></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="page">
+    <div class="s-head col rv"><p class="eyebrow">Our work</p><h2>Sites and tools we have built</h2></div>
+    <div class="works rv">
+      <a class="work" href="https://annamilaeva.com" target="_blank" rel="noopener noreferrer"><b>Anna Milaeva</b><span>Coaching practice</span></a>
+      <a class="work" href="https://fino.website" target="_blank" rel="noopener noreferrer"><b>FINO</b><span>This site</span></a>
+      <a class="work" href="https://annaifs.github.io/dariog" target="_blank" rel="noopener noreferrer"><b>Dario Giuffrida</b><span>Psychology and community practice</span></a>
+      <a class="work" href="https://scheduler.fino.website" target="_blank" rel="noopener noreferrer"><b>FINO Scheduler</b><span>Free scheduling tool for legal teams</span></a>
+      <a class="work" href="https://sumakawsay.org" target="_blank" rel="noopener noreferrer"><b>Sumak Kawsay</b><span>Foundation and ceremonial community</span></a>
+      <div class="work"><b>Trial Calendar</b><span>Custom platform for a law firm. Private build.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="page rv">
+    <h2>Tell us about your practice</h2>
+    <p>Thirty minutes, and an honest answer about whether we are the right people to build it.</p>
+    <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="page">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand"><img src="../assets/img/logo@2x.png" alt="FINO" width="420" height="138"></div>
+        <div class="f-nav">
           <div>
-            <div class="bio-name">Anna Milaeva</div>
-            <p class="bio-text">Operations leader and IFS practitioner. I built my first site to solve my own problem, and the interview method came out of coaching. Now I build them for other practitioners.</p>
+            <p class="f-nav-label">Inner Operations</p>
+            <a href="../circles/">Self-leadership Circles</a>
+            <a href="../coaching/">Leadership Coaching</a>
+            <a href="../offsites/">Non-ordinary Offsites</a>
           </div>
-        </div>
-        <div class="bio-card">
-          <img src="../images/dario.png" alt="Dario Giuffrida" class="bio-photo" width="80" height="80">
           <div>
-            <div class="bio-name">Dario Giuffrida</div>
-            <p class="bio-text">Psychologist and facilitator. Twenty years of listening to how people describe their own work, which is most of what a good interview needs.</p>
+            <p class="f-nav-label">Outer Operations</p>
+            <a href="../fractional-operations/">Fractional Operations</a>
+            <a href="../self-led-ai-integration/">Self-led AI Integration</a>
+            <a href="../law-firms/">Operations for Law Firms</a>
+            <a href="../studio/">FINO Studio</a>
+          </div>
+          <div>
+            <p class="f-nav-label">FINO</p>
+            <a href="../about/">About</a>
+            <a href="https://finoleadership.substack.com" target="_blank" rel="noopener noreferrer">Field Notes</a>
+            <a href="https://calendly.com/thefutureisnow/30min" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
           </div>
         </div>
+        <p class="f-info">Based in the USA and Europe. We work online globally and in person across both continents. English, Spanish, Russian, Italian, Portuguese.</p>
+        <p class="f-copy">&copy; 2026 FINO Advising LLC</p>
+      </div>
+      <div class="f-form">
+        <h3>Get in touch</h3>
+        <form action="https://formspree.io/f/mjgaolev" method="POST">
+          <label class="sr-only" for="f-name">Name</label>
+          <input id="f-name" type="text" name="name" placeholder="Name" required>
+          <label class="sr-only" for="f-email">Email</label>
+          <input id="f-email" type="email" name="email" placeholder="Email" required>
+          <label class="sr-only" for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" placeholder="Message" rows="4" required></textarea>
+          <button type="submit">Send</button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── CTA ── -->
-  <section class="cta-section bg-dark">
-    <div class="container">
-      <h2 class="section-headline">Tell Us About Your Project.</h2>
-      <p class="section-body section-body--center">Start with a 30-minute conversation. We will ask the right questions and tell you whether we are the right fit.</p>
-      <a href="https://calendly.com/thefutureisnow/30min" class="btn-primary">Start With a Conversation</a>
-      <p class="cta-small">Tell us what you are building. We will take it from there.</p>
-    </div>
-  </section>
-
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── Contact Form ── -->
-  <section class="contact-section bg-alt">
-    <div class="container">
-      <h2 class="section-headline">Get in Touch</h2>
-      <p class="section-body section-body--center">Tell us about your project. We will get back to you soon.</p>
-      <form class="contact-form" id="studio-contact-form" action="https://formspree.io/f/mjgaolev" method="POST">
-        <label for="studio-name" class="sr-only">Name</label>
-        <input id="studio-name" type="text" name="name" placeholder="Name" required>
-        <label for="studio-email" class="sr-only">Email</label>
-        <input id="studio-email" type="email" name="email" placeholder="Email" required>
-        <label for="studio-message" class="sr-only">Message</label>
-        <textarea id="studio-message" name="message" placeholder="Tell us about your project" rows="5" required></textarea>
-        <input type="hidden" name="_subject" value="FINO Studio — New inquiry">
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  </main>
-
-  <hr class="studio-divider" aria-hidden="true">
-
-  <!-- ── Footer ── -->
-  <footer class="site-footer bg-alt">
-    <div class="container">
-      <div class="footer-logo">FINO Studio</div>
-      <p class="footer-sub">A FINO Initiative &middot; <a href="https://fino.website">fino.website</a></p>
-      <p class="footer-sub">&copy; 2026 FINO Advising LLC</p>
-    </div>
-  </footer>
-
-<script>
-  document.getElementById('studio-contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var form = this;
-    var btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending\u2026';
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(response) {
-      if (response.ok) {
-        form.innerHTML = '<div class="form-success"><h3>Thank You</h3><p>Your message has been sent. We will get back to you soon.</p></div>';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Send Message';
-        alert('Something went wrong. Please try again or email us directly.');
-      }
-    }).catch(function() {
-      btn.disabled = false;
-      btn.textContent = 'Send Message';
-      alert('Something went wrong. Please try again or email us directly.');
-    });
-  });
-</script>
-  <script src="/assets/js/nav.js"></script>
+<script src="../assets/js/v2.js?v=a0cd03b0"></script>
 </body>
 </html>

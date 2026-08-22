@@ -3,7 +3,9 @@
 import re, glob, os, subprocess, sys, collections
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-HTML = sorted(glob.glob("*.html") + glob.glob("*/index.html"))
+HTML = [f for f in sorted(glob.glob("*.html") + glob.glob("*/index.html") + glob.glob("*/*/index.html"))
+        if "http-equiv=\"refresh\"" not in open(f, encoding="utf-8").read()
+        and "google" not in f]
 CSS = re.sub(r"/\*.*?\*/", "", open("assets/css/v2.css", encoding="utf-8").read(), flags=re.S)
 JS = open("assets/js/v2.js", encoding="utf-8").read()
 problems = []
@@ -116,10 +118,16 @@ for f in HTML:
 # --- 7. banned characters and words in visible copy ---
 BANNED_W = ["delve", "intricate", "tapestry", "interplay", "foster", "garner", "underscore",
             "pivotal", "showcase", "enduring", "transformative", "holistic", "realm",
-            "harness", "at its core", "engagement", "framework", "facilitate", "leverage "]
+            "harness", "at its core", "engagement", "framework", "facilitate", "leverage ",
+            "patterns", "meeting room", "utilize", "seamless", "robust",
+            "synerg", "cutting-edge", "empower"]
+# the offsites h1 earns one "conference room". a second use anywhere is the tic.
+BANNED_TWICE = ["conference room"]
 for f in HTML:
     s = open(f, encoding="utf-8").read()
     body = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", s, flags=re.S)
+    # a quotation is somebody else's words. we do not police those.
+    body = re.sub(r"<blockquote[^>]*>.*?</blockquote>", "", body, flags=re.S)
     text = re.sub(r"&[a-zA-Z]+;", "", re.sub(r"<[^>]+>", " ", body))
     for ch, name in [("—", "em-dash"), ("–", "en-dash"), ("…", "ellipsis"), (";", "semicolon"), ("!", "exclamation")]:
         if ch in text:
@@ -127,12 +135,26 @@ for f in HTML:
     for w in BANNED_W:
         if re.search(r"\b" + w, text, re.I):
             flag("banned-word", "%s contains '%s'" % (f, w.strip()))
+    for w in BANNED_TWICE:
+        n = len(re.findall(r"\b" + w, text, re.I))
+        if n > 1:
+            flag("banned-word", "%s uses '%s' %d times, one is the limit" % (f, w, n))
 
 # --- 8. the JS actually runs ---
 r = subprocess.run(["node", "-e", "new Function(require('fs').readFileSync('assets/js/v2.js','utf8'))"],
                    capture_output=True, text=True)
 if r.returncode != 0:
     flag("js-parse", r.stderr.strip().split("\n")[0])
+
+# --- 8b. every generator actually runs. parsing is not running: a string
+#         passed where a number belongs only throws when the function is called,
+#         and one throw blanks every JS-gated reveal on the page.
+_harness = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smoke.js")
+if os.path.exists(_harness):
+    for _art in sorted(used):
+        _r = subprocess.run(["node", _harness, "assets/js/v2.js", _art], capture_output=True, text=True)
+        if _r.returncode != 0:
+            flag("art-throws", "%s: %s" % (_art, (_r.stderr or _r.stdout).strip().split("\n")[0][:120]))
 
 # --- 9. every page has a head, and one h1 ---
 for f in HTML:
@@ -150,6 +172,18 @@ for f in HTML:
     for tag in ("div", "section", "figure"):
         o = len(re.findall(r"<%s[ >]" % tag, b)); c2 = len(re.findall(r"</%s>" % tag, b))
         if o != c2: flag("tags", "%s has %d <%s> and %d closing" % (f, o, tag, c2))
+
+# --- 11. shared furniture must be identical on every page ---
+import collections as _c
+_menu = _c.defaultdict(set)
+for f in HTML:
+    m = re.search(r'<div class="mob" id="mob">.*?\n</div>', open(f, encoding="utf-8").read(), re.S)
+    if not m: continue
+    for href, label, desc in re.findall(r'href="([^"]+)">([^<]+)<em>([^<]*)</em>', m.group(0)):
+        _menu[href.replace("../", "")].add(desc)
+for href, vals in _menu.items():
+    if len(vals) > 1:
+        flag("menu-drift", "%s described %d different ways: %s" % (href, len(vals), " | ".join(sorted(vals))[:80]))
 
 # --- report ---
 if not problems:

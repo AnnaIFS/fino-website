@@ -383,24 +383,20 @@ cite{
 
 /* ---------- mobile: maximum readability ---------- */
 @media (max-width:900px){
-  .nav-links{display:none;}
-  .burger{display:flex;}
-  .mob{display:flex;}
   .footer-grid{grid-template-columns:1fr;}
 }
 @media (max-width:768px){
+  .terms{grid-template-columns:1fr;}
+  .hd-box{grid-template-columns:1fr;}
+
   h1{font-size:clamp(2.1rem,7.6vw,3rem);overflow-wrap:break-word;}
   h2{font-size:clamp(1.85rem,6.2vw,2.5rem);}
   h3{font-size:clamp(1.28rem,4.6vw,1.6rem);}
   p{font-size:1.12rem;line-height:1.8;}
-  .hero-sub{font-size:1.16rem;line-height:1.75;}
+  .hero-sub,.phero-sub{font-size:1.16rem;line-height:1.75;}
+  .s-head p{font-size:1.12rem;line-height:1.75;}
   .eyebrow{font-size:.78rem;letter-spacing:.16em;}
   .card p,.leg p,.fnd li,.term p{font-size:1.05rem;line-height:1.7;}
-  .card-foot{
-  display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;
-  margin-top:auto;padding-top:1.2rem;
-  font-family:var(--f-mono);font-size:.69rem;letter-spacing:.02em;line-height:1.4;
-}
   .who-list div,.f-nav a{font-size:1.05rem;}
   .stmt{max-width:100%;}
   .btn{font-size:1.05rem;padding:16px 28px;width:100%;justify-content:center;}
@@ -426,12 +422,15 @@ body::after{
 
 @media (max-width:960px){
   .hero-grid{grid-template-columns:1fr;}
-  .nav-links{display:none;}
+  /* the menu collapses but the ask stays visible. a header with only a
+     logo and a burger asks for nothing. */
+  .nav-links{display:flex;gap:0;}
+  .nav-links > *:not(.nav-cta){display:none;}
+  .nav-cta{font-size:.8rem;padding:8px 15px;margin-right:4px;}
   .burger{display:flex;}
   .mob{display:flex;}
   .cards{grid-template-columns:1fr;}
   .map-legend,.small-grid{grid-template-columns:1fr;gap:26px;}
-  .nav-links a:not(.nav-cta){display:none;}
 }
 @media (max-width:600px){
   body{font-size:16px;}
@@ -810,3 +809,21 @@ section:first-of-type > .page::before{display:none;}
   .phero-art{margin-top:2.2rem;}
   .phero-art svg{max-width:340px;margin:0 auto;}
 }
+
+/* the hours diagram: marks travelling back through the room each week has
+   opened up, on a loop, because the hours keep coming back rather than having
+   come back once. --d is the distance, set per row in the generator. */
+.hr-flow{animation-name:hr-flow;animation-timing-function:linear;animation-iteration-count:infinite;}
+@keyframes hr-flow{
+  0%{transform:translateX(0);opacity:0;}
+  12%{opacity:.95;}
+  80%{opacity:.95;}
+  100%{transform:translateX(calc(var(--d) * -1px));opacity:0;}
+}
+@media (prefers-reduced-motion:reduce){.hr-flow{display:none;}}
+
+/* law firms: the day being worked walks across the week, so the calendar is
+   in use rather than filed. --cw is one column, set in the generator. */
+.lf-col{animation:lf-col 14s steps(7,end) infinite;}
+@keyframes lf-col{from{transform:translateX(0);}to{transform:translateX(calc(var(--cw) * 7px));}}
+@media (prefers-reduced-motion:reduce){.lf-col{animation:none;}}

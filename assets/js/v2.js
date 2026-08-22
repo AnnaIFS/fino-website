@@ -622,6 +622,214 @@
       });
     },
 
+    /* THE HOURS.
+
+       Seven rows on the mark's pitch, each one a week of exactly the same
+       length, because the week never gets longer. The solid amber is what the
+       operational work is taking. It gives back a step each week, so the tips
+       walk left and land on a 45 degree line, which is the mark's own arm.
+
+       Behind each tip, in the room that has opened up, marks travel back
+       toward the start of the week and keep travelling. Lower rows have
+       further to travel, so the giving-back visibly grows.
+
+       Two earlier versions failed for opposite reasons. A chart alone showed
+       a result but not the thing happening. Flowing marks alone had motion
+       but no quantity, so it said nothing. It needs both. */
+    hours: function (svg) {
+      var W = 600, H = 420, i;
+      var G = gauge(W, 500);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)', X0 = 56, X1 = 544, N = 7, PITCH = 46, Y0 = 84;
+
+      for (i = 0; i < N; i++) {
+        var y = Y0 + i * PITCH, end = X1 - i * PITCH, key = i === N - 1;
+
+        // the week, always the same length. what is not solid is what came back.
+        svg.appendChild(el('line', { x1: X0, y1: y, x2: X1, y2: y, stroke: AMBER,
+          'stroke-width': G.w(HAIR), opacity: 0.16, 'class': 'hr-week' }));
+
+        // what the work is taking
+        svg.appendChild(el('line', { x1: X0, y1: y, x2: end, y2: y, stroke: AMBER,
+          'stroke-width': G.w(key ? KEY : LINE), 'stroke-linecap': 'round',
+          opacity: (0.92 - i * 0.03).toFixed(2), 'class': 'hr-bar' }));
+
+        // where it now ends
+        svg.appendChild(el('line', { x1: end, y1: y - 6, x2: end, y2: y + 6, stroke: AMBER,
+          'stroke-width': G.w(LINE), opacity: 0.85, 'class': 'hr-cap' }));
+
+        // and the hours travelling back into the room that opened
+        if (i === 0) continue;
+        var f = el('path', { d: 'M 8 -8 L 0 0 L 8 8', fill: 'none', stroke: AMBER,
+          'stroke-width': G.w(key ? KEY : LINE), 'stroke-linecap': 'round',
+          'stroke-linejoin': 'round', 'class': 'hr-flow',
+          transform: 'translate(' + X1 + ' ' + y + ')' });
+        f.style.setProperty('--d', i * PITCH);
+        // longer runs take longer, so everything moves at one speed
+        f.style.animationDuration = (2.2 + i * 1.25).toFixed(2) + 's';
+        f.style.animationDelay = (i * 0.55).toFixed(2) + 's';
+        svg.appendChild(f);
+      }
+
+      svg.appendChild(label(X0, Y0 - 34, 'THE WEEK', 'start', 'var(--dim)', G.t(10)));
+      svg.appendChild(label(X1, Y0 + (N - 1) * PITCH + 34, 'HOURS BACK', 'end', 'var(--dim)', G.t(10)));
+    },
+
+    /* THE ORDER. Self-led AI Integration.
+
+       The page argues three things in one order: the people, the work, and
+       only then the tools. So the drawing is three registers stacked in that
+       order, and the arrow at the bottom is the only thing pointing forward,
+       because it cannot move until the two above it are sorted. */
+    order: function (svg) {
+      var W = 600, H = 430, i;
+      var G = gauge(W, 500);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
+      var LX = 116, X0 = 152, X1 = 566;
+
+      function rule(y) {
+        svg.appendChild(el('line', { x1: X0 - 22, y1: y, x2: X1, y2: y, stroke: 'var(--ink)',
+          'stroke-width': G.w(HAIR), opacity: 0.14, 'class': 'or-rule' }));
+      }
+      function band(y, text) {
+        svg.appendChild(label(LX, y + 4, text, 'end', 'var(--dim)', G.t(10)));
+      }
+      function chev(ax, ay, r, colour, wpx, op, dir) {
+        [-1, 1].forEach(function (d) {
+          svg.appendChild(el('line', { x1: (ax - dir * r).toFixed(1), y1: (ay + d * r).toFixed(1),
+            x2: ax, y2: ay, stroke: colour, 'stroke-width': G.w(wpx), 'stroke-linecap': 'round',
+            opacity: op, 'class': 'or-line' }));
+        });
+      }
+
+      // the people. five of them, none the same, because they never are.
+      var P = [[210, 30, LINE, 0.8], [286, 22, HAIR, 0.55], [356, 38, KEY, 1],
+               [430, 26, LINE, 0.72], [502, 18, HAIR, 0.5]];
+      P.forEach(function (q) { chev(q[0], 84, q[1], CORAL, q[2], q[3], 1); });
+      band(84, 'PEOPLE');
+      rule(140);
+
+      // the work. rungs of the length the job actually is.
+      var L = [412, 286, 358, 222, 316];
+      L.forEach(function (len, k) {
+        var y = 176 + k * 26;
+        svg.appendChild(el('line', { x1: X0, y1: y, x2: X0 + len, y2: y, stroke: 'var(--ink)',
+          'stroke-width': G.w(k === 2 ? LINE : HAIR), opacity: (0.5 - Math.abs(2 - k) * 0.09).toFixed(2),
+          'class': 'or-line' }));
+      });
+      band(228, 'THE WORK');
+      rule(316);
+
+      // and then the tool, which is the only thing here going anywhere
+      chev(540, 358, 52, AMBER, EDGE, 1, 1);
+      svg.appendChild(el('line', { x1: X0, y1: 358, x2: 540, y2: 358, stroke: AMBER,
+        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', opacity: 0.92, 'class': 'or-line' }));
+      band(358, 'TOOLS');
+    },
+
+
+    /* THE WEEK, HELD. Operations for law firms.
+
+       A week. Not a product and not a diagram, which is why five attempts at
+       abstract geometry here meant nothing to her: on this page the picture
+       has to be a thing.
+
+       What it has to say is what the firm gets, which is not more capacity.
+       It is work laid out evenly, room left around it, and a weekend that is
+       actually empty. Everything sits on the same line inside its day, because
+       order is what peace of mind looks like drawn. Coral is the handful of
+       dates that cannot move. A soft column of light walks the days, so the
+       week is being worked rather than filed. */
+    desk: function (svg) {
+      var W = 600, H = 430, r, c, k;
+      var G = gauge(W, 500);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
+      var X0 = 40, Y0 = 66, COLS = 7, ROWS = 5, CW = 74, CH = 66;
+      var GW = COLS * CW, GH = ROWS * CH;
+
+      // even, unhurried, and the weekend is left alone
+      var LOAD = [[1,2,1,2,1,0,0],[2,1,2,1,2,0,0],[1,2,1,2,1,1,0],
+                  [2,1,2,1,2,0,0],[1,1,2,1,1,0,0]];
+      var FIXED = [[0,3],[2,1],[3,4],[4,2]];
+      function fixedAt(r2, c2) {
+        for (var i = 0; i < FIXED.length; i++) if (FIXED[i][0] === r2 && FIXED[i][1] === c2) return true;
+        return false;
+      }
+
+      var defs = el('defs', {});
+      var lg = el('linearGradient', { id: 'lf-col', gradientUnits: 'objectBoundingBox', x1: 0, y1: 0, x2: 0, y2: 1 });
+      lg.appendChild(el('stop', { offset: '0', 'stop-color': AMBER, 'stop-opacity': 0.15 }));
+      lg.appendChild(el('stop', { offset: '1', 'stop-color': AMBER, 'stop-opacity': 0.02 }));
+      defs.appendChild(lg); svg.appendChild(defs);
+
+      var col = el('rect', { x: X0, y: Y0, width: CW, height: GH, fill: 'url(#lf-col)', 'class': 'lf-col' });
+      col.style.setProperty('--cw', CW);
+      svg.appendChild(col);
+
+      for (r = 0; r <= ROWS; r++)
+        svg.appendChild(el('line', { x1: X0, y1: Y0 + r * CH, x2: X0 + GW, y2: Y0 + r * CH,
+          stroke: AMBER, 'stroke-width': G.w(r === 0 ? LINE : HAIR), opacity: r === 0 ? 0.45 : 0.16 }));
+      for (c = 0; c <= COLS; c++)
+        svg.appendChild(el('line', { x1: X0 + c * CW, y1: Y0, x2: X0 + c * CW, y2: Y0 + GH,
+          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: c === 0 || c === COLS ? 0.34 : 0.13 }));
+
+      'M T W T F S S'.split(' ').forEach(function (d, i) {
+        svg.appendChild(label(X0 + i * CW + CW / 2, Y0 - 16, d, 'middle', 'var(--dim)', G.t(10)));
+      });
+
+      // the work. same place in every day, same length, nothing crowded.
+      for (r = 0; r < ROWS; r++) for (c = 0; c < COLS; c++) {
+        for (k = 0; k < LOAD[r][c]; k++) {
+          var key = fixedAt(r, c) && k === 0;
+          var x = X0 + c * CW + 13, y = Y0 + r * CH + 24 + k * 15;
+          svg.appendChild(el('line', { x1: x, y1: y, x2: x + (key ? 44 : 34), y2: y,
+            stroke: key ? CORAL : AMBER, 'stroke-width': G.w(key ? KEY : LINE),
+            'stroke-linecap': 'round', opacity: key ? 0.95 : 0.6 }));
+        }
+      }
+    },
+
+
+    /* ONE VOICE. FINO Studio.
+
+       The mark turned round. The point is on the left and it is coral, because
+       it is a person, and everything opening out to the right of it is amber,
+       because that is the thing built from them. The rungs are the site: each
+       one starts where the arms have got to and runs to the edge. */
+    voice: function (svg) {
+      var W = 600, H = 430, i;
+      var G = gauge(W, 500);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
+      var AX = 96, AY = 215, R = 178, RIGHT = 566, PITCH = 44;
+
+      // the rungs first, so the arms sit over them
+      for (i = 1; i * PITCH <= R; i++) {
+        [-1, 1].forEach(function (d) {
+          var dy = i * PITCH;
+          svg.appendChild(el('line', { x1: (AX + dy).toFixed(1), y1: (AY + d * dy).toFixed(1),
+            x2: (AX + dy + [274, 386, 318, 208][i - 1] * (d < 0 ? 1 : 0.86)).toFixed(1),
+            y2: (AY + d * dy).toFixed(1), stroke: AMBER,
+            'stroke-width': G.w(i === 2 ? LINE : HAIR),
+            'stroke-linecap': 'round', opacity: (0.62 - i * 0.08).toFixed(2), 'class': 'vo-rung' }));
+        });
+      }
+      // the axis, which is the sentence the whole thing is built on
+      svg.appendChild(el('line', { x1: AX, y1: AY, x2: RIGHT, y2: AY, stroke: AMBER,
+        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', opacity: 0.9, 'class': 'vo-rung' }));
+
+      // the person it comes from
+      [-1, 1].forEach(function (d) {
+        svg.appendChild(el('line', { x1: AX, y1: AY, x2: (AX + R).toFixed(1), y2: (AY + d * R).toFixed(1),
+          stroke: CORAL, 'stroke-width': G.w(EDGE), 'stroke-linecap': 'round',
+          opacity: 0.95, 'class': 'vo-arm' }));
+      });
+
+      svg.appendChild(label(AX - 14, AY + 5, 'ONE VOICE', 'end', 'var(--dim)', G.t(10)));
+    },
+
     /* ------------------------------------------------------------
        The three ways of working are one figure in three states.
        Same team, same glyphs. What changes is how much grid is
