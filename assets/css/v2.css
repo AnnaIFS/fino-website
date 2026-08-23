@@ -711,6 +711,14 @@ svg[data-art] text{font-family:var(--f-mono);font-weight:400;}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{
   outline:2px solid var(--inner);outline-offset:3px;border-radius:2px;
 }
+/* the band in the middle of the meet drawing never settles: a light runs the
+   axis and the crossings brighten in a wave behind it */
+@keyframes mt-run{from{stroke-dashoffset:0}to{stroke-dashoffset:-1200}}
+@keyframes mt-glow{0%,100%{opacity:.42}9%{opacity:1}}
+.mt-run{opacity:0;}
+.mt-live .mt-run{opacity:.9;animation:mt-run 9s linear infinite;}
+.mt-live .mt-weave{animation:mt-glow 5.4s ease-in-out infinite;}
+
 /* the five inner meetings breathe, the near one holds still */
 50%{opacity:.78}}
 .quiet-link{

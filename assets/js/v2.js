@@ -373,15 +373,16 @@
 
       /* the weave. at every other crossing the outer line is redrawn on top of
          the inner one, so the two read as woven rather than stacked */
+      var crossings = [];
       for (i = -Math.ceil(H / P) - 1; i * P < W + H; i++) {
         for (j = -Math.ceil(H / P) - 1; j * P < W + H; j++) {
           var cx = (i * P + j * P + H) / 2, cy = (j * P - i * P + H) / 2 + 0;
           cx = (i * P + (j * P + H)) / 2; cy = ((j * P + H) - i * P) / 2;
           if (cy < TOP + 3 || cy > BOT - 3 || cx < -6 || cx > W + 6) continue;
           if ((i + j) % 2) continue;
-          svg.appendChild(el('line', { x1: (cx - 7).toFixed(1), y1: (cy - 7).toFixed(1),
+          crossings.push({ n: svg.appendChild(el('line', { x1: (cx - 7).toFixed(1), y1: (cy - 7).toFixed(1),
             x2: (cx + 7).toFixed(1), y2: (cy + 7).toFixed(1), stroke: AMBER,
-            'stroke-width': G.w(LINE), opacity: 0.9, 'class': 'mt-weave' }));
+            'stroke-width': G.w(LINE), opacity: 0.9, 'class': 'mt-weave' })), x: cx });
         }
       }
 
@@ -394,6 +395,13 @@
       ];
       var axis = svg.appendChild(el('line', { x1: 0, y1: CY, x2: W, y2: CY,
         stroke: 'url(#mt-ax)', 'stroke-width': G.w(KEY), opacity: 0.95, 'class': 'mt-axis' }));
+
+      /* the band is the one part of this drawing that never settles. a light
+         runs the axis and the crossings brighten in a wave behind it, so the
+         middle keeps moving after everything else has been drawn */
+      var runner = svg.appendChild(el('line', { x1: 0, y1: CY, x2: W, y2: CY,
+        stroke: 'url(#mt-ax)', 'stroke-width': G.w(KEY) * 1.6, 'stroke-linecap': 'round',
+        'class': 'mt-run' }));
 
       /* the label knocks a hole in the weave so it stays readable */
       var txt = 'THE WORK IS HERE', size = G.t(11), plate = size * (txt.length * 0.78);
@@ -420,6 +428,11 @@
       axis.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(.3,.7,.25,1) .55s';
       fade(lab, 1.55);
 
+      crossings.forEach(function (c) {
+        c.n.style.animationDelay = (c.x / W * 2.4).toFixed(2) + 's';
+      });
+      runner.style.strokeDasharray = (W * 0.075).toFixed(0) + ' ' + (W * 0.925).toFixed(0);
+
       function play() {
         lines.forEach(function (o) { o.n.style.strokeDashoffset = '0'; });
         Array.prototype.forEach.call(weave, function (n) { n.style.opacity = ''; });
@@ -427,6 +440,10 @@
         rungs.forEach(function (n) { n.style.opacity = ''; });
         axis.style.strokeDashoffset = '0';
         lab.style.opacity = '';
+        setTimeout(function () {
+          Array.prototype.forEach.call(weave, function (n) { n.style.transition = ''; });
+          svg.setAttribute('class', ((svg.getAttribute('class') || '') + ' mt-live').trim());
+        }, 1900);
       }
       // this one sits far enough down the page that it should draw when it is
       // reached, not while nobody is looking at it
