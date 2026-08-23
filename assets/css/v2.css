@@ -718,8 +718,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   font-family:var(--f-mono);font-size:.69rem;letter-spacing:.04em;text-transform:uppercase;
   color:var(--inner);border-bottom:1px solid rgba(255,86,56,.55);white-space:nowrap;
 }
-.fnd-more{margin-top:2.4rem;}
 .quiet-link:hover{border-bottom-color:var(--inner);}
+/* the one link out of the founders block sits centred under both bios */
+.fnd-more{display:block;width:fit-content;margin:2.6rem auto 0;}
+.fnd-more::after{content:"\2192";margin-left:.5em;transition:transform .2s ease;display:inline-block;}
+.fnd-more:hover::after{transform:translateX(3px);}
 
 .novel-2col{grid-template-columns:minmax(0,250px) minmax(0,1fr);align-items:center;}
 @media (max-width:640px){.novel-2col{grid-template-columns:1fr;}}
