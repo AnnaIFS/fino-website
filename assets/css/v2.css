@@ -143,12 +143,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--inner);outline-offs
 }
 .trust span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--outer-line);flex:none;}
 
+/* the gift band: the free tool offered before anything is asked for */
+.gift{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:26px 0;background:var(--surface-2);}
+.gift-in{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:space-between;}
+.gift-in p{max-width:var(--m-quote);font-size:1.02rem;color:var(--body);}
+.gift-in b{color:var(--ink);font-weight:500;}
+.gift-in .btn{flex:none;}
+@media (max-width:640px){.gift-in .btn{width:100%;justify-content:center;}}
+
 /* ---------- sections ---------- */
 section{padding:clamp(66px,8.5vw,124px) 0;scroll-margin-top:88px;}
 .s-head{margin-bottom:3rem;}
 .s-head .eyebrow{margin-bottom:1.2rem;}
 .s-head h2{margin-bottom:1.1rem;}
 .s-head p{font-size:1.07rem;color:var(--body);}
+/* a long read takes the width of the page. the section head holds the left,
+   the prose keeps its own measure on the right */
+.split{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,var(--m-body));
+  gap:clamp(28px,6vw,90px);align-items:start;
+}
+.split .s-head{margin-bottom:0;max-width:var(--m-display);}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:0;}
+  .split .s-head{margin-bottom:2.4rem;max-width:none;}
+}
 main > section.tinted{background:var(--surface-2);transition:background .5s ease;}
 .map-legend{
   display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);
@@ -863,6 +882,13 @@ section:first-of-type > .page::before{display:none;}
   margin:3.4rem 0 0;padding:2.6rem 0 0;width:100%;text-align:center;
   border-top:1px solid var(--rule-strong);
 }}
+/* a quote standing between paragraphs shares their column and their left edge,
+   with room on both sides so it reads as its own beat */
+.ours-col{
+  max-width:var(--measure);text-align:left;
+  margin:3rem 0 3.2rem;padding-top:2.2rem;
+}
+.ours-col blockquote{margin:0;}
 .fnd li a{color:var(--inner);border-bottom:1px solid rgba(255,86,56,.4);}
 .fnd li a:hover{border-bottom-color:var(--inner);}
 
