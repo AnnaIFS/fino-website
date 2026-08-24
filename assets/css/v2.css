@@ -157,20 +157,6 @@ section{padding:clamp(66px,8.5vw,124px) 0;scroll-margin-top:88px;}
 .s-head .eyebrow{margin-bottom:1.2rem;}
 .s-head h2{margin-bottom:1.1rem;}
 .s-head p{font-size:1.07rem;color:var(--body);}
-/* prose with the mark being assembled beside it. the drawing is quiet
-   company for the reading, and it steps out of the way on a phone */
-.aside{
-  display:grid;grid-template-columns:minmax(0,var(--m-body)) minmax(0,1fr);
-  gap:clamp(28px,6vw,86px);align-items:start;
-}
-.aside-art svg{display:block;width:100%;max-width:340px;height:auto;margin-left:auto;}
-.split .aside-art{margin-top:2.6rem;}
-.split .aside-art svg{margin-left:0;}
-@media (max-width:900px){
-  .aside{grid-template-columns:1fr;}
-  .aside-art{display:none;}
-}
-
 /* a long read takes the width of the page. the section head holds the left,
    the prose keeps its own measure on the right */
 .split{
