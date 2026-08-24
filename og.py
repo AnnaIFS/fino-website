@@ -32,15 +32,15 @@ APEX = [27, 52.5, 92, 145.5]
 REACH = [22.5, 42.5, 62.5, 62.5]
 
 CARDS = [
-    ("images/og-image.jpg", "FINO", "Every team is running two operating systems"),
-    ("images/og-circles.jpg", "Self-leadership Circles", "A shared language for teams under pressure"),
-    ("images/og-coaching.jpg", "Leadership Coaching", "What is driving the decisions"),
-    ("images/og-offsites.jpg", "Non-ordinary Offsites", "Somewhere the conference room cannot follow"),
-    ("images/og-fractional.jpg", "Fractional Operations", "The hours your team is losing"),
-    ("images/og-ai.jpg", "Self-led AI Integration", "AI that fits the work you actually do"),
-    ("images/og-law-firms.jpg", "Operations for Law Firms", "You hired more people. The work still does not move."),
-    ("images/og-studio.jpg", "FINO Studio", "A website that sounds like you"),
-    ("images/og-about.jpg", "About FINO", "Il Futuro È Ora"),
+    ("images/og-image-2.jpg", "FINO", "Every team is running two operating systems"),
+    ("images/og-circles-2.jpg", "Self-leadership Circles", "A shared language for teams under pressure"),
+    ("images/og-coaching-2.jpg", "Leadership Coaching", "What is driving the decisions"),
+    ("images/og-offsites-2.jpg", "Non-ordinary Offsites", "Somewhere the conference room cannot follow"),
+    ("images/og-fractional-2.jpg", "Fractional Operations", "The hours your team is losing"),
+    ("images/og-ai-2.jpg", "Self-led AI Integration", "AI that fits the work you actually do"),
+    ("images/og-law-firms-2.jpg", "Operations for Law Firms", "You hired more people. The work still does not move."),
+    ("images/og-studio-2.jpg", "FINO Studio", "A website that sounds like you"),
+    ("images/og-about-2.jpg", "About FINO", "Il Futuro È Ora"),
 ]
 
 

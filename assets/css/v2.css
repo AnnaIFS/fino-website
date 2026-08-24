@@ -762,10 +762,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .mt-live .mt-run{opacity:.9;animation:mt-run 9s linear infinite;}
 .mt-live .mt-weave{animation:mt-glow 5.4s ease-in-out infinite;}
 
-/* the about page points at the offers without repeating them */
-.offers-door{margin-top:.6rem;color:var(--body);}
-.offers-door a{color:var(--inner);border-bottom:1px solid rgba(255,86,56,.45);}
-.offers-door a:hover{border-bottom-color:var(--inner);}
 .quiet-link{
   display:inline-block;margin-top:.9rem;
   font-family:var(--f-mono);font-size:.69rem;letter-spacing:.04em;text-transform:uppercase;
