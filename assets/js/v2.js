@@ -805,6 +805,95 @@
        it is a person, and everything opening out to the right of it is amber,
        because that is the thing built from them. The rungs are the site: each
        one starts where the arms have got to and runs to the edge. */
+    /* NOW.
+
+       The mark, read as an arrow, at the moment it arrives. Four meetings step
+       forward along the axis exactly as the logo does, and behind them the same
+       formation trails off into where it has already been. The axis runs out of
+       the past and stops dead at the last meeting, because there is nothing
+       drawn after it. The future is not ahead of the point. It is the point. */
+    now: function (svg) {
+      var W = 560, H = 440, i, k;
+      var G = gauge(W, 440);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
+      var APEX = [27, 52.5, 92, 145.5], REACH = [22.5, 42.5, 62.5, 62.5];
+      var S = 2.6, CY = 220, OX = 122;
+      var X = function (a) { return +(OX + a * S).toFixed(1); };
+      var Y = function (d) { return +(CY + d * S).toFixed(1); };
+      var TIP = X(APEX[3]);
+
+      var defs = el('defs', {});
+      var ax = el('linearGradient', { id: 'nw-ax', gradientUnits: 'userSpaceOnUse',
+        x1: 0, y1: 0, x2: TIP, y2: 0 });
+      ax.appendChild(el('stop', { offset: '0', 'stop-color': CORAL, 'stop-opacity': 0.15 }));
+      ax.appendChild(el('stop', { offset: '0.55', 'stop-color': CORAL, 'stop-opacity': 0.7 }));
+      ax.appendChild(el('stop', { offset: '1', 'stop-color': AMBER, 'stop-opacity': 1 }));
+      defs.appendChild(ax);
+      svg.appendChild(defs);
+
+      /* where it has already been. the furthest is cut by the frame. */
+      var TRAIL = [[-36, 0.22], [-76, 0.12], [-122, 0.055]], ghosts = [];
+      TRAIL.forEach(function (t) {
+        var g = el('g', { 'class': 'nw-ghost', transform: 'translate(' + t[0] + ',0)' });
+        for (i = 0; i < 4; i++) {
+          [[AMBER, -1], [CORAL, 1]].forEach(function (f) {
+            g.appendChild(el('line', { x1: X(APEX[i] - REACH[i]), y1: Y(f[1] * REACH[i]),
+              x2: X(APEX[i]), y2: Y(0), stroke: f[0], 'stroke-linecap': 'round',
+              'stroke-width': G.w(HAIR), opacity: t[1] }));
+          });
+        }
+        ghosts.push(svg.appendChild(g));
+      });
+
+      /* the axis comes out of the past and stops at the last meeting */
+      var axis = svg.appendChild(el('line', { x1: 0, y1: CY, x2: TIP, y2: CY,
+        stroke: 'url(#nw-ax)', 'stroke-width': G.w(KEY), 'stroke-linecap': 'round',
+        'class': 'nw-axis' }));
+
+      /* the four meetings, each further along and each more certain */
+      var arms = [];
+      for (i = 0; i < 4; i++) {
+        [[AMBER, -1], [CORAL, 1]].forEach(function (f) {
+          arms.push({ n: svg.appendChild(el('line', {
+            x1: X(APEX[i] - REACH[i]), y1: Y(f[1] * REACH[i]), x2: X(APEX[i]), y2: Y(0),
+            stroke: f[0], 'stroke-linecap': 'round',
+            'stroke-width': G.w(i === 3 ? KEY : LINE),
+            opacity: (0.42 + i * 0.19).toFixed(2), 'class': 'nw-arm' })),
+            len: Math.round(Math.sqrt(2) * REACH[i] * S), step: i });
+        });
+      }
+
+      /* now */
+      bloom(svg, TIP, CY, 46, AMBER, 0.20);
+      var tip = svg.appendChild(el('circle', { cx: TIP, cy: CY, r: G.u(4.5),
+        fill: AMBER, 'class': 'nw-tip' }));
+
+      if (reduce) return;
+
+      function fade(n, d, t) { n.style.opacity = '0'; n.style.transition = 'opacity ' + (t || 0.7) + 's ease ' + d + 's'; }
+      axis.style.strokeDasharray = TIP; axis.style.strokeDashoffset = TIP;
+      axis.style.transition = 'stroke-dashoffset 1.15s cubic-bezier(.3,.7,.25,1) .1s';
+      arms.forEach(function (o) {
+        o.n.style.strokeDasharray = o.len; o.n.style.strokeDashoffset = o.len;
+        o.n.style.transition = 'stroke-dashoffset .8s cubic-bezier(.24,.74,.24,1) ' +
+                               (0.45 + o.step * 0.14).toFixed(2) + 's';
+      });
+      ghosts.forEach(function (n, j) { fade(n, +(1.15 + j * 0.1).toFixed(2), 0.8); });
+      var bl = svg.querySelector('.art-bloom');
+      if (bl) fade(bl, 1.35, 0.9);
+      fade(tip, 1.25, 0.6);
+
+      function play() {
+        axis.style.strokeDashoffset = '0';
+        arms.forEach(function (o) { o.n.style.strokeDashoffset = '0'; });
+        ghosts.forEach(function (n) { n.style.opacity = ''; });
+        if (bl) bl.style.opacity = '';
+        tip.style.opacity = '';
+      }
+      requestAnimationFrame(function () { setTimeout(play, 120); });
+    },
+
     voice: function (svg) {
       var W = 600, H = 430, i;
       var G = gauge(W, 500);

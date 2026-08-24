@@ -779,9 +779,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .novel-2col{grid-template-columns:minmax(0,250px) minmax(0,1fr);align-items:center;}
 @media (max-width:640px){.novel-2col{grid-template-columns:1fr;}}
 
-/* pages without an illustration: copy takes the full measure */
-.phero-solo{grid-template-columns:1fr;}
-.phero-solo .phero-sub{max-width:var(--m-sub);}
 
 /* portfolio list */
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);
