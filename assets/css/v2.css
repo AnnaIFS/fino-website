@@ -538,6 +538,18 @@ body::after{
 .step:last-child{border-bottom:1px solid var(--rule);}
 .step-n{font-family:var(--f-mono);font-size:.75rem;color:var(--inner);padding-top:.35em;}
 .step h3{font-size:1.06rem;margin:0 0 .3rem;}
+/* a step that carries its own answer: the turn is marked, the answer steps forward */
+.step .turn{
+  display:flex;align-items:center;gap:9px;margin-top:.85rem;
+  font-family:var(--f-mono);font-size:.58rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--inner);
+}
+.step .turn::after{content:"";height:1px;flex:1;background:var(--rule);}
+.step .fix{color:var(--ink);margin-top:.35rem;}
+.steps-note{
+  margin-top:1rem;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.04em;
+  color:var(--dim);
+}
 .step p{font-size:.95rem;margin:0;max-width:var(--m-body);overflow-wrap:break-word;}
 
 /* two column list */
