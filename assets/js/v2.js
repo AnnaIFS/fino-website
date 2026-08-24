@@ -815,6 +815,59 @@
        it is a person, and everything opening out to the right of it is amber,
        because that is the thing built from them. The rungs are the site: each
        one starts where the arms have got to and runs to the edge. */
+    /* THE BUILD.
+
+       The same four meetings the mark is made of, drawn once per section as
+       the reader goes down the page. Near the top the pairs are scattered and
+       the axis is barely there. By the last one every pair has landed and the
+       mark stands whole. data-step says how many have found the axis. */
+    build: function (svg) {
+      var W = 340, H = 300, i;
+      var G = gauge(W, 340);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
+      var step = Math.max(1, Math.min(5, +(svg.getAttribute('data-step') || 1)));
+      var APEX = [27, 52.5, 92, 145.5], REACH = [22.5, 42.5, 62.5, 62.5];
+      var S = 1.55, CY = H / 2, OX = 32, landed = step - 1;
+      var X = function (a) { return +(OX + a * S).toFixed(1); };
+      var Y = function (d) { return +(CY + d * S).toFixed(1); };
+      /* where a pair waits before it finds the axis */
+      var OFF = [[24, -40, -10], [-26, 34, 8], [28, 42, -6], [-20, -46, 7]];
+
+      var defs = el('defs', {});
+      var ax = el('linearGradient', { id: 'bd-ax' + step, gradientUnits: 'userSpaceOnUse',
+        x1: 0, y1: 0, x2: W, y2: 0 });
+      ax.appendChild(el('stop', { offset: '0', 'stop-color': CORAL }));
+      ax.appendChild(el('stop', { offset: '1', 'stop-color': AMBER }));
+      defs.appendChild(ax);
+      svg.appendChild(defs);
+
+      /* the axis, surer with every step */
+      svg.appendChild(el('line', { x1: X(-8), y1: CY, x2: X(APEX[3] + 14), y2: CY,
+        stroke: 'url(#bd-ax' + step + ')',
+        'stroke-width': G.w(landed === 4 ? KEY : HAIR),
+        opacity: (0.10 + landed * 0.20).toFixed(2), 'class': 'bd-axis' }));
+
+      for (i = 0; i < 4; i++) {
+        var home = i < landed;
+        var g = el('g', { 'class': 'bd-pair' + (home ? ' bd-home' : '') });
+        if (!home) {
+          g.setAttribute('transform', 'translate(' + OFF[i][0] + ',' + OFF[i][1] + ') ' +
+            'rotate(' + OFF[i][2] + ',' + X(APEX[i]) + ',' + CY + ')');
+        }
+        [-1, 1].forEach(function (dir) {
+          g.appendChild(el('line', {
+            x1: X(APEX[i] - REACH[i]), y1: Y(dir * REACH[i]),
+            x2: X(APEX[i]), y2: Y(0),
+            stroke: dir < 0 ? AMBER : CORAL, 'stroke-linecap': 'round',
+            'stroke-width': G.w(home ? KEY : LINE),
+            opacity: home ? (0.52 + i * 0.13).toFixed(2) : '0.24'
+          }));
+        });
+        svg.appendChild(g);
+      }
+    },
+
     voice: function (svg) {
       var W = 600, H = 430, i;
       var G = gauge(W, 500);
