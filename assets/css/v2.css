@@ -553,6 +553,7 @@ body::after{
 .step h3,.step p{max-width:var(--m-body);}
 .step .turn{max-width:none;}
 .step h3{font-size:1.06rem;margin:0 0 .3rem;}
+.step .card-foot{border-top:0;padding-top:.7rem;margin-top:.2rem;flex-direction:row;gap:.9rem;flex-wrap:wrap;}
 /* a step that carries its own answer: the turn is marked, the answer steps forward */
 .step .turn{
   display:flex;align-items:center;gap:9px;margin-top:.85rem;
