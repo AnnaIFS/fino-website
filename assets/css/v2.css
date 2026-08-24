@@ -305,6 +305,7 @@ cite{
   font-family:var(--f-mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
   color:var(--inner);margin-bottom:.9rem;display:block;
 }
+.fnd-bio{font-size:.9rem;line-height:1.6;color:var(--body);margin-bottom:1rem;}
 .fnd ul{list-style:none;display:grid;gap:.3rem;}
 .fnd li{font-size:.86rem;line-height:1.48;color:var(--body);padding-left:13px;position:relative;}
 .fnd li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:var(--outer-line);}
