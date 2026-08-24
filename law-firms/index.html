@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Martian+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/v2.css?v=0e2599d9">
+<link rel="stylesheet" href="../assets/css/v2.css?v=2b6f8ec2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -234,7 +234,7 @@
   </div>
 </nav>
 
-<div class="mob" id="mob">
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="mob-group">
     <p class="mob-label">Inner Operations</p>
     <a href="../circles/">Self-leadership Circles<em>8 weeks, online, for a team</em></a>
@@ -255,7 +255,7 @@
   <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
 </div>
 
-<main id="main">
+<main id="main" class="outer lf">
 
 <section class="phero">
   <div class="page">
@@ -290,7 +290,7 @@
   </div>
 </div>
 
-<section>
+<section class="sec-close">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">What the week looks like</p><h2>You already know where the hours go</h2>
       <p>None of this is on anyone's list of problems. When we ask people what the worst part of their week is, the word that comes back is tedious.</p></div>
@@ -306,27 +306,25 @@
   </div>
 </section>
 
-<section>
+<section class="sec-tight">
   <div class="page">
-    <div class="split rv">
-      <div class="s-head"><p class="eyebrow">Why it never gets fixed</p><h2>There is nobody whose job this is</h2></div>
-      <div class="prose">
-        <p class="lead">Every hour in a firm is billable or it is overhead. Fixing how the work runs is neither.</p>
-        <p>So it lands on whoever is least able to say no, on top of everything they already do. It gets started in a quiet week. It does not get finished.</p>
-        <p>Most firms we meet did not plan the growth. Other firms stepped back, the work came to them, and the way the firm runs never caught up. Fifty people, still running like the twelve-person firm it used to be. One process laid on top of the last one, every one of them sensible when it was made.</p>
-        <p>You may have an administrator holding it together. Almost nobody has an operations person, with an operations background, whose whole job is how the work runs.</p>
-        <p>So you do the one thing that is easy to approve. You hire.</p>
-        <p>An administrator told us they had hired and it still was not enough. The volume kept climbing faster than the headcount. You cannot hire fast enough to catch that. At some point the only thing left to change is how the work runs.</p>
-        <p><strong>By then people are burning out, and it is rarely the cases doing it.</strong> It is everything stacked around them.</p>
-        <p>Firms now name technology decisions as their biggest operational problem, ahead of the volume of work. The software is rarely the hard part. Choosing it, moving onto it and getting people to use it is a job of its own.</p>
-        <p>What changed is the other side of it. The tools that were built for firms of five hundred are now within reach of a firm of fifty, and they no longer cost a fortune. Most firms are already paying for more than they use.</p>
-        <p><strong>You are not going to hire a project manager for this, and you should not have to.</strong> What you want is somebody who has done it before, for as long as it takes and no longer.</p>
-      </div>
+    <div class="s-head col rv"><p class="eyebrow">Why it never gets fixed</p><h2>There is nobody whose job this is</h2></div>
+    <div class="col prose prose-wide rv">
+      <p class="lead">Every hour in a firm is billable or it is overhead. Fixing how the work runs is neither.</p>
+      <p>So it lands on whoever is least able to say no, on top of everything they already do. It gets started in a quiet week. It does not get finished.</p>
+      <p>Most firms we meet did not plan the growth. Other firms stepped back, the work came to them, and the way the firm runs never caught up. Fifty people, still running like the twelve-person firm it used to be. One process laid on top of the last one, every one of them sensible when it was made.</p>
+      <p>You may have an administrator holding it together. Almost nobody has an operations person, with an operations background, whose whole job is how the work runs.</p>
+      <p>So you do the one thing that is easy to approve. You hire.</p>
+      <p>An administrator told us they had hired and it still was not enough. The volume kept climbing faster than the headcount. You cannot hire fast enough to catch that. At some point the only thing left to change is how the work runs.</p>
+      <p><strong>By then people are burning out, and it is rarely the cases doing it.</strong> It is everything stacked around them.</p>
+      <p>Firms now name technology decisions as their biggest operational problem, ahead of the volume of work. The software is rarely the hard part. Choosing it, moving onto it and getting people to use it is a job of its own.</p>
+      <p>What changed is the other side of it. The tools that were built for firms of five hundred are now within reach of a firm of fifty, and they no longer cost a fortune. Most firms are already paying for more than they use.</p>
+      <p><strong>You are not going to hire a project manager for this, and you should not have to.</strong> What you want is somebody who has done it before, for as long as it takes and no longer.</p>
     </div>
   </div>
 </section>
 
-<section class="tinted">
+<section class="tinted mid sec-wide">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">How we work</p><h2>We listen first, then we build with your people</h2></div>
     <div class="col prose rv">
@@ -339,7 +337,7 @@
   </div>
 </section>
 
-<section>
+<section class="sec-tight sec-flush">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">What it is like</p><h2>The first week</h2>
       <p>Every firm is different. The first week usually goes something like this.</p></div>
@@ -350,15 +348,15 @@
       <div class="step"><p class="step-n">Day 4</p><div><h3>We sit with your people and try it on live work</h3><p>Here is what it does, try it now, on a live file. Anything that feels wrong gets fixed while we are sitting there.</p></div></div>
       <div class="step"><p class="step-n">Day 5</p><div><h3>We check what saved time</h3><p>What worked, what did not, what comes next. The tools stay either way.</p></div></div>
     </div>
-    <p class="stmt rv">We recommend ninety days. That is how long a change takes to hold.</p>
   </div>
+  <div class="band-say rv"><p>We recommend ninety days. That is how long a change takes to hold.</p></div>
 </section>
 
-<section class="tinted">
+<section class="tinted mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">What the numbers look like</p><h2>The math a partner will check</h2></div>
     <div class="col prose rv">
-      <p class="lead">Six minutes of unbilled time a day, per timekeeper, at a $175 rate, across twenty timekeepers and 250 working days, is $87,500 a year.</p>
+      <p class="lead lead-big">Six minutes of unbilled time a day, per timekeeper, at a $175 rate, across twenty timekeepers and 250 working days, is $87,500 a year.</p>
       <p>That is an illustration. Few firms have run their own version of it. It is what hides inside &ldquo;we enter time on Friday.&rdquo;</p>
       <p>The other number is the case management system. For a mid-sized firm the software alone can run into six figures over a multi-year term. It is the largest technology decision a firm makes, and it is usually made once a decade, by people carrying full caseloads.</p>
       <p><strong>That decision is worth preparing properly.</strong></p>
@@ -372,10 +370,10 @@
   </div>
 </section>
 
-<section>
+<section class="sec-tight">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">How it runs</p><h2>What this asks of you</h2></div>
-    <div class="col prose rv">
+    <div class="prose rows rv">
       <p>We work remotely. Ninety days is what we recommend, month to month, two weeks notice either way.</p>
       <p>In the first week we ask about two hours from each person in the group. Screen shares on live matters, while they work.</p>
       <p>After that, short sessions of thirty to forty five minutes, a few times a week. This replaces work your team is already doing.</p>
@@ -385,9 +383,11 @@
   </div>
 </section>
 
-<section>
+<section class="mid">
   <div class="page">
-    <div class="s-head col rv"><p class="eyebrow">Why us</p><h2>Anna ran a law office before she ran anything else</h2></div>
+    <div class="s-head col rv">
+      <div class="why-face"><img src="../images/anna.png" alt="Anna Milaeva" width="82" height="82"><div><p class="eyebrow">Why us</p><h2>Anna ran a law office before she ran anything else</h2></div></div>
+    </div>
     <div class="col prose rv">
       <p class="lead">Anna paid her way through college working as a legal assistant, and ended up managing a law office because someone had to.</p>
       <p>Years before the operations career, she was the person at the front desk who knew where the files were. She has been the one everyone asks.</p>
@@ -396,29 +396,34 @@
   </div>
 </section>
 
-<section id="free" class="tinted">
+<section class="tinted sec-close">
   <div class="page">
-    <div class="s-head col rv"><p class="eyebrow">The free tool</p><h2>Stop scheduling mediations by email</h2>
-      <p>Someone proposes dates. People reply slowly. The dates expire before everyone agrees and you start again. Most firms have this one, so we built something that ends it.</p></div>
-    <div class="tick tick-one rv">
-      <div class="tick-y"><ul>
-        <li>You pick the dates that could work and get a link</li>
-        <li>Everyone opens it and marks what suits them</li>
-        <li>You see where the overlap is and confirm</li>
-        <li>Everyone gets the confirmation and the link locks</li>
-      </ul></div>
+    <div class="split rv">
+      <div class="s-head"><p class="eyebrow">The free tool</p><h2>Stop scheduling mediations by email</h2>
+        <p>Someone proposes dates. People reply slowly. The dates expire before everyone agrees and you start again. Most firms have this one, so we built something that ends it.</p></div>
+      <div>
+        <div class="tick tick-one">
+          <div class="tick-y"><ul>
+            <li>You pick the dates that could work and get a link</li>
+            <li>Everyone opens it and marks what suits them</li>
+            <li>You see where the overlap is and confirm</li>
+            <li>Everyone gets the confirmation and the link locks</li>
+          </ul></div>
+        </div>
+        <div class="tool-cta">
+          <a href="https://scheduler.fino.website/" class="btn btn-p" target="_blank" rel="noopener noreferrer">Open the scheduler</a>
+        </div>
+        <p class="stmt">No account, nothing to install, and no conversation with us. If you can send an email you can use it.</p>
+      </div>
     </div>
-    <div class="rv" style="margin-top:1.8rem;">
-      <a href="https://scheduler.fino.website/" class="btn btn-p" target="_blank" rel="noopener noreferrer">Open the scheduler</a>
-    </div>
-    <p class="stmt rv">No account, nothing to install, and no conversation with us. If you can send an email you can use it.</p>
   </div>
 </section>
 
 <section>
   <div class="page">
-    <div class="s-head col rv"><p class="eyebrow">Questions</p><h2>The concerns we hear most</h2></div>
-    <div class="rv"><div class="acc">
+    <div class="split rv">
+      <div class="s-head"><p class="eyebrow">Questions</p><h2>The concerns we hear most</h2></div>
+      <div class="acc">
     <div class="acc-item">
       <button class="acc-head" aria-expanded="false" aria-controls="l6">We have already hired for this. <span class="ico" aria-hidden="true">+</span></button>
       <div class="acc-body" id="l6"><p>Then you already know the work did not speed up. More people move more work only when the work has somewhere to go. We start by finding where it stops, which is usually two or three places, and none of them is a person.</p></div>
@@ -515,9 +520,9 @@
         <h3>Get in touch</h3>
         <form action="https://formspree.io/f/mjgaolev" method="POST">
           <label class="sr-only" for="f-name">Name</label>
-          <input id="f-name" type="text" name="name" placeholder="Name" required>
+          <input id="f-name" type="text" name="name" autocomplete="name" placeholder="Name" required>
           <label class="sr-only" for="f-email">Email</label>
-          <input id="f-email" type="email" name="email" placeholder="Email" required>
+          <input id="f-email" type="email" name="email" autocomplete="email" placeholder="Email" required>
           <label class="sr-only" for="f-msg">Message</label>
           <textarea id="f-msg" name="message" placeholder="Message" rows="4" required></textarea>
           <button type="submit">Send</button>
@@ -527,6 +532,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/v2.js?v=e111f4fc"></script>
+<script src="../assets/js/v2.js?v=b76ac422"></script>
 </body>
 </html>

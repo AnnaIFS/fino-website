@@ -133,16 +133,6 @@
     svg.appendChild(el('circle', { cx: cx, cy: cy, r: r, fill: 'url(#' + id + ')', 'class': 'art-bloom' }));
   }
 
-  function drift(node, seconds, px) {
-    if (reduce) return;
-    node.style.animation = 'artDrift ' + (seconds || 16) + 's ease-in-out infinite alternate';
-    node.style.setProperty('--drift', (px || 7) + 'px');
-  }
-  function turn(node, cx, cy, seconds) {
-    if (reduce) return;
-    node.style.transformOrigin = cx + 'px ' + cy + 'px';
-    node.style.animation = 'artTurn ' + (seconds || 190) + 's linear infinite';
-  }
 
 
   /* ---------- the illustrations ---------- */
@@ -865,14 +855,32 @@
 
 
 
-  /* ---------- scroll reveals ---------- */
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+  /* ---------- scroll reveals ----------
+     the section ticks ride along with this, so if the observer is missing or
+     throws, everything it would have revealed is shown outright rather than
+     left at opacity zero */
+  var REVEAL = '.rv, section > .page, main.lf section';
+  if (window.IntersectionObserver) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll(REVEAL).forEach(function (n) { io.observe(n); });
+  } else {
+    document.querySelectorAll(REVEAL).forEach(function (n) { n.classList.add('in'); });
+  }
 
+
+  /* mark where you already are, in the menu and in the nav */
+  (function () {
+    if (typeof location === 'undefined' || !location.pathname) return;
+    var here = location.pathname.replace(/index\.html$/, '');
+    document.querySelectorAll('.mob a[href], .nav-drop-menu a[href]').forEach(function (a) {
+      var p = a.pathname ? a.pathname.replace(/index\.html$/, '') : '';
+      if (p && p === here) a.setAttribute('aria-current', 'page');
+    });
+  })();
 
   /* ---------- nav dropdowns: clickable, not only hoverable ---------- */
   document.querySelectorAll('.nav-drop').forEach(function (drop, i) {
@@ -909,7 +917,10 @@
       burger.setAttribute('aria-expanded', open);
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) { var f = mob.querySelector('a'); if (f) f.focus(); } else { burger.focus(); }
-    }
+      var main = document.querySelector('main'), foot = document.querySelector('footer');
+    [main, foot].forEach(function (n) { if (n) { if (open) { n.setAttribute('inert',''); } else { n.removeAttribute('inert'); } } });
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+  }
     burger.addEventListener('click', function () { setMenu(!mob.classList.contains('open')); });
     mob.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () { setMenu(false); });
@@ -944,6 +955,15 @@
       btn.setAttribute('aria-expanded', !open);
       var body = document.getElementById(btn.getAttribute('aria-controls'));
       if (body) { body.classList.toggle('open', !open); body.style.maxHeight = open ? null : body.scrollHeight + 'px'; }
+    });
+  });
+
+  /* a rotated phone reflows an open answer taller than the height we stored,
+     and overflow hidden would cut it off mid sentence */
+  window.addEventListener('resize', function () {
+    document.querySelectorAll('.acc-head[aria-expanded="true"]').forEach(function (b) {
+      var body = document.getElementById(b.getAttribute('aria-controls'));
+      if (body) body.style.maxHeight = body.scrollHeight + 'px';
     });
   });
 })();

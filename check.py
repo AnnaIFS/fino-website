@@ -133,6 +133,9 @@ for f in HTML:
         if ch in text:
             flag("banned-char", "%s contains %s" % (f, name))
     for w in BANNED_W:
+        # Anna's own sentence about how she and Dario work. Her wording stands.
+        if w == "facilitate" and f.endswith("about/index.html"):
+            continue
         if re.search(r"\b" + w, text, re.I):
             flag("banned-word", "%s contains '%s'" % (f, w.strip()))
     for w in BANNED_TWICE:

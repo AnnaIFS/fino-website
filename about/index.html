@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Martian+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/v2.css?v=0e2599d9">
+<link rel="stylesheet" href="../assets/css/v2.css?v=2b6f8ec2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -123,7 +123,7 @@
   </div>
 </nav>
 
-<div class="mob" id="mob">
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="mob-group">
     <p class="mob-label">Inner Operations</p>
     <a href="../circles/">Self-leadership Circles<em>8 weeks, online, for a team</em></a>
@@ -158,7 +158,7 @@
   </div>
 </section>
 
-<section>
+<section class="mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">The story</p><h2>Most business failures are people failures</h2></div>
     <div class="col prose rv">
@@ -167,13 +167,13 @@
       <p>And she kept watching the same thing happen. Good companies. Smart people. Everything in place. Then something underneath would pull it all sideways. Conflict nobody named. The same parts running the room no matter how many processes they built.</p>
       <p>Then it happened to her. Not dramatically. Slowly, until she did not recognize herself. So she trained in what was missing.</p>
       <p>Dario spent twenty years as a psychologist and facilitator with groups and communities across Europe and the Americas. He kept arriving at the same place. When people get room to name what is happening inside, the whole system moves.</p>
-      <p>We have been partners for ten years. We built FINO because we could not find what we were looking for anywhere else. A practice that works at the human layer and also knows how the work actually runs.</p>
+      <p>We have been partners for ten years, in work and in life. We built FINO because we could not find what we were looking for anywhere else. A practice that works at the human layer and also knows how the work actually runs. We both coach and facilitate. Anna also builds the systems. We married the two.</p>
       <p class="lead" style="margin-top:1.6rem;">Organizations change when the people inside them do.</p>
     </div>
   </div>
 </section>
 
-<section class="tinted">
+<section class="tinted sec-wide">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">Our team</p><h2>Deliberately small</h2>
       <p>The people in the room matter more than the plan. We say the honest thing, and we say it kindly. We stay involved, and when something is not working we say so, including when it is us.</p></div>
@@ -181,13 +181,13 @@
       <div class="fnd">
         <img src="../images/anna.png" alt="Anna Milaeva" width="82" height="82" loading="lazy">
         <div><h3>Anna Milaeva</h3><span class="fnd-role">Co-founder</span>
+          <p class="fnd-bio">Anna arrived in the United States at twenty with nothing arranged, and spent over a decade running operations inside real estate, fintech and health tech. She watched a company she believed in break over a conflict nobody would name, and went to train in what was missing. She has been the person in the back holding it all together. Now she builds the systems and coaches the people inside them, and she wrote a novel about it.</p>
           <ul>
             <li>IFS Institute, trained through Level 3</li>
             <li>Certified Deep Transformational Coach</li>
             <li>10+ years running operations in real estate, fintech, and health tech</li>
             <li>Author of the novel <a href="https://www.amazon.com/dp/B0HD3GVY6Z/" target="_blank" rel="noopener noreferrer"><em>Already In A Meeting</em></a></li>
             <li>Works in English, Spanish and Russian</li>
-            <li>English, Spanish, Russian</li>
           </ul>
           <button class="bio-toggle" aria-expanded="false">Read more &darr;</button>
           <div class="bio-expand">
@@ -203,10 +203,12 @@
       <div class="fnd">
         <img src="../images/dario.png" alt="Dario Giuffrida" width="82" height="82" loading="lazy">
         <div><h3>Dario Giuffrida</h3><span class="fnd-role">Co-founder</span>
+          <p class="fnd-bio">Dario trained as a psychologist at Sapienza in Rome and spent twenty years facilitating groups and building communities across Europe and the Americas. He studied Sumak Kawsay, the Andean philosophy of living well, and worked with communities carrying loss. He is also a musician and a songwriter.</p>
           <ul>
             <li>Organizational psychologist</li>
             <li>IFS practitioner</li>
             <li>Twenty years facilitating groups and building communities</li>
+            <li>Musician and songwriter</li>
             <li>English, Spanish, Italian, Portuguese</li>
           </ul>
           <button class="bio-toggle" aria-expanded="false">Read more &darr;</button>
@@ -221,7 +223,7 @@
     </div>
 </section>
 
-<section>
+<section class="mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">The name</p><h2>What FINO means</h2></div>
     <div class="col prose rv">
@@ -231,6 +233,10 @@
     </div>
   </div>
 </section>
+
+<div class="page">
+  <p class="offers-door rv">What we do, and what it costs, is on <a href="https://fino.website/">the front page</a>.</p>
+</div>
 
 <div class="trust">
   <div class="page">
@@ -286,9 +292,9 @@
         <h3>Get in touch</h3>
         <form action="https://formspree.io/f/mjgaolev" method="POST">
           <label class="sr-only" for="f-name">Name</label>
-          <input id="f-name" type="text" name="name" placeholder="Name" required>
+          <input id="f-name" type="text" name="name" autocomplete="name" placeholder="Name" required>
           <label class="sr-only" for="f-email">Email</label>
-          <input id="f-email" type="email" name="email" placeholder="Email" required>
+          <input id="f-email" type="email" name="email" autocomplete="email" placeholder="Email" required>
           <label class="sr-only" for="f-msg">Message</label>
           <textarea id="f-msg" name="message" placeholder="Message" rows="4" required></textarea>
           <button type="submit">Send</button>
@@ -298,6 +304,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/v2.js?v=e111f4fc"></script>
+<script src="../assets/js/v2.js?v=b76ac422"></script>
 </body>
 </html>

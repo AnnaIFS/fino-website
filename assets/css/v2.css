@@ -80,7 +80,7 @@ em{font-style:italic;}
 
 /* ---------- nav ---------- */
 .nav{
-  position:sticky;top:0;z-index:100;
+  position:sticky;top:0;z-index:1000;
   background:color-mix(in srgb,var(--ground) 88%,transparent);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--rule);
@@ -141,7 +141,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--inner);outline-offs
   font-family:var(--f-mono);font-size:.69rem;letter-spacing:.02em;
   color:var(--dim);display:flex;align-items:center;gap:9px;
 }
-.trust span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--outer-line);flex:none;}
+.trust span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--rule-strong);flex:none;}
 
 /* the gift band: the free tool offered before anything is asked for */
 .gift{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:26px 0;background:var(--surface-2);}
@@ -152,7 +152,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--inner);outline-offs
 @media (max-width:640px){.gift-in .btn{width:100%;justify-content:center;}}
 
 /* ---------- sections ---------- */
-section{padding:clamp(66px,8.5vw,124px) 0;scroll-margin-top:88px;}
+section{--sec-pad:clamp(66px,8.5vw,124px);padding:var(--sec-pad) 0;scroll-margin-top:88px;}
 .s-head{margin-bottom:3rem;}
 .s-head .eyebrow{margin-bottom:1.2rem;}
 .s-head h2{margin-bottom:1.1rem;}
@@ -163,12 +163,15 @@ section{padding:clamp(66px,8.5vw,124px) 0;scroll-margin-top:88px;}
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,var(--m-body));
   gap:clamp(28px,6vw,90px);align-items:start;
 }
-.split .s-head{margin-bottom:0;max-width:var(--m-display);}
+.split .s-head{margin-bottom:0;max-width:none;}
+.split .s-head h2{max-width:var(--m-display);}
+@media (min-width:901px){.split .s-head{position:sticky;top:88px;}}
+.split .acc{margin-top:0;}
 @media (max-width:900px){
   .split{grid-template-columns:1fr;gap:0;}
   .split .s-head{margin-bottom:2.4rem;max-width:none;}
 }
-main > section.tinted{background:var(--surface-2);transition:background .5s ease;}
+
 .map-legend{
   display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);
   margin-top:1rem;max-width:940px;margin-left:auto;margin-right:auto;
@@ -207,7 +210,7 @@ main > section.tinted{background:var(--surface-2);transition:background .5s ease
 
 /* ---------- combine ---------- */
 .combine{position:relative;overflow:hidden;}
-/* ---------- statement ---------- */ .stmt{margin-top:2.2rem;font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);font-size:clamp(1.18rem,2.1vw,1.55rem);line-height:1.36;color:var(--ink);max-width:var(--m-sub);padding-top:1.6rem;border-top:1px solid var(--rule);}
+/* ---------- statement ---------- */ .stmt{margin-top:1.9rem;font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);font-size:clamp(1.18rem,2.1vw,1.55rem);line-height:1.36;color:var(--ink);max-width:var(--m-sub);}
 
 /* ---------- terms ---------- */
 .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.4rem;border-top:1px solid var(--rule);}
@@ -308,7 +311,7 @@ cite{
 .fnd-bio{font-size:.9rem;line-height:1.6;color:var(--body);margin-bottom:1rem;}
 .fnd ul{list-style:none;display:grid;gap:.3rem;}
 .fnd li{font-size:.86rem;line-height:1.48;color:var(--body);padding-left:13px;position:relative;}
-.fnd li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:var(--outer-line);}
+.fnd li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:var(--rule-strong);}
 @media (max-width:860px){
   .fnd-grid{grid-template-columns:1fr;}
 }
@@ -331,7 +334,8 @@ cite{
 
 /* ---------- nav dropdowns ---------- */
 .nav-drop{position:relative;}
-.nav-drop-btn{
+/* the dropdown button is a real target, not a 17px label */
+.nav-drop-btn{min-height:44px;
   display:inline-flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;
   font-family:var(--f-body);font-size:.87rem;font-weight:400;color:var(--body);padding:0;
   transition:color .2s ease;
@@ -348,13 +352,15 @@ cite{
   opacity:0;visibility:hidden;transition:opacity .25s ease,transform .25s ease,visibility .25s;
 }
 .nav-drop-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px;}
-.nav-drop:hover .nav-drop-menu,.nav-drop:focus-within .nav-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nav-drop.open .nav-drop-menu,.nav-drop:hover .nav-drop-menu,.nav-drop:focus-within .nav-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
 .nav-drop-menu a{display:block;padding:10px 12px;border-radius:3px;font-size:.87rem;color:var(--body);}
 .nav-drop-menu a:hover{background:var(--inner-soft);color:var(--ink);}
+.nav-drop:nth-of-type(2) .nav-drop-menu a:hover{background:var(--outer-soft);}
 .item-note{display:block;font-size:.73rem;color:var(--dim);margin-top:2px;}
 
 /* ---------- hamburger + mobile overlay ---------- */
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1001;}
+.burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:0;min-width:44px;min-height:44px;}
 .burger span{display:block;width:24px;height:2px;background:var(--ink);transition:all .3s ease;}
 .burger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .burger.active span:nth-child(2){opacity:0;}
@@ -364,7 +370,7 @@ cite{
    rather than listed. Each family keeps its colour, every row states what the
    thing is underneath its name, and the mark points at where the row goes. */
 .mob{
-  display:none;position:fixed;inset:0;z-index:999;background:var(--ground);
+  display:none;position:fixed;inset:0;z-index:998;background:var(--ground);
   flex-direction:column;gap:1.5rem;padding:88px 22px 34px;overflow-y:auto;
   opacity:0;pointer-events:none;visibility:hidden;
   transition:opacity .32s ease,visibility .32s;
@@ -439,6 +445,12 @@ cite{
 .f-brand{margin-bottom:1.8rem;}
 .f-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:2rem;}
 .f-nav-label{font-family:var(--f-mono);font-size:.69rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);margin-bottom:.9rem;}
+/* the two families are already marked in the navigation and on the map. the
+   footer and the dropdowns are the two places the system stopped short */
+.f-nav > div:nth-of-type(1) .f-nav-label{color:var(--inner);}
+.f-nav > div:nth-of-type(2) .f-nav-label{color:var(--outer-line);}
+.f-nav > div:nth-of-type(1) a:hover{color:var(--inner);}
+.f-nav > div:nth-of-type(2) a:hover{color:var(--outer-line);}
 .f-nav a{display:block;font-size:.9rem;color:var(--body);padding:5px 0;transition:color .2s ease;}
 .f-nav a:hover{color:var(--inner);}
 .f-info{font-size:.86rem;color:var(--dim);max-width:var(--m-body);line-height:1.6;}
@@ -447,7 +459,7 @@ cite{
 .f-form form{display:grid;gap:11px;}
 .f-form input,.f-form textarea{
   width:100%;background:var(--ground);border:1px solid var(--border-ctl);border-radius:3px;
-  padding:13px 15px;color:var(--ink);font-family:var(--f-body);font-size:.95rem;
+  padding:14px 15px;color:var(--ink);font-family:var(--f-body);font-size:1rem;
 }
 .f-form input::placeholder,.f-form textarea::placeholder{color:var(--dim);}
 .f-form input:focus-visible,.f-form textarea:focus-visible{outline:2px solid var(--inner);outline-offset:2px;border-color:var(--inner);}
@@ -512,10 +524,7 @@ body::after{
   body{font-size:16px;}
   .trust-in{gap:9px 20px;}
 }
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important;transition:background .3s ease,color .3s ease !important;}
-  .rv{opacity:1;transform:none;}
-}
+
 
 /* page hero */
 .phero{padding:clamp(52px,7vw,96px) 0 clamp(34px,4vw,56px);border-bottom:1px solid var(--rule);}
@@ -524,29 +533,35 @@ body::after{
 .phero h1{font-size:clamp(2.3rem,5vw,3.9rem);margin-bottom:1.2rem;}
 .phero-sub{font-size:1.1rem;line-height:1.62;max-width:var(--m-sub);margin-bottom:1.9rem;}
 .phero-facts{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:1.4rem;border-top:1px solid var(--rule);}
-.phero-facts span{font-family:var(--f-mono);font-size:.69rem;letter-spacing:.03em;color:var(--dim);}
+.phero-facts span{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.03em;color:var(--dim);}
 .phero-facts b{color:var(--ink);font-weight:500;}
 
 /* prose */
 .prose p{max-width:var(--measure);}
+/* a long argument gets the top of the measure scale, and its headline gets
+   the width of the page instead of a side column */
+.prose-wide,.prose-wide p{max-width:var(--m-quote);}
 .prose h3{margin:2rem 0 .7rem;}
 .lead{font-size:1.12rem;color:var(--ink);}
 
 /* numbered steps */
 .steps{display:grid;gap:0;margin-top:2rem;}
-.step{display:grid;grid-template-columns:3rem 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--rule);}
+.step{display:grid;grid-template-columns:3rem 1fr;gap:20px;padding:34px 0;border-top:1px solid var(--rule);}
 .step:last-child{border-bottom:1px solid var(--rule);}
 .step-n{font-family:var(--f-mono);font-size:.75rem;color:var(--inner);padding-top:.35em;}
+/* a row can be the width of the page. the sentence inside it cannot */
+.step h3,.step p{max-width:var(--m-body);}
+.step .turn{max-width:none;}
 .step h3{font-size:1.06rem;margin:0 0 .3rem;}
 /* a step that carries its own answer: the turn is marked, the answer steps forward */
 .step .turn{
   display:flex;align-items:center;gap:9px;margin-top:.85rem;
-  font-family:var(--f-mono);font-size:.58rem;letter-spacing:.09em;
+  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.07em;
   text-transform:uppercase;color:var(--inner);
 }
 .step .turn::after{content:"";height:1px;flex:1;background:var(--rule);}
 .step .fix{color:var(--ink);margin-top:.35rem;}
-.steps-note{margin-top:1.6rem;font-size:1.02rem;color:var(--body);max-width:var(--m-sub);}
+.steps-note{margin:1.5rem auto 0;font-size:1.02rem;color:var(--body);max-width:var(--m-sub);text-align:center;}
 .step p{font-size:.95rem;margin:0;max-width:var(--m-body);overflow-wrap:break-word;}
 
 /* two column list */
@@ -597,6 +612,7 @@ body::after{
 
 /* cta band */
 .cta{text-align:center;border-top:1px solid var(--rule);}
+.lf section.cta{border-top:1px solid var(--rule);}
 .cta h2{max-width:var(--m-display);margin:0 auto 1rem;}
 .cta p{margin:0 auto 1.8rem;max-width:var(--m-body);}
 
@@ -609,7 +625,6 @@ body::after{
 @media (max-width:600px){
   .gallery{grid-template-columns:1fr;}
   .people{grid-template-columns:repeat(2,1fr);}
-  .step{grid-template-columns:2.2rem 1fr;gap:12px;}
   .acc-head{font-size:1.06rem;}
   .acc-body p{font-size:1.05rem;}
 }
@@ -710,13 +725,11 @@ body::after{
   letter-spacing:.02em;text-transform:uppercase;color:var(--dim);margin-top:.25rem;font-weight:400;}
 
 /* ---------- illustration atmosphere ---------- */
-to{transform:translate3d(0,calc(var(--drift,7px) * -1),0);} }
-}
-to{opacity:1;} }
-100%{opacity:1;r:7;} }
 svg[data-art] text{font-family:var(--f-mono);font-weight:400;}
 /* ---------- accessibility and small screens ---------- */
 @media (max-width:768px){
+  .term+.term{padding-left:0;border-left:0;border-top:1px solid var(--rule);}
+  .term{padding-right:0;}
   .fnd{flex-direction:column;gap:14px;}
   .card-foot{
   display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;
@@ -748,8 +761,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .mt-live .mt-run{opacity:.9;animation:mt-run 9s linear infinite;}
 .mt-live .mt-weave{animation:mt-glow 5.4s ease-in-out infinite;}
 
-/* the five inner meetings breathe, the near one holds still */
-50%{opacity:.78}}
+/* the about page points at the offers without repeating them */
+.offers-door{margin-top:.6rem;color:var(--body);}
+.offers-door a{color:var(--inner);border-bottom:1px solid rgba(255,86,56,.45);}
+.offers-door a:hover{border-bottom-color:var(--inner);}
 .quiet-link{
   display:inline-block;margin-top:.9rem;
   font-family:var(--f-mono);font-size:.69rem;letter-spacing:.04em;text-transform:uppercase;
@@ -831,10 +846,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
    eye registers a new section without being told.
    ============================================================ */
 section{border-top:1px solid var(--rule-strong);}
+/* the hero and the full width bands close with their own rule. the section
+   after them does not draw a second one on top of it */
+.phero + section,.trust + section,.gift + section{border-top:none;}
 section:first-of-type{border-top:none;}
 
 main > section:nth-of-type(odd){background:var(--ground);}
-main > section:nth-of-type(even){background:#141210;}
+main > section:nth-of-type(even){background:var(--tint);}
+/* a section marked tinted wins over the automatic alternation */
+main > section.tinted{background:var(--surface-2);transition:background .5s ease;}
 
 /* the two argument sections lift a little further, so they read as
    the places where something is being claimed rather than listed */
@@ -844,11 +864,21 @@ main > section:nth-of-type(even){background:#141210;}
 section > .page{position:relative;}
 section > .page:not(:first-of-type)::before{display:none;}
 section > .page::before{
-  content:"";position:absolute;left:0;top:calc(-1 * clamp(66px,8.5vw,124px) - 1px);
+  content:"";position:absolute;left:30px;top:calc(-1 * var(--sec-pad) - 1px);
   width:56px;height:2px;background:var(--inner);opacity:.85;
 }
+/* the tick draws itself as its section arrives, so it reads as the start of
+   a line rather than a mark left on the page */
+.js section > .page::before{transform:scaleX(0);transform-origin:left center;
+  transition:transform .85s cubic-bezier(.22,1,.36,1) .08s;}
+.js section > .page.in::before{transform:scaleX(1);}
+.js .close > .page::before,.js .cta > .page::before,.js .mid > .page::before{
+  transform:translateX(-50%) scaleX(0);transform-origin:center;}
+.js .close > .page.in::before,.js .cta > .page.in::before,.js .mid > .page.in::before{transform:translateX(-50%) scaleX(1);}
 section:first-of-type > .page::before{display:none;}
-.close > .page::before{left:50%;transform:translateX(-50%);}
+/* a centred section gets a centred tick, on every page */
+.close > .page::before,.cta > .page::before,.mid > .page::before{left:50%;transform:translateX(-50%);}
+@media (max-width:400px){section > .page::before{left:20px;}}
 
 /* the mark at scale, in the hero */
 .hero-art svg{width:100%;height:auto;display:block;max-width:560px;margin-left:auto;}
@@ -888,10 +918,7 @@ section:first-of-type > .page::before{display:none;}
   margin-top:1.4rem;font-family:var(--f-mono);font-size:.69rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--inner);
 }
-@media (max-width:768px){.ours{
-  margin:3.4rem 0 0;padding:2.6rem 0 0;width:100%;text-align:center;
-  border-top:1px solid var(--rule-strong);
-}}
+
 /* a quote standing between paragraphs shares their column and their left edge,
    with room on both sides so it reads as its own beat */
 .ours-col{
@@ -948,4 +975,155 @@ section:first-of-type > .page::before{display:none;}
   .mob a em{font-size:.79rem;}
   /* Martian Mono is wide, so give the raised labels their tracking back */
   .card-foot,.phero-facts span,.hd-facts span{letter-spacing:.015em;}
+}
+
+/* ---------- the shapes the law firms page alternates between ---------- */
+
+/* a short section stands in the middle of the page, so the air falls on both
+   sides instead of leaving one unfinished half */
+.mid > .page > *{margin-left:auto;margin-right:auto;}
+.mid .s-head,.mid .col,.mid .tick-one{max-width:var(--m-quote);}
+.mid .s-head{text-align:center;}
+.mid .prose p{max-width:none;}
+.mid .q-hero{margin:clamp(48px,6vw,80px) auto 0;}
+.tool-cta{margin-top:1.9rem;}
+.split .tick-one{max-width:none;}
+.split .tick li:first-child{padding-top:0;}
+
+/* one line the page stops on, edge to edge like the band on the home page */
+/* the band is the pause. it replaces the gap rather than adding one, so the
+   section above it gives up its bottom padding */
+.band-say{padding:clamp(28px,3.2vw,46px) 0;margin:clamp(20px,2.4vw,34px) 0 0;text-align:center;}
+section.sec-flush{padding-bottom:0;}
+  
+.band-say p{
+  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.32;color:var(--ink);
+  max-width:var(--m-lead);margin:0 auto;padding:0 30px;
+}
+
+/* the number a partner leaves with */
+.lead-big{
+  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-size:clamp(1.45rem,2.9vw,2.15rem);line-height:1.34;color:var(--ink);
+  max-width:var(--m-lead);margin:0 0 1.8rem;
+}
+
+/* terms read as terms: one commitment to a row, the width of the page */
+.rows{border-top:1px solid var(--rule);max-width:none;}
+.rows p{max-width:none;padding:20px 0;margin:0;border-bottom:1px solid var(--rule);}
+
+/* the face the page has been missing */
+.why-face{display:flex;align-items:center;gap:20px;margin-bottom:1.5rem;}
+.why-face img{width:82px;height:82px;border-radius:50%;flex:none;object-fit:cover;
+  border:1px solid var(--rule-strong);}
+.mid .why-face{flex-direction:column;justify-content:center;align-items:center;gap:1.1rem;}
+
+/* an outer operations page is marked amber throughout, the way the home page
+   marks its outer family. every section boundary is a real hairline and the
+   amber is the first stretch of it, sitting on the line itself rather than
+   measured back through whatever padding the section happens to carry.
+   buttons stay coral, as they are on every page. */
+.lf section + section,.lf .gift + section{border-top:1px solid var(--rule);position:relative;}
+.lf section + section::before,.lf .gift + section::before{
+  content:"";position:absolute;top:-1px;left:max(30px,calc(50% - 570px));
+  width:56px;height:2px;background:var(--outer-line);
+}
+.js .lf section + section::before,.js .lf .gift + section::before{transform:scaleX(0);transform-origin:left center;
+  transition:transform .85s cubic-bezier(.22,1,.36,1) .08s;}
+.js .lf section + section.in::before,.js .lf .gift + section.in::before{transform:scaleX(1);}
+.lf section > .page::before{display:none;}
+@media (max-width:400px){.lf section + section::before,.lf .gift + section::before{left:20px;}}
+/* where the content is centred, the tick is centred with it */
+.lf section.mid::before,.lf section.cta::before{left:50%;transform:translateX(-50%);}
+.js .lf section.mid::before,.js .lf section.cta::before{
+  transform:translateX(-50%) scaleX(0);transform-origin:center;}
+.js .lf section.mid.in::before,.js .lf section.cta.in::before{
+  transform:translateX(-50%) scaleX(1);}
+
+/* the closing line of a section needs no rule of its own. the section
+   divider under it is the line */
+/* every outer operations page is marked amber, the way the home page marks
+   its outer family. buttons stay coral on both sides */
+.outer section > .page::before{background:var(--outer-line);}
+.outer .eyebrow,
+.outer .phero-facts span::before{color:var(--outer-line);}
+.outer .phero-facts span::before{background:var(--outer-line);}
+.outer .step-n,
+.outer .step .turn,
+.outer .tick-y li::before,
+.outer .acc-head .ico,
+.outer .acc-head:hover,
+.outer .q-hero blockquote span,
+.outer .q-mark,
+.outer .ours figcaption,
+.outer .works a b::after,
+.outer .said::before,.outer .said::after,
+.outer .term b,
+.outer .quiet-link{color:var(--outer-line);}
+.outer .q-hero::before,.outer .q-hero::after{background:var(--outer-line);}
+.lf .eyebrow{font-size:.68rem;}
+@media (max-width:768px){.lf .eyebrow{font-size:.78rem;}}
+
+/* the credentials stop being the smallest type on the page */
+.phero-facts span{display:flex;align-items:center;gap:9px;}
+.phero-facts span::before{content:"";width:4px;height:4px;border-radius:50%;
+  background:var(--inner);flex:none;}
+
+/* the gaps say whether a section continues the thought or opens a new one */
+section.sec-tight{--sec-pad:clamp(44px,5vw,72px);padding-top:var(--sec-pad);}
+section.sec-wide{--sec-pad:clamp(88px,12vw,176px);padding:var(--sec-pad) 0;}
+/* a section that ends on a small centred line does not need a full gap after it */
+section.sec-close{padding-bottom:clamp(44px,5vw,72px);}
+
+@media (max-width:768px){
+  .step p,.step .fix,.tick li{font-size:1.05rem;line-height:1.72;}
+  .step h3{font-size:1.18rem;}
+  .step .turn{font-size:.72rem;letter-spacing:.06em;}
+  .gift-in p{font-size:1.08rem;}
+  .step{padding:26px 0;}
+  .rows p{padding:17px 0;}
+}
+@media (max-width:960px){
+  .nav-cta{padding:12px 18px;}
+  .burger{padding:11px 8px;}
+}
+@media (max-width:600px){
+  .step{grid-template-columns:1fr;gap:0;padding:26px 0;}
+  .step-n{padding-top:0;margin-bottom:.55rem;}
+  section{--sec-pad:60px;padding:var(--sec-pad) 0;}
+  section.sec-tight{--sec-pad:40px;padding-top:var(--sec-pad);}
+  section.sec-wide{--sec-pad:84px;padding:var(--sec-pad) 0;}
+  section.sec-close{padding-bottom:40px;}
+  .phero-facts{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .phero-facts span{padding:12px 0;border-bottom:1px solid var(--rule);font-size:.82rem;}
+  .phero-facts b{display:block;}
+  .why-face{flex-direction:column;text-align:center;gap:14px;}
+}
+
+/* ---------- reduced motion, last so it wins ---------- */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:background .3s ease,color .3s ease !important;}
+  .js .rv,.rv{opacity:1;transform:none;}
+  .js section > .page::before,.js .lf section + section::before,
+  .js .lf .gift + section::before{transform:none;}
+  .js .close > .page::before,.js .cta > .page::before,.js .mid > .page::before{transform:translateX(-50%);}
+}
+
+/* the generators size their labels against the drawing's desktop width, so on
+   a narrow screen they shrink with it. this is the floor. */
+svg[data-art] text{font-size:clamp(11px,1.25vw,15px);}
+
+/* nothing animates for a pointer that cannot hover */
+@media (hover:none){
+  .card:hover{transform:none;box-shadow:none;}
+  .card:hover::after{transform:scaleX(0);}
+  .acc-head:hover{color:var(--ink);}
+}
+
+/* the footer sentence sat smaller than the links above it */
+@media (max-width:768px){
+  .f-info{font-size:.95rem;}
+  .f-nav a{min-height:44px;display:flex;align-items:center;}
+  .nav-cta{font-size:.875rem;}
 }

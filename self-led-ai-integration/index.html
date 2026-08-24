@@ -24,8 +24,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/v2.css?v=0e2599d9">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Martian+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/v2.css?v=2b6f8ec2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -171,6 +171,7 @@
 </script>
 </head>
 <body>
+<a class="sr-only sr-only-focusable" href="#main">Skip to content</a>
 
 <nav class="nav">
   <div class="nav-in">
@@ -200,7 +201,7 @@
   </div>
 </nav>
 
-<div class="mob" id="mob">
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="mob-group">
     <p class="mob-label">Inner Operations</p>
     <a href="../circles/">Self-leadership Circles<em>8 weeks, online, for a team</em></a>
@@ -221,7 +222,7 @@
   <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
 </div>
 
-<main>
+<main id="main" class="outer">
 
 <section class="phero">
   <div class="page">
@@ -247,7 +248,7 @@
   </div>
 </section>
 
-<section>
+<section class="mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">The problem underneath</p><h2>The tools are the easy part</h2></div>
     <figure class="ours ours-col rv">
@@ -274,7 +275,7 @@
   </div>
 </section>
 
-<section>
+<section class="mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">What we start with</p><h2>The people and the work, before the tools</h2></div>
     <div class="col prose rv">
@@ -297,7 +298,7 @@
   </div>
 </section>
 
-<section>
+<section class="sec-tight">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">How it is bought</p><h2>Two parts, and you can take either one</h2></div>
     <div class="cards rv" style="grid-template-columns:repeat(2,1fr);">
@@ -392,9 +393,9 @@
         <h3>Get in touch</h3>
         <form action="https://formspree.io/f/mjgaolev" method="POST">
           <label class="sr-only" for="f-name">Name</label>
-          <input id="f-name" type="text" name="name" placeholder="Name" required>
+          <input id="f-name" type="text" name="name" autocomplete="name" placeholder="Name" required>
           <label class="sr-only" for="f-email">Email</label>
-          <input id="f-email" type="email" name="email" placeholder="Email" required>
+          <input id="f-email" type="email" name="email" autocomplete="email" placeholder="Email" required>
           <label class="sr-only" for="f-msg">Message</label>
           <textarea id="f-msg" name="message" placeholder="Message" rows="4" required></textarea>
           <button type="submit">Send</button>
@@ -404,6 +405,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/v2.js?v=e111f4fc"></script>
+<script src="../assets/js/v2.js?v=b76ac422"></script>
 </body>
 </html>

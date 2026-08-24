@@ -24,8 +24,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/v2.css?v=0e2599d9">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Martian+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/v2.css?v=2b6f8ec2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -150,6 +150,7 @@
 </script>
 </head>
 <body>
+<a class="sr-only sr-only-focusable" href="#main">Skip to content</a>
 
 <nav class="nav">
   <div class="nav-in">
@@ -179,7 +180,7 @@
   </div>
 </nav>
 
-<div class="mob" id="mob">
+<div class="mob" id="mob" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="mob-group">
     <p class="mob-label">Inner Operations</p>
     <a href="../circles/">Self-leadership Circles<em>8 weeks, online, for a team</em></a>
@@ -200,7 +201,7 @@
   <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
 </div>
 
-<main>
+<main id="main">
 
 <section class="phero">
   <div class="page">
@@ -228,7 +229,7 @@
   </div>
 </section>
 
-<section>
+<section class="mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">What it is</p><h2>Built around your team's own week</h2></div>
     <div class="col prose rv">
@@ -252,7 +253,7 @@
   </div>
 </section>
 
-<section>
+<section class="sec-tight">
   <div class="page">
     <div class="q-hero rv">
       <span class="q-mark" aria-hidden="true">&ldquo;</span>
@@ -285,7 +286,7 @@
   </div>
 </section>
 
-<section class="tinted">
+<section class="tinted mid">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">The format</p><h2>How a circle runs</h2></div>
     <div class="col prose rv">
@@ -295,7 +296,7 @@
   </div>
 </section>
 
-<section>
+<section class="sec-tight">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">The fit</p><h2>Is this right for your team?</h2></div>
     <div class="tick rv">
@@ -314,7 +315,7 @@
   </div>
 </section>
 
-<section id="start" class="tinted">
+<section id="start" class="tinted mid sec-wide">
   <div class="page">
     <div class="s-head col rv"><p class="eyebrow">One way in</p><h2>The Self-leadership Intensive</h2>
       <p>Half a day with your team, built on the pressure they are under right now.</p></div>
@@ -327,7 +328,7 @@
       <div class="hero-btns" style="margin-top:1.7rem;">
         <a href="https://calendly.com/thefutureisnow/30min" class="btn btn-p" target="_blank" rel="noopener noreferrer">Ask about the Intensive</a>
       </div>
-      <p style="margin-top:1.1rem;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.02em;color:var(--dim);">Half a day &middot; usually online &middot; from $1,500</p>
+      <p class="card-foot" style="margin-top:1.1rem;">Half a day &middot; usually online &middot; from $1,500</p>
     </div>
   </div>
 </section>
@@ -408,9 +409,9 @@
         <h3>Get in touch</h3>
         <form action="https://formspree.io/f/mjgaolev" method="POST">
           <label class="sr-only" for="f-name">Name</label>
-          <input id="f-name" type="text" name="name" placeholder="Name" required>
+          <input id="f-name" type="text" name="name" autocomplete="name" placeholder="Name" required>
           <label class="sr-only" for="f-email">Email</label>
-          <input id="f-email" type="email" name="email" placeholder="Email" required>
+          <input id="f-email" type="email" name="email" autocomplete="email" placeholder="Email" required>
           <label class="sr-only" for="f-msg">Message</label>
           <textarea id="f-msg" name="message" placeholder="Message" rows="4" required></textarea>
           <button type="submit">Send</button>
@@ -420,6 +421,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/v2.js?v=e111f4fc"></script>
+<script src="../assets/js/v2.js?v=b76ac422"></script>
 </body>
 </html>
