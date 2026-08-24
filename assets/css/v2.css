@@ -1073,7 +1073,7 @@ section.sec-close{padding-bottom:clamp(44px,5vw,72px);}
 @media (max-width:768px){
   .step p,.step .fix,.tick li{font-size:1.05rem;line-height:1.72;}
   .step h3{font-size:1.18rem;}
-  .step .turn{font-size:.72rem;letter-spacing:.06em;}
+  .step .turn{font-size:.78rem;letter-spacing:.06em;}
   .gift-in p{font-size:1.08rem;}
   .step{padding:26px 0;}
   .rows p{padding:17px 0;}
