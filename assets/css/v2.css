@@ -308,7 +308,7 @@ cite{
   font-family:var(--f-mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
   color:var(--inner);margin-bottom:.9rem;display:block;
 }
-.fnd-bio{font-size:.9rem;line-height:1.6;color:var(--body);margin-bottom:1rem;}
+.fnd-bio{font-size:.95rem;line-height:1.62;color:var(--body);margin-bottom:1.1rem;}
 .fnd ul{list-style:none;display:grid;gap:.3rem;}
 .fnd li{font-size:.86rem;line-height:1.48;color:var(--body);padding-left:13px;position:relative;}
 .fnd li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:var(--rule-strong);}
@@ -484,7 +484,7 @@ cite{
   .hero-sub,.phero-sub{font-size:1.16rem;line-height:1.75;}
   .s-head p{font-size:1.12rem;line-height:1.75;}
   .eyebrow{font-size:.78rem;letter-spacing:.16em;}
-  .card p,.leg p,.fnd li,.term p{font-size:1.05rem;line-height:1.7;}
+  .card p,.leg p,.fnd li,.term p,.fnd-bio{font-size:1.05rem;line-height:1.7;}
   .who-list div,.f-nav a{font-size:1.05rem;}
   .stmt{max-width:100%;}
   .btn{font-size:1.05rem;padding:16px 28px;width:100%;justify-content:center;}
