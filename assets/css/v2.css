@@ -1095,6 +1095,23 @@ section.sec-close{padding-bottom:clamp(44px,5vw,72px);}
   .why-face{flex-direction:column;text-align:center;gap:14px;}
 }
 
+/* the law firms strip carries four credentials, and they are sentences rather
+   than numbers. wide enough, they stand apart across the whole rule. on a
+   phone they stop sharing a column and take one line each, with the dot held
+   out to the side so a line that wraps still starts under its own words */
+@media (min-width:1040px){
+  .lf .phero-facts{flex-wrap:nowrap;justify-content:space-between;gap:26px;}
+}
+@media (min-width:601px) and (max-width:1039px){
+  .lf .phero-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;}
+}
+@media (max-width:600px){
+  .lf .phero-facts{grid-template-columns:1fr;}
+  .lf .phero-facts span{display:block;position:relative;padding-left:17px;}
+  .lf .phero-facts span::before{position:absolute;left:0;top:.66em;}
+  .lf .phero-facts b{display:inline;}
+}
+
 /* ---------- reduced motion, last so it wins ---------- */
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important;transition:background .3s ease,color .3s ease !important;}
