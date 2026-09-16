@@ -562,7 +562,8 @@ body::after{
 }
 .step .turn::after{content:"";height:1px;flex:1;background:var(--rule);}
 .step .fix{color:var(--ink);margin-top:.35rem;}
-.steps-note{margin:1.5rem auto 0;font-size:1.02rem;color:var(--body);max-width:var(--m-sub);text-align:center;}
+.steps-note{margin:3.2rem auto 0;padding-top:2.4rem;border-top:1px solid var(--rule);font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);font-size:1.38rem;line-height:1.45;color:var(--ink);max-width:var(--m-lead);text-align:center;}
+@media(max-width:700px){.steps-note{font-size:1.18rem;margin-top:2.4rem;padding-top:1.8rem;}}
 .step p{font-size:.95rem;margin:0;max-width:var(--m-body);overflow-wrap:break-word;}
 
 /* two column list */
