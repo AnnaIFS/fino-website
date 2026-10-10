@@ -5,15 +5,15 @@
   --surface:#16130F;
   --surface-2:#1E1A15;
   --ink:#ECE4D7;
-  --body:#C6BDAD;
-  --dim:#A89C8C;
+  --body:#D3CBBC;
+  --dim:#BEB3A3;
   --inner:#FF5638;
   --inner-soft:rgba(255,86,56,.16);
   --outer:#FBB040;
   --outer-line:#FBB040;
   --outer-soft:rgba(251,176,64,.16);
-  --rule:rgba(236,228,215,.14);
-  --rule-strong:rgba(236,228,215,.30);
+  --rule:rgba(236,228,215,.24);
+  --rule-strong:rgba(236,228,215,.44);
   --tint:#181513;
   --border-ctl:rgba(236,228,215,.46);
   --grid:rgba(236,228,215,.075);
@@ -22,7 +22,7 @@
   --f-display:"Newsreader",Georgia,"Times New Roman",serif;
   --f-body:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --f-mono:"Martian Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
-  --d-weight:300;
+  --d-weight:400;
   --d-track:-.014em;
   --page:1200px;
   /* one measure scale. every text block picks a step, never a new number. */
@@ -46,7 +46,6 @@ body{
   font-weight:400;
   font-size:17px;
   line-height:1.7;
-  -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
   transition:background .5s ease,color .5s ease;
 }
@@ -63,7 +62,7 @@ h1,h2,h3,.close-line{
   line-height:1.16;text-wrap:balance;
 }
 h1,h2{line-height:1.16;}
-/* card titles hold at 400; 300 goes weak at this size */
+/* card titles pin to 400 independently of --d-weight */
 h3{font-weight:400;}
 h1{font-size:clamp(2.7rem,6.2vw,4.9rem);}
 h2{font-size:clamp(2rem,3.9vw,3.1rem);}

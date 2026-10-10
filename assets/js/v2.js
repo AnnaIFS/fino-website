@@ -34,7 +34,7 @@
       t: function (p) { return Math.round(p / k); }
     };
   }
-  var HAIR = 0.75, LINE = 0.9, KEY = 1.1, EDGE = 1.3;
+  var HAIR = 0.95, LINE = 1.15, KEY = 1.4, EDGE = 1.65;
 
   // the paper the diagrams sit on: a registration field, centred so all
   // four margins match
