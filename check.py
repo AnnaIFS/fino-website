@@ -93,7 +93,9 @@ for f in HTML:
     for href in set(re.findall(r'href="([^"#][^"]*)"', s)):
         if href.startswith(("http", "mailto:", "tel:")):
             continue
-        target = os.path.normpath(os.path.join(base, href.split("#")[0].split("?")[0]))
+        clean = href.split("#")[0].split("?")[0]
+        root = "." if clean.startswith("/") else base
+        target = os.path.normpath(os.path.join(root, clean.lstrip("/")))
         if not (os.path.exists(target) or os.path.exists(os.path.join(target, "index.html"))):
             flag("broken-link", "%s -> %s" % (f, href))
 
@@ -104,7 +106,9 @@ for f in HTML:
     for src in re.findall(r'<img[^>]*src="([^"]+)"', open(f, encoding="utf-8").read()):
         if src.startswith(("http", "data:")):
             continue
-        if not os.path.exists(os.path.normpath(os.path.join(base, src.split("?")[0]))):
+        clean = src.split("?")[0]
+        root = "." if clean.startswith("/") else base
+        if not os.path.exists(os.path.normpath(os.path.join(root, clean.lstrip("/")))):
             flag("broken-image", "%s -> %s" % (f, src))
 
 # --- 6. anchors that point at ids which do not exist ---
