@@ -244,14 +244,14 @@
       /* the axis the four meetings sit on, coral running into amber.
          user space, because a horizontal line has no height to scale a
          gradient against */
-      var ax1 = X(APEX[0]), ax2 = X(TIP), axLen = ax2 - ax1;
+      var ax1 = X(APEX[0]) - G.u(26), ax2 = X(TIP) + G.u(14), axLen = ax2 - ax1;
       var defs = el('defs', {}), lg = el('linearGradient', { id: 'mk-ax',
         gradientUnits: 'userSpaceOnUse', x1: ax1, y1: CY, x2: ax2, y2: CY });
       lg.appendChild(el('stop', { offset: '0', 'stop-color': 'var(--inner)' }));
       lg.appendChild(el('stop', { offset: '.55', 'stop-color': 'var(--outer-line)' }));
       lg.appendChild(el('stop', { offset: '1', 'stop-color': 'var(--outer-line)' }));
       defs.appendChild(lg); svg.appendChild(defs);
-      var axis = line(ax1, CY, ax2, CY, 'url(#mk-ax)', KEY, 0.95, 'mk-axis');
+      var axis = line(ax1, CY, ax2, CY, 'url(#mk-ax)', EDGE, 1, 'mk-axis');
 
       /* a slow light travelling that axis once the drawing has settled */
       var sheen = line(ax1, CY, ax2, CY, AMBER, EDGE, 0.9, 'mk-sheen');
@@ -556,6 +556,8 @@
       var W = 600, H = 430, AXIS = 344, i;
       var G = gauge(W, 500);
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      /* the parts are coral, because on this page a part is an inner thing.
+         only the axis carries both families: it is what they have in common. */
       var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
       // apex x and y. reach follows from the height, so every one of them
       // stands on the line rather than near it.
@@ -568,14 +570,14 @@
 
       /* the ground under the axis, so the line reads as something to stand on */
       svg.appendChild(el('rect', { x: 0, y: AXIS, width: W, height: H - AXIS,
-        fill: CORAL, opacity: 0.045, 'class': 'pt-body' }));
+        fill: CORAL, opacity: 0.08, 'class': 'pt-body' }));
 
       /* rungs on the mark's pitch, holding the four in one structure */
       var rungs = [];
       for (i = 1; i <= 3; i++) {
         var y = AXIS - i * 62;
         rungs.push(svg.appendChild(el('line', { x1: 0, y1: y, x2: W, y2: y,
-          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: 0.07, 'class': 'pt-rung' })));
+          stroke: CORAL, 'stroke-width': G.w(HAIR), opacity: 0.16, 'class': 'pt-rung' })));
       }
 
       var arms = [];
@@ -586,7 +588,7 @@
             n: svg.appendChild(el('line', {
               x1: (p.x - r).toFixed(1), y1: (p.y + dir * r).toFixed(1),
               x2: p.x, y2: p.y,
-              stroke: dir < 0 ? AMBER : CORAL, 'stroke-width': G.w(p.w),
+              stroke: CORAL, 'stroke-width': G.w(p.w),
               'stroke-linecap': 'round', opacity: p.o, 'class': 'pt-part' })) });
         });
       });
