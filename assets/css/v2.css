@@ -1392,3 +1392,12 @@ section{border-top:none;}
     100%{transform:translateY(0);opacity:0;}
   }
 }
+
+/* A page selling web design cannot show a wireframe: a greybox layout is
+   what a site looks like before anyone has designed it. Studio carries no
+   drawing, and the page itself does the selling. */
+.phero-solo{grid-template-columns:minmax(0,1fr);min-height:0;}
+.phero-solo > div{max-width:var(--m-lead);}
+.phero-solo h1{font-size:clamp(2.6rem,6.6vw,4.8rem);}
+.phero-solo .phero-sub{max-width:var(--m-sub);}
+@media (max-width:860px){.phero-solo > div{max-width:none;}}
