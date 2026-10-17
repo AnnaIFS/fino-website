@@ -645,49 +645,74 @@
     },
 
 
-    /* ONE VOICE. FINO Studio.
+    /* A WEBSITE THAT SOUNDS LIKE YOU. FINO Studio.
 
-       The mark turned round. The point is on the left and it is coral, because
-       it is a person, and everything opening out to the right of it is amber,
-       because that is the thing built from them. The rungs are the site: each
-       one starts where the arms have got to and runs to the edge. */
-    /* NOW.
-
-       The mark, read as an arrow, at the moment it arrives. Four meetings step
-       forward along the axis exactly as the logo does, and behind them the same
-       formation trails off into where it has already been. The axis runs out of
-       the past and stops dead at the last meeting, because there is nothing
-       drawn after it. The future is not ahead of the point. It is the point. */
+       Left is you talking, drawn as a waveform, which is the one shape
+       everybody reads as sound. Right is the page, and its lines are not
+       bars of filler: they are that same waveform cut into rows, with the
+       last one running short the way a paragraph does. The site is made out
+       of the voice rather than poured into a template, which is the only
+       claim this page makes. */
     voice: function (svg) {
-      var W = 600, H = 430, i;
+      var W = 600, H = 420, i, j, r;
       var G = gauge(W, 500);
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
-      var AX = 96, AY = 215, R = 178, RIGHT = 566, PITCH = 44;
+      var AMBER = 'var(--outer-line)';
+      var N = 42, SX = 40, SCY = 210, SW = 196;
+      var FX = 318, FY = 92, FW = 242, FH = 236;
+      var bars = [];
 
-      // the rungs first, so the arms sit over them
-      for (i = 1; i * PITCH <= R; i++) {
-        [-1, 1].forEach(function (d) {
-          var dy = i * PITCH;
-          svg.appendChild(el('line', { x1: (AX + dy).toFixed(1), y1: (AY + d * dy).toFixed(1),
-            x2: (AX + dy + [274, 386, 318, 208][i - 1] * (d < 0 ? 1 : 0.86)).toFixed(1),
-            y2: (AY + d * dy).toFixed(1), stroke: AMBER,
-            'stroke-width': G.w(i === 2 ? LINE : HAIR),
-            'stroke-linecap': 'round', opacity: (MID - i * 0.07).toFixed(2), 'class': 'vo-rung' }));
-        });
+      /* a fixed, uneven speech envelope with pauses in it. deterministic, so
+         the same shape appears on the left and inside the page. the pauses
+         are what stop it reading as a block of noise: people stop talking. */
+      function amp(k) {
+        var gate = Math.abs(Math.sin(k * 0.19 + 0.9));
+        if (gate < 0.17) return 0.04;
+        return (0.18 + 0.82 * Math.abs(Math.sin(k * 0.81 + 0.4)) * (0.42 + 0.58 * gate));
       }
-      // the axis, which is the sentence the whole thing is built on
-      svg.appendChild(el('line', { x1: AX, y1: AY, x2: RIGHT, y2: AY, stroke: AMBER,
-        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', opacity: 0.9, 'class': 'vo-rung' }));
+      function tick(x, cy, a, w, op) {
+        return bars[bars.length] = svg.appendChild(el('line', { x1: x.toFixed(1),
+          y1: (cy - a).toFixed(1), x2: x.toFixed(1), y2: (cy + a).toFixed(1),
+          stroke: AMBER, 'stroke-width': G.w(w), 'stroke-linecap': 'round',
+          opacity: op, 'class': 'vo-tick' }));
+      }
 
-      // the person it comes from
-      [-1, 1].forEach(function (d) {
-        svg.appendChild(el('line', { x1: AX, y1: AY, x2: (AX + R).toFixed(1), y2: (AY + d * R).toFixed(1),
-          stroke: CORAL, 'stroke-width': G.w(EDGE), 'stroke-linecap': 'round',
-          opacity: 0.95, 'class': 'vo-arm' }));
+      // the voice
+      svg.appendChild(el('line', { x1: SX - 10, y1: SCY, x2: SX + SW + 10, y2: SCY,
+        stroke: 'var(--ink)', 'stroke-width': G.w(HAIR), opacity: GHOST }));
+      for (i = 0; i < N; i++) tick(SX + i * (SW / (N - 1)), SCY, amp(i) * 76, 2.1, MID);
+
+      // the track across
+      svg.appendChild(el('line', { x1: SX + SW + 24, y1: SCY, x2: FX - 28, y2: SCY,
+        stroke: 'var(--ink)', 'stroke-width': G.w(HAIR), opacity: SOFT,
+        'stroke-dasharray': '4 6' }));
+      svg.appendChild(el('path', { d: 'M -10 -8 L 0 0 L -10 8', fill: 'none', stroke: AMBER,
+        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+        transform: 'translate(' + (FX - 16) + ' ' + SCY + ')' }));
+
+      // the page, whose rows are that same waveform cut into lines
+      svg.appendChild(el('rect', { x: FX, y: FY, width: FW, height: FH, fill: 'none',
+        stroke: AMBER, 'stroke-width': G.w(EDGE) }));
+      svg.appendChild(el('line', { x1: FX, y1: FY + 36, x2: FX + FW, y2: FY + 36,
+        stroke: AMBER, 'stroke-width': G.w(LINE), opacity: SOFT }));
+      var IN = 16, ROWS = 6, PER = 30, k = 0, rowy = FY + 62;
+      for (r = 0; r < ROWS; r++) {
+        var n = (r < ROWS - 1) ? PER : 19;
+        for (j = 0; j < n; j++) {
+          tick(FX + IN + j * ((FW - IN * 2) / PER), rowy, amp(k) * 8.5, 1.5, r ? MID : 1);
+          k++;
+        }
+        rowy += 32;
+      }
+
+      if (reduce) return;
+      bars.forEach(function (n, x) {
+        n.style.opacity = '0';
+        n.style.transition = 'opacity .42s ease ' + (0.1 + x * 0.006).toFixed(3) + 's';
       });
-
-      svg.appendChild(label(AX - 14, AY + 5, 'ONE VOICE', 'end', 'var(--dim)', G.t(10)));
+      requestAnimationFrame(function () {
+        setTimeout(function () { bars.forEach(function (n) { n.style.opacity = ''; }); }, 120);
+      });
     },
 
     /* THE PIECE THAT IS MISSING. Fractional operations.
