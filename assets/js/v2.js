@@ -135,6 +135,54 @@
 
 
 
+  /* One or more systems of a sun with parts going round it. `places` is a
+     list of [angle, turn] pairs: where each system sits on the shared orbit
+     and how far its own parts are rotated, so four people are four people
+     and not four prints of one. */
+  function orbitField(svg, W, H, scale, places, spread, shared) {
+    var CX = W / 2, CY = H / 2 + 0, CORAL = 'var(--inner)';
+    var G = gauge(W, 500);
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var RINGS = [[68, [[-52, 8]]], [124, [[128, 10], [-24, 6.5]]], [180, [[36, 12], [196, 7]]]];
+    var spin = [92, 148, 214], rings = [];
+
+    if (shared) {
+      svg.appendChild(el('circle', { cx: CX, cy: CY, r: shared, fill: 'none', stroke: CORAL,
+        'stroke-width': G.w(LINE), opacity: 0.3 }));
+    }
+
+    places.forEach(function (pl, k) {
+      var a = pl[0] * Math.PI / 180;
+      var ox = CX + (spread ? Math.cos(a) * spread : 0);
+      var oy = CY + (spread ? Math.sin(a) * spread : 0);
+      RINGS.forEach(function (ring, ri) {
+        var r = ring[0] * scale;
+        svg.appendChild(el('circle', { cx: ox, cy: oy, r: r.toFixed(1), fill: 'none',
+          stroke: CORAL, 'stroke-width': G.w(HAIR), opacity: 0.24 }));
+        var g = el('g', { 'class': 'ob-ring' });
+        g.style.setProperty('--ox', ox.toFixed(1) + 'px');
+        g.style.setProperty('--oy', oy.toFixed(1) + 'px');
+        g.style.animationDuration = (spin[ri] * (ri % 2 ? 1 : -1) > 0 ? spin[ri] : spin[ri]) + 's';
+        g.style.animationDirection = ri % 2 ? 'reverse' : 'normal';
+        ring[1].forEach(function (pt) {
+          var th = (pt[0] + pl[1]) * Math.PI / 180;
+          g.appendChild(el('circle', { cx: (ox + Math.cos(th) * r).toFixed(1),
+            cy: (oy + Math.sin(th) * r).toFixed(1), r: (pt[1] * scale).toFixed(1),
+            fill: 'var(--ground)', stroke: CORAL, 'stroke-width': G.w(KEY) }));
+        });
+        rings.push(svg.appendChild(g));
+      });
+      svg.appendChild(el('circle', { cx: ox, cy: oy, r: (13 * scale).toFixed(1),
+        fill: 'var(--ground)', stroke: CORAL, 'stroke-width': G.w(EDGE) }));
+      svg.appendChild(el('circle', { cx: ox, cy: oy, r: (5.4 * scale).toFixed(1), fill: CORAL }));
+    });
+    if (shared) {
+      svg.appendChild(el('circle', { cx: CX, cy: CY, r: 7, fill: 'var(--ground)',
+        stroke: CORAL, 'stroke-width': G.w(KEY) }));
+      svg.appendChild(el('circle', { cx: CX, cy: CY, r: 3, fill: CORAL }));
+    }
+  }
+
   /* ---------- the illustrations ---------- */
 
   var ART = {
@@ -455,92 +503,6 @@
        Every ring is whole. They draw from the axis outward and close on the far
        side, so the coming together happens in the movement and what is left
        standing is four complete circles. */
-    ring: function (svg) {
-      var W = 560, C = W / 2, i, k;
-      var G = gauge(W, 500);
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + W);
-      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
-      var R    = [80, 116, 164, 224];            // gaps of 36, 48, 60, as the mark grows
-      var SPAN = [180, 180, 180, 180];           // every ring closes
-      var SPOKE = [43, 86, 130];                 // where the mark has its rungs
-      var FROM  = [0, 1, 2];                     // and how far in each one starts, as the mark steps
-      var WT = [LINE, LINE, KEY, KEY], OP = [0.6, 0.74, 0.88, 1];
-      var RAD = Math.PI / 180;
-
-      function pt(r, deg) { return [(C + r * Math.cos(deg * RAD)).toFixed(1),
-                                    (C - r * Math.sin(deg * RAD)).toFixed(1)]; }
-      function arc(r, from, to, colour, wpx, op, cls) {
-        var p0 = pt(r, from), p1 = pt(r, to), big = Math.abs(to - from) > 180 ? 1 : 0;
-        var sweep = to > from ? 0 : 1;           // y is down, so the sense flips
-        var n = el('path', { d: 'M ' + p0[0] + ' ' + p0[1] + ' A ' + r + ' ' + r +
-            ' 0 ' + big + ' ' + sweep + ' ' + p1[0] + ' ' + p1[1],
-          fill: 'none', stroke: colour, 'stroke-width': G.w(wpx),
-          'stroke-linecap': 'round', opacity: op, 'class': cls });
-        svg.appendChild(n);
-        return n;
-      }
-
-      /* the body, in bands, the same way the mark is banded. faint enough to
-         be light rather than colour, strongest against the axis */
-      function sector(r1, r2, span, dir, colour, op) {
-        var a = span * dir, p1 = pt(r1, 0), p2 = pt(r1, a), p3 = pt(r2, a), p4 = pt(r2, 0);
-        var big = span > 180 ? 1 : 0, sw = dir > 0 ? 0 : 1;
-        svg.appendChild(el('path', { d:
-          'M ' + p1[0] + ' ' + p1[1] + ' A ' + r1 + ' ' + r1 + ' 0 ' + big + ' ' + sw + ' ' + p2[0] + ' ' + p2[1] +
-          ' L ' + p3[0] + ' ' + p3[1] + ' A ' + r2 + ' ' + r2 + ' 0 ' + big + ' ' + (1 - sw) + ' ' + p4[0] + ' ' + p4[1] + ' Z',
-          fill: colour, opacity: op.toFixed(3), 'class': 'rg-body' }));
-      }
-      for (i = 0; i < 3; i++) {
-        [1, -1].forEach(function (dir) {
-          sector(R[i], R[i + 1], 180, dir, dir > 0 ? AMBER : CORAL, 0.072 - i * 0.020);
-        });
-      }
-
-      /* the rungs, radial. each runs from the innermost ring that has reached
-         that far round, out to the ring that closes */
-      var rungs = [];
-      SPOKE.forEach(function (deg) {
-        [1, -1].forEach(function (dir) {
-          var from = FROM[SPOKE.indexOf(deg)];
-          var p0 = pt(R[from], deg * dir), p1 = pt(R[3], deg * dir);
-          rungs.push(svg.appendChild(el('line', { x1: p0[0], y1: p0[1], x2: p1[0], y2: p1[1],
-            stroke: dir > 0 ? AMBER : CORAL, 'stroke-width': G.w(HAIR),
-            opacity: 0.5, 'class': 'rg-rung' })));
-        });
-      });
-
-      /* the rings. each is two arcs leaving the axis on the right, one up and
-         one down, and each reaches further than the one inside it */
-      var arcs = [];
-      for (i = 0; i < 4; i++) {
-        [1, -1].forEach(function (dir) {
-          arcs.push({ i: i, len: 2 * Math.PI * R[i] * (SPAN[i] / 360),
-            n: arc(R[i], 0, SPAN[i] * dir, dir > 0 ? AMBER : CORAL, WT[i], OP[i], 'rg-arc') });
-        });
-      }
-
-      /* no line across the middle. the change from amber to coral marks the
-         axis on its own, and a diameter drawn through a circle divides it. */
-
-      if (reduce) return;
-      arcs.forEach(function (o) {
-        o.n.style.strokeDasharray = o.len.toFixed(0);
-        o.n.style.strokeDashoffset = o.len.toFixed(0);
-        o.n.style.transition = 'stroke-dashoffset 1.15s cubic-bezier(.26,.72,.24,1) ' +
-                               (0.45 + o.i * 0.24).toFixed(2) + 's';
-      });
-      rungs.forEach(function (n, k) {
-        n.style.opacity = '0';
-        n.style.transition = 'opacity .65s ease ' + (1.15 + k * 0.06).toFixed(2) + 's';
-      });
-      requestAnimationFrame(function () {
-        setTimeout(function () {
-          arcs.forEach(function (o) { o.n.style.strokeDashoffset = '0'; });
-          rungs.forEach(function (n) { n.style.opacity = ''; });
-        }, 140);
-      });
-    },
-
     /* PARTS, AND THE SELF UNDERNEATH.
 
        Literally underneath. Self is the axis, the same line the whole site
@@ -552,85 +514,6 @@
        Each part's coral arm lands exactly on the axis. That is not decoration,
        it is the geometry: a part's reach is the height it stands at. Nothing
        floats and nothing is outside. */
-    parts: function (svg) {
-      var W = 600, H = 430, AXIS = 344, i;
-      var G = gauge(W, 500);
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      /* the parts are coral, because on this page a part is an inner thing.
-         only the axis carries both families: it is what they have in common. */
-      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
-      // apex x and y. reach follows from the height, so every one of them
-      // stands on the line rather than near it.
-      var PARTS = [
-        { x: 132, y: 296, w: HAIR, o: 0.5  },
-        { x: 268, y: 240, w: LINE, o: 0.72 },
-        { x: 396, y: 178, w: KEY,  o: 1    },
-        { x: 548, y: 246, w: LINE, o: 0.82 }
-      ];
-
-      /* the ground under the axis, so the line reads as something to stand on */
-      svg.appendChild(el('rect', { x: 0, y: AXIS, width: W, height: H - AXIS,
-        fill: CORAL, opacity: 0.08, 'class': 'pt-body' }));
-
-      /* rungs on the mark's pitch, holding the four in one structure */
-      var rungs = [];
-      for (i = 1; i <= 3; i++) {
-        var y = AXIS - i * 62;
-        rungs.push(svg.appendChild(el('line', { x1: 0, y1: y, x2: W, y2: y,
-          stroke: CORAL, 'stroke-width': G.w(HAIR), opacity: 0.16, 'class': 'pt-rung' })));
-      }
-
-      var arms = [];
-      PARTS.forEach(function (p, idx) {
-        var r = AXIS - p.y;                      // lands on the axis, exactly
-        [-1, 1].forEach(function (dir) {
-          arms.push({ idx: idx, len: Math.SQRT2 * r,
-            n: svg.appendChild(el('line', {
-              x1: (p.x - r).toFixed(1), y1: (p.y + dir * r).toFixed(1),
-              x2: p.x, y2: p.y,
-              stroke: CORAL, 'stroke-width': G.w(p.w),
-              'stroke-linecap': 'round', opacity: p.o, 'class': 'pt-part' })) });
-        });
-      });
-
-      /* the axis. coral into amber, the way it runs on every other page */
-      var defs = el('defs', {}), lg = el('linearGradient', { id: 'pt-ax',
-        gradientUnits: 'userSpaceOnUse', x1: 0, y1: 0, x2: W, y2: 0 });
-      lg.appendChild(el('stop', { offset: '0', 'stop-color': CORAL }));
-      lg.appendChild(el('stop', { offset: '1', 'stop-color': AMBER }));
-      defs.appendChild(lg); svg.appendChild(defs);
-      var axis = svg.appendChild(el('line', { x1: 0, y1: AXIS, x2: W, y2: AXIS,
-        stroke: 'url(#pt-ax)', 'stroke-width': G.w(EDGE), opacity: 0.95, 'class': 'pt-axis' }));
-
-      svg.appendChild(label(6, AXIS + G.t(10) * 2.1, 'SELF', 'start', 'var(--dim)', G.t(10)));
-
-      if (reduce) return;
-      var body = svg.querySelectorAll('.pt-body'), rg = svg.querySelectorAll('.pt-rung'),
-          texts = svg.querySelectorAll('text');
-      function fade(n, d) { n.style.opacity = '0'; n.style.transition = 'opacity .7s ease ' + d + 's'; }
-      axis.style.strokeDasharray = W; axis.style.strokeDashoffset = W;
-      axis.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(.3,.7,.25,1) .12s';
-      // the ground first, then what stands on it
-      arms.forEach(function (o) {
-        o.n.style.strokeDasharray = o.len.toFixed(0);
-        o.n.style.strokeDashoffset = o.len.toFixed(0);
-        o.n.style.transition = 'stroke-dashoffset .85s cubic-bezier(.24,.74,.24,1) ' +
-                               (0.7 + o.idx * 0.19).toFixed(2) + 's';
-      });
-      Array.prototype.forEach.call(body, function (n) { fade(n, 0.5); });
-      Array.prototype.forEach.call(rg, function (n, k) { fade(n, +(1.5 + k * 0.06).toFixed(2)); });
-      Array.prototype.forEach.call(texts, function (n) { fade(n, 1.7); });
-      requestAnimationFrame(function () {
-        setTimeout(function () {
-          axis.style.strokeDashoffset = '0';
-          arms.forEach(function (o) { o.n.style.strokeDashoffset = '0'; });
-          [body, rg, texts].forEach(function (g) {
-            Array.prototype.forEach.call(g, function (n) { n.style.opacity = ''; });
-          });
-        }, 140);
-      });
-    },
-
     /* THE HOURS.
 
        Seven rows on the mark's pitch, each one a week of exactly the same
@@ -668,15 +551,16 @@
           'stroke-width': G.w(LINE), opacity: 0.85, 'class': 'hr-cap' }));
 
         // and the hours travelling back into the room that opened
-        if (i === 0) continue;
         var f = el('path', { d: 'M 8 -8 L 0 0 L 8 8', fill: 'none', stroke: AMBER,
           'stroke-width': G.w(key ? KEY : LINE), 'stroke-linecap': 'round',
           'stroke-linejoin': 'round', 'class': 'hr-flow',
           transform: 'translate(' + X1 + ' ' + y + ')' });
-        f.style.setProperty('--d', i * PITCH);
-        // longer runs take longer, so everything moves at one speed
-        f.style.animationDuration = (2.2 + i * 1.25).toFixed(2) + 's';
-        f.style.animationDelay = (i * 0.55).toFixed(2) + 's';
+        // the hours travel the whole week back to the start of it, not just
+        // to where the work now ends. the point is that the time comes back
+        // to you, and a short hop was too small a gesture to read as that.
+        f.style.setProperty('--d', X1 - X0);
+        f.style.animationDuration = (3.4 + i * 0.22).toFixed(2) + 's';
+        f.style.animationDelay = (i * 0.26).toFixed(2) + 's';
         svg.appendChild(f);
       }
 
@@ -690,53 +574,6 @@
        only then the tools. So the drawing is three registers stacked in that
        order, and the arrow at the bottom is the only thing pointing forward,
        because it cannot move until the two above it are sorted. */
-    order: function (svg) {
-      var W = 600, H = 430, i;
-      var G = gauge(W, 500);
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
-      var LX = 116, X0 = 152, X1 = 566;
-
-      function rule(y) {
-        svg.appendChild(el('line', { x1: X0 - 22, y1: y, x2: X1, y2: y, stroke: 'var(--ink)',
-          'stroke-width': G.w(HAIR), opacity: 0.14, 'class': 'or-rule' }));
-      }
-      function band(y, text) {
-        svg.appendChild(label(LX, y + 4, text, 'end', 'var(--dim)', G.t(10)));
-      }
-      function chev(ax, ay, r, colour, wpx, op, dir) {
-        [-1, 1].forEach(function (d) {
-          svg.appendChild(el('line', { x1: (ax - dir * r).toFixed(1), y1: (ay + d * r).toFixed(1),
-            x2: ax, y2: ay, stroke: colour, 'stroke-width': G.w(wpx), 'stroke-linecap': 'round',
-            opacity: op, 'class': 'or-line' }));
-        });
-      }
-
-      // the people. five of them, none the same, because they never are.
-      var P = [[210, 30, LINE, 0.8], [286, 22, HAIR, 0.55], [356, 38, KEY, 1],
-               [430, 26, LINE, 0.72], [502, 18, HAIR, 0.5]];
-      P.forEach(function (q) { chev(q[0], 84, q[1], CORAL, q[2], q[3], 1); });
-      band(84, 'PEOPLE');
-      rule(140);
-
-      // the work. rungs of the length the job actually is.
-      var L = [412, 286, 358, 222, 316];
-      L.forEach(function (len, k) {
-        var y = 176 + k * 26;
-        svg.appendChild(el('line', { x1: X0, y1: y, x2: X0 + len, y2: y, stroke: 'var(--ink)',
-          'stroke-width': G.w(k === 2 ? LINE : HAIR), opacity: (0.5 - Math.abs(2 - k) * 0.09).toFixed(2),
-          'class': 'or-line' }));
-      });
-      band(228, 'THE WORK');
-      rule(316);
-
-      // and then the tool, which is the only thing here going anywhere
-      chev(540, 358, 52, AMBER, EDGE, 1, 1);
-      svg.appendChild(el('line', { x1: X0, y1: 358, x2: 540, y2: 358, stroke: AMBER,
-        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', opacity: 0.92, 'class': 'or-line' }));
-      band(358, 'TOOLS');
-    },
-
 
     /* THE WEEK, HELD. Operations for law firms.
 
@@ -814,88 +651,6 @@
        formation trails off into where it has already been. The axis runs out of
        the past and stops dead at the last meeting, because there is nothing
        drawn after it. The future is not ahead of the point. It is the point. */
-    now: function (svg) {
-      var W = 560, H = 440, i, k;
-      var G = gauge(W, 440);
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      var AMBER = 'var(--outer-line)', CORAL = 'var(--inner)';
-      var APEX = [27, 52.5, 92, 145.5], REACH = [22.5, 42.5, 62.5, 62.5];
-      var S = 2.6, CY = 220, OX = 122;
-      var X = function (a) { return +(OX + a * S).toFixed(1); };
-      var Y = function (d) { return +(CY + d * S).toFixed(1); };
-      var TIP = X(APEX[3]);
-
-      var defs = el('defs', {});
-      var ax = el('linearGradient', { id: 'nw-ax', gradientUnits: 'userSpaceOnUse',
-        x1: 0, y1: 0, x2: TIP, y2: 0 });
-      ax.appendChild(el('stop', { offset: '0', 'stop-color': CORAL, 'stop-opacity': 0.15 }));
-      ax.appendChild(el('stop', { offset: '0.55', 'stop-color': CORAL, 'stop-opacity': 0.7 }));
-      ax.appendChild(el('stop', { offset: '1', 'stop-color': AMBER, 'stop-opacity': 1 }));
-      defs.appendChild(ax);
-      svg.appendChild(defs);
-
-      /* where it has already been. the furthest is cut by the frame. */
-      var TRAIL = [[-36, 0.22], [-76, 0.12], [-122, 0.055]], ghosts = [];
-      TRAIL.forEach(function (t) {
-        var g = el('g', { 'class': 'nw-ghost', transform: 'translate(' + t[0] + ',0)' });
-        for (i = 0; i < 4; i++) {
-          [[AMBER, -1], [CORAL, 1]].forEach(function (f) {
-            g.appendChild(el('line', { x1: X(APEX[i] - REACH[i]), y1: Y(f[1] * REACH[i]),
-              x2: X(APEX[i]), y2: Y(0), stroke: f[0], 'stroke-linecap': 'round',
-              'stroke-width': G.w(HAIR), opacity: t[1] }));
-          });
-        }
-        ghosts.push(svg.appendChild(g));
-      });
-
-      /* the axis comes out of the past and stops at the last meeting */
-      var axis = svg.appendChild(el('line', { x1: 0, y1: CY, x2: TIP, y2: CY,
-        stroke: 'url(#nw-ax)', 'stroke-width': G.w(KEY), 'stroke-linecap': 'round',
-        'class': 'nw-axis' }));
-
-      /* the four meetings, each further along and each more certain */
-      var arms = [];
-      for (i = 0; i < 4; i++) {
-        [[AMBER, -1], [CORAL, 1]].forEach(function (f) {
-          arms.push({ n: svg.appendChild(el('line', {
-            x1: X(APEX[i] - REACH[i]), y1: Y(f[1] * REACH[i]), x2: X(APEX[i]), y2: Y(0),
-            stroke: f[0], 'stroke-linecap': 'round',
-            'stroke-width': G.w(i === 3 ? KEY : LINE),
-            opacity: (0.42 + i * 0.19).toFixed(2), 'class': 'nw-arm' })),
-            len: Math.round(Math.sqrt(2) * REACH[i] * S), step: i });
-        });
-      }
-
-      /* now */
-      bloom(svg, TIP, CY, 46, AMBER, 0.20);
-      var tip = svg.appendChild(el('circle', { cx: TIP, cy: CY, r: G.u(4.5),
-        fill: AMBER, 'class': 'nw-tip' }));
-
-      if (reduce) return;
-
-      function fade(n, d, t) { n.style.opacity = '0'; n.style.transition = 'opacity ' + (t || 0.7) + 's ease ' + d + 's'; }
-      axis.style.strokeDasharray = TIP; axis.style.strokeDashoffset = TIP;
-      axis.style.transition = 'stroke-dashoffset 1.15s cubic-bezier(.3,.7,.25,1) .1s';
-      arms.forEach(function (o) {
-        o.n.style.strokeDasharray = o.len; o.n.style.strokeDashoffset = o.len;
-        o.n.style.transition = 'stroke-dashoffset .8s cubic-bezier(.24,.74,.24,1) ' +
-                               (0.45 + o.step * 0.14).toFixed(2) + 's';
-      });
-      ghosts.forEach(function (n, j) { fade(n, +(1.15 + j * 0.1).toFixed(2), 0.8); });
-      var bl = svg.querySelector('.art-bloom');
-      if (bl) fade(bl, 1.35, 0.9);
-      fade(tip, 1.25, 0.6);
-
-      function play() {
-        axis.style.strokeDashoffset = '0';
-        arms.forEach(function (o) { o.n.style.strokeDashoffset = '0'; });
-        ghosts.forEach(function (n) { n.style.opacity = ''; });
-        if (bl) bl.style.opacity = '';
-        tip.style.opacity = '';
-      }
-      requestAnimationFrame(function () { setTimeout(play, 120); });
-    },
-
     voice: function (svg) {
       var W = 600, H = 430, i;
       var G = gauge(W, 500);
@@ -926,6 +681,119 @@
       });
 
       svg.appendChild(label(AX - 14, AY + 5, 'ONE VOICE', 'end', 'var(--dim)', G.t(10)));
+    },
+
+    /* THE PIECE THAT IS MISSING. Fractional operations.
+
+       You already run most of it. Seven blocks are in place, one slot is
+       empty, and the piece that fills it is on its way in. Nothing is torn
+       down and nothing is replaced, which is the actual offer. No words:
+       the gap is the only empty thing in the frame, so the eye goes there. */
+    blocks: function (svg) {
+      var W = 600, H = 420, r, c;
+      var G = gauge(W, 500);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var AMBER = 'var(--outer-line)';
+      var BW = 94, BH = 56, GP = 14, COLS = 4, ROWS = 2;
+      var X0 = (W - (COLS * BW + (COLS - 1) * GP)) / 2, Y0 = 203;
+      var SLOT = [2, 0], LIFT = 112;
+      var cx = function (i) { return X0 + i * (BW + GP); };
+      var cy = function (j) { return Y0 + j * (BH + GP); };
+
+      function block(x, y, w, op, cls) {
+        var g = el('g', cls ? { 'class': cls } : {});
+        g.appendChild(el('rect', { x: x, y: y, width: BW, height: BH, fill: 'none',
+          stroke: AMBER, 'stroke-width': G.w(w), opacity: op }));
+        g.appendChild(el('line', { x1: x + 11, y1: y + BH / 2, x2: x + BW - 11, y2: y + BH / 2,
+          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: op * 0.34 }));
+        return svg.appendChild(g);
+      }
+
+      var made = [];
+      for (r = 0; r < ROWS; r++) for (c = 0; c < COLS; c++) {
+        if (c === SLOT[0] && r === SLOT[1]) continue;
+        made.push(block(cx(c), cy(r), KEY, 0.92 - r * 0.12, 'bk-on'));
+      }
+      // the slot, the only empty thing here
+      svg.appendChild(el('rect', { x: cx(SLOT[0]), y: cy(SLOT[1]), width: BW, height: BH,
+        fill: 'none', stroke: 'var(--rule-strong)', 'stroke-width': G.w(LINE),
+        'stroke-dasharray': '5 5' }));
+      // the track it travels, and the piece travelling it
+      svg.appendChild(el('line', { x1: cx(SLOT[0]) + BW / 2, y1: cy(SLOT[1]) - LIFT + BH,
+        x2: cx(SLOT[0]) + BW / 2, y2: cy(SLOT[1]) - 6, stroke: 'var(--rule)',
+        'stroke-width': G.w(HAIR), 'stroke-dasharray': '4 6' }));
+      svg.appendChild(el('path', { d: 'M -8 -10 L 0 0 L 8 -10', fill: 'none', stroke: AMBER,
+        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+        transform: 'translate(' + (cx(SLOT[0]) + BW / 2) + ' ' + (cy(SLOT[1]) - 8) + ')' }));
+      var inb = block(cx(SLOT[0]), cy(SLOT[1]) - LIFT, EDGE, 1, 'bk-in');
+      inb.style.setProperty('--drop', LIFT - BH - 14);
+
+      if (reduce) return;
+      made.forEach(function (n, i) {
+        n.style.opacity = '0';
+        n.style.transition = 'opacity .5s ease ' + (0.1 + i * 0.07).toFixed(2) + 's';
+      });
+      requestAnimationFrame(function () {
+        setTimeout(function () { made.forEach(function (n) { n.style.opacity = ''; }); }, 120);
+      });
+    },
+
+    /* A SELF, AND THE PARTS THAT GO ROUND IT. Coaching.
+
+       Planets round a sun, which is a diagram nobody has to be taught. Three
+       orbits, five parts at their own sizes and their own distances, and the
+       Self at the centre. No joining lines and no words: the arrangement is
+       the whole statement. The orbits turn, very slowly, because the parts
+       are moving whether or not anyone is watching them. */
+    orbit: function (svg) {
+      orbitField(svg, 600, 420, 1, [[0, 1]]);
+    },
+
+    /* THE SAME, FOUR TIMES OVER, SHARING ONE ORBIT. Self-leadership circles.
+
+       Everyone arrives with their own system intact and nothing about it is
+       changed. What the eight weeks adds is the one wide orbit they all now
+       turn inside, which is the shared language. */
+    orbits: function (svg) {
+      orbitField(svg, 600, 420, 0.40,
+        [[-90, 0], [0, 74], [90, 143], [180, 216]], 118, 196);
+    },
+
+    /* THE BRIDGE. About.
+
+       Two of these, one each side of the headline, which is the only thing
+       between them. Amber arrives from the left and coral from the right,
+       each stopping at the edge of the words. The page's own H1 is the
+       middle of the system, so nothing is drawn twice and the words stay
+       real text. */
+    bridge: function (svg) {
+      var W = 240, H = 300, CY = 150, R = 118;
+      var G = gauge(W, 240);
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var right = svg.getAttribute('data-side') === 'right';
+      var col = right ? 'var(--inner)' : 'var(--outer-line)';
+      var apex = right ? 18 : W - 18, dir = right ? 1 : -1;
+
+      var arms = [-1, 1].map(function (up) {
+        return svg.appendChild(el('line', { x1: apex, y1: CY,
+          x2: apex + dir * R, y2: CY + up * R, stroke: col,
+          'stroke-width': G.w(EDGE * 1.7), 'stroke-linecap': 'round', 'class': 'br-arm' }));
+      });
+      // the short run toward the words, so the two sides read as one span
+      var tail = svg.appendChild(el('line', { x1: apex, y1: CY,
+        x2: right ? 0 : W, y2: CY, stroke: col,
+        'stroke-width': G.w(EDGE * 1.7), 'stroke-linecap': 'butt', 'class': 'br-tail' }));
+
+      if (reduce) return;
+      arms.concat([tail]).forEach(function (n, i) {
+        n.style.opacity = '0';
+        n.style.transition = 'opacity .6s ease ' + (0.14 + i * 0.12).toFixed(2) + 's';
+      });
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          arms.concat([tail]).forEach(function (n) { n.style.opacity = ''; });
+        }, 120);
+      });
     },
 
     /* ------------------------------------------------------------

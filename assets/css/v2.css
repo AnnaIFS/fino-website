@@ -1350,3 +1350,41 @@ section{border-top:none;}
   .who-list b{font-size:.88rem;}
   .f-copy{font-size:.86rem;}
 }
+
+/* ---------- About: the headline is the middle of the system ----------
+   Two families flank the words instead of a drawing sitting in a column
+   beside them, so the thing being bridged is the actual H1. */
+.phero-mid{
+  display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  gap:clamp(10px,2.6vw,34px);align-items:center;text-align:center;
+}
+.phero-mid > svg{width:100%;height:auto;max-width:clamp(96px,16vw,230px);display:block;}
+.phero-mid > svg:first-of-type{justify-self:end;}
+.phero-mid > svg:last-of-type{justify-self:start;}
+.phero-mid .eyebrow{justify-content:center;}
+.phero-mid .phero-sub{margin-left:auto;margin-right:auto;}
+@media (max-width:700px){
+  .phero-mid{grid-template-columns:1fr;gap:18px;}
+  .phero-mid > svg{max-width:128px;justify-self:center;}
+}
+
+@media (prefers-reduced-motion:no-preference){
+  /* the parts keep going round whether or not anyone is watching them.
+     slow enough to be noticed only on a second look. */
+  .ob-ring{
+    animation-name:ob-spin;animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    transform-box:view-box;transform-origin:var(--ox) var(--oy);
+  }
+  @keyframes ob-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+  /* the missing piece arriving, over and over, because it is the offer */
+  .bk-in{animation:bk-drop 5.2s cubic-bezier(.38,.06,.2,1) infinite;}
+  @keyframes bk-drop{
+    0%{transform:translateY(0);opacity:0;}
+    14%{opacity:1;}
+    58%{transform:translateY(calc(var(--drop) * 1px));opacity:1;}
+    82%{transform:translateY(calc(var(--drop) * 1px));opacity:0;}
+    100%{transform:translateY(0);opacity:0;}
+  }
+}
