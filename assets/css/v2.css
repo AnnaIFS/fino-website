@@ -1273,21 +1273,9 @@ section{border-top:none;}
   }
   .steps.in::before{transform:scaleY(1);}
   @media (max-width:600px){.steps::before{display:none;}}
-  @media (min-width:601px){
-    .step-n{position:relative;}
-    .step-n::before{
-      content:"";position:absolute;left:-22px;top:.75em;width:8px;height:8px;
-      background:var(--ground);border:2px solid var(--inner);
-      transform:scale(0) rotate(45deg);
-      transition:transform .5s cubic-bezier(.3,1.4,.4,1);
-    }
-    .outer .step-n::before{border-color:var(--outer-line);}
-    .steps.in .step-n::before{transform:scale(1) rotate(45deg);}
-    .steps.in .step:nth-child(2) .step-n::before{transition-delay:.18s;}
-    .steps.in .step:nth-child(3) .step-n::before{transition-delay:.36s;}
-    .steps.in .step:nth-child(4) .step-n::before{transition-delay:.54s;}
-    .steps.in .step:nth-child(5) .step-n::before{transition-delay:.72s;}
-  }
+  /* no nodes on the rail. diamonds popping in one by one turned a list of
+     human outcomes into a progress tracker, and the overshoot easing made
+     it bounce. the rail alone is enough of a spine. */
 
   /* the steps and the cards arrive in sequence */
   .js .step{opacity:0;transform:translateY(12px);
