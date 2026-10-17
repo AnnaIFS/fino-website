@@ -613,8 +613,8 @@
 
       var defs = el('defs', {});
       var lg = el('linearGradient', { id: 'lf-col', gradientUnits: 'objectBoundingBox', x1: 0, y1: 0, x2: 0, y2: 1 });
-      lg.appendChild(el('stop', { offset: '0', 'stop-color': AMBER, 'stop-opacity': 0.15 }));
-      lg.appendChild(el('stop', { offset: '1', 'stop-color': AMBER, 'stop-opacity': 0.02 }));
+      lg.appendChild(el('stop', { offset: '0', 'stop-color': AMBER, 'stop-opacity': 0.24 }));
+      lg.appendChild(el('stop', { offset: '1', 'stop-color': AMBER, 'stop-opacity': 0.05 }));
       defs.appendChild(lg); svg.appendChild(defs);
 
       var col = el('rect', { x: X0, y: Y0, width: CW, height: GH, fill: 'url(#lf-col)', 'class': 'lf-col' });
@@ -623,10 +623,10 @@
 
       for (r = 0; r <= ROWS; r++)
         svg.appendChild(el('line', { x1: X0, y1: Y0 + r * CH, x2: X0 + GW, y2: Y0 + r * CH,
-          stroke: AMBER, 'stroke-width': G.w(r === 0 ? LINE : HAIR), opacity: r === 0 ? 0.45 : 0.16 }));
+          stroke: AMBER, 'stroke-width': G.w(r === 0 ? LINE : HAIR), opacity: r === 0 ? SOFT : GHOST }));
       for (c = 0; c <= COLS; c++)
         svg.appendChild(el('line', { x1: X0 + c * CW, y1: Y0, x2: X0 + c * CW, y2: Y0 + GH,
-          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: c === 0 || c === COLS ? 0.34 : 0.13 }));
+          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: c === 0 || c === COLS ? SOFT : GHOST }));
 
       'M T W T F S S'.split(' ').forEach(function (d, i) {
         svg.appendChild(label(X0 + i * CW + CW / 2, Y0 - 16, d, 'middle', 'var(--dim)', G.t(10)));
@@ -639,80 +639,95 @@
           var x = X0 + c * CW + 13, y = Y0 + r * CH + 24 + k * 15;
           svg.appendChild(el('line', { x1: x, y1: y, x2: x + (key ? 44 : 34), y2: y,
             stroke: key ? CORAL : AMBER, 'stroke-width': G.w(key ? KEY : LINE),
-            'stroke-linecap': 'round', opacity: key ? 0.95 : 0.6 }));
+            'stroke-linecap': 'round', opacity: key ? 1 : MID }));
         }
       }
     },
 
 
-    /* A WEBSITE THAT SOUNDS LIKE YOU. FINO Studio.
+    /* A NICE WEBSITE. FINO Studio.
 
-       Left is you talking, drawn as a waveform, which is the one shape
-       everybody reads as sound. Right is the page, and its lines are not
-       bars of filler: they are that same waveform cut into rows, with the
-       last one running short the way a paragraph does. The site is made out
-       of the voice rather than poured into a template, which is the only
-       claim this page makes. */
+       The page is about making someone a good looking site, so the drawing
+       is a good looking page: a nav, a heading, a picture, two columns of
+       text and a footer, all landing exactly on a six column grid that you
+       can see underneath them. Precision is the argument, because sitting
+       on a real grid is the difference between a site that was designed and
+       one that was filled in. */
     voice: function (svg) {
-      var W = 600, H = 420, i, j, r;
+      var W = 600, H = 420, i;
       var G = gauge(W, 500);
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      var AMBER = 'var(--outer-line)';
-      var N = 42, SX = 40, SCY = 210, SW = 196;
-      var FX = 318, FY = 92, FW = 242, FH = 236;
-      var bars = [];
+      var AMBER = 'var(--outer-line)', INK = 'var(--ink)';
+      var PX = 128, PY = 46, PW = 344, PH = 330;
+      var COLS = 6, GUT = 10, PAD = 20;
+      var CW = (PW - PAD * 2 - GUT * (COLS - 1)) / COLS;
 
-      /* a fixed, uneven speech envelope with pauses in it. deterministic, so
-         the same shape appears on the left and inside the page. the pauses
-         are what stop it reading as a block of noise: people stop talking. */
-      function amp(k) {
-        var gate = Math.abs(Math.sin(k * 0.19 + 0.9));
-        if (gate < 0.17) return 0.04;
-        return (0.18 + 0.82 * Math.abs(Math.sin(k * 0.81 + 0.4)) * (0.42 + 0.58 * gate));
+      function col(ci, span) {
+        span = span || 1;
+        return [PX + PAD + ci * (CW + GUT), span * CW + (span - 1) * GUT];
       }
-      function tick(x, cy, a, w, op) {
-        return bars[bars.length] = svg.appendChild(el('line', { x1: x.toFixed(1),
-          y1: (cy - a).toFixed(1), x2: x.toFixed(1), y2: (cy + a).toFixed(1),
-          stroke: AMBER, 'stroke-width': G.w(w), 'stroke-linecap': 'round',
-          opacity: op, 'class': 'vo-tick' }));
+      function bar(x, y, w, h, op) {
+        svg.appendChild(el('rect', { x: x.toFixed(1), y: y.toFixed(1),
+          width: w.toFixed(1), height: h, fill: AMBER, opacity: op }));
       }
-
-      // the voice
-      svg.appendChild(el('line', { x1: SX - 10, y1: SCY, x2: SX + SW + 10, y2: SCY,
-        stroke: 'var(--ink)', 'stroke-width': G.w(HAIR), opacity: GHOST }));
-      for (i = 0; i < N; i++) tick(SX + i * (SW / (N - 1)), SCY, amp(i) * 76, 2.1, MID);
-
-      // the track across
-      svg.appendChild(el('line', { x1: SX + SW + 24, y1: SCY, x2: FX - 28, y2: SCY,
-        stroke: 'var(--ink)', 'stroke-width': G.w(HAIR), opacity: SOFT,
-        'stroke-dasharray': '4 6' }));
-      svg.appendChild(el('path', { d: 'M -10 -8 L 0 0 L -10 8', fill: 'none', stroke: AMBER,
-        'stroke-width': G.w(KEY), 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
-        transform: 'translate(' + (FX - 16) + ' ' + SCY + ')' }));
-
-      // the page, whose rows are that same waveform cut into lines
-      svg.appendChild(el('rect', { x: FX, y: FY, width: FW, height: FH, fill: 'none',
-        stroke: AMBER, 'stroke-width': G.w(EDGE) }));
-      svg.appendChild(el('line', { x1: FX, y1: FY + 36, x2: FX + FW, y2: FY + 36,
-        stroke: AMBER, 'stroke-width': G.w(LINE), opacity: SOFT }));
-      var IN = 16, ROWS = 6, PER = 30, k = 0, rowy = FY + 62;
-      for (r = 0; r < ROWS; r++) {
-        var n = (r < ROWS - 1) ? PER : 19;
-        for (j = 0; j < n; j++) {
-          tick(FX + IN + j * ((FW - IN * 2) / PER), rowy, amp(k) * 8.5, 1.5, r ? MID : 1);
-          k++;
-        }
-        rowy += 32;
+      function box(x, y, w, h, op, sw) {
+        svg.appendChild(el('rect', { x: x.toFixed(1), y: y.toFixed(1),
+          width: w.toFixed(1), height: h, fill: 'none', stroke: AMBER,
+          'stroke-width': G.w(sw), opacity: op }));
+      }
+      function rule(x1, y, x2, op, sw, c) {
+        svg.appendChild(el('line', { x1: x1.toFixed(1), y1: y, x2: x2.toFixed(1), y2: y,
+          stroke: c || AMBER, 'stroke-width': G.w(sw || LINE), opacity: op }));
       }
 
-      if (reduce) return;
-      bars.forEach(function (n, x) {
-        n.style.opacity = '0';
-        n.style.transition = 'opacity .42s ease ' + (0.1 + x * 0.006).toFixed(3) + 's';
+      // the grid it is built on, visible but quiet
+      for (i = 0; i < COLS; i++) {
+        var g = col(i);
+        svg.appendChild(el('rect', { x: g[0].toFixed(1), y: PY + 12, width: g[1].toFixed(1),
+          height: PH - 24, fill: INK, opacity: 0.035 }));
+      }
+      box(PX, PY, PW, PH, 1, EDGE);
+
+      // nav
+      rule(col(0)[0], PY + 40, col(5)[0] + col(5)[1], SOFT);
+      bar(col(0)[0], PY + 22, 34, 10, MID);
+      [3, 4, 5].forEach(function (ci) {
+        var g = col(ci);
+        bar(g[0] + g[1] - 26, PY + 24, 26, 6, SOFT);
       });
-      requestAnimationFrame(function () {
-        setTimeout(function () { bars.forEach(function (n) { n.style.opacity = ''; }); }, 120);
+
+      // the heading, four columns wide
+      var h = col(0, 4);
+      bar(h[0], PY + 66, h[1], 17, 1);
+      bar(h[0], PY + 91, h[1] * 0.62, 17, 1);
+
+      // the picture
+      var pic = col(0, 6);
+      bar(pic[0], PY + 126, pic[1], 86, 0.14);
+      box(pic[0], PY + 126, pic[1], 86, SOFT, KEY);
+
+      // two columns of text, exactly on the grid
+      [[0, [1, 1, 1, 0.72]], [3, [1, 1, 0.86, 0.55]]].forEach(function (c) {
+        var t = col(c[0], 3), y = PY + 226;
+        c[1].forEach(function (f) {
+          bar(t[0], y, t[1] * f, 7, f === 1 ? MID : SOFT);
+          y += 14;
+        });
       });
+
+      rule(col(0)[0], PY + PH - 44, col(5)[0] + col(5)[1], SOFT);
+      bar(col(0)[0], PY + PH - 34, 46, 6, SOFT);
+
+      // registration ticks: the grid is measured, which is the point
+      for (i = 0; i < COLS; i++) {
+        var t = col(i);
+        svg.appendChild(el('line', { x1: t[0].toFixed(1), y1: PY - 14, x2: t[0].toFixed(1),
+          y2: PY - 6, stroke: INK, 'stroke-width': G.w(HAIR), opacity: SOFT }));
+        svg.appendChild(el('line', { x1: (t[0] + t[1]).toFixed(1), y1: PY - 14,
+          x2: (t[0] + t[1]).toFixed(1), y2: PY - 6, stroke: INK,
+          'stroke-width': G.w(HAIR), opacity: SOFT }));
+      }
+      rule(col(0)[0], PY - 10, col(5)[0] + col(5)[1], GHOST, HAIR, INK);
     },
 
     /* THE PIECE THAT IS MISSING. Fractional operations.
@@ -722,12 +737,12 @@
        down and nothing is replaced, which is the actual offer. No words:
        the gap is the only empty thing in the frame, so the eye goes there. */
     blocks: function (svg) {
-      var W = 600, H = 420, r, c;
+      var W = 590, H = 420, r, c;
       var G = gauge(W, 500);
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       var AMBER = 'var(--outer-line)';
-      var BW = 94, BH = 56, GP = 14, COLS = 4, ROWS = 2;
-      var X0 = (W - (COLS * BW + (COLS - 1) * GP)) / 2, Y0 = 203;
+      var BW = 108, BH = 64, GP = 16, COLS = 4, ROWS = 2;
+      var X0 = (W - (COLS * BW + (COLS - 1) * GP)) / 2, Y0 = 194;
       var SLOT = [2, 0], LIFT = 112;
       var cx = function (i) { return X0 + i * (BW + GP); };
       var cy = function (j) { return Y0 + j * (BH + GP); };
