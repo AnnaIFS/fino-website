@@ -948,7 +948,10 @@
      the section ticks ride along with this, so if the observer is missing or
      throws, everything it would have revealed is shown outright rather than
      left at opacity zero */
-  var REVEAL = '.rv, section > .page, main.lf section';
+  /* the section itself, the card grids, the step lists and the two column
+     lists are observed too: the headline mask, the family sweep, the step
+     rail and the staggered arrivals all hang off their .in */
+  var REVEAL = '.rv, section > .page, main.lf section, section, .cards, .steps, .tick, .s-head';
   if (window.IntersectionObserver) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -960,6 +963,44 @@
     document.querySelectorAll(REVEAL).forEach(function (n) { n.classList.add('in'); });
   }
 
+
+  /* ---------- the progress rail ----------
+     where you are in the page, drawn as the logo's own gradient unrolled:
+     gold through orange to red, left to right. */
+  (function () {
+    if (reduce) return;
+    var rail = document.createElement('div');
+    rail.id = 'fino-rail';
+    document.body.appendChild(rail);
+    var queued = 0;
+    function draw() {
+      queued = 0;
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var y = window.pageYOffset || 0;
+      var p = h > 0 ? Math.min(1, Math.max(0, y / h)) : 0;
+      rail.style.width = (p * 100).toFixed(2) + '%';
+    }
+    window.addEventListener('scroll', function () {
+      if (!queued) queued = requestAnimationFrame(draw);
+    }, { passive: true });
+    window.addEventListener('resize', draw, { passive: true });
+    draw();
+  })();
+
+  /* ---------- a card lights from where the cursor is ----------
+     one listener for the whole page, two custom properties, no layout read
+     beyond the card's own box. nothing runs for a pointer that cannot hover. */
+  (function () {
+    if (reduce) return;
+    if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+    document.addEventListener('mousemove', function (e) {
+      var card = e.target && e.target.closest ? e.target.closest('.card') : null;
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+    }, { passive: true });
+  })();
 
   /* mark where you already are, in the menu and in the nav */
   (function () {

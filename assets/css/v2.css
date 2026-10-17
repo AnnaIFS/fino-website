@@ -1,29 +1,32 @@
 /* FINO v2 — one dark system, Archivo + JetBrains Mono */
 :root{
 
-  --ground:#0B0A08;
-  --surface:#16130F;
-  --surface-2:#1E1A15;
-  --ink:#ECE4D7;
-  --body:#D3CBBC;
-  --dim:#BEB3A3;
+  --ground:#08090B;
+  --surface:#111317;
+  --surface-2:#171A1F;
+  --ink:#F7F8FA;
+  --body:#DBDFE6;
+  --dim:#B4BAC4;
   --inner:#FF5638;
   --inner-soft:rgba(255,86,56,.16);
   --outer:#FBB040;
   --outer-line:#FBB040;
   --outer-soft:rgba(251,176,64,.16);
-  --rule:rgba(236,228,215,.24);
-  --rule-strong:rgba(236,228,215,.44);
-  --tint:#181513;
-  --border-ctl:rgba(236,228,215,.46);
-  --grid:rgba(236,228,215,.075);
-  --btn-ink:#0B0A08;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 40px -20px rgba(0,0,0,.8);
-  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --rule:rgba(247,248,250,.26);
+  --rule-strong:rgba(247,248,250,.52);
+  --tint:#0D0F12;
+  --border-ctl:rgba(247,248,250,.56);
+  --grid:rgba(247,248,250,.09);
+  --btn-ink:#08090B;
+  --shadow:0 1px 0 rgba(0,0,0,.5),0 10px 24px -16px rgba(0,0,0,.9);
+  --f-display:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --f-body:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --f-mono:"Martian Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
-  --d-weight:400;
-  --d-track:-.014em;
+  --f-mono:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  /* annotations inside a technical drawing stay monospace: there it is a
+     measurement, not a caption. system face, so nothing is downloaded. */
+  --f-art:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --d-weight:600;
+  --d-track:-.034em;
   --page:1200px;
   /* one measure scale. every text block picks a step, never a new number. */
   --m-display:20ch;   /* headlines and closing lines */
@@ -39,10 +42,13 @@
 a{color:inherit;text-decoration:none;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 body{
   background:var(--ground);
   color:var(--body);
   font-family:var(--f-body);
+  text-rendering:optimizeLegibility;
+  font-synthesis-weight:none;
   font-weight:400;
   font-size:17px;
   line-height:1.7;
@@ -52,7 +58,7 @@ body{
 
 .page{max-width:var(--page);margin:0 auto;padding:0 30px;}
 [id]{scroll-margin-top:88px;}
-.sr-only-focusable:focus{position:static;width:auto;height:auto;clip:auto;margin:0;padding:10px 16px;background:var(--ink);color:var(--ground);border-radius:3px;}
+.sr-only-focusable:focus{position:static;width:auto;height:auto;clip:auto;margin:0;padding:10px 16px;background:var(--ink);color:var(--ground);border-radius:0;}
 .col{max-width:var(--measure);}
 
 /* ---------- type ---------- */
@@ -61,28 +67,29 @@ h1,h2,h3,.close-line{
   font-weight:var(--d-weight);letter-spacing:var(--d-track);
   line-height:1.16;text-wrap:balance;
 }
-h1,h2{line-height:1.16;}
-/* card titles pin to 400 independently of --d-weight */
-h3{font-weight:400;}
+h1,h2{line-height:1.05;}
+/* card titles pin to 600 independently of --d-weight */
+h3{font-weight:600;}
 h1{font-size:clamp(2.7rem,6.2vw,4.9rem);}
 h2{font-size:clamp(2rem,3.9vw,3.1rem);}
-h3{font-size:clamp(1.18rem,1.8vw,1.42rem);line-height:1.24;letter-spacing:-.01em;}
+h3{font-size:clamp(1.18rem,1.8vw,1.42rem);line-height:1.24;letter-spacing:-.022em;}
 p{margin:0 0 1em;}
 p:last-child{margin-bottom:0;}
 strong{color:var(--ink);font-weight:500;}
 em{font-style:italic;}
 
 .eyebrow{
-  font-family:var(--f-mono);font-size:.6rem;font-weight:400;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+  font-family:var(--f-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--body);
 }
 
 /* ---------- nav ---------- */
 .nav{
   position:sticky;top:0;z-index:1000;
-  background:color-mix(in srgb,var(--ground) 88%,transparent);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--rule);
+  /* opaque. the nav was 88% ground with a 14px blur, so every headline
+     smeared underneath it on the way past. */
+  background:var(--ground);
+  border-bottom:1px solid var(--rule-strong);
   transition:background .5s ease,border-color .5s ease;
 }
 .nav-in{
@@ -111,7 +118,7 @@ em{font-style:italic;}
   font-family:var(--f-body);font-size:.92rem;font-weight:500;
   padding:14px 26px;border-radius:100px;text-decoration:none;
   border:1px solid transparent;cursor:pointer;transition:all .25s ease;
-}.btn-p{background:var(--inner);color:var(--btn-ink);box-shadow:0 0 0 1px rgba(255,86,56,.35),0 10px 30px -12px rgba(255,86,56,.5);}
+}.btn-p{background:var(--inner);color:var(--btn-ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);}
 .btn-p:hover{filter:brightness(1.08);transform:translateY(-1px);}
 .btn-g{border-color:var(--border-ctl);color:var(--ink);}
 .btn-g:hover{border-color:var(--ink);}
@@ -185,22 +192,23 @@ section{--sec-pad:clamp(66px,8.5vw,124px);padding:var(--sec-pad) 0;scroll-margin
   font-size:1rem;color:var(--body);
 }
 .map-note strong{color:var(--ink);}
-.band-rule{height:3px;width:44px;border-radius:3px;margin-bottom:1.3rem;}
+.band-rule{height:3px;width:44px;border-radius:0;margin-bottom:1.3rem;}
 .rule-i{background:var(--inner);}
 .rule-o{background:var(--outer-line);}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
 .card{
-  background:none;border:1px solid var(--rule-strong);border-radius:3px;
+  background:none;border:1px solid var(--rule-strong);border-radius:0;
   padding:28px 26px 24px;display:flex;flex-direction:column;gap:.7rem;
   text-decoration:none;position:relative;overflow:hidden;min-width:0;
   transition:border-color .28s ease,transform .28s ease,background .28s ease;
 }
 .card::after{
   content:"";position:absolute;left:0;right:0;top:0;height:2px;
-  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s ease;
 }
 .card-i::after{background:var(--inner);}
-.card-o::after{background:var(--outer-line);}.card:hover{transform:translateY(-3px);box-shadow:0 14px 40px -22px rgba(0,0,0,.9);}
+.card-o::after{background:var(--outer-line);}.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px -18px rgba(0,0,0,1);}
 .card-i:hover{border-color:var(--inner);}
 .card-o:hover{border-color:var(--outer-line);}
 .card:hover::after{transform:scaleX(1);}
@@ -209,7 +217,7 @@ section{--sec-pad:clamp(66px,8.5vw,124px);padding:var(--sec-pad) 0;scroll-margin
 
 /* ---------- combine ---------- */
 .combine{position:relative;overflow:hidden;}
-/* ---------- statement ---------- */ .stmt{margin-top:1.9rem;font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);font-size:clamp(1.18rem,2.1vw,1.55rem);line-height:1.36;color:var(--ink);max-width:var(--m-sub);}
+/* ---------- statement ---------- */ .stmt{margin-top:1.9rem;font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;font-size:clamp(1.18rem,2.1vw,1.55rem);line-height:1.36;color:var(--ink);max-width:var(--m-sub);}
 
 /* ---------- terms ---------- */
 .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.4rem;border-top:1px solid var(--rule);}
@@ -230,15 +238,15 @@ section{--sec-pad:clamp(66px,8.5vw,124px);padding:var(--sec-pad) 0;scroll-margin
 @media (max-width:960px){#outer .cards{grid-template-columns:1fr;}}
 /* ---------- small teams ---------- */
 .small-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:center;}
-.who-list{display:grid;gap:0;margin-top:.4rem;}
+.who-list{display:grid;gap:0;margin-top:.4rem;padding:5px 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .who-list div{
-  padding:13px 0;border-top:1px solid var(--rule);
+  padding:9px 0;
   font-size:.96rem;display:flex;align-items:baseline;gap:13px;
 }
-.who-list div:last-child{border-bottom:1px solid var(--rule);}
 .who-list b{
-  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;
-  color:var(--inner);font-weight:500;flex:none;width:2.2rem;
+  font-family:var(--f-mono);font-size:.82rem;letter-spacing:.04em;
+  color:var(--inner);font-weight:600;flex:none;width:2.2rem;
 }
 
 /* ---------- quotes ---------- */
@@ -250,17 +258,17 @@ section{--sec-pad:clamp(66px,8.5vw,124px);padding:var(--sec-pad) 0;scroll-margin
 .q-hero::before{content:"";position:absolute;left:0;top:0;height:50%;width:3px;background:var(--inner);}
 .q-hero::after{content:"";position:absolute;left:0;bottom:0;height:50%;width:3px;background:var(--outer-line);}
 .q-mark{
-  font-family:var(--f-display);font-size:4.2rem;line-height:.7;color:var(--inner);
-  opacity:.32;display:block;margin-bottom:.6rem;
+  font-family:Georgia,"Times New Roman",serif;font-size:4.2rem;line-height:.7;color:var(--inner);
+  opacity:.55;display:block;margin-bottom:.6rem;
 }
 .q-hero blockquote{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.5rem,3.2vw,2.35rem);line-height:1.3;color:var(--ink);
 }
 .q-hero blockquote span{color:var(--inner);}
 cite{
   display:block;margin-top:1.5rem;font-style:normal;
-  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);
+  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);
 }
 /* a quote is speech, not a card. it had the offering cards' exact rule,
    border, surface, hover lift, so it read as another thing you could buy.
@@ -269,17 +277,17 @@ cite{
 .q-sm{position:relative;padding:2.4rem 0 0;}
 .q-sm::before{
   content:"\201C";position:absolute;left:0;top:0;line-height:1;
-  font-family:var(--f-display);font-size:2.7rem;color:var(--inner);opacity:.9;
+  font-family:Georgia,"Times New Roman",serif;font-size:2.7rem;color:var(--inner);opacity:.9;
 }
 .q-sm blockquote{
-  font-family:var(--f-display);font-weight:var(--d-weight);
-  font-size:clamp(1.08rem,1.5vw,1.24rem);line-height:1.5;letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;
+  font-size:clamp(1.08rem,1.5vw,1.24rem);line-height:1.5;letter-spacing:-.024em;
   color:var(--body);max-width:var(--m-body);
 }
 .q-sm blockquote b{color:var(--ink);font-weight:400;}
 .q-sm cite{
   display:block;margin-top:1.2rem;padding-top:.95rem;border-top:1px solid var(--rule);
-  font-family:var(--f-mono);font-style:normal;font-size:.6rem;letter-spacing:.09em;
+  font-family:var(--f-mono);font-style:normal;font-size:.69rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--dim);
 }
 /* they arrive one after the other, not together */
@@ -293,7 +301,7 @@ cite{
 /* ---------- founders ---------- */
 .fnd-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,34px);margin-top:2.4rem;}
 .fnd{
-  border:1px solid var(--rule);border-radius:3px;padding:28px 26px;
+  border:1px solid var(--rule);border-radius:0;padding:28px 26px;
   background:var(--surface);display:flex;gap:20px;align-items:flex-start;
   transition:background .5s ease,border-color .28s ease;
 }
@@ -319,16 +327,16 @@ cite{
 .card-foot{
   display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;
   margin-top:auto;padding-top:1.2rem;
-  font-family:var(--f-mono);font-size:.69rem;letter-spacing:.02em;line-height:1.4;
+  font-family:var(--f-mono);font-size:.88rem;letter-spacing:0;line-height:1.45;
 }
 .card-foot em{font-style:normal;color:var(--dim);}
-.card-foot b{font-weight:500;color:var(--ink);white-space:normal;}
+.card-foot b{font-weight:600;color:var(--ink);white-space:normal;}
 
 /* ---------- close ---------- */
 .close{text-align:center;border-top:1px solid var(--rule-strong);}
 .close-line{
   font-family:var(--f-display);font-size:clamp(1.6rem,3.4vw,2.5rem);
-  line-height:1.32;color:var(--ink);max-width:var(--m-display);margin:0 auto 2.2rem;font-weight:500;
+  line-height:1.32;color:var(--ink);max-width:var(--m-display);margin:0 auto 2.2rem;font-weight:600;
 }
 
 /* ---------- nav dropdowns ---------- */
@@ -347,12 +355,12 @@ cite{
   position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);
   min-width:280px;display:flex;flex-direction:column;gap:2px;padding:9px;
   background:var(--surface);border:1px solid var(--rule-strong);border-radius:4px;
-  box-shadow:0 24px 60px rgba(0,0,0,.5);
+  box-shadow:0 18px 44px rgba(0,0,0,.6);
   opacity:0;visibility:hidden;transition:opacity .25s ease,transform .25s ease,visibility .25s;
 }
 .nav-drop-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px;}
 .nav-drop.open .nav-drop-menu,.nav-drop:hover .nav-drop-menu,.nav-drop:focus-within .nav-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
-.nav-drop-menu a{display:block;padding:10px 12px;border-radius:3px;font-size:.87rem;color:var(--body);}
+.nav-drop-menu a{display:block;padding:10px 12px;border-radius:0;font-size:.87rem;color:var(--body);}
 .nav-drop-menu a:hover{background:var(--inner-soft);color:var(--ink);}
 .nav-drop:nth-of-type(2) .nav-drop-menu a:hover{background:var(--outer-soft);}
 .item-note{display:block;font-size:.73rem;color:var(--dim);margin-top:2px;}
@@ -453,11 +461,11 @@ cite{
 .f-nav a{display:block;font-size:.9rem;color:var(--body);padding:5px 0;transition:color .2s ease;}
 .f-nav a:hover{color:var(--inner);}
 .f-info{font-size:.86rem;color:var(--dim);max-width:var(--m-body);line-height:1.6;}
-.f-copy{font-size:.8rem;color:var(--dim);margin-top:1.1rem;}
+.f-copy{font-size:.84rem;color:var(--dim);margin-top:1.1rem;}
 .f-form h3{font-size:1.2rem;margin-bottom:1.1rem;}
 .f-form form{display:grid;gap:11px;}
 .f-form input,.f-form textarea{
-  width:100%;background:var(--ground);border:1px solid var(--border-ctl);border-radius:3px;
+  width:100%;background:var(--ground);border:1px solid var(--border-ctl);border-radius:0;
   padding:14px 15px;color:var(--ink);font-family:var(--f-body);font-size:1rem;
 }
 .f-form input::placeholder,.f-form textarea::placeholder{color:var(--dim);}
@@ -499,11 +507,10 @@ cite{
 .rv.in{opacity:1;transform:none;}
 
 /* ---------- grain, carried over from the current site ---------- */
-body::after{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.02;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:128px 128px;
-}
+/* The grain is gone. It was a 128px noise tile fixed over the whole viewport
+   at z-index 9999, and at .02 it was invisible as texture while dithering the
+   edge of every glyph on the site. It was the single largest reason the page
+   did not look sharp, whatever the measured contrast said. */
 
 /* Operator set wants a touch more air in the mono labels */
 
@@ -547,7 +554,8 @@ body::after{
 .steps{display:grid;gap:0;margin-top:2rem;}
 .step{display:grid;grid-template-columns:3rem 1fr;gap:20px;padding:34px 0;border-top:1px solid var(--rule);}
 .step:last-child{border-bottom:1px solid var(--rule);}
-.step-n{font-family:var(--f-mono);font-size:.75rem;color:var(--inner);padding-top:.35em;}
+.step-n{font-family:var(--f-mono);font-size:.8rem;color:var(--inner);padding-top:.35em;
+  font-variant-numeric:tabular-nums lining-nums;font-weight:600;letter-spacing:.06em;}
 /* a row can be the width of the page. the sentence inside it cannot */
 .step h3,.step p{max-width:var(--m-body);}
 .step .turn{max-width:none;}
@@ -556,12 +564,12 @@ body::after{
 /* a step that carries its own answer: the turn is marked, the answer steps forward */
 .step .turn{
   display:flex;align-items:center;gap:9px;margin-top:.85rem;
-  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.07em;
+  font-family:var(--f-mono);font-size:.71rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--inner);
 }
 .step .turn::after{content:"";height:1px;flex:1;background:var(--rule);}
 .step .fix{color:var(--ink);margin-top:.35rem;}
-.steps-note{margin:3.2rem auto 0;font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);font-size:1.38rem;line-height:1.45;color:var(--ink);max-width:var(--m-lead);text-align:center;}
+.steps-note{margin:3.2rem auto 0;font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;font-size:1.38rem;line-height:1.45;color:var(--ink);max-width:var(--m-lead);text-align:center;}
 @media(max-width:700px){.steps-note{font-size:1.18rem;margin-top:2.4rem;}}
 .step p{font-size:.95rem;margin:0;max-width:var(--m-body);overflow-wrap:break-word;}
 
@@ -571,17 +579,19 @@ body::after{
 .tick-one{grid-template-columns:1fr;max-width:var(--m-body);}
 .tick h3{font-size:1.02rem;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule-strong);}
 .tick ul{list-style:none;}
-.tick li{font-size:.96rem;line-height:1.6;padding:11px 0 11px 20px;border-bottom:1px solid var(--rule);position:relative;}
-.tick li::before{position:absolute;left:0;top:11px;font-family:var(--f-mono);font-size:.8rem;}
+.tick li{font-size:.96rem;line-height:1.6;padding:7px 0 7px 20px;position:relative;}
+.tick li::before{position:absolute;left:0;top:7px;font-family:var(--f-mono);font-size:.8rem;}
 .tick-y li::before{content:"+";color:var(--inner);}
-.tick-n li::before{content:"\2013";color:var(--dim);}
+.tick-n li::before{content:"\2013";color:var(--body);}
 
 /* accordion */
-.acc{margin-top:1.8rem;border-top:1px solid var(--rule);}
-.acc-item{border-bottom:1px solid var(--rule);}
+/* the line diet: questions are like things, so the group is ruled and the
+   members are spaced. an open item is unlike its neighbours and gets a
+   line back, at the bottom of this file. */
+.acc{margin-top:1.8rem;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);}
 .acc-head{
   width:100%;text-align:left;background:none;border:none;cursor:pointer;color:var(--ink);
-  font-family:var(--f-body);font-size:1.02rem;font-weight:400;padding:19px 40px 19px 0;
+  font-family:var(--f-body);font-size:1.02rem;font-weight:400;padding:21px 40px 21px 0;
   position:relative;transition:color .2s ease;
 }
 .acc-head:hover{color:var(--inner);}
@@ -592,11 +602,11 @@ body::after{
 .acc-body p{font-size:.97rem;padding-bottom:19px;max-width:var(--m-body);}
 
 /* offsite imagery */
-.frame{position:relative;overflow:hidden;border:1px solid var(--rule-strong);border-radius:3px;}
+.frame{position:relative;overflow:hidden;border:1px solid var(--rule-strong);border-radius:0;}
 .frame img{width:100%;height:100%;object-fit:cover;display:block;}
-.frame canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.55;}
+.frame canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.42;}
 .frame-tall{aspect-ratio:4/3;max-width:500px;margin-left:auto;width:100%;}
-.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,10,8,.72),rgba(11,10,8,.08) 55%);}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,11,.62),rgba(8,9,11,0) 58%);}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2rem;}
 .gallery .frame{aspect-ratio:1/1;}
 .frame-cap{
@@ -639,7 +649,7 @@ body::after{
 /* fallback for browsers without :focus-visible */
 .f-form input:focus,.f-form textarea:focus{border-color:var(--inner);}
 .case-q{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.34;color:var(--ink);max-width:var(--m-lead);margin-bottom:.7rem;
 }
 .case-a{font-size:.97rem;max-width:var(--m-body);color:var(--body);}
@@ -656,9 +666,9 @@ body::after{
 .bio-expand.open{visibility:visible;}
 .bio-expand p{font-size:.93rem;line-height:1.68;margin-top:.9rem;max-width:var(--m-body);color:var(--body);}
 .bio-expand p:first-child{margin-top:.4rem;}
-@media (max-width:768px){.bio-expand p{font-size:1.02rem;}}/* ---------- the novel, given room ---------- */ .novel-line{margin:0 0 2.6rem;font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.24;color:var(--ink);max-width:var(--m-display);}
+@media (max-width:768px){.bio-expand p{font-size:1.02rem;}}/* ---------- the novel, given room ---------- */ .novel-line{margin:0 0 2.6rem;font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.24;color:var(--ink);max-width:var(--m-display);}
 .novel-line::after{
-  content:"";display:block;width:52px;height:3px;border-radius:3px;margin-top:1.3rem;
+  content:"";display:block;width:52px;height:3px;border-radius:0;margin-top:1.3rem;
   background:linear-gradient(90deg,var(--inner),var(--outer-line));
 }
 .novel-grid{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,52px);align-items:start;}
@@ -668,7 +678,7 @@ body::after{
      height. cropped here rather than in the file, so the artwork is untouched. */
   width:100%;height:auto;aspect-ratio:760/1094;object-fit:cover;object-position:center bottom;
   display:block;border:1px solid var(--rule-strong);
-  box-shadow:0 26px 60px -26px rgba(0,0,0,.9),0 0 40px -18px rgba(255,86,56,.45);
+  box-shadow:0 18px 40px -22px rgba(0,0,0,1);
   transform:rotateY(-7deg);transform-origin:left center;
 }
 .novel-body p{font-size:.98rem;max-width:var(--m-body);}
@@ -689,7 +699,8 @@ body::after{
 }
 @media (prefers-reduced-motion:reduce){.novel-cover img{animation:none;transform:none;}}
 
-/* Martian Mono runs wide and dark. Trim size and weight so labels stay quiet. */
+/* label weight floor. the crisp pass at the end of this file raises the
+   ones that became capitals in a proportional face. */
 .eyebrow,.trust span,.card-foot,.f-nav-label,.case-k,.novel-meta,.bio-toggle,.phero-facts span{font-weight:400;}
 
 /* ---------- the way in ---------- */
@@ -699,10 +710,10 @@ body::after{
 }
 
 .hd-body p{max-width:var(--m-body);}
-.hd-facts{list-style:none;display:grid;gap:0;align-content:start;}
-.hd-facts li{padding:14px 0;border-top:1px solid var(--rule);}
-.hd-facts li:last-child{border-bottom:1px solid var(--rule);}
-.hd-facts b{display:block;font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+.hd-facts{list-style:none;display:grid;gap:0;align-content:start;padding:4px 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.hd-facts li{padding:11px 0;}
+.hd-facts b{display:block;font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:1.16rem;color:var(--ink);margin-bottom:.18rem;}
 .hd-facts span{font-family:var(--f-mono);font-size:.69rem;letter-spacing:.02em;text-transform:uppercase;color:var(--dim);}
 @media (max-width:860px){.hd-box{
@@ -722,11 +733,11 @@ body::after{
 .q-person img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--rule-strong);flex:none;}
 .q-person cite{margin:0;font-family:var(--f-body);font-size:.95rem;font-weight:500;color:var(--ink);
   letter-spacing:0;text-transform:none;}
-.q-person cite em{display:block;font-style:normal;font-family:var(--f-mono);font-size:.58rem;
-  letter-spacing:.02em;text-transform:uppercase;color:var(--dim);margin-top:.25rem;font-weight:400;}
+.q-person cite em{display:block;font-style:normal;font-family:var(--f-mono);font-size:.68rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:.25rem;font-weight:500;}
 
 /* ---------- illustration atmosphere ---------- */
-svg[data-art] text{font-family:var(--f-mono);font-weight:400;}
+svg[data-art] text{font-family:var(--f-art);font-weight:400;letter-spacing:.04em;}
 /* ---------- accessibility and small screens ---------- */
 @media (max-width:768px){
   .term+.term{padding-left:0;border-left:0;border-top:1px solid var(--rule);}
@@ -797,12 +808,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   color:var(--ink);font-weight:400;letter-spacing:-.012em;max-width:var(--m-body);
 }
 .says p::before{content:"\201C";position:absolute;left:0;top:14px;color:var(--inner);
-  font-family:var(--f-display);font-size:1.5rem;line-height:1;}
+  font-family:Georgia,"Times New Roman",serif;font-size:1.5rem;line-height:1;}
 
 /* the logo, at its real proportions */
-.brand img{height:26px;width:auto;display:block;}
-.f-brand img{height:34px;width:auto;display:block;}
-@media (max-width:600px){.brand img{height:23px;}}
+.brand img{height:36px;width:auto;display:block;}
+.f-brand img{height:44px;width:auto;display:block;}
 
 /* proof, placed beside the thing it proves, and unmistakably a quotation */
 .said{
@@ -810,10 +820,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .said::before{
   content:"\201C";position:absolute;left:0;top:-18px;
-  font-family:var(--f-display);font-size:4.6rem;line-height:1;color:var(--inner);opacity:.85;
+  font-family:Georgia,"Times New Roman",serif;font-size:4.6rem;line-height:1;color:var(--inner);opacity:.85;
 }
 .said blockquote{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:1.4;color:var(--ink);font-style:italic;
 }
 .said blockquote::after{content:"\201D";color:var(--inner);opacity:.85;}
@@ -828,7 +838,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
   .said::before{font-size:3.2rem;}
   .said blockquote{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:1.4;color:var(--ink);font-style:italic;
 }
 }
@@ -839,11 +849,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
    enough that it never reads as stripes, and large enough that the
    eye registers a new section without being told.
    ============================================================ */
-section{border-top:1px solid var(--rule-strong);}
+/* the ground already steps and the tick already marks the boundary; a
+   full width rule on top of those was the third mark and the loudest. */
 /* the hero and the full width bands close with their own rule. the section
    after them does not draw a second one on top of it */
-.phero + section,.trust + section,.gift + section{border-top:none;}
-section:first-of-type{border-top:none;}
+.phero + section,.trust + section,.gift + section:first-of-type{border-top:none;}
 
 main > section:nth-of-type(odd){background:var(--ground);}
 main > section:nth-of-type(even){background:var(--tint);}
@@ -859,7 +869,7 @@ section > .page{position:relative;}
 section > .page:not(:first-of-type)::before{display:none;}
 section > .page::before{
   content:"";position:absolute;left:30px;top:calc(-1 * var(--sec-pad) - 1px);
-  width:56px;height:2px;background:var(--inner);opacity:.85;
+  width:64px;height:3px;background:var(--inner);opacity:1;
 }
 /* the tick draws itself as its section arrives, so it reads as the start of
    a line rather than a mark left on the page */
@@ -904,7 +914,7 @@ section:first-of-type > .page::before{display:none;}
   border-top:1px solid var(--rule-strong);
 }
 .ours blockquote{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.4rem,3vw,2.15rem);line-height:1.32;color:var(--ink);
   max-width:var(--m-lead);margin:0 auto;
 }
@@ -964,10 +974,9 @@ section:first-of-type > .page::before{display:none;}
   .novel-meta,.fnd-role{font-size:.79rem;}
   .sectors a,.sectors span{font-size:.78rem;}
   .q-person cite em{font-size:.78rem;}
-  .step-n{font-size:.84rem;}
   .mob-label{font-size:.78rem;}
   .mob a em{font-size:.79rem;}
-  /* Martian Mono is wide, so give the raised labels their tracking back */
+  /* superseded by the crisp pass: these labels are sentence case now */
   .card-foot,.phero-facts span,.hd-facts span{letter-spacing:.015em;}
 }
 
@@ -992,14 +1001,14 @@ section:first-of-type > .page::before{display:none;}
 section.sec-flush{padding-bottom:0;}
   
 .band-say p{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.32;color:var(--ink);
   max-width:var(--m-lead);margin:0 auto;padding:0 30px;
 }
 
 /* the number a partner leaves with */
 .lead-big{
-  font-family:var(--f-display);font-weight:var(--d-weight);letter-spacing:var(--d-track);
+  font-family:var(--f-display);font-weight:500;letter-spacing:-.024em;
   font-size:clamp(1.45rem,2.9vw,2.15rem);line-height:1.34;color:var(--ink);
   max-width:var(--m-lead);margin:0 0 1.8rem;
 }
@@ -1019,7 +1028,7 @@ section.sec-flush{padding-bottom:0;}
    amber is the first stretch of it, sitting on the line itself rather than
    measured back through whatever padding the section happens to carry.
    buttons stay coral, as they are on every page. */
-.lf section + section,.lf .gift + section{border-top:1px solid var(--rule);position:relative;}
+.lf section + section,.lf .gift + section{position:relative;}
 .lf section + section::before,.lf .gift + section::before{
   content:"";position:absolute;top:-1px;left:max(30px,calc(50% - 570px));
   width:56px;height:2px;background:var(--outer-line);
@@ -1124,7 +1133,7 @@ section.sec-close{padding-bottom:clamp(44px,5vw,72px);}
 
 /* the generators size their labels against the drawing's desktop width, so on
    a narrow screen they shrink with it. this is the floor. */
-svg[data-art] text{font-size:clamp(11px,1.25vw,15px);}
+svg[data-art] text{font-size:clamp(10px,1.05vw,12px);}
 
 /* nothing animates for a pointer that cannot hover */
 @media (hover:none){
@@ -1138,4 +1147,216 @@ svg[data-art] text{font-size:clamp(11px,1.25vw,15px);}
   .f-info{font-size:.95rem;}
   .f-nav a{min-height:44px;display:flex;align-items:center;}
   .nav-cta{font-size:.875rem;}
+}
+
+/* ==========================================================================
+   THE CRISP PASS — October 2026
+   Everything below was proved in a local A/B preview before it shipped.
+   ========================================================================== */
+
+/* ---------- labels, with no monospace ----------
+   Martian Mono was carrying the credentials, the prices and the attributions,
+   and it had started to read as a template rather than as a voice. The labels
+   split into two kinds that want opposite treatment, which is why there is no
+   blanket rule here.
+
+   SHORT LABELS, already set in capitals, stay capitals. In a proportional
+   face they need more weight and less tracking than a wide mono was carrying,
+   or they go limp. */
+.eyebrow,.f-nav-label,.case-k,.sectors span,.sectors a,.frame-cap,.fnd-role,
+.mob-label,.step .turn,.quiet-link,.bio-toggle,.ours figcaption,
+.said figcaption,.hd-facts span,cite,.q-sm cite,.q-person cite em,.novel-meta{
+  font-weight:500;letter-spacing:.15em;
+}
+
+/* SENTENCES were never capitals and must not become capitals. These are the
+   credentials, the prices and the card footers: real sentences, which read as
+   shouting in caps and run twice as wide. Sentence case, a touch larger. */
+.trust span,.phero-facts span,.card-foot,.card-foot b,.card-foot em,
+.who-list b,.f-copy,.f-info{text-transform:none;letter-spacing:0;font-weight:400;}
+.trust span,.phero-facts span{font-size:.92rem;color:var(--body);}
+/* step counters want equal-width figures, so 01 and 11 hold the same column
+   the way they did in a monospace */
+.f-nav-label,.case-k,.quiet-link,.bio-toggle,.hd-facts span,.frame-cap{font-size:.73rem;}
+.novel-meta,.fnd-role,.ours figcaption,.said figcaption{font-size:.71rem;}
+.sectors span,.sectors a{font-size:.71rem;}
+
+/* ---------- the logo ----------
+   The mark is four nested chevrons with seven rungs. It cannot resolve in
+   26px, which is why it read as an orange blob rather than as a drawing. */
+@media (max-width:600px){.brand img{height:30px;}}
+
+/* ---------- structure you can see ---------- */
+.card{border-width:1px;}
+.art-bloom{opacity:.85;}
+.fnd img,.person img,.q-person img,.why-face img{filter:contrast(1.06) saturate(1.04);}
+
+/* ==========================================================================
+   THE LINE DIET
+   A line separates unlike things; space separates like things. The site had
+   it the other way round: eleven questions in a row each drew a rule, while a
+   section boundary drew three marks at once. Counted before this pass, index
+   carried 58 hairlines and law-firms 54.
+   ========================================================================== */
+
+/* questions are like things */
+.acc-item{border-bottom:none;}
+/* an open item is now unlike its neighbours, so it earns its line back */
+.acc-item:has(.acc-head[aria-expanded="true"]){border-bottom:1px solid var(--rule);}
+
+/* bullets are like things: the + and the dash already separate them */
+
+/* rule the group, not every member */
+
+/* an attribution needs no rule above it; the change of voice is already said */
+.q-sm cite,.said figcaption{border-top:none;padding-top:0;}
+
+/* the section boundary: the ground already steps and the tick already marks
+   it. The full-width rule was the third mark and the loudest of the three. */
+section{border-top:none;}
+
+/* ==========================================================================
+   DIRECTION — motion that says where you are and where this is going.
+   Nothing here decorates. The reduced-motion block at the end of this file
+   already strips all of it.
+   ========================================================================== */
+@media (prefers-reduced-motion:no-preference){
+
+  /* you are here. the logo's own gradient, gold through orange to red,
+     unrolled across the page as a progress rail. */
+  #fino-rail{
+    position:fixed;top:70px;left:0;height:2px;width:0;z-index:999;
+    background:linear-gradient(90deg,#FDC313,#F5872B 52%,#EA463A);
+    transition:width .12s linear;pointer-events:none;
+  }
+
+  /* a headline rises out of its own line behind a mask, so the glyphs stay
+     perfectly sharp the whole way up. The old reveals faded opacity, which is
+     exactly what made them look soft. */
+  .js .s-head h2,.js .cta h2,.js .close-line{
+    clip-path:inset(0 0 102% 0);transform:translateY(.14em);
+    transition:clip-path .92s cubic-bezier(.22,1,.36,1),
+               transform .92s cubic-bezier(.22,1,.36,1);
+  }
+  section.in .s-head h2,.s-head.in h2,section.in .cta h2,section.in .close-line{
+    clip-path:inset(-.3em 0 -.3em 0);transform:none;
+  }
+
+  /* one light runs each section's rule, once, in the page's family colour */
+  section{position:relative;}
+  section::after{
+    content:"";position:absolute;top:-1px;left:0;height:1px;width:30%;
+    background:linear-gradient(90deg,transparent,var(--inner),transparent);
+    opacity:0;pointer-events:none;
+  }
+  section.in::after{animation:fino-sweep 1.6s cubic-bezier(.3,.7,.2,1) .25s 1 forwards;}
+  .outer section::after{
+    background:linear-gradient(90deg,transparent,var(--outer-line),transparent);
+  }
+  @keyframes fino-sweep{
+    0%{opacity:0;transform:translateX(0);}
+    15%{opacity:.9;}
+    85%{opacity:.5;}
+    100%{opacity:0;transform:translateX(233%);}
+  }
+
+  /* a process reads as a path rather than a list. the rail runs coral into
+     amber the way every axis on this site does. */
+  .steps{position:relative;}
+  .steps::before{
+    content:"";position:absolute;left:-17px;top:34px;bottom:34px;width:2px;
+    background:linear-gradient(180deg,var(--inner),var(--outer-line));
+    transform:scaleY(0);transform-origin:top center;
+    transition:transform 1.5s cubic-bezier(.3,.7,.2,1) .15s;
+  }
+  .steps.in::before{transform:scaleY(1);}
+  @media (max-width:600px){.steps::before{display:none;}}
+  @media (min-width:601px){
+    .step-n{position:relative;}
+    .step-n::before{
+      content:"";position:absolute;left:-22px;top:.75em;width:8px;height:8px;
+      background:var(--ground);border:2px solid var(--inner);
+      transform:scale(0) rotate(45deg);
+      transition:transform .5s cubic-bezier(.3,1.4,.4,1);
+    }
+    .outer .step-n::before{border-color:var(--outer-line);}
+    .steps.in .step-n::before{transform:scale(1) rotate(45deg);}
+    .steps.in .step:nth-child(2) .step-n::before{transition-delay:.18s;}
+    .steps.in .step:nth-child(3) .step-n::before{transition-delay:.36s;}
+    .steps.in .step:nth-child(4) .step-n::before{transition-delay:.54s;}
+    .steps.in .step:nth-child(5) .step-n::before{transition-delay:.72s;}
+  }
+
+  /* the steps and the cards arrive in sequence */
+  .js .step{opacity:0;transform:translateY(12px);
+    transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+  .steps.in .step{opacity:1;transform:none;}
+  .steps.in .step:nth-child(2){transition-delay:.08s;}
+  .steps.in .step:nth-child(3){transition-delay:.16s;}
+  .steps.in .step:nth-child(4){transition-delay:.24s;}
+  .steps.in .step:nth-child(5){transition-delay:.32s;}
+
+  .js .cards .card{opacity:0;transform:translateY(16px);
+    transition:opacity .66s cubic-bezier(.22,1,.36,1),
+               transform .66s cubic-bezier(.22,1,.36,1),border-color .28s ease;}
+  .cards.in .card{opacity:1;transform:none;}
+  .card:nth-child(1){transition-delay:.04s;}
+  .card:nth-child(2){transition-delay:.12s;}
+  .card:nth-child(3){transition-delay:.20s;}
+  .card:nth-child(4){transition-delay:.28s;}
+  .cards.in .card::after{transform:scaleX(1);opacity:.55;}
+  .card:hover::after{opacity:1;}
+
+  /* a card lights from where the cursor is */
+  .card::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+    transition:opacity .3s ease;
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),
+      rgba(255,86,56,.10),transparent 60%);
+  }
+  .card-o::before{
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),
+      rgba(251,176,64,.10),transparent 60%);
+  }
+  .card:hover::before{opacity:1;}
+
+  /* the two column lists fill row by row */
+  .js .tick li{opacity:0;transform:translateX(-6px);
+    transition:opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1);}
+  .tick.in li{opacity:1;transform:none;}
+  .tick.in li:nth-child(2){transition-delay:.07s;}
+  .tick.in li:nth-child(3){transition-delay:.14s;}
+  .tick.in li:nth-child(4){transition-delay:.21s;}
+  .tick.in li:nth-child(5){transition-delay:.28s;}
+  .tick.in li:nth-child(6){transition-delay:.35s;}
+
+  .js .hero h1,.js .phero h1{animation:fino-settle 1s cubic-bezier(.22,1,.36,1) both;}
+  @keyframes fino-settle{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:none;}
+  }
+}
+
+/* without motion the page is simply static, and nothing is load bearing */
+@media (prefers-reduced-motion:reduce){
+  #fino-rail{display:none;}
+  section::after{display:none;}
+  .js .cards .card,.js .step,.js .tick li{opacity:1;transform:none;}
+  .js .s-head h2,.js .cta h2,.js .close-line{clip-path:none;transform:none;}
+}
+
+/* ---------- small screens, last so it wins ----------
+   The crisp label sizes above sit outside any media query, so they would
+   otherwise override the phone floor set earlier in this file. Nothing here
+   is decorative text: these are prices, credentials and attributions. */
+@media (max-width:768px){
+  .f-nav-label,.case-k,.quiet-link,.bio-toggle,.hd-facts span,.frame-cap,
+  .novel-meta,.fnd-role,.ours figcaption,.said figcaption,
+  .sectors span,.sectors a,.step .turn{font-size:.79rem;}
+  cite,.q-sm cite,.q-person cite em{font-size:.78rem;}
+  .step-n{font-size:.84rem;}
+  .trust span,.phero-facts span{font-size:.95rem;}
+  .card-foot{font-size:.92rem;}
+  .who-list b{font-size:.88rem;}
+  .f-copy{font-size:.86rem;}
 }
