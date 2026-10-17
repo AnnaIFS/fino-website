@@ -35,6 +35,13 @@
     };
   }
   var HAIR = 0.95, LINE = 1.15, KEY = 1.4, EDGE = 1.65;
+  /* One opacity scale for every drawing. Before this each generator
+     picked its own faint value, so the same kind of supporting line was
+     at .16 in one drawing and .30 in another and the set looked unevenly
+     washed out. GHOST is structure you should barely notice, SOFT is
+     secondary structure, MID is a supporting subject, and the subject
+     itself is left at full. */
+  var GHOST = 0.3, SOFT = 0.56, MID = 0.8;
 
   // the paper the diagrams sit on: a registration field, centred so all
   // four margins match
@@ -148,7 +155,7 @@
 
     if (shared) {
       svg.appendChild(el('circle', { cx: CX, cy: CY, r: shared, fill: 'none', stroke: CORAL,
-        'stroke-width': G.w(LINE), opacity: 0.3 }));
+        'stroke-width': G.w(KEY), opacity: MID }));
     }
 
     places.forEach(function (pl, k) {
@@ -158,7 +165,7 @@
       RINGS.forEach(function (ring, ri) {
         var r = ring[0] * scale;
         svg.appendChild(el('circle', { cx: ox, cy: oy, r: r.toFixed(1), fill: 'none',
-          stroke: CORAL, 'stroke-width': G.w(HAIR), opacity: 0.24 }));
+          stroke: CORAL, 'stroke-width': G.w(LINE), opacity: SOFT }));
         var g = el('g', { 'class': 'ob-ring' });
         g.style.setProperty('--ox', ox.toFixed(1) + 'px');
         g.style.setProperty('--oy', oy.toFixed(1) + 'px');
@@ -282,7 +289,7 @@
 
       /* THE MARK. Four meetings, each further forward and each more certain
          than the one before it. The fourth is the point. */
-      var arms = [], WT = [LINE, LINE, KEY, KEY], OP = [0.62, 0.76, 0.9, 1];
+      var arms = [], WT = [LINE, LINE, KEY, KEY], OP = [0.74, 0.85, 0.94, 1];
       for (i = 0; i < 4; i++) {
         chevron(APEX[i], REACH[i], null, WT[i], OP[i], 'mk-arm').forEach(function (n) {
           arms.push({ i: i, n: n, len: Math.SQRT2 * REACH[i] * S });
@@ -388,7 +395,7 @@
       /* the band itself, split at the axis the way the mark is */
       [[TOP, CY, AMBER], [CY, BOT, CORAL]].forEach(function (b) {
         svg.appendChild(el('rect', { x: 0, y: b[0], width: W, height: b[1] - b[0],
-          fill: b[2], opacity: 0.05, 'class': 'mt-body' }));
+          fill: b[2], opacity: 0.09, 'class': 'mt-body' }));
       });
 
       /* outer comes down from above and stops at the far side of the band.
@@ -427,9 +434,9 @@
       /* the edges of the band, and the axis running through it */
       var rungs = [
         svg.appendChild(el('line', { x1: 0, y1: TOP, x2: W, y2: TOP, stroke: AMBER,
-          'stroke-width': G.w(HAIR), opacity: 0.45, 'class': 'mt-rung' })),
+          'stroke-width': G.w(HAIR), opacity: SOFT, 'class': 'mt-rung' })),
         svg.appendChild(el('line', { x1: 0, y1: BOT, x2: W, y2: BOT, stroke: CORAL,
-          'stroke-width': G.w(HAIR), opacity: 0.45, 'class': 'mt-rung' }))
+          'stroke-width': G.w(HAIR), opacity: SOFT, 'class': 'mt-rung' }))
       ];
       var axis = svg.appendChild(el('line', { x1: 0, y1: CY, x2: W, y2: CY,
         stroke: 'url(#mt-ax)', 'stroke-width': G.w(KEY), opacity: 0.95, 'class': 'mt-axis' }));
@@ -539,7 +546,7 @@
 
         // the week, always the same length. what is not solid is what came back.
         svg.appendChild(el('line', { x1: X0, y1: y, x2: X1, y2: y, stroke: AMBER,
-          'stroke-width': G.w(HAIR), opacity: 0.16, 'class': 'hr-week' }));
+          'stroke-width': G.w(HAIR), opacity: GHOST, 'class': 'hr-week' }));
 
         // what the work is taking
         svg.appendChild(el('line', { x1: X0, y1: y, x2: end, y2: y, stroke: AMBER,
@@ -666,7 +673,7 @@
             x2: (AX + dy + [274, 386, 318, 208][i - 1] * (d < 0 ? 1 : 0.86)).toFixed(1),
             y2: (AY + d * dy).toFixed(1), stroke: AMBER,
             'stroke-width': G.w(i === 2 ? LINE : HAIR),
-            'stroke-linecap': 'round', opacity: (0.62 - i * 0.08).toFixed(2), 'class': 'vo-rung' }));
+            'stroke-linecap': 'round', opacity: (MID - i * 0.07).toFixed(2), 'class': 'vo-rung' }));
         });
       }
       // the axis, which is the sentence the whole thing is built on
@@ -705,14 +712,14 @@
         g.appendChild(el('rect', { x: x, y: y, width: BW, height: BH, fill: 'none',
           stroke: AMBER, 'stroke-width': G.w(w), opacity: op }));
         g.appendChild(el('line', { x1: x + 11, y1: y + BH / 2, x2: x + BW - 11, y2: y + BH / 2,
-          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: op * 0.34 }));
+          stroke: AMBER, 'stroke-width': G.w(HAIR), opacity: op * SOFT }));
         return svg.appendChild(g);
       }
 
       var made = [];
       for (r = 0; r < ROWS; r++) for (c = 0; c < COLS; c++) {
         if (c === SLOT[0] && r === SLOT[1]) continue;
-        made.push(block(cx(c), cy(r), KEY, 0.92 - r * 0.12, 'bk-on'));
+        made.push(block(cx(c), cy(r), KEY, 1 - r * 0.08, 'bk-on'));
       }
       // the slot, the only empty thing here
       svg.appendChild(el('rect', { x: cx(SLOT[0]), y: cy(SLOT[1]), width: BW, height: BH,
@@ -720,7 +727,7 @@
         'stroke-dasharray': '5 5' }));
       // the track it travels, and the piece travelling it
       svg.appendChild(el('line', { x1: cx(SLOT[0]) + BW / 2, y1: cy(SLOT[1]) - LIFT + BH,
-        x2: cx(SLOT[0]) + BW / 2, y2: cy(SLOT[1]) - 6, stroke: 'var(--rule)',
+        x2: cx(SLOT[0]) + BW / 2, y2: cy(SLOT[1]) - 6, stroke: 'var(--rule-strong)',
         'stroke-width': G.w(HAIR), 'stroke-dasharray': '4 6' }));
       svg.appendChild(el('path', { d: 'M -8 -10 L 0 0 L 8 -10', fill: 'none', stroke: AMBER,
         'stroke-width': G.w(KEY), 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
@@ -746,7 +753,7 @@
        the whole statement. The orbits turn, very slowly, because the parts
        are moving whether or not anyone is watching them. */
     orbit: function (svg) {
-      orbitField(svg, 600, 420, 1, [[0, 1]]);
+      orbitField(svg, 480, 420, 1.09, [[0, 1]]);
     },
 
     /* THE SAME, FOUR TIMES OVER, SHARING ONE ORBIT. Self-leadership circles.
@@ -755,8 +762,8 @@
        changed. What the eight weeks adds is the one wide orbit they all now
        turn inside, which is the shared language. */
     orbits: function (svg) {
-      orbitField(svg, 600, 420, 0.40,
-        [[-90, 0], [0, 74], [90, 143], [180, 216]], 118, 196);
+      orbitField(svg, 480, 420, 0.42,
+        [[-90, 0], [0, 74], [90, 143], [180, 216]], 120, 198);
     },
 
     /* THE BRIDGE. About.
