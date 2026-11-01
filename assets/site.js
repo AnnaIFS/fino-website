@@ -78,9 +78,12 @@ if (UMAMI_ID && location.hostname === 'fino.website') {
   });
 })();
 
-/* testimonials: one voice at a time, slow, pauses on hover */
+/* testimonials: one voice at a time, slow, pauses on hover. On phones and
+   touch screens they never move on their own: people swipe or tap the dots,
+   because a quote that changes while you read it is a quote you miss. */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var still = window.matchMedia('(max-width: 760px), (hover: none)').matches;
   document.querySelectorAll('[data-testi]').forEach(function (band) {
     var figs = band.querySelectorAll('.testi-stage figure'), dots = band.querySelectorAll('.testi-nav button');
     if (!figs.length) return;
@@ -91,10 +94,18 @@ if (UMAMI_ID && location.hostname === 'fino.website') {
       dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
     }
     function stop() { if (timer) clearInterval(timer); timer = null; }
-    function play() { if (!reduce) { stop(); timer = setInterval(function () { show(i + 1); }, 7000); } }
+    function play() { if (!reduce && !still) { stop(); timer = setInterval(function () { show(i + 1); }, 8000); } }
     dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); play(); }); });
     band.addEventListener('mouseenter', stop);
     band.addEventListener('mouseleave', play);
+    var x0 = null, y0 = null;
+    band.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    band.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(i + (dx < 0 ? 1 : -1));
+      x0 = y0 = null;
+    }, { passive: true });
     show(0); play();
   });
 })();

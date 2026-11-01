@@ -547,3 +547,4 @@ a.work:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 2
 @media (prefers-reduced-motion:reduce){.gallery-band img{animation:none;}}
 
 .magnet-go{width:100%;margin-top:16px;padding:16px 24px;font-size:1.02rem;}
+@media (hover:none){.testi-nav{gap:12px;}.testi-nav button{width:44px;height:44px;}}
