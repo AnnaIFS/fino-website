@@ -542,7 +542,6 @@ a.work:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 2
 @keyframes drift{from{transform:scale(1.03)}to{transform:scale(1.13) translate(-1.5%,-1%)}}
 .gallery-band figcaption{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:.92rem;font-weight:600;color:var(--on-ember);}
 .gallery-band figcaption::before{content:"";width:10px;height:10px;flex:none;background:var(--red);clip-path:polygon(0 0,58% 0,100% 50%,58% 100%,0 100%,42% 50%);}
-.ph-photo{overflow:hidden;}
-.ph-photo img{animation:drift 26s ease-in-out infinite alternate;}
+/* the header photo stays still: motion next to text pulls the eye off the words */
 @media (max-width:760px){.gallery-band figure:nth-child(n){margin-top:0;}}
-@media (prefers-reduced-motion:reduce){.gallery-band img,.ph-photo img{animation:none;}}
+@media (prefers-reduced-motion:reduce){.gallery-band img{animation:none;}}
