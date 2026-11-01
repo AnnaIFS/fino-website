@@ -545,3 +545,5 @@ a.work:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 2
 /* the header photo stays still: motion next to text pulls the eye off the words */
 @media (max-width:760px){.gallery-band figure:nth-child(n){margin-top:0;}}
 @media (prefers-reduced-motion:reduce){.gallery-band img{animation:none;}}
+
+.magnet-go{width:100%;margin-top:16px;padding:16px 24px;font-size:1.02rem;}
