@@ -143,3 +143,26 @@ document.querySelectorAll('.magnet-form').forEach(function (f) {
     setTimeout(go, 4000);
   });
 });
+
+/* section links: jump to the section, keep the address bar clean (no #name) */
+(function () {
+  function clean() { if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search); }
+  function target(hash) { try { return hash.length > 1 && document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { return null; } }
+  if (target(location.hash)) {
+    window.addEventListener('load', function () {
+      var t = target(location.hash);
+      if (t) { t.scrollIntoView({ behavior: 'instant' }); clean(); }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+    var url = new URL(a.getAttribute('href'), location.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname || !url.hash) return;
+    var t = target(url.hash);
+    if (!t) return;
+    e.preventDefault();
+    t.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    clean();
+  });
+})();
