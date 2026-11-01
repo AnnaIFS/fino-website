@@ -98,3 +98,25 @@ if (UMAMI_ID && location.hostname === 'fino.website') {
     show(0); play();
   });
 })();
+
+/* section bar: underline the section being read, keep it in view on phones */
+(function () {
+  var bar = document.querySelector('.subnav');
+  if (!bar || !('IntersectionObserver' in window)) return;
+  var row = bar.querySelector('.wrap'), links = [].slice.call(bar.querySelectorAll('a')), byId = {};
+  links.forEach(function (a) { var t = document.getElementById(a.getAttribute('href').slice(1)); if (t) byId[t.id] = a; });
+  function mark(a) {
+    links.forEach(function (l) { if (l !== a) l.removeAttribute('aria-current'); });
+    if (!a) return;
+    a.setAttribute('aria-current', 'true');
+    if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: a.offsetLeft - 20, behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) mark(byId[e.target.id]); });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  Object.keys(byId).forEach(function (id) { io.observe(document.getElementById(id)); });
+  var first = document.getElementById(Object.keys(byId)[0]);
+  window.addEventListener('scroll', function () {
+    if (first && first.getBoundingClientRect().top > window.innerHeight * .4) mark(null);
+  }, { passive: true });
+})();
