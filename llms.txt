@@ -4,7 +4,7 @@
 
 Every team runs two systems at once. The outer one is what everyone can see: workflows, tools, AI, how decisions get made. The inner one runs inside the people: what happens under pressure, the conflict nobody names, the meeting that goes in circles. Most changes are designed on the systems and land on the people, which is why they fade. FINO works with both. Some teams need only the systems fixed, some only the people supported, many need both.
 
-Who we work with: growing companies, founder-led or family-owned, of 10 to 100 people; law firms of 10 to 50, where we work beside the firm administrator; and mission-driven organisations. We take a few teams at a time and do the work ourselves.
+Who we work with: growing companies, founder-led or family-owned, of 10 to 100 people; law firms of 10 to 100, where we work beside the firm administrator; and mission-driven organisations. We take a few teams at a time and do the work ourselves.
 
 How to start: every engagement starts with a free 30-minute call (book at https://calendly.com/thefutureisnow/30min ). An optional Review ($2,500, fixed, two to three weeks, credited toward the work) maps both sides first for teams who want that.
 
@@ -12,7 +12,7 @@ How to start: every engagement starts with a free 30-minute call (book at https:
 
 - [Fractional Operations](https://fino.website/operations/): one operations partner inside the work. We find what costs the team the most time, rebuild the workflows, tools and AI with the people who do the work, and hand it over so it keeps running. From $3,500 a month, ninety days recommended, then month to month. We take nothing from software vendors.
 - [AI Integration](https://fino.website/operations/#ai): people first, then the tools, inside the work. AI assistants that know the business, first drafts from the team's own templates, automation of repetitive work, and AI rules the team writes together. Part of Fractional Operations.
-- [For law firms](https://fino.website/law-firms/): an operations partner to firm administrators, office managers and legal operations teams in firms of 10 to 50. Calendars and mediation scheduling, intake and matter status, templates, case management selection and migration, time capture, and AI policy. FINO is a Florida Bar approved CLE provider. Free mediation scheduler, no account needed: https://scheduler.fino.website
+- [For law firms](https://fino.website/law-firms/): an operations partner to firm administrators, office managers and legal operations teams in firms of 10 to 100. Calendars and mediation scheduling, intake and matter status, templates, case management selection and migration, time capture, and AI policy. FINO is a Florida Bar approved CLE provider. Free mediation scheduler, no account needed: https://scheduler.fino.website
 
 ## Inner operations
 

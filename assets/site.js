@@ -120,3 +120,15 @@ if (UMAMI_ID && location.hostname === 'fino.website') {
     if (first && first.getBoundingClientRect().top > window.innerHeight * .4) mark(null);
   }, { passive: true });
 })();
+
+/* scheduler sign-up: send the email, then open the scheduler straight away */
+document.querySelectorAll('.magnet-form').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var b = f.querySelector('button'), next = f.getAttribute('data-next'), gone = false;
+    function go() { if (!gone) { gone = true; window.location.href = next; } }
+    b.disabled = true; b.textContent = 'Opening the scheduler';
+    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } }).then(go, go);
+    setTimeout(go, 4000);
+  });
+});
