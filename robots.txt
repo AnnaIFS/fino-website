@@ -59,4 +59,13 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
 Sitemap: https://fino.website/sitemap.xml

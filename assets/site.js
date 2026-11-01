@@ -1,6 +1,16 @@
 /* FINO site: the few things that move. A slow fade in, a header that
    firms up on scroll, the mobile menu, and the arrow that draws itself
    where the page talks about the path. */
+/* analytics: Umami, no cookies. Paste the fino.website website ID from
+   cloud.umami.is below. It only loads on the live domain. */
+var UMAMI_ID = 'ace71e04-cfd0-4562-9449-0a93b6d4175a';
+if (UMAMI_ID && location.hostname === 'fino.website') {
+  var u = document.createElement('script');
+  u.defer = true; u.src = 'https://cloud.umami.is/script.js';
+  u.setAttribute('data-website-id', UMAMI_ID); u.setAttribute('data-domains', 'fino.website');
+  document.head.appendChild(u);
+}
+
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
