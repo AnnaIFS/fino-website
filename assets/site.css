@@ -385,7 +385,7 @@ section{padding:clamp(80px,10vw,136px) 0;scroll-margin-top:84px;}
 .pick-t{font-weight:700;color:var(--ink);font-size:1.25rem;letter-spacing:-.02em;line-height:1.2;}
 @media (max-width:760px){.pick{grid-template-columns:1fr;}}
 
-/* ---- Offsites and Studio: a page head with a picture beside it ---- */
+/* ---- Offsites: a page head with a picture beside it ---- */
 .ph-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,72px);align-items:center;}
 .ph-grid .h1{margin:1.3rem 0 1.4rem;max-width:16ch;}
 .page-hero .ph-grid ~ .wrap{margin-top:clamp(36px,5vw,56px);}
