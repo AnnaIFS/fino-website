@@ -559,3 +559,8 @@ a.voice:hover{border-top-color:var(--red);}
 a.voice:hover q{color:var(--ink);}
 a.voice span::after{content:"";display:inline-block;width:8px;height:9px;margin-left:8px;background:currentColor;opacity:0;clip-path:polygon(0 0,58% 0,100% 50%,58% 100%,0 100%,42% 50%);transition:opacity .25s,transform .25s;}
 a.voice:hover span::after{opacity:.8;transform:translateX(3px);}
+
+/* law firms: a picture of a firm tools page, invented details */
+.shot{margin:clamp(8px,2vw,24px) calc(-1 * clamp(0px,2vw,24px)) clamp(40px,5vw,72px);}
+.shot img{display:block;width:100%;height:auto;}
+.shot figcaption{margin-top:-.9rem;text-align:center;font-size:.92rem;color:var(--ash);}
