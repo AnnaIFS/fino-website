@@ -564,3 +564,395 @@ a.voice:hover span::after{opacity:.8;transform:translateX(3px);}
 .shot{margin:clamp(8px,2vw,24px) calc(-1 * clamp(0px,2vw,24px)) clamp(40px,5vw,72px);}
 .shot img{display:block;width:100%;height:auto;}
 .shot figcaption{margin-top:-.9rem;text-align:center;font-size:.92rem;color:var(--ash);}
+
+
+/* ==== November 2026 skin (option E, approved by Anna on the review page, 10 Nov 2026) ====
+   White page, cool grey bands, one deep red section, yellow = outer, red = inner.
+   No cream, no gradient label lines, no glows. Layers kept in order so each can be traced. */
+
+/* ---- a ---- */
+/* A. Just the two fixes: no cream, no orange lines. Everything else as live. */
+:root{--paper:#FFFFFF;--stone:#F4F4F2;--card:#FFFFFF;--rule:rgba(23,19,15,.11);}
+/* the short gradient dash before every label */
+.kicker::before,.page-hero.o .kicker::before,.page-hero.i .kicker::before{display:none;}
+.kicker{gap:0;}
+/* coloured bars on cards and boxes */
+.duo .side.o,.duo .side.i{box-shadow:none;}
+.duo .side.o:hover,.duo .side.i:hover{box-shadow:0 28px 50px -34px rgba(23,19,15,.35);}
+.glance::before,.magnet::before{display:none;}
+.plan.featured{box-shadow:none;}
+.plan.featured:hover{box-shadow:0 22px 44px -34px rgba(23,19,15,.4);}
+.pick{box-shadow:none;}
+/* amber underlines under names and "outer" links */
+.pair figure:first-child figcaption b,.pair figure:last-child figcaption b,.ph-pair figcaption,.ph-pair figure:last-child figcaption{box-shadow:none;}
+.link.o,.magnet-skip a{border-bottom-color:var(--ink);}
+/* photo panels were filled with stone to match the cream photos */
+.f-photo,.pair img,.person img,.crew img{background:transparent;}
+.hero-photo figcaption,.ph-photo figcaption,.ph-shot span{background:#FFFFFF;}
+.top{background:color-mix(in srgb,#FFFFFF 92%,transparent);}
+
+/* ---- b ---- */
+/* B. Quiet and sure: A, plus no glows, flat dark bands, square-ish buttons, red kept for actions */
+:root{--ember:#161718;--ember-2:#1F2022;--on-ember:#FFFFFF;--on-ember-2:#B9BCBF;--rule-e:rgba(255,255,255,.13);}
+.ember,.foot{background:var(--ember);}
+.hero-photo::before,.f-photo::before,.page-hero::after{display:none;}
+/* one solid quote mark in place of the gradient */
+.pull.q::before,.testi blockquote::before{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--red);}
+.elements .n{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--red-2);}
+/* buttons: firm corners in place of pills */
+.btn,.magnet-form input{border-radius:6px;}
+.testi-nav button,.more .turn{border-radius:6px;}
+/* cards sit still; hairline only */
+.duo .side:hover,.outcomes a:hover,a.work:hover{transform:none;}
+.duo .side::after{display:none;}
+.outcomes a:hover,a.work:hover{border-color:var(--ink);box-shadow:none;}
+.duo .side:hover{border-color:var(--ink);box-shadow:none !important;}
+.step:hover,.plan:hover{box-shadow:none;border-color:var(--ink);}
+/* labels: plain small text in ink-grey, no ornament */
+.kicker{color:var(--ash);font-weight:600;}
+.head > .kicker{color:var(--ink);}
+.on-ember .kicker{color:var(--on-ember-2);}
+.testi figcaption .src.i{color:#FF7A63;}
+
+/* ---- c ---- */
+/* C. Human and techy: B's quiet white, with precise, instrument-like details.
+   Same font (Archivo): its wide cut does the technical voice, photos do the human one. */
+:root{--ink:#111315;--body:#3E4246;--ash:#6B7076;--rule:rgba(17,19,21,.10);--rule-2:rgba(17,19,21,.22);--stone:#F3F4F5;}
+/* labels: wide, small, tracked, like a spec sheet */
+.kicker,.head > .kicker{font-size:.74rem;font-weight:600;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);padding-top:.9em;}
+.side .tag,.g-t,.foot h4,.step .n{font-stretch:125%;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;}
+/* numbers and prices read like data */
+.figures b,.plan .price,.offers em,.step .price{font-variant-numeric:tabular-nums;}
+.offers em{font-stretch:112%;font-size:.84rem;letter-spacing:.01em;}
+.figures b{font-weight:300;}
+/* sharper geometry */
+.btn,.magnet-form input,.testi-nav button,.more .turn{border-radius:3px;}
+.side,.step,.plan,.quote,.outcomes a,.work,.glance,.magnet,.book-mini,.pick{border-radius:2px;}
+/* a quiet focus line under the sticky header once you scroll */
+.top.solid{border-bottom-color:var(--rule-2);}
+/* dark bands: graphite, with the logo arrow lines doing the tech texture */
+:root{--ember:#121416;--ember-2:#1C1F22;--on-ember-2:#AEB3B8;}
+.menu a.l[aria-current]{box-shadow:inset 0 -1px 0 var(--ink);}
+
+/* ---- d ---- */
+/* C. White, cool grey, and one red room: B, plus colour carries the structure */
+:root{--stone:#ECEEEF;}
+.stone-bg{background:var(--stone);}
+.stone-bg .side,.stone-bg .step,.stone-bg .plan,.stone-bg .book-mini,.stone-bg .outcomes a{background:#FFFFFF;}
+/* "Why fixes fade" becomes the one room in FINO red */
+section.ember:not(.testi):not(:has(.band)){background:#B42A12;--on-ember-2:rgba(255,255,255,.86);--rule-e:rgba(255,255,255,.22);}
+section.ember:not(.testi):not(:has(.band)) strong{color:#FFFFFF;}
+section.ember:not(.testi):not(:has(.band)) .kicker{color:rgba(255,255,255,.86);}
+
+/* ---- e-base ---- */
+/* E base: Anna's asks and the rough spots found on review, 10 Nov 2026 */
+/* outer = amber, inner = red, in the titles themselves (deep amber: bright amber is unreadable on white) */
+.duo .side.o .tag{color:#A86A00;}
+.duo .side.i .tag{color:var(--red-2);}
+.link.o{border-bottom-color:var(--amber);}
+.link.o:hover{color:#A86A00;}
+/* header: solid white, so it never turns pink over the red band or grey over dark bands */
+.top{background:#FFFFFF;backdrop-filter:none;-webkit-backdrop-filter:none;}
+/* the "more" link inside service cards inherited the folding-panel rules: stray lines above and below */
+.side .more{border-top:0;border-bottom:0;}
+/* menu speaks the colour code: outer pages amber, inner pages red, on hover and on the current page */
+.menu a.l{box-shadow:inset 0 -2px 0 transparent;transition:color .2s,box-shadow .25s;padding:6px 0;}
+.menu a.l[href*="operations/"]:hover,.menu a.l[href*="operations/"][aria-current],
+.menu a.l[href*="law-firms/"]:hover,.menu a.l[href*="law-firms/"][aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--amber);}
+.menu a.l[href*="people/"]:hover,.menu a.l[href*="people/"][aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--red);}
+.drawer a[href*="operations/"],.drawer a[href*="law-firms/"]{box-shadow:inset 3px 0 0 var(--amber);padding-left:14px;}
+.drawer a[href*="people/"]{box-shadow:inset 3px 0 0 var(--red);padding-left:14px;}
+/* the bold lead in the red band read heavy over three lines */
+section.ember:not(.testi):not(:has(.band)) p.measure[style*="font-weight:600"]{font-weight:500 !important;}
+
+/* ---- e-type ---- */
+/* E type: typography, spacing, rhythm and hierarchy only. Colour, buttons, cards, hovers and photos live in e-colour.css. */
+
+/* --- base text --- */
+/* 1.68 leading at 17px felt loose; 1.6 reads denser and more deliberate */
+body{line-height:1.6;}
+/* small print needs less leading than body copy */
+.bios span,.step p,.step .price small,.pull-cite,.voice span,.trust{line-height:1.5;}
+/* paragraphs avoid one-word last lines */
+p{text-wrap:pretty;}
+/* a slightly shorter measure keeps long paragraphs near 70 characters a line */
+.measure{max-width:60ch;}
+.lead{font-size:clamp(1.05rem,1.3vw,1.18rem);line-height:1.55;}
+
+/* --- headings --- */
+/* light 300 against heavy 800 is the "accented second line" template look; 380 against 650 keeps the emphasis but reads as a voice, not a device */
+.display,.h1,.h2,.pull,.voice q,.testi blockquote,.novel-feature .h2 em{font-weight:380;}
+.display strong,.h1 strong,.h2 strong,.pull strong{font-weight:650;}
+/* -.045em crushed the counters at large sizes; authored sites sit near -.03em */
+.display,.h1{letter-spacing:-.034em;}
+.h2{letter-spacing:-.026em;line-height:1.08;}
+/* balanced wraps: no lone "systems." or "the people." on a line of its own */
+h1,h2,h3,.pull,.voice q,.testi blockquote,.outcomes a,.close p{text-wrap:balance;}
+/* hero headline a step smaller, so it settles into two even lines plus the bold one */
+.display{font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.02;}
+/* the emphasised half starts its own line, as in the hero: balance alone split "It / lands on" across the weight change */
+.h2 strong{display:block;}
+/* a short heading stays on one line */
+.testi .h2 strong{display:inline;}
+/* headline column a little wider, so each half usually fits on one or two even lines */
+.head .h2{max-width:24ch;}
+
+/* --- labels --- */
+/* sentence case in Archivo's wide cut: a section name, not a tracked all-caps eyebrow */
+.kicker,.head > .kicker{text-transform:none;letter-spacing:0;font-stretch:125%;font-weight:600;font-size:.9rem;padding-top:0;}
+/* in the side column the label stands alone in a lot of white, so one notch larger */
+.head > .kicker{font-size:.98rem;}
+/* the side-column label sits on the same baseline as the first line of its heading */
+.head{align-items:first baseline;}
+/* card and step labels follow the same rule, slightly smaller */
+.side .tag,.step .n,.foot h4,.testi figcaption .src{text-transform:none;letter-spacing:0;font-stretch:125%;}
+.duo .side .tag{font-size:.9rem;}
+.step .n{font-size:.84rem;}
+.foot h4{font-size:.86rem;}
+
+/* --- rhythm --- */
+/* 128px above and below every section was uniform and airy; a tighter default with variation below */
+section{padding:clamp(64px,8.5vw,112px) 0;}
+/* the problem lines follow the hero and proof strip, so they need less air in front */
+.trust + section{padding-top:clamp(52px,6.5vw,84px);}
+/* hero starts closer to the menu */
+.hero{padding-top:clamp(32px,5vw,64px);}
+.hero .display{margin:1.1rem 0 1.4rem;}
+/* heading-to-content gap one notch tighter than section padding, so blocks group */
+.head{margin-bottom:clamp(30px,4vw,48px);}
+@media (max-width:860px){.head{gap:12px;}}
+
+/* --- proof strip --- */
+/* five items wrapped to a ragged second line at 1280; one row, with only the long languages line allowed to wrap */
+.trust{font-size:.84rem;padding:16px 0;}
+@media (min-width:1041px){.trust .wrap{display:grid;grid-template-columns:repeat(4,max-content) minmax(0,1fr);align-items:start;column-gap:clamp(20px,2.4vw,32px);}}
+@media (max-width:1040px){.trust .wrap{row-gap:6px;}}
+/* no lone "us" on the languages line on a phone */
+.trust span{text-wrap:balance;}
+/* the book link keeps its underline on one line */
+.trust a.trust-book{white-space:nowrap;justify-self:start;}
+
+/* --- problem lines --- */
+/* hang the opening quote mark so the words, not the mark, line up with the rule above */
+.voice q{text-indent:-.36em;font-size:clamp(1.3rem,1.9vw,1.62rem);line-height:1.25;}
+.voice span{margin-top:.7rem;font-size:.9rem;}
+
+/* --- outer and inner cards --- */
+.side .h3{font-size:clamp(1.5rem,2.2vw,1.9rem);margin:.6rem 0 .55rem;}
+/* on a phone, name above price: side by side they each broke onto two ragged lines */
+@media (max-width:560px){
+  .offers a,.offers div{flex-direction:column;align-items:flex-start;gap:1px;padding:12px 0;}
+  .offers em{text-align:left;}
+}
+
+/* --- outcomes --- */
+/* slightly lighter and balanced, so two-line tiles break evenly */
+.outcomes a{font-size:1.02rem;font-weight:560;line-height:1.32;}
+
+/* --- testimonials --- */
+/* the quote moves onto the same column as every heading, instead of jumping back to the left edge */
+@media (min-width:861px){
+  .testi .wrap{display:grid;grid-template-columns:4fr 8fr;column-gap:clamp(20px,5vw,72px);}
+  .testi .head,.testi .wrap > :not(.testi-stage):not(.testi-nav){grid-column:1 / -1;}
+  .testi-stage,.testi-nav{grid-column:2;}
+}
+/* sized as a quote, not a second headline: it was the largest type after the hero */
+.testi blockquote{font-size:clamp(1.45rem,2.5vw,2.15rem);line-height:1.24;letter-spacing:-.022em;max-width:32ch;}
+.testi blockquote::before,.pull.q::before{font-size:clamp(3rem,5vw,4.2rem);margin-bottom:.12em;}
+.testi figcaption{margin-top:1.4rem;}
+
+/* --- pull quote --- */
+.pull{font-size:clamp(1.5rem,2.5vw,2.25rem);line-height:1.22;letter-spacing:-.024em;max-width:30ch;}
+
+/* --- steps and prices --- */
+.step h3{font-size:clamp(1.5rem,2vw,1.75rem);margin:.9rem 0 .15rem;}
+/* the one-line summary belongs to the title; the paragraph starts a new beat */
+.step .s{margin-bottom:0;}
+.step .s + p{margin-top:.9rem;}
+/* prices read as the answer to the card, not a bold line of body text */
+.step .price{font-size:1.12rem;font-weight:650;letter-spacing:-.01em;line-height:1.3;padding-top:1.6rem;}
+.step .price small{font-size:.84rem;letter-spacing:0;margin-top:.35rem;}
+
+/* --- offsites band --- */
+/* the text column now starts on the same left edge as the rest of the page */
+.band .t{max-width:calc(var(--page) / 2);}
+
+/* --- founders and novel --- */
+.bios b{font-size:1rem;}
+.bios span{font-size:.92rem;}
+
+/* --- motion --- */
+/* no fade-in on every block: a known template tell, and it delays reading. The testimonial crossfade stays, it has a job */
+.reveal{opacity:1;transform:none;transition:none;}
+
+/* --- button labels --- */
+/* white on #EE3C23 is only 3.96:1, so labels stay bold and at least 17px (header button excepted, it has no room) */
+.btn{font-size:1.0625rem;font-weight:650;}
+.menu .btn{font-size:.94rem;}
+
+/* ---- e-colour ---- */
+/* E colour: buttons, links, cards, bands, marks, photo framing, footer. 10 Nov 2026.
+   Colour code everywhere: amber = outer operations, red = inner operations.
+   Text colours checked for WCAG AA (4.5:1): amber text #A06500 on white 4.8, #935C00 on grey 4.8;
+   red text #D9331C on white 4.7, #C8301A on grey 4.6; white on #D9331C 4.7. */
+
+/* ---------- actions ---------- */
+/* white on bright #EE3C23 is 3.96:1 and fails AA at button size; FINO's own deeper red passes at 4.7 and still reads as the brand red */
+.btn-r{background:var(--red-2);}
+/* hover darkens to the red-band red instead of lifting the button: no floating UI */
+.btn-r:hover{background:#B42A12;transform:none;}
+/* a pressed state, so the click is felt */
+.btn-r:active{background:#9E2410;}
+/* ghost buttons get a faint fill on hover, so the hover reads on white without a second colour */
+.btn-g:hover{background:rgba(17,19,21,.04);}
+.on-ember .btn-g:hover{background:rgba(255,255,255,.06);}
+
+/* ---------- focus ---------- */
+/* the red focus ring vanished on red buttons and the red band; ink on light, white on dark and red */
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.ember :focus-visible,.foot :focus-visible{outline-color:#FFFFFF;}
+
+/* ---------- links ---------- */
+/* hover text must pass AA: bright red text on white is 3.96:1 */
+.link:hover,.trust a.trust-book:hover{color:var(--red-2);}
+/* outer link hover in a deep amber that passes AA (owner's ask: outer stays yellow; underline stays bright amber from e-base) */
+.link.o:hover{color:#A06500;}
+.stone-bg .link.o:hover{color:#935C00;}
+/* the novel credit is a trust fact, not an action: neutral underline keeps red for the call button */
+.trust a.trust-book{border-bottom-color:var(--rule-2);}
+
+/* ---------- outer / inner colour code ---------- */
+/* titles on the two cards: #A86A00 is 4.4:1 at this small size; one step deeper passes and still reads amber */
+.duo .side.o .tag{color:#A06500;}
+/* offer rows answer in their side's colour, at AA-safe shades */
+.side.o .offers a:hover b{color:#A06500;}
+.side.i .offers a:hover b{color:var(--red-2);}
+/* card hover: the hairline turns the side's colour instead of ink (no lift, no shadow) */
+.duo .side.o:hover{border-color:#C98A12;}
+.duo .side.i:hover{border-color:var(--red);}
+/* problem lines lead to an outer or inner page: the top rule turns that side's colour on hover */
+a.voice[href*="operations"]:hover{border-top-color:var(--amber);}
+a.voice[href*="people"]:hover{border-top-color:var(--red);}
+/* testimonial quote mark follows the side the quote came from */
+.testi figure:has(.src.o) blockquote::before{color:var(--amber);}
+
+/* ---------- cards and tiles ---------- */
+/* outcome tiles are all outer: amber hairline and a small step forward of the chevron, nothing floats */
+.outcomes a:hover{border-color:#C98A12;}
+.outcomes a .chev{transition:transform .25s cubic-bezier(.2,.7,.2,1);}
+.outcomes a:hover .chev{transform:translateX(3px);}
+/* step cards are not links, so they should not react to the cursor */
+.step:hover{border-color:var(--rule);}
+/* the step marks: smaller and tighter, a mark rather than a badge */
+.step .chev-pair .chev.lg{width:15px;height:15px;}
+.step .chev-pair .chev+.chev{margin-left:-6px;}
+/* the path line above the steps drew an amber-to-red gradient: now a plain ink line */
+.arrow-line .run{stroke:var(--ink);}
+/* grey bands: ash text dropped to 4.3:1 on #ECEEEF; a slightly deeper grey passes */
+.stone-bg{--ash:#5F646A;}
+
+/* ---------- testimonial navigation ---------- */
+/* four boxed buttons read as a toolbar; a segmented track reads as "4 quotes, this one" */
+.testi-nav{gap:4px;}
+.testi-nav button{border:0;border-radius:0;width:40px;box-shadow:inset 0 -2px 0 rgba(255,255,255,.16);transition:box-shadow .25s;}
+.testi-nav button .chev{opacity:.5;}
+.testi-nav button[aria-current="true"]{box-shadow:inset 0 -2px 0 var(--amber);}
+.testi-nav button[aria-current="true"]:has(.chev.red){box-shadow:inset 0 -2px 0 var(--red);}
+
+/* ---------- novel band ---------- */
+/* three equal boxes made no choice; Amazon is the one button, the other two become plain links */
+.novel-feature .btns .btn-g:first-child{background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--ink);}
+.novel-feature .btns .btn-g:first-child:hover{background:var(--ink);color:#FFFFFF;}
+.novel-feature .btns .btn-g+.btn-g{box-shadow:none;background:none;padding-left:12px;padding-right:12px;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--rule-2);}
+.novel-feature .btns .btn-g+.btn-g:hover{text-decoration-color:var(--ink);}
+/* "Read it as a team" goes to the People page: inner, so a red underline */
+.novel-feature .btns .btn-g+.btn-g[href*="people/"]{text-decoration-color:var(--red);}
+/* on phones the two links wrap under the button: no indent, so they line up with its left edge */
+@media (max-width:560px){.novel-feature .btns .btn-g+.btn-g{padding-left:0;padding-right:16px;}}
+
+/* ---------- photos ---------- */
+/* hero caption: a small graphite label instead of a white sticker over Dario's sweater */
+.hero-photo figcaption{background:var(--ink);color:#FFFFFF;}
+/* offsites photo: the soft radial mask looked like a glow; a clean full-bleed crop is more editorial, dimmed a touch to sit in the graphite band */
+.band .m img{-webkit-mask-image:none;mask-image:none;filter:brightness(.9);}
+/* founders: both cutouts on the red-band red, framed identically, standing on the bottom edge (owner's pick) */
+.pair figure img{background:#B42A12;aspect-ratio:4/5;object-fit:contain;object-position:50% 100%;}
+.pair figure:first-child img{box-shadow:none;}
+/* names in ink, underlined in the colour code as on the live site: Anna amber, Dario red */
+.pair figure:first-child figcaption b{display:inline-block;box-shadow:inset 0 -2px 0 var(--amber);}
+.pair figure:last-child figcaption b{display:inline-block;box-shadow:inset 0 -2px 0 var(--red);}
+
+/* ---------- footer ---------- */
+/* placeholders were warm brown-grey on cool graphite; a cool grey matches and reads at 6.3:1 */
+.foot input::placeholder,.foot textarea::placeholder{color:#9AA0A6;}
+/* fields match the firmer 3px corners of the buttons, and show focus with a brighter edge */
+.foot input,.foot textarea{border-radius:3px;transition:border-color .2s;}
+.foot input:focus,.foot textarea:focus{border-color:rgba(255,255,255,.5);}
+/* Send sized to its word: a full-width red slab out-shouted the Book a free call buttons above */
+.foot form .btn{justify-self:start;padding-left:28px;padding-right:28px;}
+/* footer links: white on hover, legal links underlined on hover */
+.foot nav a{transition:color .2s;}
+.foot .legal a:hover{color:#FFFFFF;text-decoration:underline;text-underline-offset:3px;}
+
+/* a small human detail: selected text in amber */
+::selection{background:var(--amber);color:var(--ink);}
+
+/* ---- e-final ---- */
+/* E final: Anna's asks after the designer pass, 10 Nov 2026 */
+/* outer = true yellow, not brown-amber. Yellow can't be text on white (1.9:1),
+   so the title sits on a solid yellow strip with ink text (10:1). Inner mirrors it in red. */
+.duo .side .tag{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:6px 11px 6px 9px;border-radius:2px;font-weight:600;line-height:1.1;}
+.duo .side.o .tag{background:var(--amber);color:var(--ink);}
+.duo .side.i .tag{background:var(--red-2);color:#FFFFFF;}
+.duo .side.o .tag .chev{background:var(--ink);width:12px;height:12px;}
+.duo .side.i .tag .chev{background:#FFFFFF;width:12px;height:12px;}
+/* yellow, not brown, in every outer hover: ink text, yellow underline grows */
+.link.o:hover,.stone-bg .link.o:hover,.side.o .offers a:hover b{color:var(--ink);}
+.link.o:hover{border-bottom-width:4px;}
+.link:not(.o):hover{border-bottom-width:4px;}
+.side.o .offers a:hover b{box-shadow:inset 0 -3px 0 var(--amber);}
+.side.i .offers a:hover b{box-shadow:inset 0 -3px 0 var(--red);color:var(--ink);}
+.duo .side.o:hover,.outcomes a:hover{border-color:var(--amber);}
+/* every menu item answers the cursor: outer yellow, inner red, the rest ink, Insights its own orange */
+.menu a.l:hover,.menu a.l[aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink);}
+.menu a.l[href*="operations/"]:hover,.menu a.l[href*="operations/"][aria-current],
+.menu a.l[href*="law-firms/"]:hover,.menu a.l[href*="law-firms/"][aria-current]{box-shadow:inset 0 -3px 0 var(--amber);}
+.menu a.l[href*="people/"]:hover,.menu a.l[href*="people/"][aria-current]{box-shadow:inset 0 -3px 0 var(--red);}
+.menu a.l.ins:hover{color:var(--ins);box-shadow:inset 0 -2px 0 var(--ins);}
+.brand{transition:opacity .2s;}
+.brand:hover{opacity:.8;}
+.drawer a{transition:color .2s,padding .25s;}
+.drawer a:hover{padding-left:20px;}
+/* For law firms is both sides, so it lights up neutral light grey (Anna, 10 Nov 2026) */
+.menu a.l[href*="law-firms/"]:hover,.menu a.l[href*="law-firms/"][aria-current]{box-shadow:inset 0 -3px 0 #B9BCBF;}
+.drawer a[href*="law-firms/"]{box-shadow:inset 3px 0 0 #B9BCBF;}
+
+/* ---- e-pages ---- */
+/* founder cutouts on red on every page they appear, the same frame as the homepage */
+.ph-pair img,.person img{background:#B42A12;object-fit:contain;object-position:50% 100%;}
+.ph-pair figure:first-child figcaption{box-shadow:inset 0 -2px 0 var(--amber);}
+.ph-pair figure:last-child figcaption{box-shadow:inset 0 -2px 0 var(--red);}
+/* page heads: no glow on any page (the card and pair variants re-enabled it) */
+.page-hero::after,.page-hero:has(.ph-card)::after,.page-hero.o::after,.page-hero.i::after{display:none !important;}
+/* small card labels: sentence case in the wide cut, like every other label */
+.g-t{text-transform:none;letter-spacing:0;font-stretch:125%;font-size:.8rem;color:var(--ash);}
+/* problem lines on inner pages: ink rules like the homepage; the side colour shows on hover */
+.voice.o{border-top-color:var(--ink);}
+a.voice.o:hover{border-top-color:var(--amber);}
+/* QA fixes, 10 Nov 2026 */
+/* 1. caption on the red band was grey on red (1.3:1) */
+section.ember:not(.testi):not(:has(.band)) .pull-cite{color:rgba(255,255,255,.86);}
+/* 2. labels in dark bands lost to the generic label colour (3.7:1) */
+.on-ember .head > .kicker{color:var(--on-ember-2);}
+/* 3. testimonial dots: full 44px touch targets on phones */
+@media (hover:none){.testi-nav{gap:10px;}.testi-nav button{width:44px;height:44px;}}
+/* 5. scheduler demo vote counts: ink, not brown amber */
+.demo-cal .d i{color:var(--ink);}
+/* 6. "both sides" bullets: neutral ink instead of a third accent (orange) */
+.chev.mid{background:var(--ink);}
+/* 7. offsites captions: neutral mark, red stays for actions */
+.gallery-band figcaption::before{background:var(--on-ember-2);}
+/* QA re-check: seven dots on People must keep 44px each on phones */
+@media (hover:none){.testi-nav{gap:4px;}.testi-nav button{flex:none;}}
+/* scheduler demo address text was 4.3:1 (failing before the redesign too) */
+.demo-bar em{color:#5F646A;}
