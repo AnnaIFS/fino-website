@@ -956,3 +956,7 @@ section.ember:not(.testi):not(:has(.band)) .pull-cite{color:rgba(255,255,255,.86
 @media (hover:none){.testi-nav{gap:4px;}.testi-nav button{flex:none;}}
 /* scheduler demo address text was 4.3:1 (failing before the redesign too) */
 .demo-bar em{color:#5F646A;}
+/* offsites head photo: caption under the picture, not a white sticker on it (Anna, 10 Nov 2026) */
+.ph-photo figcaption{position:static;background:none;padding:12px 0 0;font-size:.86rem;color:var(--ash);letter-spacing:0;}
+/* quote marks on the red section: white, never red on red (Anna, 10 Nov 2026) */
+section.ember:not(.testi):not(:has(.band)) .pull.q::before,section.ember:not(.testi):not(:has(.band)) blockquote::before{color:#FFFFFF;}
